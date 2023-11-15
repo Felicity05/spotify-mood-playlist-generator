@@ -1,0 +1,22 @@
+Need to to 
+
+1- get recently played songs
+    - add usr read recently played scope to the auth 
+2- for each track object from the returned list get the id and request the audio-features(endpoint)
+3- classify the song according to the audio feature 
+    classify each feature with a corresponding mood 
+4- generate a playlist
+5- add songs according to the entred classification
+
+-------
+a sligth modification
+
+get user top artist, we have 3 options: since forever ago, last 6 months or last 4 weeks
+we can also let the user to decide how many top artist they wan, limit here is 50
+display this to the user and the prev info
+
+now ask the user from where they would want to create the playlist and which mood they want
+once the user select time frame and the mood and clicks the generate playlist button
+    for every artist of this timeframe get the top tracts
+    for every track analyse the mood according to timbre, pitch, tempo and intensity and classify this accordingly
+    for each track that meets the selected mood add it to the generated playlist
