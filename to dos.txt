@@ -20,3 +20,9 @@ once the user select time frame and the mood and clicks the generate playlist bu
     for every artist of this timeframe get the top tracts
     for every track analyse the mood according to timbre, pitch, tempo and intensity and classify this accordingly
     for each track that meets the selected mood add it to the generated playlist
+
+https://developer.spotify.com/documentation/web-api/reference/get-an-artists-top-tracks
+https://developer.spotify.com/documentation/web-api/reference/get-users-top-artists-and-tracks
+https://developer.spotify.com/documentation/web-api/reference/get-track
+https://developer.spotify.com/documentation/web-api/reference/create-playlist
+https://developer.spotify.com/documentation/web-api/reference/add-tracks-to-playlist
