@@ -3,9 +3,9 @@ import {RecentlyPlayedTracks, UserProfile, PlayHistoryObject} from "../types";
 import axios from "axios";
 
 interface ContentProps {
-    logOutFunction: () => void
-    userData: UserProfile | null
-    token: string
+    logOutFunction?: () => void
+    userData?: UserProfile | null
+    token?: string
 }
 
 const recentlyPlayedSongsInitialState: RecentlyPlayedTracks = {
