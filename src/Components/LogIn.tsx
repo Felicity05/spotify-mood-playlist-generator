@@ -1,11 +1,13 @@
 import React from "react";
 import {initiateAuthentication} from "../utils/auth";
+import {getUserProfileData} from "../api/api";
 
 export const LogIn: React.FC = () => {
 
     const handleLogin = async () => {
         // Implement the OAuth authorization process
         await initiateAuthentication();
+
         console.log("inside log in component")
     }
 

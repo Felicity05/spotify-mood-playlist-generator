@@ -1,25 +1,21 @@
 import React, {useEffect, useState} from 'react';
 import music_mood from '../assets/music-mood.png';
-import {Content} from '../Components/Content';
+import {DisplayUserProfile} from '../Components/DisplayUserProfile';
 import {LogIn} from "../Components/LogIn";
 
 export const Home = () => {
 
+    // if logged in go to AppContent page
     return (
         <div>
-            <h1> Welcome to the Mood Generator Playlist for Spotify</h1>
-            {/* {!code ? */}
-                <div>
+            <div style={{display: "flex", alignItems: "center", flexDirection: "column"}}>
+                <h1> Welcome to the Mood Generator Playlist for Spotify</h1>
+                <div style={{display: "flex", alignItems: "center", flexDirection: "column"}}>
                     <img src={music_mood} alt='music mood' width={'30%'} />
                     <h2>Please log in to get started</h2>
-                    {/* <a className='App-link' href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}>
-                        Log In</a> */}
-                    <LogIn />
-                    <button onClick={()=>(console.log('clicked'))}>Log In</button>
-                    </div>
-                {/* </div> : <p>you are already logged in </p>
-                 // <Content token={token} userData={userData} logOutFunction={handleLogOut} />
-            } */}
+                    <LogIn /> {/*Log in component that triggers authentication and gets user profile data*/}
+                </div>
+            </div>
         </div>
     )
 }
