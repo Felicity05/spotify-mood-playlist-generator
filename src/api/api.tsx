@@ -1,28 +1,61 @@
-import {RecentlyPlayedTracks} from "../types";
 import axios from "axios";
-
-export {}
+import {clearAccessToken, exchangeAccessToken, getAccessToken} from "../utils/auth";
 
 // for all the api calls I need the access token
+const API_BASE_URL = 'https://api.spotify.com/v1';
 
-export const getUserProfileData = async (token: string) => {
+const api = axios.create({
+    baseURL: API_BASE_URL,
+});
 
-    const result = await axios.get("https://api.spotify.com/v1/me", {
-         headers: { Authorization: `Bearer ${token}` }
-    });
+// Axios interceptor to attach the access token to each request
+api.interceptors.request.use(async (config) => {
+    let accessToken = getAccessToken();
+    if (!accessToken) {
+        // If no token is available, initiate the authentication flow
+        try {
+            const code = localStorage.getItem("verifier");
+            await exchangeAccessToken(code);
+            accessToken = getAccessToken();
+        } catch (error) {
+            console.error('Error in request interceptor:', error);
+        }
+    }
+    config.headers.Authorization = `Bearer ${accessToken}`;
+    return config;
+});
 
-    console.log("user data= ", result);
-    return await result.data;
+api.interceptors.response.use(
+    (response) => response,
+    (error) => {
+        // Handle unauthorized errors, e.g., token expiration
+        if (error.response && error.response.status === 401) {
+            // Clear the expired token and initiate the authentication flow
+            clearAccessToken();
+            const code = localStorage.getItem("verifier");
+            // console.log("verifier==  ", code);
+            exchangeAccessToken(code);
+        }
 
+        return Promise.reject(error);
+    }
+);
+
+export const getUserProfileData = async () => {
+    try {
+        return await api.get('/me');
+    } catch (error) {
+        console.error('Error fetching user profile:', error);
+        throw error;
+    }
 }
 
-// const handleRecentlyPlayed = async (): Promise<RecentlyPlayedTracks | void> => {
+// export const handleRecentlyPlayed = async (token: string): Promise<RecentlyPlayedTracks | void> => {
 //     return await axios.get("https://api.spotify.com/v1/me/player/recently-played", {
 //         headers: {Authorization: `Bearer ${token}`}, params: {limit: 50, after: 1484811043508}
 //         //     TODO use before here and find today's date in Unix timestamp in milliseconds
 //     }).then(({data}: { data: RecentlyPlayedTracks }) => {
-//         // console.log(data)
-//         setRecentlyPlayedSongs(data)
+//         console.log(data)
 //     }).catch(error => {
 //         console.log(error.message)
 //     });

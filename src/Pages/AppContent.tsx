@@ -1,5 +1,6 @@
 import {DisplayUserProfile} from "../Components/DisplayUserProfile";
 import {MoodDropDown} from "../Components/MoodDropDown";
+import {useAccessToken} from "../Context/AccessTokenContext";
 
 export const AppContent = () => {
     return(

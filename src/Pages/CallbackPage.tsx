@@ -1,30 +1,60 @@
-import {useEffect} from "react";
-import {getAccessToken} from "../utils/auth";
-import {useLocation, useNavigate} from "react-router-dom";
+import {SetStateAction, useEffect} from "react";
+import {exchangeAccessToken, getAccessToken} from "../utils/auth";
+import {useNavigate} from "react-router-dom";
+import {useAccessToken} from "../Context/AccessTokenContext";
+import {UserProfile} from "../types";
 import {getUserProfileData} from "../api/api";
 
 export const CallbackPage = () => {
     const navigate = useNavigate();
+    const {setAccessToken, setUserProfile} = useAccessToken();
+    let accessToken = "";
+    let userProfileData: SetStateAction<UserProfile | null> = null;
 
     useEffect(() => {
         // Handle the callback (e.g., exchange the authorization code for a token)
-        handleOAuthCallback();
-    });
+        handleOAuthCallback()
+            // .then(() => {
+            //     // Set the access token in the context
+            //     setAccessToken(accessToken);
+            //
+            //     setUserProfile(userProfileData);
+            //     // Navigate to the home page
+            //     navigate('/');
+            // })
+            // .catch((error) => {
+            //     console.error('Authentication error:', error);
+            // });
+    },[]);
 
     const handleOAuthCallback = async () => {
         // Extracts the authorization code from the URL
         const authorizationCode = new URLSearchParams(window.location.search).get('code');
 
-        // Implements the token exchange using the authorization code
-        const authorizationResponse = await getAccessToken(authorizationCode);
+        if (authorizationCode) {
+            try {
+                const authorizationResponse = await exchangeAccessToken(authorizationCode);
+                accessToken = authorizationResponse.access_token;
 
-        //TODO: store access token somewhere securely on my app
+                const userProfileResponse = await getUserProfileData();
+                userProfileData = userProfileResponse.data;
 
-        //retrieves user data ToDo: pass user data to DisplayUserDetails Component
-        await getUserProfileData(authorizationResponse.access_token)
+                setAccessToken(accessToken);
+                setUserProfile(userProfileData);
+                navigate('/');
+            } catch (error) {
+                console.error('Error handling OAuth callback:', error);
+            }
+        } else {
+            console.error('Authorization code not found in callback.');
+        }
 
-        //TODO: Redirect to the home page after successful authorization
-        navigate('/content');
+        // // Implements the token exchange using the authorization code
+        // const authorizationResponse = await exchangeAccessToken(authorizationCode);
+        // accessToken = authorizationResponse.access_token;
+        //
+        // const userProfileResponse = await getUserProfileData()
+        // userProfileData = userProfileResponse.data
     };
 
 

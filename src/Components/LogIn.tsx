@@ -1,6 +1,5 @@
 import React from "react";
 import {initiateAuthentication} from "../utils/auth";
-import {getUserProfileData} from "../api/api";
 
 export const LogIn: React.FC = () => {
 

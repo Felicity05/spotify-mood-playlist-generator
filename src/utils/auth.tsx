@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import {AuthorizationResponse} from "./authTypes";
 
 // needed for authentication
 const CLIENT_ID = 'd5398f16c9b246898c33eda2ca52a59f'
@@ -9,6 +9,8 @@ const TOKEN_ENDPOINT = "https://accounts.spotify.com/api/token";
 const RESPONSE_TYPE = 'code'
 const CODE_CHALLENGE_METHOD = "S256"
 const SCOPES = "user-read-private user-read-email user-read-recently-played playlist-modify-public playlist-modify-private"
+const TOKEN_STORAGE_KEY = 'spotifyAccessToken';
+let accessToken: string | null = null;
 
 // Function to generate a random code verifier
 const generateCodeVerifier = (length: number): string => {
@@ -39,40 +41,49 @@ export const initiateAuthentication = async () => {
 
     localStorage.setItem("verifier", verifier);
 
-    const params = new URLSearchParams();
-    params.append("client_id", CLIENT_ID);
-    params.append("redirect_uri", REDIRECT_URI);
-    params.append("scope", SCOPES);
-    params.append("response_type", RESPONSE_TYPE);
-    params.append("code_challenge_method", CODE_CHALLENGE_METHOD);
-    params.append("code_challenge", challenge);
+    const params = new URLSearchParams({
+        client_id: CLIENT_ID,
+        redirect_uri: REDIRECT_URI,
+        scope: SCOPES,
+        response_type: RESPONSE_TYPE,
+        code_challenge_method: CODE_CHALLENGE_METHOD,
+        code_challenge: challenge,
+    });
 
-    // ToDo: find the correct way to use the const here for the authorization url
-    document.location = `https://accounts.spotify.com/authorize?${params.toString()}`
+    window.location.href = `${AUTH_ENDPOINT}?${params.toString()}`;
 }
 
-interface AuthorizationResponse {
-    access_token: string,
-    refresh_token: string,
-    expires_in: number,
-    scope: string,
-    token_type: string
-}
-
-export const getAccessToken = async (code: string | null): Promise<AuthorizationResponse> => {
+export const exchangeAccessToken = async (code: string | null): Promise<AuthorizationResponse> => {
     const verifier = localStorage.getItem("verifier");
 
-    const params = new URLSearchParams();
-    params.append("client_id", CLIENT_ID);
-    params.append("grant_type", 'authorization_code');
-    params.append("code", code!);
-    params.append("redirect_uri", REDIRECT_URI);
-    params.append("code_verifier", verifier!);
+    const params = new URLSearchParams({
+        client_id: CLIENT_ID,
+        grant_type: 'authorization_code',
+        code: code!,
+        redirect_uri: REDIRECT_URI,
+        code_verifier: verifier!,
+    });
 
-    return await axios.post(TOKEN_ENDPOINT, "",
-        {params}
-    ).then(res => {
-        console.log("successful post request with axios", res)
-        return res.data
-    }).catch(error => console.log(error))
+    try {
+        const response = await axios.post(TOKEN_ENDPOINT, params);
+        setAccessToken(response.data.access_token);
+        return response.data;
+    } catch (error) {
+        console.error('Error exchanging access token:', error);
+        throw error;
+    }
 }
+
+export const setAccessToken = (token: string) => {
+    accessToken = token;
+    localStorage.setItem(TOKEN_STORAGE_KEY, token);
+};
+
+export const getAccessToken = () => {
+    return accessToken || localStorage.getItem(TOKEN_STORAGE_KEY);
+};
+
+export const clearAccessToken = () => {
+    accessToken = null;
+    localStorage.removeItem(TOKEN_STORAGE_KEY);
+};
