@@ -19,7 +19,6 @@ const AccessTokenProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
     useEffect(()=> {
         const token = getAccessToken();
-        const userProfile = getUserProfileData();
 
         setAccessToken(token);
         if(token) fetchUserProfileData();

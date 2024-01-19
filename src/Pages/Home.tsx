@@ -1,6 +1,5 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import music_mood from '../assets/music-mood.png';
-import {DisplayUserProfile} from '../Components/DisplayUserProfile';
 import {LogIn} from "../Components/LogIn";
 import {useAccessToken} from "../Context/AccessTokenContext";
 import {AppContent} from "./AppContent";

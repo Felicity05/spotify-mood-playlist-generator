@@ -13,51 +13,37 @@ export const CallbackPage = () => {
 
     useEffect(() => {
         // Handle the callback (e.g., exchange the authorization code for a token)
-        handleOAuthCallback()
-            // .then(() => {
-            //     // Set the access token in the context
-            //     setAccessToken(accessToken);
-            //
-            //     setUserProfile(userProfileData);
-            //     // Navigate to the home page
-            //     navigate('/');
-            // })
-            // .catch((error) => {
-            //     console.error('Authentication error:', error);
-            // });
-    },[]);
+        // handleOAuthCallback()
 
-    const handleOAuthCallback = async () => {
-        // Extracts the authorization code from the URL
-        const authorizationCode = new URLSearchParams(window.location.search).get('code');
-        console.log("authorizationCode= ", authorizationCode);
+        async function handleOAuthCallback() {
+            // Extracts the authorization code from the URL
+            const authorizationCode = new URLSearchParams(window.location.search).get('code');
+            console.log("authorizationCode= ", authorizationCode);
 
-        if (authorizationCode) {
-            try {
-                const authorizationResponse = await exchangeAccessToken(authorizationCode);
-                accessToken = authorizationResponse.access_token;
+            if (authorizationCode) {
+                try {
+                    const authorizationResponse = await exchangeAccessToken(authorizationCode);
+                    accessToken = authorizationResponse.access_token;
 
-                const userProfileResponse = await getUserProfileData();
-                userProfileData = userProfileResponse.data;
+                    const userProfileResponse = await getUserProfileData();
+                    userProfileData = userProfileResponse.data;
 
-                setAccessToken(accessToken);
-                setUserProfile(userProfileData);
-                navigate('/');
-            } catch (error) {
-                console.error('Error handling OAuth callback:', error);
+                    setAccessToken(accessToken);
+                    setUserProfile(userProfileData);
+                    navigate('/');
+                } catch (error) {
+                    console.error('Error handling OAuth callback:', error);
+                }
+            } else {
+                //TO DO: handle cancel authorization and stop authorization flow
+                //redirect to home page and explain why authorization is needed to use the app
+                console.error('Authorization code not found in callback.');
             }
-        } else {
-            console.error('Authorization code not found in callback.');
         }
 
-        // // Implements the token exchange using the authorization code
-        // const authorizationResponse = await exchangeAccessToken(authorizationCode);
-        // accessToken = authorizationResponse.access_token;
-        //
-        // const userProfileResponse = await getUserProfileData()
-        // userProfileData = userProfileResponse.data
-    };
+        handleOAuthCallback();
 
+    },[]);
 
     return(
         <></>

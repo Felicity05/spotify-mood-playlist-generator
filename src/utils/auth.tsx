@@ -9,7 +9,7 @@ const TOKEN_ENDPOINT = "https://accounts.spotify.com/api/token";
 const RESPONSE_TYPE = 'code'
 const CODE_CHALLENGE_METHOD = "S256"
 const SCOPES = "user-read-private user-read-email user-top-read user-read-recently-played playlist-modify-public playlist-modify-private"
-const TOKEN_STORAGE_KEY = 'spotifyAccessToken';
+export const TOKEN_STORAGE_KEY = 'spotifyAccessToken';
 let accessToken: string | null = null;
 
 // Function to generate a random code verifier
