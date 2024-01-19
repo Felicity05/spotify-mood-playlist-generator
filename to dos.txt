@@ -1,4 +1,4 @@
-Need to to 
+Need to do
 
 1- get recently played songs
     - add usr read recently played scope to the auth 
@@ -9,10 +9,10 @@ Need to to
 5- add songs according to the entred classification
 
 -------
-a sligth modification
+a slight modification
 
 get user top artist, we have 3 options: since forever ago, last 6 months or last 4 weeks
-we can also let the user to decide how many top artist they wan, limit here is 50
+we can also let the user decide how many top artist they want, limit here is 50
 display this to the user and the prev info
 
 now ask the user from where they would want to create the playlist and which mood they want

@@ -30,6 +30,7 @@ export const CallbackPage = () => {
     const handleOAuthCallback = async () => {
         // Extracts the authorization code from the URL
         const authorizationCode = new URLSearchParams(window.location.search).get('code');
+        console.log("authorizationCode= ", authorizationCode);
 
         if (authorizationCode) {
             try {

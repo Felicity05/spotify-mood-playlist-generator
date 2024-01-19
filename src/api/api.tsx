@@ -1,5 +1,6 @@
 import axios from "axios";
 import {clearAccessToken, exchangeAccessToken, getAccessToken} from "../utils/auth";
+import {UserProfile} from "../types";
 
 // for all the api calls I need the access token
 const API_BASE_URL = 'https://api.spotify.com/v1';
@@ -34,7 +35,9 @@ api.interceptors.response.use(
             clearAccessToken();
             const code = localStorage.getItem("verifier");
             // console.log("verifier==  ", code);
-            exchangeAccessToken(code);
+            exchangeAccessToken(code).then(response => {
+                return response
+            });
         }
 
         return Promise.reject(error);

@@ -8,7 +8,7 @@ const AUTH_ENDPOINT = 'https://accounts.spotify.com/authorize'
 const TOKEN_ENDPOINT = "https://accounts.spotify.com/api/token";
 const RESPONSE_TYPE = 'code'
 const CODE_CHALLENGE_METHOD = "S256"
-const SCOPES = "user-read-private user-read-email user-read-recently-played playlist-modify-public playlist-modify-private"
+const SCOPES = "user-read-private user-read-email user-top-read user-read-recently-played playlist-modify-public playlist-modify-private"
 const TOKEN_STORAGE_KEY = 'spotifyAccessToken';
 let accessToken: string | null = null;
 
@@ -54,7 +54,7 @@ export const initiateAuthentication = async () => {
 }
 
 export const exchangeAccessToken = async (code: string | null): Promise<AuthorizationResponse> => {
-    const verifier = localStorage.getItem("verifier");
+    const verifier = localStorage.getItem('verifier');
 
     const params = new URLSearchParams({
         client_id: CLIENT_ID,
@@ -76,10 +76,13 @@ export const exchangeAccessToken = async (code: string | null): Promise<Authoriz
 
 export const setAccessToken = (token: string) => {
     accessToken = token;
-    localStorage.setItem(TOKEN_STORAGE_KEY, token);
+    localStorage.setItem(TOKEN_STORAGE_KEY, accessToken);
 };
 
 export const getAccessToken = () => {
+    console.log("getting access token from variable")
+    console.log("accessTokenVariable= ", accessToken)
+    console.log("accessToken from local storage= ", localStorage.getItem(TOKEN_STORAGE_KEY))
     return accessToken || localStorage.getItem(TOKEN_STORAGE_KEY);
 };
 

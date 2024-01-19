@@ -1,6 +1,8 @@
 // AccessTokenContext.js
-import React, {createContext, ReactNode, useContext, useState} from 'react';
+import React, {createContext, ReactNode, useContext, useEffect, useState} from 'react';
 import {UserProfile} from "../types";
+import {getAccessToken} from "../utils/auth";
+import {getUserProfileData} from "../api/api";
 
 interface AccessTokenContextProps {
     accessToken: string | null;
@@ -14,6 +16,23 @@ const AccessTokenContext = createContext<AccessTokenContextProps | undefined>(un
 const AccessTokenProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [accessToken, setAccessToken] = useState<string | null>(null);
     const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
+
+    useEffect(()=> {
+        const token = getAccessToken();
+        const userProfile = getUserProfileData();
+
+        setAccessToken(token);
+        if(token) fetchUserProfileData();
+    },[])
+
+    const fetchUserProfileData = async () => {
+        try{
+            const userProfileResponse = await getUserProfileData();
+            setUserProfile(userProfileResponse.data)
+        } catch (error) {
+            console.error("Error fetching user profile data: ", error);
+        }
+    }
 
     return (
         <AccessTokenContext.Provider value={{ accessToken, setAccessToken, userProfile, setUserProfile }}>
