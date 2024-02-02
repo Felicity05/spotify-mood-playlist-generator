@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-export  const MoodDropDown = () => {
+export  const MoodSelector = () => {
     const [mood, setMood] = useState("");
 
     console.log(mood)

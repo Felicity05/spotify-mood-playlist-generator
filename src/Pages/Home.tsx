@@ -21,7 +21,6 @@ export const Home = () => {
                 </div>
             </div> :
                 <div>
-                    <h1>Yey!!! You are successfully logged in!</h1>
                     <AppContent />
                 </div>
             }
