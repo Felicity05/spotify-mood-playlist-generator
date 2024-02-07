@@ -30,16 +30,14 @@ export const AppContent = () => {
     const SideBar = styled.div`
       display: flex;
       flex-direction: column;
-      //background: #9aa5c9;
       grid-area: sidebar;
       gap: 0.25rem;
-      align-items: center;
-      justify-content: center;
-      grid-area: sidebar;
     `
 
-    const StyledMaindisplay = styled.div`
+    const StyledMainDisplay = styled.div`
       grid-area: main;
+      background-color: #1db954;
+      //overflow-y: scroll;
     `
 
     return(
@@ -48,9 +46,9 @@ export const AppContent = () => {
                 <DisplayUserProfile />
                 <Library/>
             </SideBar>
-            <StyledMaindisplay>
+            <StyledMainDisplay>
                 <MainDisplay/>
-            </StyledMaindisplay>
+            </StyledMainDisplay>
         </Container>
     )
 }

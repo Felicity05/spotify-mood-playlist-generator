@@ -1,6 +1,7 @@
-import axios from "axios";
+import axios, {all} from "axios";
 import {clearAccessToken, exchangeAccessToken, getAccessToken} from "../utils/auth";
-import {UserProfile} from "../types";
+import {PlayHistoryObject} from "../types";
+import {PlayHistory} from "../Components/MainDisplay";
 
 // for all the api calls I need the access token
 const API_BASE_URL = 'https://api.spotify.com/v1';
@@ -26,8 +27,7 @@ spotify_api.interceptors.request.use(async (config) => {
     return config;
 });
 
-spotify_api.interceptors.response.use(
-    (response) => response,
+spotify_api.interceptors.response.use((response) => response,
     (error) => {
         // Handle unauthorized errors, e.g., token expiration
         if (error.response && error.response.status === 401) {
@@ -53,13 +53,36 @@ export const getUserProfileData = async () => {
     }
 }
 
-//get recently played tracks for user for the last year
-export const getRecentlyPlayedTracks = async (limit?: number, after?: number, before?: number) => {
+//get recently played tracks for user -- currently the API only gives 50 tracks and the before and after cursors don't work for more than 50 items
+export const getRecentlyPlayedTracks = async (after?: number, before?: number) => {
     try {
-        return await spotify_api.get('me/player/recently-played', {params: {
-                limit: 50,
-                after: 1672462800000 // this is a unix timestamp in millisecond and this date is december 31, 2022, 00h00m00s
-            }});
+        let allResults: PlayHistory[] = [];
+        let beforeParam = new Date().getTime(); // this is a unix timestamp in millisecond
+
+        // console.log("today's date in millisecond= ", beforeParam);
+
+        while(true){
+            const response: any = await spotify_api.get('me/player/recently-played', {params: {
+                    limit: 50,
+                    before: beforeParam,
+                }});
+
+            const currentResults = response.data.items;
+            allResults = [...allResults, ...currentResults];
+
+            // console.log("Number of items in the current page:", currentResults.length);
+
+            const {cursors, next} = response.data;
+            if(!next) break;
+
+            // console.log("cursors= ", cursors);
+            // console.log("next page= ", next);
+
+            beforeParam = cursors?.before;
+
+            // console.log("Next 'after' timestamp:", cursors);
+        }
+        return allResults;
     }
     catch (error: any) {
         console.error('Error with the request', error);
@@ -68,8 +91,16 @@ export const getRecentlyPlayedTracks = async (limit?: number, after?: number, be
     }
 }
 
+//get audio feature for track
+export const getAudioFeatureForTrack = async (id: string) => {
 
-//get top artist for user0
+    const response: any = await spotify_api.get(`/audio-features/${id}`);
+
+    return response.data;
+}
+
+
+//get top artist for user
 
 //get top songs for user, save somewhere
 

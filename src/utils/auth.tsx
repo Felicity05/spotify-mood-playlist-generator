@@ -80,9 +80,9 @@ export const setAccessToken = (token: string) => {
 };
 
 export const getAccessToken = () => {
-    console.log("getting access token from variable")
-    console.log("accessTokenVariable= ", accessToken)
-    console.log("accessToken from local storage= ", localStorage.getItem(TOKEN_STORAGE_KEY))
+    // console.log("getting access token from variable")
+    // console.log("accessTokenVariable= ", accessToken)
+    // console.log("accessToken from local storage= ", localStorage.getItem(TOKEN_STORAGE_KEY))
     return accessToken || localStorage.getItem(TOKEN_STORAGE_KEY);
 };
 
