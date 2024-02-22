@@ -6,6 +6,7 @@ import {TOKEN_STORAGE_KEY} from "../utils/auth";
 import {useAccessToken} from "../Context/AccessTokenContext";
 import {TrackAudioFeatures} from "../utils/trackTypes";
 import {classifyTrack} from "../utils/moodClassification";
+import {predictTrackMood} from "../api/model_predictions_api";
 
 interface RecentlyPlayedTrack {
     limit: number;
@@ -47,28 +48,57 @@ export const MainDisplay = () => {
         // console.log(response);
         setRecentlyPlayedTracks(response ?? null);
 
-        /* for testing purposes
-             const audioFeature: TrackAudioFeatures = await getAudioFeatureForTrack("3S7HNKPakdwNEBFIVTL6dZ");
-             console.log(audioFeature);
-             console.log(classifyTrack(audioFeature));
-         */
+        /* for testing purposes */
+        const audioFeature: TrackAudioFeatures = await getAudioFeatureForTrack("2r9CbjYgFhtAmcFv1cSquB");
+        console.log(audioFeature);
+
+        const bestAudioFeatures = {
+            duration_ms: audioFeature.duration_ms,
+            danceability: audioFeature.danceability,
+            acousticness: audioFeature.acousticness,
+            energy: audioFeature.energy,
+            instrumentalness: audioFeature.instrumentalness,
+            valence: audioFeature.valence,
+            speechiness: audioFeature.speechiness,
+            tempo: audioFeature.tempo
+        }
+
+        const trackMood = await predictTrackMood(bestAudioFeatures)
+        console.log(trackMood); //I get the mood encoded, so I have to work with a map for my encoding
+
+        //----------------------
 
         //get audio feature for each track of the response
+        /*
         let listOfTracks: string[] = [];
         response.map(async item => {
             let audioFeature: TrackAudioFeatures | undefined = undefined;
             audioFeature = await getAudioFeatureForTrack(item.track.id);
 
+            console.log(audioFeature)
+
+            const bestAudioFeatures = {
+                duration_ms: audioFeature.duration_ms,
+                danceability: audioFeature.danceability,
+                acousticness: audioFeature.acousticness,
+                energy: audioFeature.energy,
+                instrumentalness: audioFeature.instrumentalness,
+                valence: audioFeature.valence,
+                speechiness: audioFeature.speechiness,
+                tempo: audioFeature.tempo
+            }
+
             //classify the songs according to the selected mood & add them to a list
-            const trackMood = classifyTrack(audioFeature)
-            if(trackMood?.toLowerCase() === selectedMood) listOfTracks.push(item.track.uri)
-
+                const trackMood = await predictTrackMood(bestAudioFeatures)
+            // const trackMood = classifyTrack(audioFeature)
+            // if(trackMood?.toLowerCase() === selectedMood) listOfTracks.push(item.track.uri)
+            //
             console.log(item.track.name, " -- ", trackMood);
+            //
+            // return listOfTracks;
+        })*/
 
-            return listOfTracks;
-        })
-
-        console.log(listOfTracks);
+        // console.log(listOfTracks);
 
         //create playlist
 

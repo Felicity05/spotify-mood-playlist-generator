@@ -1,7 +1,8 @@
-import axios, {all} from "axios";
+import axios, {all, AxiosResponse} from "axios";
 import {clearAccessToken, exchangeAccessToken, getAccessToken} from "../utils/auth";
 import {PlayHistoryObject} from "../types";
 import {PlayHistory} from "../Components/MainDisplay";
+import {TrackAudioFeatures} from "../utils/trackTypes";
 
 // for all the api calls I need the access token
 const API_BASE_URL = 'https://api.spotify.com/v1';
@@ -94,7 +95,7 @@ export const getRecentlyPlayedTracks = async (after?: number, before?: number) =
 //get audio feature for track
 export const getAudioFeatureForTrack = async (id: string) => {
 
-    const response: any = await spotify_api.get(`/audio-features/${id}`);
+    const response: AxiosResponse<TrackAudioFeatures> = await spotify_api.get(`/audio-features/${id}`);
 
     return response.data;
 }
