@@ -3,9 +3,7 @@ import {MainDisplay} from "../Components/MainDisplay";
 import {Library} from "../Components/Library";
 import styled from "styled-components";
 
-export const AppContent = () => {
-
-    const Container = styled.div`
+const Container = styled.div`
         display: grid;
         height: 100vh;
         background-color: black;
@@ -27,19 +25,22 @@ export const AppContent = () => {
           }
         color: white;
     `
-    const SideBar = styled.div`
+
+const SideBar = styled.div`
       display: flex;
       flex-direction: column;
       grid-area: sidebar;
       gap: 0.25rem;
     `
 
-    const StyledMainDisplay = styled.div`
+const StyledMainDisplay = styled.div`
       grid-area: main;
       background-color: #1db954;
       //overflow-y: scroll;
     `
 
+
+export const AppContent = () => {
     return(
         <Container>
             <SideBar>

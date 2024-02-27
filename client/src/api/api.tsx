@@ -100,6 +100,18 @@ export const getAudioFeatureForTrack = async (id: string) => {
     return response.data;
 }
 
+/*get several tracks audio features
+@params A comma-separated list of the Spotify IDs for the tracks. Maximum: 100 IDs.
+*/
+export const getSeveralTracksAudioFeatures = async (trackIdsList: string) => {
+
+    const response = await spotify_api.get(`/audio-features/`, {params: {
+        ids: trackIdsList
+    }});
+
+    return response.data;
+}
+
 
 //get top artist for user
 

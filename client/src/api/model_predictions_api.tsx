@@ -1,17 +1,16 @@
 import axios from 'axios'
+import {TrackAudioFeatures} from "../utils/trackTypes";
+import {type} from "os";
 
-// features to use duration_ms, danceability, acousticness, energy, instrumentalness, valence, speechiness, tempo
 
-
-export const predictTrackMood = (trackFeatures: any) => {
-    const response = axios.post('http://localhost:5000/predict', { trackFeatures })
+export const predictTrackMood = (trackFeatures: TrackAudioFeatures[]) => {
+    return axios.post('http://localhost:5000/predict', {trackFeatures})
         .then(response => {
             const prediction = response.data.prediction;
-            console.log('Prediction:', prediction);
+            // console.log('Prediction:', prediction);
+            return prediction;
         })
         .catch(error => {
             console.error('Error:', error);
         });
-
-    return response;
 }

@@ -1,21 +1,36 @@
 import {useState} from "react";
+import {Button} from "./Button";
+import {useMoodSourceStore} from "../store/store";
+
+export const moodEncodingMap: { [key: string]: string } = {
+    "Calm": "0",
+    "Energetic": "1",
+    "Happy": "2",
+    "Sad": "3",
+}
 
 export  const MoodSelector = () => {
-    const [mood, setMood] = useState("");
+    const {selectedMood, setSelectedMood} = useMoodSourceStore();
 
-    console.log(mood)
+    const handleMoodSelection = (mood: string) => {
+        // Update the selected mood
+        setSelectedMood(mood);
+    };
+
     return (
         <div>
-            <p>Please select your mood from the dropdown below to create your playlist</p>
-            <br/>
-            {/* dropdown here - capture mood from here*/}
-            <select name="moods" id="mood" onChange={event => setMood(event.target.value)}>
-                <option placeholder='placeholder'>Select your mood</option>
-                <option value="happy">Happy</option>
-                <option value="energetic">Energetic</option>
-                <option value="sad">Sad</option>
-                <option value="contempt">Contempt</option>
-            </select>
+            {!selectedMood ?
+                <div>
+                    <p>Now choose how are you feeling today </p>
+                    <div style={{display: "flex"}}>
+                        <Button fontSize={'15px'} value={"happy"} onClick={() => handleMoodSelection(moodEncodingMap.Happy)} >Happy</Button>
+                        <Button fontSize={'15px'} onClick={() => handleMoodSelection(moodEncodingMap.Energetic) } >Energetic</Button>
+                        <Button fontSize={'15px'} onClick={() => handleMoodSelection(moodEncodingMap.Calm) } >Calm</Button>
+                        <Button fontSize={'15px'} onClick={() => handleMoodSelection(moodEncodingMap.Sad) } >Sad</Button>
+                    </div>
+                </div> :
+            <p>Mood set to: {Object.keys(moodEncodingMap).find((key) => moodEncodingMap[key as keyof typeof moodEncodingMap] === selectedMood)}</p>
+            }
         </div>
     )
 }
