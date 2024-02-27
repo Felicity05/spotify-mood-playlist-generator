@@ -4,9 +4,9 @@ import {getRecentlyPlayedTracks} from "../api/api";
 import {useMoodSourceStore} from "../store/store";
 
 const tracksSourceMap = {
-    "recentlyPlayed" : "getRecentlyPlayed",
-    "topArtist": "getTopArtist",
-    "topTracks": "getTopTracks"
+    "recentlyPlayed" : "recentlyPlayed",
+    "topArtist": "topArtist",
+    "topTracks": "topTracks"
 }
 
 const TracksSourceSelector = () => {
@@ -18,9 +18,9 @@ const TracksSourceSelector = () => {
                 <div>
                     <p>Choose from where do you want your songs</p>
                     <div style={{display: "flex"}}>
-                        <Button onClick={() => setSelectedTrackSource("recently played")}>Recently listened</Button>
-                        <Button onClick={() => setSelectedTrackSource(tracksSourceMap.recentlyPlayed)}>Top Artists</Button>
-                        <Button onClick={() => setSelectedTrackSource(tracksSourceMap.recentlyPlayed)}>Top Songs</Button>
+                        <Button onClick={() => setSelectedTrackSource(tracksSourceMap.recentlyPlayed)}>Recently listened</Button>
+                        <Button onClick={() => setSelectedTrackSource(tracksSourceMap.topArtist)}>Top Artists</Button>
+                        <Button onClick={() => setSelectedTrackSource(tracksSourceMap.topTracks)}>Top Songs</Button>
                     </div>
                 </div> :
                 <p>Track source set to: {selectedTrackSource} </p>

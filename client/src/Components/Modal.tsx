@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import styled from "styled-components";
 import {Button} from "./Button";
+import closeIcon from '../assets/Icons/icons8-close-64-white.png'
 
 const ModalWrapper = styled.div<{ is_visible: any }>`
   display: ${({ is_visible }) => (is_visible ? 'block' : 'none')};
@@ -40,16 +41,31 @@ const ModalButtons = styled.div`
     }
 `
 
+const ModalHeader = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  .close-icon {
+    margin-top: -50px;
+    padding: 0 10px;
+    height: 24px;
+  }
+`;
+
 interface ModalProps {
     isOpen: boolean;
     onClose: () => void;
     onConfirm: () => void;
-    onCancel: () => void;
+    onCancel?: () => void;
     message: string;
+    handleMood: () => void;
+    handleTrackSource: () => void;
+    handleBoth: () => void;
 }
 
 // @ts-ignore
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onConfirm, onCancel, message }) => {
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onConfirm, handleMood, handleTrackSource, handleBoth, message }) => {
     if (!isOpen) return null;
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [showResetOptions, setShowResetOptions] = useState(false)
@@ -61,6 +77,11 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onConfirm, onCancel, mes
     return (
         <ModalWrapper is_visible={isOpen.toString()}>
             <ModalContent>
+                <ModalHeader>
+                    <Button background_color={"transparent"} onClick={onClose} style={{padding: '0px'}}>
+                        <img src={closeIcon} alt={""} className="close-icon"/>
+                    </Button>
+                </ModalHeader>
             {!showResetOptions ? ( <>
                     <p style={{marginBottom: '0px'}}>There would be only {message} songs on your playlist. </p>
                     <p>Are you sure you want to continue?</p>
@@ -72,9 +93,9 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onConfirm, onCancel, mes
                 : ( <>
                     <p>What would you like to reset?</p>
                     <ModalButtons>
-                        <Button >Mood</Button>
-                        <Button >Tracks Source</Button>
-                        <Button> Both </Button>
+                        <Button onClick={handleMood}>Mood</Button>
+                        <Button onClick={handleTrackSource}>Tracks Source</Button>
+                        <Button onClick={handleBoth}> Start Over </Button>
                     </ModalButtons>
                 </>)
             }

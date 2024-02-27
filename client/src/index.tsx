@@ -3,13 +3,17 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {StyleSheetManager} from "styled-components";
+import isPropValid from '@emotion/is-prop-valid';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   // <React.StrictMode>
+    <StyleSheetManager shouldForwardProp={prop => isPropValid(prop)}>
     <App />
+    </StyleSheetManager>
    // </React.StrictMode>
 );
 

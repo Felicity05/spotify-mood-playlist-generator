@@ -92,95 +92,53 @@ export const getRecentlyPlayedTracks = async (after?: number, before?: number) =
     }
 }
 
-//get audio feature for track
+//get audio features for a single track
 export const getAudioFeatureForTrack = async (id: string) => {
 
     const response: AxiosResponse<TrackAudioFeatures> = await spotify_api.get(`/audio-features/${id}`);
-
     return response.data;
 }
 
 /*get several tracks audio features
-@params A comma-separated list of the Spotify IDs for the tracks. Maximum: 100 IDs.
+@params a comma-separated list of the Spotify IDs for the tracks. Maximum: 100 IDs.
 */
 export const getSeveralTracksAudioFeatures = async (trackIdsList: string) => {
 
     const response = await spotify_api.get(`/audio-features/`, {params: {
         ids: trackIdsList
     }});
-
     return response.data;
 }
 
+/* Create new playlist for user (The playlist will be empty until you add tracks)
+Each user is generally limited to a maximum of 11000 playlists.
+@params the user id
+ */
+export const createNewPlaylist = async (user_id: string, mood: string) => {
+
+    const response = await spotify_api.post(`/users/${user_id}/playlists`, {
+            "name": `My ${mood} Playlist`,
+            "description": `Playlist for when I'm feeling ${mood}`,
+            // "public": false //this commented will default the playlist to public
+        }
+    )
+    return response.data;
+}
+
+/* Add songs to the created playlist
+@params playlistId
+ */
+export const addSelectedTracksToPlaylist = async (playlist_id: string, tracksUris: string[]) => {
+    const response = await spotify_api.post(`/playlists/${playlist_id}/tracks`, {
+            "position": 0, //insert items at the top of the list
+            "uris": tracksUris,
+        }
+    )
+    return response.data;
+}
+
+//get playlists for user
 
 //get top artist for user
 
 //get top songs for user, save somewhere
-
-//set mood (set duration ??? maybe this is not optimal since i'm classifying songs based on mood and can happen that there are no songs with the selected mood)
-//select from where would you like your playlist? recently played songs, top artist or top songs
-//set playlist's tracks source
-//one the user clicks generate playlist
-// from the list of recently played songs: go over the list one song at a time and compare its timbre, pitch, tempo and intensity
-//with the predefined values for the selected mood
-
-
-
-// export const handleRecentlyPlayed = async (token: string): Promise<RecentlyPlayedTracks | void> => {
-//     return await axios.get("https://api.spotify.com/v1/me/player/recently-played", {
-//         headers: {Authorization: `Bearer ${token}`}, params: {limit: 50, after: 1484811043508}
-//         //     TODO use before here and find today's date in Unix timestamp in milliseconds
-//     }).then(({data}: { data: RecentlyPlayedTracks }) => {
-//         console.log(data)
-//     }).catch(error => {
-//         console.log(error.message)
-//     });
-// }
-//  /*pass the list of tracks as comma separated string*/
-// const getTracksAudioFeatures = async () => {
-//     const trackList = recentlyPlayedSongs.items.map(item => {
-//         return item.track.id
-//     }).toString()
-//
-//     await axios.get("https://api.spotify.com/v1/audio-features", {
-//         headers: { Authorization: `Bearer ${token}` }, params: {ids: trackList }
-//     }).then(res => {
-//         console.log(res)
-//     }).catch(error => console.log(error))
-// }
-//
-// const createNewPlaylist = async () => {
-//
-//     axios({
-//         method: 'post',
-//         url: 'https://api.spotify.com/v1/users/{user_id}/playlists',
-//         data: {
-//             name: 'test',
-//             public: false
-//         },
-//         headers: { Authorization: `Bearer ${token}` },
-//         params: {user_id: userData?.id }
-//     });
-//
-//
-//     // await axios.post("https://api.spotify.com/v1/users/{user_id}/playlists", {
-//     //         "name": `My ${mood} Playlist`,
-//     //         "description": `Playlist fro when I'm feeling ${mood}`,
-//     //         "public": false
-//     //     }, { headers: { Authorization: `Bearer ${token}` },
-//     //     params: {user_id: userData?.id }}
-//     // ).then(res => {
-//     //     console.log(res)
-//     // }).catch(error => console.log(error))
-//
-// }
-//
-// const generateMoodPlaylist = async () => {
-//     await Promise.all(Array.of(
-//             getTracksAudioFeatures(),
-//             // createNewPlaylist(),
-//         )
-//     )
-// }
-
-//get playlists for user

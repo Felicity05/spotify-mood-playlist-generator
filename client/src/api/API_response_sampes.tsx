@@ -123,3 +123,38 @@ export const listTrackMoodUri = [
 {trackUri: 'spotify:track:0MteK167vtyb6hoJNC3Uz3', mood: '2'},
 {trackUri: 'spotify:track:7DHX1Ng0V186U2idfFfjGi', mood: '2'},
 ]
+
+export const testPlaylist = {
+    collaborative: false,
+    description: "Playlist for when I'm feeling Energetic",
+    external_urls: {spotify: 'https://open.spotify.com/playlist/1ZVXBUWTb8TgPnmNh14ZBj'},
+    followers: {href: null, total: 0},
+    href: "https://api.spotify.com/v1/playlists/1ZVXBUWTb8TgPnmNh14ZBj",
+    id: "1ZVXBUWTb8TgPnmNh14ZBj",
+    images: [],
+    name: "My Energetic Playlist",
+    owner: {
+        display_name: 'Arelys Alvarez',
+        external_urls: {
+            spotify: "https://open.spotify.com/user/21lx2mgnxbjoz7xouvw",
+            href: 'https://api.spotify.com/v1/users/21lx2mgnxbjoz7xouvwrtefuq',
+            id: '21lx2mgnxbjoz7xouvwrtefuq',
+            type: 'user',
+            uri: "spotify:user:21lx2mgnxbjoz7xouvwrtefuq"
+        }
+    },
+    primary_color: null,
+    public: true,
+    snapshot_id: "MSxjODAyYzE3ZmU2ODlmMjg3NzRlZWM4ZmZhZjQxODUwY2QzNTNkMzY3",
+    tracks: {
+        href: 'https://api.spotify.com/v1/playlists/1ZVXBUWTb8TgPnmNh14ZBj/tracks',
+        items: [],
+        limit: 100,
+        next: null,
+        offset: 0,
+        previous: null,
+        total: 0
+    },
+    type: "playlist",
+    uri: "spotify:playlist:1ZVXBUWTb8TgPnmNh14ZBj"
+}
