@@ -13,7 +13,7 @@ export const LogIn: React.FC = () => {
 
     return(
         <div>
-            <Button background_color={'#1DB954'} onClick={handleLogin}>
+            <Button variant="primary" size="lg" onClick={handleLogin}>
                 Log In with Spotify
             </Button>
         </div>

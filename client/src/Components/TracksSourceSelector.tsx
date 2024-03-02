@@ -15,12 +15,12 @@ const TracksSourceSelector = () => {
     return (
         <div>
             {!selectedTrackSource ?
-                <div>
+                <div style={{display: "flex", flexDirection: "column", alignItems: "flex-start"}}>
                     <p>Choose from where do you want your songs</p>
-                    <div style={{display: "flex"}}>
-                        <Button onClick={() => setSelectedTrackSource(tracksSourceMap.recentlyPlayed)}>Recently listened</Button>
-                        <Button onClick={() => setSelectedTrackSource(tracksSourceMap.topArtist)}>Top Artists</Button>
-                        <Button onClick={() => setSelectedTrackSource(tracksSourceMap.topTracks)}>Top Songs</Button>
+                    <div style={{display: "flex", gap:"0.5rem"}}>
+                        <Button variant="secondary" size="md" onClick={() => setSelectedTrackSource(tracksSourceMap.recentlyPlayed)}>Recently listened</Button>
+                        <Button variant="secondary" size="md" onClick={() => setSelectedTrackSource(tracksSourceMap.topArtist)}>Top Artists</Button>
+                        <Button variant="secondary" size="md" onClick={() => setSelectedTrackSource(tracksSourceMap.topTracks)}>Top Songs</Button>
                     </div>
                 </div> :
                 <p>Track source set to: {selectedTrackSource} </p>

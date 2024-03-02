@@ -6,7 +6,7 @@ import {AppContent} from "./AppContent";
 
 export const Home = () => {
     const { accessToken } = useAccessToken()
-    console.log("accessToken from Home component coming from hook context=", accessToken)
+    // console.log("accessToken from Home component coming from hook context=", accessToken)
 
     // if logged in go to AppContent page
     return (

@@ -1,37 +1,132 @@
-import styled from "styled-components";
 import React, {ButtonHTMLAttributes, ReactNode} from "react";
+import styled, {css, Interpolation, RuleSet} from "styled-components";
 
-interface StyledButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
+type Variant = 'default' | 'primary' | 'secondary' | 'outline' | 'button_link' | 'icon';
+
+type Size = 'default' | 'sm' | 'md' | 'lg' | 'cl';
+
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     children: ReactNode;
-    background_color?: string;
-    fontWeight?: string;
-    fontSize?: string;
-    color?: string;
+    variant?: Variant;
+    size?: Size;
 }
 
+/*
+font-family: var(--font-family, CircularSp, CircularSp-Arab, CircularSp-Hebr, CircularSp-Cyrl, CircularSp-Grek, CircularSp-Deva, var(--fallback-fonts, sans-serif)), Helvetica, Arial, sans-serif;
+ */
+
+const colors = {
+    green: '#1DB954',
+    white: '#ffffff',
+    transparent: '#cbd5e0',
+    black: '#191414',
+    darkGrey: {
+        default: '#212121',
+        hover: '#2a2a2a',
+    },
+    lightGrey: {
+        default: '#4a5568',
+        hover: '#edf2f7',
+    },
+    textColor: '#f5f5f5'
+};
+
+const buttonVariants: {[key: string]: any} = {
+    default: css`
+    background-color:  ${colors.lightGrey.default};
+    color: ${colors.white};
+    &:hover {
+      background-color: ${colors.lightGrey.hover};
+    }
+  `,
+    primary: css`
+    background-color:  ${colors.green};
+    color: ${colors.black};
+    font-weight: bolder;
+    &:hover {
+      padding: 0.85rem 3.5rem;
+    }
+  `,
+    secondary: css`
+    background-color: ${colors.darkGrey.default};//#212121;
+    color: ${colors.textColor};
+    &:hover {
+      background-color: ${colors.darkGrey.hover}; //#2a2a2a;
+    }
+  `,
+    outline: css`
+    background-color: transparent;
+    border: 2px solid ${colors.darkGrey.default};
+    color: ${colors.textColor};
+    &:hover {
+      background-color: ${colors.darkGrey.default};
+    }
+  `,
+    button_link: css`
+    background-color: transparent;
+    color: ${colors.textColor};
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  `,
+    icon: css`
+    background-color: ${colors.darkGrey.default};
+    color: ${colors.textColor};
+    text-decoration: none;
+    &:hover {
+      background-color: ${colors.darkGrey.hover};
+    }
+  `,
+}
+
+const buttonSizes: {[key: string]: any} = {
+    default: css`
+    padding: 0.5rem 2rem;
+    font-size: 1rem;
+  `,
+    sm: css`
+    padding: 0.25rem 1rem;
+    font-size: 0.875rem;
+  `,
+    md: css`
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+  `,
+    lg: css`
+    padding: 0.75rem 3rem;
+    font-size: 1.25rem;
+  `,
+    cl: css `
+      padding: 0.5rem;
+    `
+};
+
 // Styled component named StyledButton
-export const StyledButton = styled.button<StyledButtonProps>`
-  background-color: ${(props) => (props.background_color ? props.background_color : 'lightgrey')}; // #1DB954; - spotify green
-  font-size:  ${(props) => (props.fontSize ? props.fontSize : '20px')};
-  color: ${(props) => (props.color ? props.color : '#191414')};
-  font-weight: ${(props) => (props.fontWeight ? props.fontWeight : '700')};
-  border-radius: 9999px;
-  padding: 12px 48px 12px 48px;
-  border-color: transparent;
-  display: flex;
+const ButtonBase = styled.button<Pick<ButtonProps, 'variant' | 'size'>>`
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
+  border-radius: 9999rem;
+  transition: background-color 0.2s;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  padding: 0.5rem 1rem;
   text-decoration: none;
-  vertical-align: middle;
-  letter-spacing: 1px;
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  ${({ variant }) => buttonVariants[variant!]};
+  ${({ size }) => buttonSizes[size!]};
 `;
 
-export const Button: React.FC<StyledButtonProps> = ({children, background_color,
-                                                        fontSize, fontWeight,
-                                                        color, ...rest }) => {
-  return <StyledButton background_color={background_color} fontSize={fontSize} fontWeight={fontWeight} color={color}
-                       {...rest}>
-            {children}
-        </StyledButton>;
+
+
+export const Button = ({className, children, variant = "default", size = "default", ...props}: ButtonProps) => {
+        return <ButtonBase className={className} variant={variant} size={size} {...props}>
+                    {children}
+               </ButtonBase>
 }

@@ -20,21 +20,45 @@ export interface TrackAudioFeatures {
    analysis_url: string; //A URL to access the full audio analysis of this track. An access token is required to access this data.
 }
 
+interface RecentlyPlayedTracksResponse {
+   href: string
+   limit: number;
+   next: string;
+   cursors: {
+      after: string,
+      before: string
+   },
+   total: number,
+   items: PlayHistory []
+   // Add other properties as needed
+}
 
-//sad:
+export interface PlayHistory {
+   track: {
+      name: string;
+      href: string;
+      id: string;
+      popularity: number; //global song popularity
+      preview_url: string;
+      uri: string;
+      artists: [{
+         id: string;
+         name: string;
+      }]
+   };
+   played_at: string;
+   context: { //the context(device) from where the track was played from
+      type: string,
+      href: string,
+      external_urls: {
+         spotify: string
+      },
+      uri: string
+   }
+}
+
 
 /*
-Mood	Intensity	Timbre	Pitch	Rhythm
-Happy	Medium	Medium	Very High	Very High
-Exuberant	High	Medium	High	High
-Energetic	Very High	Medium	Medium	High
-Frantic	High	Very High	Low	Very High
-Anxious/Sad	Medium	Very Low	Very Low	Low
-Depression	Low	Low	Low	Low
-Calm	Very Low	Very Low	Medium	Very Low
-Contentment	Low	Low	High	Low
-
-
 Mood of Western songs	Mean Intensity	Mean Timbre	Mean Pitch	Mean Rhythm
 Happy	    0.2055	0.4418	967.47	209.01
 Exuberant	0.317	0.4265	611.94	177.7

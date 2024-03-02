@@ -5,14 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="252bb2fe-0ef2-4b2f-adf6-f2653bcd0078" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/client/public/favicon3.ico" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/favicon.ico" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/Components/Button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/Button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/Card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/Card.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/DisplayUserProfile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/DisplayUserProfile.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/LogIn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/LogIn.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/LogOut.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/LogOut.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/Components/MainDisplay.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/MainDisplay.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/Components/Modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/Modal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/MoodSelector.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/MoodSelector.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/Components/TracksSourceSelector.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/TracksSourceSelector.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Pages/Home.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/api/API_response_sampes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/api/API_response_sampes.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/api/api.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/api/api.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/utils/trackTypes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/utils/trackTypes.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,26 +38,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.Mappings&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/arelysalvarez/Desktop/PersonalProjects/Spotify-Mood-Playlist-Generator-App/client/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/arelysalvarez/Desktop/PersonalProjects/Spotify-Mood-Playlist-Generator-App/client/public",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "project.propVCSSupport.Mappings",
+    "ts.external.directory.path": "/Users/arelysalvarez/Desktop/PersonalProjects/Spotify-Mood-Playlist-Generator-App/client/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/public" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/client/src/api" />
     </key>
@@ -64,7 +76,7 @@
       <updated>1708631124590</updated>
       <workItem from="1708631126969" duration="20530000" />
       <workItem from="1708976284809" duration="13900000" />
-      <workItem from="1709057581478" duration="13817000" />
+      <workItem from="1709057581478" duration="39728000" />
     </task>
     <servers />
   </component>

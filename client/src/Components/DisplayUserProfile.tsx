@@ -20,14 +20,14 @@ const recentlyPlayedSongsInitialState: RecentlyPlayedTracks = {
 export const DisplayUserProfile = () => {
     const {userProfile} = useAccessToken();
 
-    console.log("user data= ", userProfile);
+    // console.log("user data= ", userProfile);
 
     // const [recentlyPlayedSongs, setRecentlyPlayedSongs] = useState(recentlyPlayedSongsInitialState);
     // console.log("recently played songs= ", recentlyPlayedSongs.items)
     return (
         <Card>
+            <div style={{display:"flex", flexDirection:"column", justifyContent: "center", alignItems:"center"}}>
             <img style={{borderRadius: '100px', width: '120px'}} src={userProfile?.images[1].url} alt={"user profile"}/>
-            <h2 style={{color: "white"}}>Hi {userProfile?.display_name.split(" ")[0]}, so glad you are here!</h2>
             <h3 style={{color: "white"}}> {userProfile?.followers.total} followers * {userProfile?.followers.total! > 0 ? `nice!` : `ups`}</h3>
             <p style={{color: "white"}}>Public Playlists: ----- </p>
 
@@ -37,6 +37,7 @@ export const DisplayUserProfile = () => {
             {/*    })*/}
             {/*}*/}
             {/*</div>*/}
+            </div>
         </Card>
     )
 }

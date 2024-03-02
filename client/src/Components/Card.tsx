@@ -14,8 +14,8 @@ const StyledCard = styled.div<CardProps> `
   background-color: #121212;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  align-content: center;
+  //align-items: center;
+  //align-content: center;
   justify-content: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   //overflow-y: scroll;

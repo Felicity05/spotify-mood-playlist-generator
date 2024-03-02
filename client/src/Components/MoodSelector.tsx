@@ -20,13 +20,13 @@ export  const MoodSelector = () => {
     return (
         <div>
             {!selectedMood ?
-                <div>
+                <div style={{display: "flex", flexDirection: "column", alignItems: "flex-start"}}>
                     <p>Now choose how are you feeling today </p>
-                    <div style={{display: "flex"}}>
-                        <Button fontSize={'15px'} value={"happy"} onClick={() => handleMoodSelection(moodEncodingMap.Happy)} >Happy</Button>
-                        <Button fontSize={'15px'} onClick={() => handleMoodSelection(moodEncodingMap.Energetic) } >Energetic</Button>
-                        <Button fontSize={'15px'} onClick={() => handleMoodSelection(moodEncodingMap.Calm) } >Calm</Button>
-                        <Button fontSize={'15px'} onClick={() => handleMoodSelection(moodEncodingMap.Sad) } >Sad</Button>
+                    <div style={{display: "flex", gap: "0.5rem"}}>
+                        <Button variant="secondary" size="md" onClick={() => handleMoodSelection(moodEncodingMap.Happy)} >Happy</Button>
+                        <Button variant="secondary" size="md" onClick={() => handleMoodSelection(moodEncodingMap.Energetic) } >Energetic</Button>
+                        <Button variant="secondary" size="md" onClick={() => handleMoodSelection(moodEncodingMap.Calm) } >Calm</Button>
+                        <Button variant="secondary" size="md" onClick={() => handleMoodSelection(moodEncodingMap.Sad) } >Sad</Button>
                     </div>
                 </div> :
             <p>Mood set to: {Object.keys(moodEncodingMap).find((key) => moodEncodingMap[key as keyof typeof moodEncodingMap] === selectedMood)}</p>

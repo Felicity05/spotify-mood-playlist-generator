@@ -1,8 +1,6 @@
 import axios, {all, AxiosResponse} from "axios";
 import {clearAccessToken, exchangeAccessToken, getAccessToken} from "../utils/auth";
-import {PlayHistoryObject} from "../types";
-import {PlayHistory} from "../Components/MainDisplay";
-import {TrackAudioFeatures} from "../utils/trackTypes";
+import {PlayHistory, TrackAudioFeatures} from "../utils/trackTypes";
 
 // for all the api calls I need the access token
 const API_BASE_URL = 'https://api.spotify.com/v1';
@@ -137,7 +135,9 @@ export const addSelectedTracksToPlaylist = async (playlist_id: string, tracksUri
     return response.data;
 }
 
-//get playlists for user
+//get playlists for user -- Get a list of the playlists owned or followed by the current Spotify user.
+
+//get songs for playlist
 
 //get top artist for user
 

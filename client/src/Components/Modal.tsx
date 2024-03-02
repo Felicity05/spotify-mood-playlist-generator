@@ -78,7 +78,8 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onConfirm, handleMood, h
         <ModalWrapper is_visible={isOpen.toString()}>
             <ModalContent>
                 <ModalHeader>
-                    <Button background_color={"transparent"} onClick={onClose} style={{padding: '0px'}}>
+                    {/*todo: fix this icon*/}
+                    <Button variant="icon" size="cl" onClick={onClose} style={{padding: '0px'}}>
                         <img src={closeIcon} alt={""} className="close-icon"/>
                     </Button>
                 </ModalHeader>
@@ -86,16 +87,16 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onConfirm, handleMood, h
                     <p style={{marginBottom: '0px'}}>There would be only {message} songs on your playlist. </p>
                     <p>Are you sure you want to continue?</p>
                     <ModalButtons>
-                        <Button onClick={onConfirm}>Yes</Button>
-                        <Button onClick={handleNoClick}>No</Button>
+                        <Button variant="secondary" size="lg" onClick={handleNoClick}>No</Button>
+                        <Button variant="secondary" size="lg" onClick={onConfirm}>Yes</Button>
                     </ModalButtons>
                 </>)
                 : ( <>
                     <p>What would you like to reset?</p>
                     <ModalButtons>
-                        <Button onClick={handleMood}>Mood</Button>
-                        <Button onClick={handleTrackSource}>Tracks Source</Button>
-                        <Button onClick={handleBoth}> Start Over </Button>
+                        <Button variant="secondary" size="md" onClick={handleMood}>Mood</Button>
+                        <Button variant="secondary" size="md" onClick={handleTrackSource}>Tracks Source</Button>
+                        <Button variant="secondary" size="md" onClick={handleBoth}> Start Over </Button>
                     </ModalButtons>
                 </>)
             }

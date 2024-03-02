@@ -100,7 +100,7 @@ export const listOfAudioFeatures = [
     }
 ]
 
-export const listTrackMoodUri = [
+export const listTrackMoodUriSample = [
     {trackUri: 'spotify:track:3m4OWJ3Ovl0pXwT79bw94N', mood: '1'},
 {trackUri: 'spotify:track:5MEKqNAOlgt3sh5o0iq8EM', mood: '3'},
 {trackUri: 'spotify:track:41cxe6eOzzQS6odQk6fNdp', mood: '1'},

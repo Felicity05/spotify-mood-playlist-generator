@@ -3,185 +3,171 @@ import {Button} from "./Button";
 import {
     addSelectedTracksToPlaylist,
     createNewPlaylist,
-    getAudioFeatureForTrack,
     getRecentlyPlayedTracks,
     getSeveralTracksAudioFeatures
 } from "../api/api";
-import {useState} from "react";
-import {TOKEN_STORAGE_KEY} from "../utils/auth";
+import {useEffect, useState} from "react";
 import {useAccessToken} from "../Context/AccessTokenContext";
-import {TrackAudioFeatures} from "../utils/trackTypes";
-import {classifyTrack} from "../utils/moodClassification";
 import {predictTrackMood} from "../api/model_predictions_api";
 import TracksSourceSelector from "./TracksSourceSelector";
 import {moodEncodingMap, MoodSelector} from "./MoodSelector";
 import LogOut from "./LogOut";
 import {useMoodSourceStore} from "../store/store";
-import {listTrackMoodUri, testPlaylist} from "../api/API_response_sampes";
 import Modal from "./Modal";
 import ProgressBar from "./ProgressBar";
 import NewPlaylist from "./NewPlaylist";
+import styled from "styled-components";
+import {listTrackMoodUriSample} from "../api/API_response_sampes";
 
-interface RecentlyPlayedTrack {
-    limit: number;
-    next: string;
-
-    items: PlayHistory []
-    // Add other properties as needed
-}
-
-export interface PlayHistory {
-        track: {
-            name: string;
-            href: string;
-            id: string;
-            popularity: number; //global song popularity
-            preview_url: string;
-            uri: string;
-            artists: [{
-                id: string;
-                name: string;
-            }]
-        };
-        played_at: string;
-}
-
-//TODO: add types for track object, artist object, clean up this component, fix the warning and errors on the console related to styled components
+//TODO: add types for track object, artist object, clean up this component
 
 type TrackMood = {
     trackUri: string,
     mood: string
 }
 
+const CardContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 2rem;
+`
+
 
 export const MainDisplay = () => {
-    const [recentlyPlayedTracks, setRecentlyPlayedTracks] = useState<PlayHistory[] | null>(null);
-    const [listOfTracksMood, setListOfTracksMood] = useState<TrackMood[]>([]);
+    const {userProfile} = useAccessToken();
     const {selectedMood: mood, selectedTrackSource: source,
             setSelectedMood: setMood, setSelectedTrackSource: setTrackSource} = useMoodSourceStore();
-    const [playlistSize, setPlaylistSize] = useState(0);
-    const [showModal, setShowModal] = useState(false);
-    const [newPlaylistTracks, setNewPlaylistTracks] = useState("");
-    const {userProfile} = useAccessToken();
+
+    const [showModal, setShowModal] = useState<boolean>(false);
     const [showProgressBar, setShowProgressBar] = useState<boolean>(false);
     const [showNewPlaylist, setShowNewPlaylist] = useState<boolean>(false);
 
-    //extract handle playlist creation to a custom hook,
-
-    const handlePlaylistCreation = async () => {
-        setShowProgressBar(true);
-
-        let response: any[] = []
-        switch (source) {
-            case 'recentlyPlayed':
-                //get recently played tracks
-                response  = await getRecentlyPlayedTracks()
-                // console.log(response);
-                setRecentlyPlayedTracks(response ?? null);
-                break;
-            case 'topArtist':
-                console.log("get top 10 artist and for each artist get top 10 songs")
-                break;
-            case 'topTracks':
-                console.log("get top tracks")
+    const [listOfTracksMood, setListOfTracksMood] = useState<TrackMood[] | null>(null);
+    const [playlistSize, setPlaylistSize] = useState(0);
+    // const [recentlyPlayedTracksMoods, setRecentlyPlayedTracksMoods] = useState<TrackMood[] | null>(null);
+    const [timeofDay, setTimeOfDay] = useState<string>("")
+    const getTimeOfDay = (): string => {
+        const hour = new Date().getHours();
+        if (hour >= 5 && hour < 12) {
+            return 'Morning';
+        } else if (hour >= 12 && hour < 18) {
+            return 'Afternoon';
+        } else if (hour >= 18 && hour < 22) {
+            return 'Evening';
+        } else {
+            return 'Night';
         }
+    };
 
-        /* for testing purposes
-        const audioFeature: TrackAudioFeatures = await getAudioFeatureForTrack("2r9CbjYgFhtAmcFv1cSquB");
-        console.log(audioFeature);
+    useEffect(() => {
+        const timeOfDay = getTimeOfDay();
+        setTimeOfDay(timeOfDay)
+    },[])
 
-        const bestAudioFeatures = {
-            duration_ms: audioFeature.duration_ms,
-            danceability: audioFeature.danceability,
-            acousticness: audioFeature.acousticness,
-            energy: audioFeature.energy,
-            instrumentalness: audioFeature.instrumentalness,
-            valence: audioFeature.valence,
-            speechiness: audioFeature.speechiness,
-            tempo: audioFeature.tempo
-        }
+    //extract handle playlist creation to a custom hook??
 
-        const trackMood = await predictTrackMood(bestAudioFeatures)
-        console.log("trackMood= ", trackMood.toString()); //I get the mood encoded, so I have to work with a map for my encoding
-        */
-        //----------------------
-
-        //creates a unique list of tracks ids from the response
-        let listOfTracks: TrackMood[] = [];
+    const getTracksMoodForTrackSource = async (tracksSource: any[]) => {
         let listOfTracksIds: Set<string> = new Set();
-        response.map(async item => {
+        tracksSource.map(async item => {
             listOfTracksIds.add(item.track.id)
-
-            // let audioFeature: TrackAudioFeatures | undefined = undefined;
-            // audioFeature = await getAudioFeatureForTrack(item.track.id);
-            // console.log(audioFeature)
-
-            // const bestAudioFeatures = {
-            //     duration_ms: audioFeature.duration_ms,
-            //     danceability: audioFeature.danceability,
-            //     acousticness: audioFeature.acousticness,
-            //     energy: audioFeature.energy,
-            //     instrumentalness: audioFeature.instrumentalness,
-            //     valence: audioFeature.valence,
-            //     speechiness: audioFeature.speechiness,
-            //     tempo: audioFeature.tempo
-            // }
-
-            //predict mood for each song
-            // const trackMood = await predictTrackMood(bestAudioFeatures)
-
-            // if(trackMood.toString() === mood) {
-            //     listOfTracks.add(item.track.uri)
-            // }
-
-            // const value = {trackUri: item.track.uri, mood: trackMood.toString()}
-
-            // Check if an object with the same trackUri already exists in the list
-            // if (!listOfTracks.some(track => track.trackUri === value.trackUri)) {
-            //     // If not, add the object to the list
-            //     listOfTracks.push(value);
-            // }
-
-            // console.log(item.track.name, " -- ", trackMood);
-
         })
+
         //convert the listOfTracksIds set into an Array and finally to a String
-        const trackIdsList = [...listOfTracksIds].toString() //this need to be a string
+        const trackIdsList = [...listOfTracksIds].toString()
         // console.log("trackIdsList== ", trackIdsList)
 
         //make an api call to get the audio features of all the unique songs in the recently played list
         const listOfTracksAudioFeatures = await getSeveralTracksAudioFeatures(trackIdsList)
         const listOfAudioFeatures = listOfTracksAudioFeatures.audio_features
         // console.log("listOfTracksAudioFeatures== ", listOfTracksAudioFeatures)
-        console.log("listOfAudioFeatures== ", listOfAudioFeatures)
+        // console.log("listOfAudioFeatures== ", listOfAudioFeatures)
 
         //use my ML random_forest model to predict the mood for each song
         const tracksMoodList = await predictTrackMood(listOfAudioFeatures)
-        console.log("tracksMoodList== ", tracksMoodList)
+        // console.log("tracksMoodList== ", tracksMoodList)
 
-        //creates a map of track uri and predicted mood
+        //creates an array of objects of track uri and predicted mood
         let listTrackMoodUri: TrackMood[] = []
         listOfAudioFeatures.map((track_features: { uri: string }, index: string | number) => {
             const value = {trackUri: track_features.uri, mood: tracksMoodList[index].toString()}
             listTrackMoodUri.push(value)
         })
-        console.log("listTrackMoodUri== ", listTrackMoodUri)
 
-        //filters recently played tracks according to the selected Mood
-        const selectedMoodListTracks = listTrackMoodUri.filter(track_mood => track_mood.mood === mood)
+        setListOfTracksMood(listTrackMoodUri)
+        // setRecentlyPlayedTracksMoods(listTrackMoodUri);
+        return listTrackMoodUri;
+    }
+
+    async function createPlaylistWithSelectedSongs(listTracksUri: string[]) {
+        //map mood encoding to string value to pass to the create playlist function
+        const playlistMood = Object.keys(moodEncodingMap).find(
+            (key) => moodEncodingMap[key as keyof typeof moodEncodingMap] === mood)
+
+        // console.log(userProfile!.id, " ---- ", playlistMood)
+
+        //make api call to create playlist
+        const newPlaylist = await createNewPlaylist(userProfile!.id, playlistMood!)
+        // console.log("newPlaylist response== ", newPlaylist)
+
+        //make api call to add the corresponding songs from the mood list to the playlist
+        const tracksAdded = await addSelectedTracksToPlaylist(newPlaylist.id, listTracksUri)
+        console.log("tracks added== ", tracksAdded)
+    }
+
+    function filterTracksByMood(listTrackMoodUri: TrackMood[]) {
+        //filters the list of tracks from the track source according to the selected Mood
+        const selectedMoodListTracks = listTrackMoodUri!.filter(track_mood => track_mood.mood === mood)
         console.log("selectedMoodListTracks== ", selectedMoodListTracks)
 
-        //creates a string Array of tracks uris to add the playlist
-        const listTracksUri = selectedMoodListTracks.flatMap(track => track.trackUri)
-        console.log("listTracksUri==", listTracksUri.toString())
-        setNewPlaylistTracks(listTracksUri.toString())
+        //creates a string Array of tracks uris for the selected mood to add to the newly created playlist
+        return selectedMoodListTracks.flatMap(track => track.trackUri);
+    }
+
+    const handlePlaylistCreation = async () => {
+        setShowProgressBar(true);
+        console.log("listOfTracksMood state==", listOfTracksMood)
+
+        let listTrackMoodUri: TrackMood[] | null
+        if(!listOfTracksMood){
+
+            let tracksSource: any[] = []
+            switch (source) {
+                case 'recentlyPlayed':
+                    //get recently played tracks
+                    // tracksSource  = await getRecentlyPlayedTracks() //response type is playHistoryObject
+                    console.log("get recently played tracks")
+                    break;
+                case 'topTracks':
+                    console.log("get top tracks")
+                    break;
+                case 'topArtist':
+                    console.log("get top 10 artist and for each artist get top 10 songs")
+                    break;
+            }
+
+            //gets the mood for the unique list of tracks ids from the track source
+            // listTrackMoodUri = await getTracksMoodForTrackSource(tracksSource);
+            // console.log("listTrackMoodUri== ", listTrackMoodUri)
+            listTrackMoodUri = listTrackMoodUriSample;
+            setListOfTracksMood(listTrackMoodUri);
+            console.log("setting list track uri for the first time and setting listOfTracksMood state")
+        } else {
+            listTrackMoodUri = listOfTracksMood;
+            console.log("source hasn't change so getting list track mood from listOfTracksMood state")
+        }
+
+        //-----if mood changed but track source remain, start from here
+        const listTracksUri = filterTracksByMood(listTrackMoodUri);
 
         // sets the playlist size and decides whether to continue with the playlist creation process or no
-        const playlistSize = selectedMoodListTracks.length
-        if(playlistSize < 5){
-            setPlaylistSize(playlistSize)
-            setShowModal(true)
+        const playlist_size = listTracksUri.length
+
+        if(playlist_size < 5){
+            setPlaylistSize(playlist_size)
             setShowProgressBar(false);
+            setShowModal(true)
+            console.log("listOfTracksMood= ", listOfTracksMood)
             /* in a modal
                 tell the user: there would be only 'playlistSize' songs on your playlist, are you sure you want to continue?
                 if yes - create playlist and add songs
@@ -192,18 +178,7 @@ export const MainDisplay = () => {
         } else {
             console.log("create playlist here, call api here")
 
-            //map mood encoding to string value
-            const playlistMood = Object.keys(moodEncodingMap).find(
-                (key) => moodEncodingMap[key as keyof typeof moodEncodingMap] === mood)
-
-            console.log(userProfile!.id, " ---- ", playlistMood)
-            //make api call to create playlist
-            const newPlaylist = await createNewPlaylist(userProfile!.id, playlistMood!)
-            console.log("newPlaylist response== ", newPlaylist)
-
-            //make api call to add the corresponding songs from the mood list to the playlist
-            const tracksAdded = await addSelectedTracksToPlaylist(newPlaylist.id, listTracksUri)
-            console.log("tracks added== ", tracksAdded)
+            // await createPlaylistWithSelectedSongs(listTracksUri);
 
             // After the operation is done, hide the progress bar
             setShowProgressBar(false);
@@ -218,81 +193,85 @@ export const MainDisplay = () => {
         // Create playlist
         // add songs to the newly created playlist
         setShowModal(false);
-        console.log("create playlist here now")
+        console.log("create playlist here -- need to work on this functionality")
+
     }
 
-    const handleMood= () => {
+    const handleMoodModalOption= () => {
         //reset mood
         setMood("")
         setShowModal(false);
     }
 
-    const handleTrackSource= () => {
-        //reset mood
+    const handleTrackSourceModalOption= () => {
+        //reset track source
         setTrackSource("")
         setShowModal(false);
     }
 
-    const handleBoth= () => {
-        // Reset mood, source, or both
+    const handleBothModalOptions= () => {
+        // Reset mood and source
         setMood("")
         setTrackSource("")
         setShowModal(false);
     }
 
     return(
-      <Card>
-          {/*ToDo: style this logout at the right top corner of the display*/}
-          <LogOut/>
-          <h1 style={{color: "white"}}>Good Afternoon</h1>
-          <p>Ready to experience a new way of generating your own custom playlist in one click? </p>
-          <p>Lets start by selecting from where you want to get your songs from</p>
-          <TracksSourceSelector />
-          {/*conditional rendering after selecting track source*/}
-          {source &&
-              <>
-              <p>Ok, now that that's settled let's see how are you feeling today</p>
-              <MoodSelector />
-              </>
-          }
-          {/*conditional rendering once both mood and source are set */}
-          {mood && source && !showNewPlaylist &&
-              <>
-                  <p>Nice! Now that you have made your selections, you are ready to get yor playlist, just click below </p>
-                  <Button onClick={handlePlaylistCreation}>Generate Playlist</Button>
-              </>
-          }
-          {showNewPlaylist && <NewPlaylist />}
-          {showProgressBar && <ProgressBar />}
-          {recentlyPlayedTracks &&
-              <>
-                  <h3 style={{color: "white"}}>Here are your recently played songs: </h3>
-                  <div style={{overflowY: "scroll"}}>{recentlyPlayedTracks?.map((item: PlayHistory, index: number) => {
-                      return (
-                          <div key={index}>
-                            <p style={{color: "white"}} key={index}> {item.track?.name} -- {item.track?.id} ---
-                                {new Date(item.played_at).toLocaleString("en-US", {
-                                timeZone: "America/New_York",
-                                timeZoneName: "short",
-                                hour12: true
-                            })} </p>
-                              {/*<div> {item.track.artists.map((artist: any, index: number) => {*/}
-                              {/*    return <p key={index}> {artist.name} </p>*/}
-                              {/*})}</div>*/}
-                          </div>
-                        )
-                  }) }</div>
-              </> }
-              <Modal
-                  isOpen={showModal}
-                  onClose={handleBoth}
-                  onConfirm={handleConfirm}
-                  handleMood={handleMood}
-                  handleTrackSource={handleTrackSource}
-                  handleBoth={handleBoth}
-                  message={playlistSize.toString()}
-              />
-          <h1>Your Top last year Artist</h1>
-      </Card>
+          <Card>
+            <CardContent>
+              {/*ToDo: style this logout at the  top right corner of the display*/}
+              <LogOut />
+              <h1 style={{color: "white"}}>Good {timeofDay}, {userProfile?.display_name.split(" ")[0]}</h1>
+              <h2>Ready to experience a new way of generating your own custom playlist in one click? </h2>
+              <p>Lets start by selecting from where you want to get your songs from</p>
+              <TracksSourceSelector />
+              {/*conditional rendering after selecting track source*/}
+              {source &&
+                  <>
+                  <p>Ok, now that that's settled let's see how are you feeling today</p>
+                  <MoodSelector />
+                  </>
+              }
+              {/*conditional rendering once both mood and source are set */}
+              {mood && source && !showNewPlaylist &&
+                  <div>
+                      <p>Nice! Now that you have made your selections, you are ready to get yor playlist, just click below </p>
+                      <Button variant="primary" size="lg" onClick={handlePlaylistCreation}>Generate Playlist</Button>
+                  </div>
+              }
+              {showNewPlaylist && <NewPlaylist />}
+              {showProgressBar && <ProgressBar />}
+                  <Modal
+                      isOpen={showModal}
+                      onClose={handleBothModalOptions}
+                      onConfirm={handleConfirm}
+                      handleMood={handleMoodModalOption}
+                      handleTrackSource={handleTrackSourceModalOption}
+                      handleBoth={handleBothModalOptions}
+                      message={playlistSize.toString()}
+                  />
+              <h1>Your Top Artist last year</h1>
+            </CardContent>
+          </Card>
   )
 }
+
+{/*{recentlyPlayedTracks &&*/}
+{/*    <>*/}
+{/*        <h3 style={{color: "white"}}>Here are your recently played songs: </h3>*/}
+{/*        <div>{recentlyPlayedTracks?.map((item: PlayHistory, index: number) => {*/}
+{/*            return (*/}
+{/*                <div key={index}>*/}
+{/*                  <p style={{color: "white"}} key={index}> {item.track?.name} -- {item.track?.id} ---*/}
+{/*                      {new Date(item.played_at).toLocaleString("en-US", {*/}
+{/*                      timeZone: "America/New_York",*/}
+{/*                      timeZoneName: "short",*/}
+{/*                      hour12: true*/}
+{/*                  })} </p>*/}
+{/*                    /!*<div> {item.track.artists.map((artist: any, index: number) => {*!/*/}
+{/*                    /!*    return <p key={index}> {artist.name} </p>*!/*/}
+{/*                    /!*})}</div>*!/*/}
+{/*                </div>*/}
+{/*              )*/}
+{/*        }) }</div>*/}
+{/*    </> }*/}
