@@ -30,7 +30,12 @@ const CardContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 0 2rem;
+  padding: 0.3rem 0.3rem 0 1.5rem;
+  background-image: linear-gradient(180deg, rgba(14, 192, 76, 0.74), rgba(85, 30, 153, 0.60), rgba(140, 32, 223, 0));
+  width: 100%;
+  height: 500px;
+  border-radius: 20px;
+  box-sizing: border-box
 `
 
 
@@ -47,6 +52,7 @@ export const MainDisplay = () => {
     const [playlistSize, setPlaylistSize] = useState(0);
     // const [recentlyPlayedTracksMoods, setRecentlyPlayedTracksMoods] = useState<TrackMood[] | null>(null);
     const [timeofDay, setTimeOfDay] = useState<string>("")
+
     const getTimeOfDay = (): string => {
         const hour = new Date().getHours();
         if (hour >= 5 && hour < 12) {
@@ -217,25 +223,21 @@ export const MainDisplay = () => {
     }
 
     return(
-          <Card>
-            <CardContent>
-              {/*ToDo: style this logout at the  top right corner of the display*/}
-              <LogOut />
-              <h1 style={{color: "white"}}>Good {timeofDay}, {userProfile?.display_name.split(" ")[0]}</h1>
-              <h2>Ready to experience a new way of generating your own custom playlist in one click? </h2>
-              <p>Lets start by selecting from where you want to get your songs from</p>
+          <Card alignment="left"
+                >
+            <CardContent >
+              <div style={{display:"flex", justifyContent: "space-between", width: "100%",}}>
+                  <h1 style={{color: "white"}}>Good {timeofDay}, {userProfile?.display_name.split(" ")[0]}</h1>
+                  <LogOut />
+              </div>
+              <h2>Ready to create your custom playlist with a single click? </h2>
               <TracksSourceSelector />
               {/*conditional rendering after selecting track source*/}
-              {source &&
-                  <>
-                  <p>Ok, now that that's settled let's see how are you feeling today</p>
-                  <MoodSelector />
-                  </>
-              }
+              {source && <MoodSelector />}
               {/*conditional rendering once both mood and source are set */}
               {mood && source && !showNewPlaylist &&
                   <div>
-                      <p>Nice! Now that you have made your selections, you are ready to get yor playlist, just click below </p>
+                      <p>Great! Now that you've made your selections, you're all set to get your playlist. Just click below! </p>
                       <Button variant="primary" size="lg" onClick={handlePlaylistCreation}>Generate Playlist</Button>
                   </div>
               }

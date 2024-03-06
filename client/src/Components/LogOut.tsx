@@ -6,11 +6,11 @@ import styled from "styled-components";
 import logOutIcon from '../assets/Icons/icons8-logout-96 (1).png'
 
 const LogoutWrapper = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  width: 100%;
-  padding-right: 25px;
+  //display: flex;
+  //justify-content: flex-end;
+  //align-items: center;
+  //width: 100%;
+  //padding-right: 25px;
 `;
 
 const LogOut = () => {

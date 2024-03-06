@@ -20,9 +20,9 @@ export  const MoodSelector = () => {
     return (
         <div>
             {!selectedMood ?
-                <div style={{display: "flex", flexDirection: "column", alignItems: "flex-start"}}>
-                    <p>Now choose how are you feeling today </p>
-                    <div style={{display: "flex", gap: "0.5rem"}}>
+                <div style={{display: "flex", flexDirection: "column", alignItems: "flex-start", paddingLeft: '0.2rem'}}>
+                    <p>Alright, now that's sorted, let's check in: How are you feeling today?</p>
+                    <div style={{display: "flex", gap: "0.5rem", paddingLeft: '0.7rem'}}>
                         <Button variant="secondary" size="md" onClick={() => handleMoodSelection(moodEncodingMap.Happy)} >Happy</Button>
                         <Button variant="secondary" size="md" onClick={() => handleMoodSelection(moodEncodingMap.Energetic) } >Energetic</Button>
                         <Button variant="secondary" size="md" onClick={() => handleMoodSelection(moodEncodingMap.Calm) } >Calm</Button>

@@ -5,7 +5,7 @@ type Variant = 'default' | 'primary' | 'secondary' | 'outline' | 'button_link' |
 
 type Size = 'default' | 'sm' | 'md' | 'lg' | 'cl';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     children: ReactNode;
     variant?: Variant;
     size?: Size;
@@ -16,7 +16,7 @@ font-family: var(--font-family, CircularSp, CircularSp-Arab, CircularSp-Hebr, Ci
  */
 
 const colors = {
-    green: '#1DB954',
+    green: '#1DB954',//1ed760 hov: #1fdf64 other:#169c46
     white: '#ffffff',
     transparent: '#cbd5e0',
     black: '#191414',
@@ -31,7 +31,7 @@ const colors = {
     textColor: '#f5f5f5'
 };
 
-const buttonVariants: {[key: string]: any} = {
+const buttonVariants: {[key: string]: RuleSet} = {
     default: css`
     background-color:  ${colors.lightGrey.default};
     color: ${colors.white};
@@ -43,8 +43,9 @@ const buttonVariants: {[key: string]: any} = {
     background-color:  ${colors.green};
     color: ${colors.black};
     font-weight: bolder;
+    transition: all 0.3s;
     &:hover {
-      padding: 0.85rem 3.5rem;
+      transform: scale(1.07) perspective(0.5px)
     }
   `,
     secondary: css`
@@ -80,7 +81,7 @@ const buttonVariants: {[key: string]: any} = {
   `,
 }
 
-const buttonSizes: {[key: string]: any} = {
+const buttonSizes: {[key: string]: RuleSet} = {
     default: css`
     padding: 0.5rem 2rem;
     font-size: 1rem;
@@ -122,8 +123,6 @@ const ButtonBase = styled.button<Pick<ButtonProps, 'variant' | 'size'>>`
   ${({ variant }) => buttonVariants[variant!]};
   ${({ size }) => buttonSizes[size!]};
 `;
-
-
 
 export const Button = ({className, children, variant = "default", size = "default", ...props}: ButtonProps) => {
         return <ButtonBase className={className} variant={variant} size={size} {...props}>

@@ -13,8 +13,8 @@ const Container = styled.div`
           "sidebar main main main"
           "sidebar main main main";
         text-align: center;
-        grid-gap: 0.35rem;
-        padding: 0.35rem;
+        grid-gap: 0.5rem;
+        padding: 0.5rem;
         transition: all 0.25s ease-in-out;
         @media (max-width: 550px) {
           grid-template-columns: 1fr;
@@ -30,12 +30,12 @@ const SideBar = styled.div`
       display: flex;
       flex-direction: column;
       grid-area: sidebar;
-      gap: 0.25rem;
+      gap: 0.5rem;
     `
 
 const StyledMainDisplay = styled.div`
       grid-area: main;
-      background-color: #1db954;
+      //background-color: #1db954;
       //overflow-y: scroll;
     `
 

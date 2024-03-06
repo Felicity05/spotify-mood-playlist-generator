@@ -26,3 +26,7 @@ https://developer.spotify.com/documentation/web-api/reference/get-users-top-arti
 https://developer.spotify.com/documentation/web-api/reference/get-track
 https://developer.spotify.com/documentation/web-api/reference/create-playlist
 https://developer.spotify.com/documentation/web-api/reference/add-tracks-to-playlist
+
+---------------
+another cool thing to do is get the user's favorites artist of all times and do a cool circular animation with all
+the artists and say some sort of cool thing like the personality thing spotify does in the wrapped at the end of the year

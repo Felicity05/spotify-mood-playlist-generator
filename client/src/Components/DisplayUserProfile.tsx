@@ -25,11 +25,10 @@ export const DisplayUserProfile = () => {
     // const [recentlyPlayedSongs, setRecentlyPlayedSongs] = useState(recentlyPlayedSongsInitialState);
     // console.log("recently played songs= ", recentlyPlayedSongs.items)
     return (
-        <Card>
-            <div style={{display:"flex", flexDirection:"column", justifyContent: "center", alignItems:"center"}}>
-            <img style={{borderRadius: '100px', width: '120px'}} src={userProfile?.images[1].url} alt={"user profile"}/>
-            <h3 style={{color: "white"}}> {userProfile?.followers.total} followers * {userProfile?.followers.total! > 0 ? `nice!` : `ups`}</h3>
-            <p style={{color: "white"}}>Public Playlists: ----- </p>
+        <Card alignment="center" height="320px" >
+            <img style={{borderRadius: '100px', width: '100px', marginBottom: '0.5rem'}} src={userProfile?.images[1].url} alt={"user profile"}/>
+            <h3 style={{color: "white", margin: '0.3rem'}}> {userProfile?.followers.total} followers * {userProfile?.followers.total! > 0 ? `nice!` : `ups`}</h3>
+            <p style={{color: "white", margin: '0.3rem'}}>Public Playlists: ----- </p>
 
             {/*<button onClick={apiMethods.getRecentlyPlayed}>Get recently played songs</button>*/}
             {/*<div>{recentlyPlayedSongs.items.map((item, index) => {*/}
@@ -37,7 +36,6 @@ export const DisplayUserProfile = () => {
             {/*    })*/}
             {/*}*/}
             {/*</div>*/}
-            </div>
         </Card>
     )
 }
