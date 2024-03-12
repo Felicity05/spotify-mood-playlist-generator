@@ -1,5 +1,5 @@
-import {Card} from "./Card";
-import {Button} from "./Button";
+import {Card} from "./UI Components/Card";
+import {Button} from "./UI Components/Button";
 import {
     addSelectedTracksToPlaylist,
     createNewPlaylist,
@@ -11,10 +11,10 @@ import {useAccessToken} from "../Context/AccessTokenContext";
 import {predictTrackMood} from "../api/model_predictions_api";
 import TracksSourceSelector from "./TracksSourceSelector";
 import {moodEncodingMap, MoodSelector} from "./MoodSelector";
-import LogOut from "./LogOut";
+import LogOut from "./UI Components/LogOut";
 import {useMoodSourceStore} from "../store/store";
-import Modal from "./Modal";
-import ProgressBar from "./ProgressBar";
+import Modal from "./UI Components/Modal";
+import ProgressBar from "./UI Components/ProgressBar";
 import NewPlaylist from "./NewPlaylist";
 import styled from "styled-components";
 import {listTrackMoodUriSample} from "../api/API_response_sampes";
@@ -26,7 +26,7 @@ type TrackMood = {
     mood: string
 }
 
-const CardContent = styled.div`
+const CardContent = styled.span`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -35,7 +35,7 @@ const CardContent = styled.div`
   width: 100%;
   height: 500px;
   border-radius: 20px;
-  box-sizing: border-box
+  box-sizing: border-box;
 `
 
 
@@ -46,7 +46,7 @@ export const MainDisplay = () => {
 
     const [showModal, setShowModal] = useState<boolean>(false);
     const [showProgressBar, setShowProgressBar] = useState<boolean>(false);
-    const [showNewPlaylist, setShowNewPlaylist] = useState<boolean>(false);
+    const [showNewPlaylist, setShowNewPlaylist] = useState<boolean>(true);
 
     const [listOfTracksMood, setListOfTracksMood] = useState<TrackMood[] | null>(null);
     const [playlistSize, setPlaylistSize] = useState(0);
@@ -223,36 +223,35 @@ export const MainDisplay = () => {
     }
 
     return(
-          <Card alignment="left"
-                >
+          <Card alignment="left">
             <CardContent >
               <div style={{display:"flex", justifyContent: "space-between", width: "100%",}}>
                   <h1 style={{color: "white"}}>Good {timeofDay}, {userProfile?.display_name.split(" ")[0]}</h1>
                   <LogOut />
               </div>
-              <h2>Ready to create your custom playlist with a single click? </h2>
-              <TracksSourceSelector />
-              {/*conditional rendering after selecting track source*/}
-              {source && <MoodSelector />}
-              {/*conditional rendering once both mood and source are set */}
-              {mood && source && !showNewPlaylist &&
-                  <div>
-                      <p>Great! Now that you've made your selections, you're all set to get your playlist. Just click below! </p>
-                      <Button variant="primary" size="lg" onClick={handlePlaylistCreation}>Generate Playlist</Button>
-                  </div>
-              }
-              {showNewPlaylist && <NewPlaylist />}
-              {showProgressBar && <ProgressBar />}
-                  <Modal
-                      isOpen={showModal}
-                      onClose={handleBothModalOptions}
-                      onConfirm={handleConfirm}
-                      handleMood={handleMoodModalOption}
-                      handleTrackSource={handleTrackSourceModalOption}
-                      handleBoth={handleBothModalOptions}
-                      message={playlistSize.toString()}
-                  />
-              <h1>Your Top Artist last year</h1>
+              {showNewPlaylist ?
+                <NewPlaylist showPlaylist={showNewPlaylist} playlistId="1ZVXBUWTb8TgPnmNh14ZBj"/> :
+                <div>
+                  <h2>Ready to create your custom playlist with a single click? </h2>
+                    <Modal
+                        isOpen={showModal}
+                        onClose={handleBothModalOptions}
+                        onConfirm={handleConfirm}
+                        handleMood={handleMoodModalOption}
+                        handleTrackSource={handleTrackSourceModalOption}
+                        handleBoth={handleBothModalOptions}
+                        message={playlistSize.toString()}
+                    />
+                  <TracksSourceSelector />
+                  {source && <MoodSelector />} {/*conditional rendering after selecting track source*/}
+                  {mood && source && !showNewPlaylist &&  /*conditional rendering once both mood and source are set */
+                      <div>
+                          <p>Great! Now that you've made your selections, you're all set to get your playlist. Just click below! </p>
+                          <Button variant="primary" size="lg" onClick={handlePlaylistCreation}>Generate Playlist</Button>
+                      </div>}
+                  {showProgressBar && <ProgressBar />}
+                  <h1>Your Top Artist last year</h1>
+                </div>}
             </CardContent>
           </Card>
   )

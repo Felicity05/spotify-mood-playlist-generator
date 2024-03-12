@@ -1,7 +1,7 @@
 import React, {JSXElementConstructor, ReactElement, ReactNode, ReactPortal, useState} from "react"
 import {RecentlyPlayedTracks, UserProfile, PlayHistoryObject} from "../types";
 import {useAccessToken} from "../Context/AccessTokenContext";
-import {Card} from "./Card";
+import {Card} from "./UI Components/Card";
 
 interface ContentProps {
     logOutFunction?: () => void

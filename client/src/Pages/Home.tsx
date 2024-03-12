@@ -1,6 +1,6 @@
 import React from 'react';
 import music_mood from '../assets/music-mood.png';
-import {LogIn} from "../Components/LogIn";
+import {LogIn} from "../Components/UI Components/LogIn";
 import {useAccessToken} from "../Context/AccessTokenContext";
 import {AppContent} from "./AppContent";
 

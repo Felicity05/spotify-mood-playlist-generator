@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import styled from "styled-components";
 import {Button} from "./Button";
-import closeIcon from '../assets/Icons/icons8-close-64-white.png'
+import closeIcon from '../../assets/Icons/icons8-close-64-white.png'
 
 const ModalWrapper = styled.div<{ is_visible: any }>`
   display: ${({ is_visible }) => (is_visible ? 'block' : 'none')};

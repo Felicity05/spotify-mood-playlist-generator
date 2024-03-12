@@ -1,4 +1,4 @@
-import {Card} from "./Card";
+import {Card} from "./UI Components/Card";
 
 export const Library = () => {
   return(

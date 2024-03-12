@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Button} from "./Button";
+import {Button} from "./UI Components/Button";
 import {getRecentlyPlayedTracks} from "../api/api";
 import {useMoodSourceStore} from "../store/store";
 

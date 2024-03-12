@@ -24,6 +24,7 @@ const Container = styled.div`
             "main";
           }
         color: white;
+        box-sizing: border-box;
     `
 
 const SideBar = styled.div`

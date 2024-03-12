@@ -16,7 +16,7 @@ export interface UserProfile {
     uri: string;
 }
 
-interface Image {
+export interface Image {
     url: string;
     height: number;
     width: number;
@@ -42,7 +42,7 @@ export interface PlayHistoryObject {
     played_at: string;
 }
 
-interface Artist {
+export interface Artist {
     href: string;
     id: string;
     images: Image[]

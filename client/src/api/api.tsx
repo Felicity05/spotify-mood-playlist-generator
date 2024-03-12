@@ -136,6 +136,12 @@ export const addSelectedTracksToPlaylist = async (playlist_id: string, tracksUri
 }
 
 //get playlists for user -- Get a list of the playlists owned or followed by the current Spotify user.
+export const getPlaylist = async (playlist_id: string) => {
+    const response = await spotify_api.get(`/playlists/${playlist_id}`);
+
+    // console.log(response.data);
+    return response.data;
+}
 
 //get songs for playlist
 

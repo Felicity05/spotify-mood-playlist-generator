@@ -56,6 +56,7 @@ export const initiateAuthentication = async () => {
 export const exchangeAccessToken = async (code: string | null): Promise<AuthorizationResponse> => {
     const verifier = localStorage.getItem('verifier');
 
+    //first time to log in
     const params = new URLSearchParams({
         client_id: CLIENT_ID,
         grant_type: 'authorization_code',
@@ -66,7 +67,9 @@ export const exchangeAccessToken = async (code: string | null): Promise<Authoriz
 
     try {
         const response = await axios.post(TOKEN_ENDPOINT, params);
+        console.log(response.data)
         setAccessToken(response.data.access_token);
+        // localStorage.setItem("refresh_token", response.data.refresh_token);
         return response.data;
     } catch (error) {
         console.error('Error exchanging access token:', error);

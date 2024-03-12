@@ -1,5 +1,5 @@
 import React from "react";
-import {initiateAuthentication} from "../utils/auth";
+import {initiateAuthentication} from "../../utils/auth";
 import {Button} from "./Button";
 
 export const LogIn: React.FC = () => {
