@@ -1,7 +1,7 @@
 import React, {ButtonHTMLAttributes, ReactNode} from "react";
 import styled, {css, Interpolation, RuleSet} from "styled-components";
 
-type Variant = 'default' | 'primary' | 'secondary' | 'outline' | 'button_link' | 'icon';
+type Variant = 'default' | 'primary' | 'secondary' | 'outline' | 'button_link' | 'icon' | 'icon_clear';
 
 type Size = 'default' | 'sm' | 'md' | 'lg' | 'cl';
 
@@ -78,7 +78,13 @@ const buttonVariants: {[key: string]: RuleSet} = {
     &:hover {
       background-color: ${colors.darkGrey.hover};
     }
-  `,
+  `, icon_clear: css`
+    background-color: transparent;
+    color: ${colors.textColor};
+    &:hover {
+      background-color: ${colors.darkGrey.default};
+    }
+  `
 }
 
 const buttonSizes: {[key: string]: RuleSet} = {
@@ -124,7 +130,8 @@ const ButtonBase = styled.button<Pick<ButtonProps, 'variant' | 'size'>>`
   ${({ size }) => buttonSizes[size!]};
 `;
 
-export const Button = ({className, children, variant = "default", size = "default", ...props}: ButtonProps) => {
+export const Button: React.FC<ButtonProps> = ({className, children,
+                                                  variant = "default", size = "default", ...props}) => {
         return <ButtonBase className={className} variant={variant} size={size} {...props}>
                     {children}
                </ButtonBase>

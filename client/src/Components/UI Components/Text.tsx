@@ -33,7 +33,7 @@ const textVariants:  {[key: string]: RuleSet} = {
 
 const TextBase = styled.p<TextProps>`
   margin: 0;
-  padding-bottom: 0.1rem;
+  padding-bottom: 0.25rem;
   text-align: left;
 
   ${({ variant }) => textVariants[variant || "default"]}

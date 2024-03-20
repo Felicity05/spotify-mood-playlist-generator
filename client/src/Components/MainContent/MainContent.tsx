@@ -1,23 +1,22 @@
-import {Card} from "./UI Components/Card";
-import {Button} from "./UI Components/Button";
+import {Button} from "../UI Components/Button";
 import {
     addSelectedTracksToPlaylist,
     createNewPlaylist,
     getRecentlyPlayedTracks,
     getSeveralTracksAudioFeatures
-} from "../api/api";
-import {useEffect, useState} from "react";
-import {useAccessToken} from "../Context/AccessTokenContext";
-import {predictTrackMood} from "../api/model_predictions_api";
+} from "../../api/api";
+import React, {useEffect, useState} from "react";
+import {useAccessToken} from "../../Context/AccessTokenContext";
+import {predictTrackMood} from "../../api/model_predictions_api";
 import TracksSourceSelector from "./TracksSourceSelector";
 import {moodEncodingMap, MoodSelector} from "./MoodSelector";
-import LogOut from "./UI Components/LogOut";
-import {useMoodSourceStore} from "../store/store";
-import Modal from "./UI Components/Modal";
-import ProgressBar from "./UI Components/ProgressBar";
-import NewPlaylist from "./NewPlaylist";
+import {useMoodSourceStore} from "../../store/store";
+import Modal from "../UI Components/Modal";
+import ProgressBar from "../UI Components/ProgressBar";
 import styled from "styled-components";
-import {listTrackMoodUriSample} from "../api/API_response_sampes";
+import {listTrackMoodUriSample} from "../../api/API_response_sampes";
+import {useNavigate} from "react-router-dom";
+import {TopArtist} from "./TopArtist";
 
 //TODO: add types for track object, artist object, clean up this component
 
@@ -26,23 +25,22 @@ type TrackMood = {
     mood: string
 }
 
-const CardContent = styled.span`
+const CardContent = styled.div`
+  //background-image: linear-gradient(180deg, rgba(14, 192, 76, 0.74), rgba(85, 30, 153, 0.60), rgba(140, 32, 223, 0));
+  border: blue solid 2px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  padding: 0.3rem 0.3rem 0 1.5rem;
-  background-image: linear-gradient(180deg, rgba(14, 192, 76, 0.74), rgba(85, 30, 153, 0.60), rgba(140, 32, 223, 0));
   width: 100%;
-  height: 500px;
-  border-radius: 20px;
-  box-sizing: border-box;
+  padding: 0 0.5rem;
 `
 
 
-export const MainDisplay = () => {
+export const MainContent = () => {
     const {userProfile} = useAccessToken();
-    const {selectedMood: mood, selectedTrackSource: source,
-            setSelectedMood: setMood, setSelectedTrackSource: setTrackSource} = useMoodSourceStore();
+    const {
+        selectedMood: mood, selectedTrackSource: source,
+        setSelectedMood: setMood, setSelectedTrackSource: setTrackSource
+    } = useMoodSourceStore();
 
     const [showModal, setShowModal] = useState<boolean>(false);
     const [showProgressBar, setShowProgressBar] = useState<boolean>(false);
@@ -52,6 +50,8 @@ export const MainDisplay = () => {
     const [playlistSize, setPlaylistSize] = useState(0);
     // const [recentlyPlayedTracksMoods, setRecentlyPlayedTracksMoods] = useState<TrackMood[] | null>(null);
     const [timeofDay, setTimeOfDay] = useState<string>("")
+
+    const navigate = useNavigate();
 
     const getTimeOfDay = (): string => {
         const hour = new Date().getHours();
@@ -69,7 +69,7 @@ export const MainDisplay = () => {
     useEffect(() => {
         const timeOfDay = getTimeOfDay();
         setTimeOfDay(timeOfDay)
-    },[])
+    }, [])
 
     //extract handle playlist creation to a custom hook??
 
@@ -135,7 +135,7 @@ export const MainDisplay = () => {
         console.log("listOfTracksMood state==", listOfTracksMood)
 
         let listTrackMoodUri: TrackMood[] | null
-        if(!listOfTracksMood){
+        if (!listOfTracksMood) {
 
             let tracksSource: any[] = []
             switch (source) {
@@ -169,7 +169,7 @@ export const MainDisplay = () => {
         // sets the playlist size and decides whether to continue with the playlist creation process or no
         const playlist_size = listTracksUri.length
 
-        if(playlist_size < 5){
+        if (playlist_size < 5) {
             setPlaylistSize(playlist_size)
             setShowProgressBar(false);
             setShowModal(true)
@@ -192,6 +192,10 @@ export const MainDisplay = () => {
             // Show the new playlist
             setShowNewPlaylist(true);
             //show newly created playlist to the user
+
+            const playlistId = '1ZVXBUWTb8TgPnmNh14ZBj'
+            //navigate to playlist page
+            navigate(`/playlist/${playlistId}`)
         }
     }
 
@@ -203,76 +207,48 @@ export const MainDisplay = () => {
 
     }
 
-    const handleMoodModalOption= () => {
+    const handleMoodModalOption = () => {
         //reset mood
         setMood("")
         setShowModal(false);
     }
 
-    const handleTrackSourceModalOption= () => {
+    const handleTrackSourceModalOption = () => {
         //reset track source
         setTrackSource("")
         setShowModal(false);
     }
 
-    const handleBothModalOptions= () => {
+    const handleBothModalOptions = () => {
         // Reset mood and source
         setMood("")
         setTrackSource("")
         setShowModal(false);
     }
 
-    return(
-          <Card alignment="left">
-            <CardContent >
-              <div style={{display:"flex", justifyContent: "space-between", width: "100%",}}>
-                  <h1 style={{color: "white"}}>Good {timeofDay}, {userProfile?.display_name.split(" ")[0]}</h1>
-                  <LogOut />
-              </div>
-              {showNewPlaylist ?
-                <NewPlaylist showPlaylist={showNewPlaylist} playlistId="1ZVXBUWTb8TgPnmNh14ZBj"/> :
+    return (
+        <CardContent>
+            <h1 style={{color: "white"}}>Good {timeofDay}, {userProfile?.display_name.split(" ")[0]}</h1>
+            <h2>Ready to create your custom playlist with a single click? </h2>
+            <Modal
+                isOpen={showModal}
+                onClose={handleBothModalOptions}
+                onConfirm={handleConfirm}
+                handleMood={handleMoodModalOption}
+                handleTrackSource={handleTrackSourceModalOption}
+                handleBoth={handleBothModalOptions}
+                message={playlistSize.toString()}
+            />
+            <TracksSourceSelector/>
+            {source && <MoodSelector/>} {/*conditional rendering after selecting track source*/}
+            {mood && source &&   /*conditional rendering once both mood and source are set */
                 <div>
-                  <h2>Ready to create your custom playlist with a single click? </h2>
-                    <Modal
-                        isOpen={showModal}
-                        onClose={handleBothModalOptions}
-                        onConfirm={handleConfirm}
-                        handleMood={handleMoodModalOption}
-                        handleTrackSource={handleTrackSourceModalOption}
-                        handleBoth={handleBothModalOptions}
-                        message={playlistSize.toString()}
-                    />
-                  <TracksSourceSelector />
-                  {source && <MoodSelector />} {/*conditional rendering after selecting track source*/}
-                  {mood && source && !showNewPlaylist &&  /*conditional rendering once both mood and source are set */
-                      <div>
-                          <p>Great! Now that you've made your selections, you're all set to get your playlist. Just click below! </p>
-                          <Button variant="primary" size="lg" onClick={handlePlaylistCreation}>Generate Playlist</Button>
-                      </div>}
-                  {showProgressBar && <ProgressBar />}
-                  <h1>Your Top Artist last year</h1>
+                    <p>Great! Now that you've made your selections, you're all set to get your playlist. Just click
+                        below! </p>
+                    <Button variant="primary" size="lg" onClick={handlePlaylistCreation}>Generate Playlist</Button>
                 </div>}
-            </CardContent>
-          </Card>
-  )
+            {showProgressBar && <ProgressBar/>}
+            <TopArtist/>
+        </CardContent>
+    )
 }
-
-{/*{recentlyPlayedTracks &&*/}
-{/*    <>*/}
-{/*        <h3 style={{color: "white"}}>Here are your recently played songs: </h3>*/}
-{/*        <div>{recentlyPlayedTracks?.map((item: PlayHistory, index: number) => {*/}
-{/*            return (*/}
-{/*                <div key={index}>*/}
-{/*                  <p style={{color: "white"}} key={index}> {item.track?.name} -- {item.track?.id} ---*/}
-{/*                      {new Date(item.played_at).toLocaleString("en-US", {*/}
-{/*                      timeZone: "America/New_York",*/}
-{/*                      timeZoneName: "short",*/}
-{/*                      hour12: true*/}
-{/*                  })} </p>*/}
-{/*                    /!*<div> {item.track.artists.map((artist: any, index: number) => {*!/*/}
-{/*                    /!*    return <p key={index}> {artist.name} </p>*!/*/}
-{/*                    /!*})}</div>*!/*/}
-{/*                </div>*/}
-{/*              )*/}
-{/*        }) }</div>*/}
-{/*    </> }*/}

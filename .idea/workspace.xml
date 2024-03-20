@@ -5,34 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="252bb2fe-0ef2-4b2f-adf6-f2653bcd0078" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/client/src/Components/Playlist/NewPlaylist.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/Components/Playlist/PlaylistHeader.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/Components/SideBar/LibrarySection.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Components/Button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/UI Components/Button.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Components/Card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/UI Components/Card.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Components/DisplayUserProfile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/DisplayUserProfile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Components/Library.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/Library.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Components/LogIn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/UI Components/LogIn.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Components/LogOut.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/UI Components/LogOut.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Components/MainDisplay.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/MainDisplay.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Components/Modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/UI Components/Modal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Components/MoodSelector.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/MoodSelector.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Components/NewPlaylist.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/NewPlaylist.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Components/ProgressBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/UI Components/ProgressBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Components/TracksSourceSelector.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/TracksSourceSelector.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Pages/AppContent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Pages/AppContent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/DisplayUserProfile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/SideBar/UserProfileSection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/Library.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/MainDisplay.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/MainContent/MainContent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/MoodSelector.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/MainContent/MoodSelector.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/NewPlaylist.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/Playlist/Columns.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/Playlist/Columns.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/TracksSourceSelector.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/MainContent/TracksSourceSelector.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/UI Components/Button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/UI Components/Button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/UI Components/Card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/UI Components/Box.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/UI Components/HeaderBar.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/UI Components/Text.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/UI Components/Text.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Pages/AppContent.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/Pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Pages/Home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/api/API_response_sampes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/api/API_response_sampes.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/api/api.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/api/api.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/types.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/types.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/utils/auth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/utils/auth.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/client/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/random_forest_mood_predictor_model/spotifyMoodDataForTraining/spotify_audiofeatures.csv" beforeDir="false" afterPath="$PROJECT_DIR$/random_forest_mood_predictor_model/spotifyMoodDataForTraining/spotify_audiofeatures.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -69,7 +70,7 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "project.propVCSSupport.Mappings",
+    "settings.editor.selected.configurable": "actions.on.save",
     "ts.external.directory.path": "/Users/arelysalvarez/Desktop/PersonalProjects/Spotify-Mood-Playlist-Generator-App/client/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
@@ -79,9 +80,11 @@
       <recent name="$PROJECT_DIR$/client/public" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/client/src/Components/UI Components" />
+      <recent name="$PROJECT_DIR$/client/src/Components/MainContent" />
       <recent name="$PROJECT_DIR$/client/src/Components/Playlist" />
-      <recent name="$PROJECT_DIR$/client/src/api" />
+      <recent name="$PROJECT_DIR$/client/src/Components/SideBar" />
+      <recent name="$PROJECT_DIR$/client/src/Components" />
+      <recent name="$PROJECT_DIR$/client/src/Components/UI Components/AppLayout" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -94,7 +97,7 @@
       <updated>1708631124590</updated>
       <workItem from="1708631126969" duration="20530000" />
       <workItem from="1708976284809" duration="13900000" />
-      <workItem from="1709057581478" duration="97367000" />
+      <workItem from="1709057581478" duration="145953000" />
     </task>
     <servers />
   </component>

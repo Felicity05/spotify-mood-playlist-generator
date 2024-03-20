@@ -1,25 +1,28 @@
 import './App.css';
-import { Home } from './Pages/Home';
+import {Home} from './Pages/Home';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import {LogIn} from "./Components/UI Components/LogIn";
 import {CallbackPage} from "./Pages/CallbackPage";
-import {DisplayUserProfile} from "./Components/DisplayUserProfile";
-import {AppContent} from "./Pages/AppContent";
 import {AccessTokenProvider} from "./Context/AccessTokenContext";
+import {NewPlaylist} from "./Components/Playlist/NewPlaylist";
+import {Layout} from "./Components/AppLayout/Layout";
+import React from "react";
 
 function App() {
-  return (
-      <BrowserRouter>
-          <AccessTokenProvider>
-          <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<LogIn />} />
-              <Route path="/callback" element={<CallbackPage />} />
-              <Route path="/content" element={<AppContent />} />
-          </Routes>
-          </AccessTokenProvider>
-      </BrowserRouter>
-  );
+
+    return (
+        <BrowserRouter>
+            <AccessTokenProvider>
+                <Layout>
+                    <Routes>
+                        <Route path="/" element={<Home/>}/>
+                        <Route path="/callback" element={<CallbackPage/>}/>
+                        <Route path="/playlist/:playlistId"
+                               element={<NewPlaylist/>}/> {/*change this to be playlist page */}
+                    </Routes>
+                </Layout>
+            </AccessTokenProvider>
+        </BrowserRouter>
+    );
 }
 
 export default App;
