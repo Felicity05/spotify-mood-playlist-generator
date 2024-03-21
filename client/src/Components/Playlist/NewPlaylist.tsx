@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {PlaylistHeader} from "./PlaylistHeader";
 import styled from "styled-components";
 import {getPlaylist} from "../../api/api";
@@ -32,9 +32,9 @@ const tableStyles = {
     headRow: {
         style: {
             color: "#A39F9F",
-            borderBottom: "rgb(150, 146, 146, 0.55) solid 1px",
+            borderBottom: 'rgb(150, 146, 146, 0.55) solid 1px',
             fontWeight: '600',
-            fontSize: '13px',
+            fontSize: '13.5px',
         }
     },
     rows: {
@@ -56,11 +56,12 @@ const Wrapper = styled.div`
   width: 100%;
 `
 
-
 const PlaylistBody = styled.span`
-  background-image: linear-gradient(180deg, darkred, #121212);
-  height: 200px;
+  //background-image: linear-gradient(180deg, darkred, #121212);
+  //height: 200px;
   //overflow-y: scroll;
+  //background-color: rgba(45, 18, 18, 0.3); //for testing
+  background-color: rgba(18, 18, 18, 0.3);
 `
 
 type NewPlaylistProps = {
@@ -76,16 +77,27 @@ const LoadingPlaylist = styled.div`
   color: #1db954;
 `
 
+const StickyTableHeader = styled.div<{ scrolled?: boolean }>`
+  background-color: ${({scrolled}) => (scrolled ? 'rgba(0, 0, 0, 0.8)' : 'purple')};
+  transition: background-color 0.3s;
+  width: 100%;
+  z-index: 1000;
+  border: solid purple 2px;
+  padding: 20px;
+  position: sticky;
+  top: 50px;
+`;
+
 
 export const NewPlaylist: React.FC<NewPlaylistProps> = ({showPlaylist}) => {
     const {playlistId} = useParams<{ playlistId: string }>();
     const {data: playlist, isLoading} = useQuery(['playlist', playlistId], () => getPlaylist(playlistId!))
 
-    console.log("showPlaylist==", showPlaylist)
-    console.log(playlist)
+    // console.log("showPlaylist==", showPlaylist)
+    // console.log(playlist)
 
     const items = playlist?.tracks?.items
-    console.log("Playlist items=== ", items)
+    // console.log("Playlist items=== ", items)
 
     return (
         <Wrapper>
@@ -93,7 +105,10 @@ export const NewPlaylist: React.FC<NewPlaylistProps> = ({showPlaylist}) => {
                 <>
                     <PlaylistHeader playlist={playlist}/>
                     <PlaylistBody>
-                        <div style={{margin: '20px'}}>
+                        <StickyTableHeader>
+                            hello
+                        </StickyTableHeader>
+                        <div style={{margin: '0 1.3rem'}}>
                             <DataTable
                                 columns={columns}
                                 data={items} //items of the playlist

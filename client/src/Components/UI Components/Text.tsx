@@ -10,25 +10,25 @@ interface TextProps extends HTMLAttributes<HTMLParagraphElement> {
     style?: CSSProperties;
 }
 
-const textVariants:  {[key: string]: RuleSet} = {
+const textVariants: { [key: string]: RuleSet } = {
     default: css`
-    font-size: 15px;
-  `,
+      font-size: 15px;
+    `,
     xs: css`
-    font-size: 12px;
-  `,
+      font-size: 12px;
+    `,
     sm: css`
-    font-size: 13px;
-  `,
+      font-size: 14px;
+    `,
     md: css`
-    font-size: 20px;
-  `,
+      font-size: 20px;
+    `,
     lg: css`
-    font-size: 50px;
-  `,
+      font-size: 50px;
+    `,
     xl: css`
-    font-size: 60px;
-  `,
+      font-size: 60px;
+    `,
 } as const;
 
 const TextBase = styled.p<TextProps>`
@@ -36,9 +36,9 @@ const TextBase = styled.p<TextProps>`
   padding-bottom: 0.25rem;
   text-align: left;
 
-  ${({ variant }) => textVariants[variant || "default"]}
+  ${({variant}) => textVariants[variant || "default"]}
 `;
 
-export const Text: React.FC<TextProps> = ({ children, variant = "default" , ...rest}) => {
+export const Text: React.FC<TextProps> = ({children, variant = "default", ...rest}) => {
     return <TextBase variant={variant} {...rest}>{children}</TextBase>;
 }

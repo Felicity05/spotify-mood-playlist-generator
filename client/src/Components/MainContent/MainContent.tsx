@@ -5,7 +5,7 @@ import {
     getRecentlyPlayedTracks,
     getSeveralTracksAudioFeatures
 } from "../../api/api";
-import React, {useEffect, useState} from "react";
+import React, {HTMLAttributes, useEffect, useState} from "react";
 import {useAccessToken} from "../../Context/AccessTokenContext";
 import {predictTrackMood} from "../../api/model_predictions_api";
 import TracksSourceSelector from "./TracksSourceSelector";
@@ -27,15 +27,18 @@ type TrackMood = {
 
 const CardContent = styled.div`
   //background-image: linear-gradient(180deg, rgba(14, 192, 76, 0.74), rgba(85, 30, 153, 0.60), rgba(140, 32, 223, 0));
-  border: blue solid 2px;
+  //border: blue solid 2px;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  padding: 0 0.5rem;
+  padding: 0 0.5rem 0 1rem;
+  position: relative;
+  z-index: 999;
 `
 
+interface MainContentProps extends HTMLAttributes<HTMLDivElement> {
+}
 
-export const MainContent = () => {
+export const MainContent: React.FC<MainContentProps> = () => {
     const {userProfile} = useAccessToken();
     const {
         selectedMood: mood, selectedTrackSource: source,

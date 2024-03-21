@@ -14,7 +14,7 @@ const StyledSideBar = styled.div`
   flex-direction: column;
   box-sizing: border-box;
   grid-area: sidebar;
-  padding-right: 0.5rem;
+  padding: 0.5rem 0 0.5rem 0.5rem;
 `
 
 export const SideBar: React.FC<SideBarProps> = ({children}) => {
