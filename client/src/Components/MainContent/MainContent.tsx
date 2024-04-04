@@ -10,7 +10,7 @@ import {useAccessToken} from "../../Context/AccessTokenContext";
 import {predictTrackMood} from "../../api/model_predictions_api";
 import TracksSourceSelector from "./TracksSourceSelector";
 import {moodEncodingMap, MoodSelector} from "./MoodSelector";
-import {useMoodSourceStore} from "../../store/store";
+import {useMoodSourceStore} from "../../store/moodStore";
 import Modal from "../UI Components/Modal";
 import ProgressBar from "../UI Components/ProgressBar";
 import styled from "styled-components";

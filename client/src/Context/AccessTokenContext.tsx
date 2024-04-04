@@ -2,7 +2,7 @@
 import React, {createContext, ReactNode, useContext, useEffect, useState} from 'react';
 import {UserProfile} from "../types";
 import {getAccessToken} from "../utils/auth";
-import {getUserProfileData} from "../api/api";
+import {getPlaylistsForCurrentUser, getUserProfileData} from "../api/api";
 
 interface AccessTokenContextProps {
     accessToken: string | null;
@@ -13,19 +13,21 @@ interface AccessTokenContextProps {
 
 const AccessTokenContext = createContext<AccessTokenContextProps | undefined>(undefined);
 
-const AccessTokenProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+const AccessTokenProvider: React.FC<{ children: ReactNode }> = ({children}) => {
     const [accessToken, setAccessToken] = useState<string | null>(null);
     const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
 
-    useEffect(()=> {
+    useEffect(() => {
         const token = getAccessToken();
 
         setAccessToken(token);
-        if(token) fetchUserProfileData();
-    },[])
+        if (token) {
+            fetchUserProfileData();
+        }
+    }, [])
 
     const fetchUserProfileData = async () => {
-        try{
+        try {
             const userProfileResponse = await getUserProfileData();
             setUserProfile(userProfileResponse.data)
         } catch (error) {
@@ -34,7 +36,7 @@ const AccessTokenProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     }
 
     return (
-        <AccessTokenContext.Provider value={{ accessToken, setAccessToken, userProfile, setUserProfile }}>
+        <AccessTokenContext.Provider value={{accessToken, setAccessToken, userProfile, setUserProfile}}>
             {children}
         </AccessTokenContext.Provider>
     );
@@ -48,4 +50,4 @@ const useAccessToken = (): AccessTokenContextProps => {
     return context;
 };
 
-export { AccessTokenProvider, useAccessToken };
+export {AccessTokenProvider, useAccessToken};

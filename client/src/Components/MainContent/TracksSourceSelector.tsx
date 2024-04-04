@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Button} from "../UI Components/Button";
 import {getRecentlyPlayedTracks} from "../../api/api";
-import {useMoodSourceStore} from "../../store/store";
+import {useMoodSourceStore} from "../../store/moodStore";
 
 const tracksSourceMap = {
     "recentlyPlayed": "Recently Played",

@@ -1,6 +1,6 @@
 import {useState} from "react";
 import {Button} from "../UI Components/Button";
-import {useMoodSourceStore} from "../../store/store";
+import {useMoodSourceStore} from "../../store/moodStore";
 
 export const moodEncodingMap: { [key: string]: string } = {
     "Calm": "0",

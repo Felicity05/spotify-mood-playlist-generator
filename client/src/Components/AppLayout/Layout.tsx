@@ -11,11 +11,11 @@ const Container = styled.div`
   height: 100vh;
   //padding: 0.5rem;
   box-sizing: border-box;
-  grid-template-rows: minmax(100px, auto);
-  grid-template-columns: repeat(auto-fit, minmax(100px, 2fr));
+  grid-template-rows: minmax(200px, auto);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-template-areas:
-          "sidebar main main main main"
-          "sidebar main main main main";
+          "sidebar main main main"
+          "sidebar main main main";
   background-color: black;
   //  todo: fix layout for mobile devices and show only main area 
   //   and profile as a picture on the left top corner with a sliding menu

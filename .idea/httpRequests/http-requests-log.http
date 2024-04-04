@@ -1,0 +1,19 @@
+GET https://api.spotify.com/v1/me/playlists?limit=50
+Authorization: Bearer BQD816ZW6unfQgyIvxQSYDq7Hkf9e7TGuwjg5A0Szx7KluJ59mQpeYeAVUl1bJRLS-aGc5_j4hSZTkGb_UjzQlFoDWmnigDzmuJL_WyRICvpT5-X4YY2tKmplCI2RUZwdCztIxn51czwmqkUIho4uBJKmFgdWAHn_jxXkmHRxDp5goJwXHCND7eAH3CkF5IrUpxJm2svE-ayWpvR5NURe3urart4LA
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-03-22T183604.200.json
+
+###
+
+GET https://api.spotify.com/v1/me/playlists?limit=50
+Authorization: Bearer BQDmXVTwNmpzLOUJgtVQpVoZryuBuS7EeKSdZFyZx3eD6thFz9…RDrIUHLCf-elpJQif_hx9EnoUdOJ5pqw4vA4boA2OVu1JVJ-g
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-03-22T183144.401.json
+
+###

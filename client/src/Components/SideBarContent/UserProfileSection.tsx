@@ -1,7 +1,8 @@
-import React, {JSXElementConstructor, ReactElement, ReactNode, ReactPortal, useState} from "react"
+import React, {JSXElementConstructor, ReactElement, ReactNode, ReactPortal, useEffect, useState} from "react"
 import {RecentlyPlayedTracks, UserProfile, PlayHistoryObject} from "../../types";
 import {useAccessToken} from "../../Context/AccessTokenContext";
 import {Box} from "../UI Components/Box";
+import {getPlaylistsForCurrentUser} from "../../api/api";
 
 interface ContentProps {
     logOutFunction?: () => void
@@ -20,7 +21,6 @@ const recentlyPlayedSongsInitialState: RecentlyPlayedTracks = {
 export const UserProfileSection = () => {
     const {userProfile} = useAccessToken();
     // console.log("user data= ", userProfile);
-
     //getFollowedArtist -> to display the number of artist the user is following
 
     return (
@@ -29,7 +29,7 @@ export const UserProfileSection = () => {
                  src={userProfile?.images[1].url} alt={"user profile"}/>
             <h3 style={{color: "white", margin: '0.3rem'}}> {userProfile?.followers.total} followers
                 * {userProfile?.followers.total! > 0 ? `nice!` : `ups`}</h3>
-            <p style={{color: "white", margin: '0.3rem'}}>Public Playlists: ----- </p>
+            <p style={{color: "white", margin: '0.3rem'}}>Public Playlists: {} </p>
         </div>
     )
 }

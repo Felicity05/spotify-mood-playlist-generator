@@ -1,0 +1,1920 @@
+{
+  "href": "https://api.spotify.com/v1/users/21lx2mgnxbjoz7xouvwrtefuq/playlists?offset=0&limit=50",
+  "limit": 50,
+  "next": "https://api.spotify.com/v1/users/21lx2mgnxbjoz7xouvwrtefuq/playlists?offset=50&limit=50",
+  "offset": 0,
+  "previous": null,
+  "total": 69,
+  "items": [
+    {
+      "collaborative": false,
+      "description": "<a href=spotify:playlist:37i9dQZF1EIZiKWVc3a5Is>Ginuwine</a>, <a href=spotify:playlist:37i9dQZF1EIXUnJZ0o9nRn>blink-182</a>, <a href=spotify:playlist:37i9dQZF1EIYu74g7KhNEG>Edwyn Collins</a> and more",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/37i9dQZF1EQn2GRFTFMl2A"
+      },
+      "href": "https://api.spotify.com/v1/playlists/37i9dQZF1EQn2GRFTFMl2A",
+      "id": "37i9dQZF1EQn2GRFTFMl2A",
+      "images": [
+        {
+          "height": null,
+          "url": "https://seed-mix-image.spotifycdn.com/v6/img/nineties/7r8RF1tN2A4CiGEplkp1oP/en/default",
+          "width": null
+        }
+      ],
+      "name": "90s Mix",
+      "owner": {
+        "display_name": "Spotify",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/spotify"
+        },
+        "href": "https://api.spotify.com/v1/users/spotify",
+        "id": "spotify",
+        "type": "user",
+        "uri": "spotify:user:spotify"
+      },
+      "primary_color": null,
+      "public": true,
+      "snapshot_id": "MCwwMDAwMDAwMGZjN2EzNjIyMDE4YTI3NzJjMWE0ZTEzZmNjMGFlNmJm",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1EQn2GRFTFMl2A/tracks",
+        "total": 50
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:37i9dQZF1EQn2GRFTFMl2A"
+    },
+    {
+      "collaborative": false,
+      "description": "Playlist for when I&#x27;m feeling Energetic",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/1ZVXBUWTb8TgPnmNh14ZBj"
+      },
+      "href": "https://api.spotify.com/v1/playlists/1ZVXBUWTb8TgPnmNh14ZBj",
+      "id": "1ZVXBUWTb8TgPnmNh14ZBj",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://mosaic.scdn.co/640/ab67616d00001e0237c9e9907888dea39387df7cab67616d00001e024e2e6035e60579c7bdc6fb33ab67616d00001e026399e0c1729dbaf36d7026c3ab67616d00001e02d73966976fd29781c3a8dde0",
+          "width": 640
+        },
+        {
+          "height": 300,
+          "url": "https://mosaic.scdn.co/300/ab67616d00001e0237c9e9907888dea39387df7cab67616d00001e024e2e6035e60579c7bdc6fb33ab67616d00001e026399e0c1729dbaf36d7026c3ab67616d00001e02d73966976fd29781c3a8dde0",
+          "width": 300
+        },
+        {
+          "height": 60,
+          "url": "https://mosaic.scdn.co/60/ab67616d00001e0237c9e9907888dea39387df7cab67616d00001e024e2e6035e60579c7bdc6fb33ab67616d00001e026399e0c1729dbaf36d7026c3ab67616d00001e02d73966976fd29781c3a8dde0",
+          "width": 60
+        }
+      ],
+      "name": "My Energetic Playlist",
+      "owner": {
+        "display_name": "Arelys Alvarez",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/21lx2mgnxbjoz7xouvwrtefuq"
+        },
+        "href": "https://api.spotify.com/v1/users/21lx2mgnxbjoz7xouvwrtefuq",
+        "id": "21lx2mgnxbjoz7xouvwrtefuq",
+        "type": "user",
+        "uri": "spotify:user:21lx2mgnxbjoz7xouvwrtefuq"
+      },
+      "primary_color": null,
+      "public": true,
+      "snapshot_id": "NixjMzM5NGMzNjg5ZWMzNDE4Mjg1ZjIyOGYwY2MyOGRiMGRiNzkzNDc4",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/1ZVXBUWTb8TgPnmNh14ZBj/tracks",
+        "total": 58
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:1ZVXBUWTb8TgPnmNh14ZBj"
+    },
+    {
+      "collaborative": false,
+      "description": "Containing the original soundtrack from the TV series “Lucifer”, including all the songs played in seasons 1 - 5B plus other personal choices inspired by the Fox TV series - Playlist Cover: Royalty Free Picture + Copyright Free Fonts",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/6EUlwQkN6nQ01w7xIDhSmU"
+      },
+      "href": "https://api.spotify.com/v1/playlists/6EUlwQkN6nQ01w7xIDhSmU",
+      "id": "6EUlwQkN6nQ01w7xIDhSmU",
+      "images": [
+        {
+          "height": null,
+          "url": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da8470a619979f08227c5158e698",
+          "width": null
+        }
+      ],
+      "name": "Lucifer Soundtrack [All Seasons: 1, 2, 3, 4, 5, 5B, 6]",
+      "owner": {
+        "display_name": "KULTPOP!",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/ikd5w5sgnw6dbvzb3vfaycex8"
+        },
+        "href": "https://api.spotify.com/v1/users/ikd5w5sgnw6dbvzb3vfaycex8",
+        "id": "ikd5w5sgnw6dbvzb3vfaycex8",
+        "type": "user",
+        "uri": "spotify:user:ikd5w5sgnw6dbvzb3vfaycex8"
+      },
+      "primary_color": null,
+      "public": true,
+      "snapshot_id": "MzczNSw3ZjdjNDU4NTFkYmJiZGU4MTg5YjlmMTgyMDZjZWZiODE3Y2I1ODAz",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/6EUlwQkN6nQ01w7xIDhSmU/tracks",
+        "total": 576
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:6EUlwQkN6nQ01w7xIDhSmU"
+    },
+    {
+      "collaborative": false,
+      "description": "Playlist for when I&#x27;m feeling Sad",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/3bZq93opZNMz29SQFe6oKw"
+      },
+      "href": "https://api.spotify.com/v1/playlists/3bZq93opZNMz29SQFe6oKw",
+      "id": "3bZq93opZNMz29SQFe6oKw",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://mosaic.scdn.co/640/ab67616d00001e02318443aab3531a0558e79a4dab67616d00001e02c1e7b3c663cf769e27053065ab67616d00001e02f793a842c1642b09a768a63bab67616d00001e02fc71810bc248631e67ed2905",
+          "width": 640
+        },
+        {
+          "height": 300,
+          "url": "https://mosaic.scdn.co/300/ab67616d00001e02318443aab3531a0558e79a4dab67616d00001e02c1e7b3c663cf769e27053065ab67616d00001e02f793a842c1642b09a768a63bab67616d00001e02fc71810bc248631e67ed2905",
+          "width": 300
+        },
+        {
+          "height": 60,
+          "url": "https://mosaic.scdn.co/60/ab67616d00001e02318443aab3531a0558e79a4dab67616d00001e02c1e7b3c663cf769e27053065ab67616d00001e02f793a842c1642b09a768a63bab67616d00001e02fc71810bc248631e67ed2905",
+          "width": 60
+        }
+      ],
+      "name": "My Sad Playlist",
+      "owner": {
+        "display_name": "Arelys Alvarez",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/21lx2mgnxbjoz7xouvwrtefuq"
+        },
+        "href": "https://api.spotify.com/v1/users/21lx2mgnxbjoz7xouvwrtefuq",
+        "id": "21lx2mgnxbjoz7xouvwrtefuq",
+        "type": "user",
+        "uri": "spotify:user:21lx2mgnxbjoz7xouvwrtefuq"
+      },
+      "primary_color": null,
+      "public": true,
+      "snapshot_id": "MixmYjk3YjE5ZGExYWE1YjQ5Mjc2MjA3NWM0YjY2Yjg0NTFkMDA5MWJh",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/3bZq93opZNMz29SQFe6oKw/tracks",
+        "total": 11
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:3bZq93opZNMz29SQFe6oKw"
+    },
+    {
+      "collaborative": false,
+      "description": "Playlist for when I&#x27;m feeling Happy",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/4ePrp1qsstc6YsmVpspZvv"
+      },
+      "href": "https://api.spotify.com/v1/playlists/4ePrp1qsstc6YsmVpspZvv",
+      "id": "4ePrp1qsstc6YsmVpspZvv",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://mosaic.scdn.co/640/ab67616d00001e0237c9e9907888dea39387df7cab67616d00001e024e2e6035e60579c7bdc6fb33ab67616d00001e026399e0c1729dbaf36d7026c3ab67616d00001e02d73966976fd29781c3a8dde0",
+          "width": 640
+        },
+        {
+          "height": 300,
+          "url": "https://mosaic.scdn.co/300/ab67616d00001e0237c9e9907888dea39387df7cab67616d00001e024e2e6035e60579c7bdc6fb33ab67616d00001e026399e0c1729dbaf36d7026c3ab67616d00001e02d73966976fd29781c3a8dde0",
+          "width": 300
+        },
+        {
+          "height": 60,
+          "url": "https://mosaic.scdn.co/60/ab67616d00001e0237c9e9907888dea39387df7cab67616d00001e024e2e6035e60579c7bdc6fb33ab67616d00001e026399e0c1729dbaf36d7026c3ab67616d00001e02d73966976fd29781c3a8dde0",
+          "width": 60
+        }
+      ],
+      "name": "My Happy Playlist",
+      "owner": {
+        "display_name": "Arelys Alvarez",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/21lx2mgnxbjoz7xouvwrtefuq"
+        },
+        "href": "https://api.spotify.com/v1/users/21lx2mgnxbjoz7xouvwrtefuq",
+        "id": "21lx2mgnxbjoz7xouvwrtefuq",
+        "type": "user",
+        "uri": "spotify:user:21lx2mgnxbjoz7xouvwrtefuq"
+      },
+      "primary_color": null,
+      "public": true,
+      "snapshot_id": "MywwZmI1YTQ0NTVhNWM1MzBhZjFjNDdhNGYxODY0YmVhNTA1MDZiYzU5",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/4ePrp1qsstc6YsmVpspZvv/tracks",
+        "total": 21
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:4ePrp1qsstc6YsmVpspZvv"
+    },
+    {
+      "collaborative": false,
+      "description": "Everything <a href=\"https://www.taylorswift.com/\">Taylor Swift</a> Right Here",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/4GtQVhGjAwcHFz82UKy3Ca"
+      },
+      "href": "https://api.spotify.com/v1/playlists/4GtQVhGjAwcHFz82UKy3Ca",
+      "id": "4GtQVhGjAwcHFz82UKy3Ca",
+      "images": [
+        {
+          "height": null,
+          "url": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84713acc3db68c7a5a605245b8",
+          "width": null
+        }
+      ],
+      "name": "Taylor Swift Complete Collection",
+      "owner": {
+        "display_name": "Taylor Swift",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/zzlpwp9oqs59bqkasw2v6d96w"
+        },
+        "href": "https://api.spotify.com/v1/users/zzlpwp9oqs59bqkasw2v6d96w",
+        "id": "zzlpwp9oqs59bqkasw2v6d96w",
+        "type": "user",
+        "uri": "spotify:user:zzlpwp9oqs59bqkasw2v6d96w"
+      },
+      "primary_color": null,
+      "public": true,
+      "snapshot_id": "NzEzLDMzZDgzMmEyNWZhY2U1ZTVkMzFiMGRhODA3YmE5NTIwNzViZWQ0Yzg=",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/4GtQVhGjAwcHFz82UKy3Ca/tracks",
+        "total": 371
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:4GtQVhGjAwcHFz82UKy3Ca"
+    },
+    {
+      "collaborative": false,
+      "description": "Our Favorite Pop songs @ontout ontout.com | Lay Low is for anyone looking for chill pop, new artists, new music, hidden gems, pop hits, and top songwriters, regularly updated. Featuring artists like Kira Kosarin, Ariana Grande, Dua Lipa, Lana Del Rey, Tate McRae, Sabrina Carpenter, Madison Beer.",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/4KwxcHlhX1f4NoHB3qvGc0"
+      },
+      "href": "https://api.spotify.com/v1/playlists/4KwxcHlhX1f4NoHB3qvGc0",
+      "id": "4KwxcHlhX1f4NoHB3qvGc0",
+      "images": [
+        {
+          "height": null,
+          "url": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84d49ee5e9c35cae5596edbdaa",
+          "width": null
+        }
+      ],
+      "name": "Lay Low | New Pop 2024",
+      "owner": {
+        "display_name": "tout",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/mh6pajzz2h0ozvz7idu1pwyss"
+        },
+        "href": "https://api.spotify.com/v1/users/mh6pajzz2h0ozvz7idu1pwyss",
+        "id": "mh6pajzz2h0ozvz7idu1pwyss",
+        "type": "user",
+        "uri": "spotify:user:mh6pajzz2h0ozvz7idu1pwyss"
+      },
+      "primary_color": null,
+      "public": true,
+      "snapshot_id": "OTkxNixiMjQwYjQzMTFjMjdiMWJiODA2YWQxNzIzODIxYzA3OWRhODUzMjA0",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/4KwxcHlhX1f4NoHB3qvGc0/tracks",
+        "total": 102
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:4KwxcHlhX1f4NoHB3qvGc0"
+    },
+    {
+      "collaborative": false,
+      "description": "Spotify Wrapped presents the songs you loved this year.",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/37i9dQZF1Fa1IIVtEpGUcU"
+      },
+      "href": "https://api.spotify.com/v1/playlists/37i9dQZF1Fa1IIVtEpGUcU",
+      "id": "37i9dQZF1Fa1IIVtEpGUcU",
+      "images": [
+        {
+          "height": null,
+          "url": "https://wrapped-images.spotifycdn.com/image/yts-2023/default/your-top-songs-2023_DEFAULT_en.jpg",
+          "width": null
+        }
+      ],
+      "name": "Your Top Songs 2023",
+      "owner": {
+        "display_name": "Spotify",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/spotify"
+        },
+        "href": "https://api.spotify.com/v1/users/spotify",
+        "id": "spotify",
+        "type": "user",
+        "uri": "spotify:user:spotify"
+      },
+      "primary_color": null,
+      "public": true,
+      "snapshot_id": "MTY5OTk4OTcyMCwwMDAwMDAwMGY0ZjgwN2ZjOGVmOWVmNWI5NDY1NmZkNTAwZjg1NGY5",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1Fa1IIVtEpGUcU/tracks",
+        "total": 100
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:37i9dQZF1Fa1IIVtEpGUcU"
+    },
+    {
+      "collaborative": false,
+      "description": "Your Customized Music Recommendations From Tout. Updated Weekly!",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/5mxxfACewQr9N9iapnbx4Q"
+      },
+      "href": "https://api.spotify.com/v1/playlists/5mxxfACewQr9N9iapnbx4Q",
+      "id": "5mxxfACewQr9N9iapnbx4Q",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://mosaic.scdn.co/640/ab67616d00001e024d914470ab899815f103f5ccab67616d00001e0267c4efa1ac6fe19092999557ab67616d00001e026b0b6e20fdb1ee07de7e92d6ab67616d00001e02df9c9a0a5a3a14939f8efcfe",
+          "width": 640
+        },
+        {
+          "height": 300,
+          "url": "https://mosaic.scdn.co/300/ab67616d00001e024d914470ab899815f103f5ccab67616d00001e0267c4efa1ac6fe19092999557ab67616d00001e026b0b6e20fdb1ee07de7e92d6ab67616d00001e02df9c9a0a5a3a14939f8efcfe",
+          "width": 300
+        },
+        {
+          "height": 60,
+          "url": "https://mosaic.scdn.co/60/ab67616d00001e024d914470ab899815f103f5ccab67616d00001e0267c4efa1ac6fe19092999557ab67616d00001e026b0b6e20fdb1ee07de7e92d6ab67616d00001e02df9c9a0a5a3a14939f8efcfe",
+          "width": 60
+        }
+      ],
+      "name": "Arelys Alvarez On Tout",
+      "owner": {
+        "display_name": "Arelys Alvarez",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/21lx2mgnxbjoz7xouvwrtefuq"
+        },
+        "href": "https://api.spotify.com/v1/users/21lx2mgnxbjoz7xouvwrtefuq",
+        "id": "21lx2mgnxbjoz7xouvwrtefuq",
+        "type": "user",
+        "uri": "spotify:user:21lx2mgnxbjoz7xouvwrtefuq"
+      },
+      "primary_color": null,
+      "public": true,
+      "snapshot_id": "NSw2ZTgxOGFmZTIwNjkzNWMwYzZlZTNlOGFkM2ViNDk3YTA0ODBmNDdm",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/5mxxfACewQr9N9iapnbx4Q/tracks",
+        "total": 30
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:5mxxfACewQr9N9iapnbx4Q"
+    },
+    {
+      "collaborative": false,
+      "description": "The biggest Christmas songs of all time.",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/37i9dQZF1DX0Yxoavh5qJV"
+      },
+      "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DX0Yxoavh5qJV",
+      "id": "37i9dQZF1DX0Yxoavh5qJV",
+      "images": [
+        {
+          "height": null,
+          "url": "https://i.scdn.co/image/ab67706f000000028e8ff29a162d73599a7a9045",
+          "width": null
+        }
+      ],
+      "name": "Christmas Hits",
+      "owner": {
+        "display_name": "Spotify",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/spotify"
+        },
+        "href": "https://api.spotify.com/v1/users/spotify",
+        "id": "spotify",
+        "type": "user",
+        "uri": "spotify:user:spotify"
+      },
+      "primary_color": "#FFFFFF",
+      "public": true,
+      "snapshot_id": "MTcwMzIyMTIwMCwwMDAwMDAwMDFlYmFlMWRmOGE1NDdiNWQ4ODNlNzZiNDIzNWVlZWJj",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DX0Yxoavh5qJV/tracks",
+        "total": 100
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:37i9dQZF1DX0Yxoavh5qJV"
+    },
+    {
+      "collaborative": false,
+      "description": "Christmas as presented by Zara Home",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/4QBOx29dIccWXGwRZX8Go4"
+      },
+      "href": "https://api.spotify.com/v1/playlists/4QBOx29dIccWXGwRZX8Go4",
+      "id": "4QBOx29dIccWXGwRZX8Go4",
+      "images": [
+        {
+          "height": null,
+          "url": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84e10c020e660cd3a1d409e4c0",
+          "width": null
+        }
+      ],
+      "name": "ZARA HOME In the mood for Christmas",
+      "owner": {
+        "display_name": "Zara Home",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/fbune3k41mta54xtdc3d8v7xu"
+        },
+        "href": "https://api.spotify.com/v1/users/fbune3k41mta54xtdc3d8v7xu",
+        "id": "fbune3k41mta54xtdc3d8v7xu",
+        "type": "user",
+        "uri": "spotify:user:fbune3k41mta54xtdc3d8v7xu"
+      },
+      "primary_color": null,
+      "public": true,
+      "snapshot_id": "MTY2LDU0ZjEwOTdhYzY4MThjNDFkYzUzOWI4ZjNiOWE5ZGI5NWM4MGFjNzU=",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/4QBOx29dIccWXGwRZX8Go4/tracks",
+        "total": 40
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:4QBOx29dIccWXGwRZX8Go4"
+    },
+    {
+      "collaborative": false,
+      "description": "Listen to all your favorite Disney Princess songs.",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/37i9dQZF1DX9fDcF6S4tuJ"
+      },
+      "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DX9fDcF6S4tuJ",
+      "id": "37i9dQZF1DX9fDcF6S4tuJ",
+      "images": [
+        {
+          "height": null,
+          "url": "https://i.scdn.co/image/ab67706f00000002138711048240880a34670add",
+          "width": null
+        }
+      ],
+      "name": "Disney Princess",
+      "owner": {
+        "display_name": "Spotify",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/spotify"
+        },
+        "href": "https://api.spotify.com/v1/users/spotify",
+        "id": "spotify",
+        "type": "user",
+        "uri": "spotify:user:spotify"
+      },
+      "primary_color": "#ffffff",
+      "public": true,
+      "snapshot_id": "MTY5NzE5ODQ2MCwwMDAwMDAwMDMxZGEyZTQyODYzNmVmN2YxZGFhNGQ2N2Y0YmNmMjg3",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DX9fDcF6S4tuJ/tracks",
+        "total": 58
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:37i9dQZF1DX9fDcF6S4tuJ"
+    },
+    {
+      "collaborative": false,
+      "description": "Los clásicos no pasan de moda. <a href=https://spotify.com/descubretuflow>Descubre tu Flow</a>  ",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/37i9dQZF1DWZnX16cvcI94"
+      },
+      "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DWZnX16cvcI94",
+      "id": "37i9dQZF1DWZnX16cvcI94",
+      "images": [
+        {
+          "height": null,
+          "url": "https://i.scdn.co/image/ab67706f0000000256f5d3337aa747e51fcd1ab7",
+          "width": null
+        }
+      ],
+      "name": "Flow Leyenda",
+      "owner": {
+        "display_name": "Spotify",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/spotify"
+        },
+        "href": "https://api.spotify.com/v1/users/spotify",
+        "id": "spotify",
+        "type": "user",
+        "uri": "spotify:user:spotify"
+      },
+      "primary_color": "#ffffff",
+      "public": true,
+      "snapshot_id": "MTcwNzI0OTQzNiwwMDAwMDAwMGZjZDc1NDI1NDhhM2RlYThhMjM3MTBlZGU0MDdhOWUy",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DWZnX16cvcI94/tracks",
+        "total": 50
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:37i9dQZF1DWZnX16cvcI94"
+    },
+    {
+      "collaborative": false,
+      "description": "",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/5RSJNJoGE5qROZCu34oV9c"
+      },
+      "href": "https://api.spotify.com/v1/playlists/5RSJNJoGE5qROZCu34oV9c",
+      "id": "5RSJNJoGE5qROZCu34oV9c",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://mosaic.scdn.co/640/ab67616d00001e02754b2fddebe7039fdb912837ab67616d00001e02a9e4d7fae5dfcc8f9cc96bc9ab67616d00001e02d7ef1ffbd2a5821152f35ce1ab67616d00001e02e839740212c6dbd8d559a709",
+          "width": 640
+        },
+        {
+          "height": 300,
+          "url": "https://mosaic.scdn.co/300/ab67616d00001e02754b2fddebe7039fdb912837ab67616d00001e02a9e4d7fae5dfcc8f9cc96bc9ab67616d00001e02d7ef1ffbd2a5821152f35ce1ab67616d00001e02e839740212c6dbd8d559a709",
+          "width": 300
+        },
+        {
+          "height": 60,
+          "url": "https://mosaic.scdn.co/60/ab67616d00001e02754b2fddebe7039fdb912837ab67616d00001e02a9e4d7fae5dfcc8f9cc96bc9ab67616d00001e02d7ef1ffbd2a5821152f35ce1ab67616d00001e02e839740212c6dbd8d559a709",
+          "width": 60
+        }
+      ],
+      "name": "These are my Fight Songs",
+      "owner": {
+        "display_name": "Arelys Alvarez",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/21lx2mgnxbjoz7xouvwrtefuq"
+        },
+        "href": "https://api.spotify.com/v1/users/21lx2mgnxbjoz7xouvwrtefuq",
+        "id": "21lx2mgnxbjoz7xouvwrtefuq",
+        "type": "user",
+        "uri": "spotify:user:21lx2mgnxbjoz7xouvwrtefuq"
+      },
+      "primary_color": null,
+      "public": true,
+      "snapshot_id": "NzUsNjI3MDA3MTY0ZDM1MjcxN2ZmYWNjYzkyMjgzMDViYTY4N2ZiOTdkYg==",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/5RSJNJoGE5qROZCu34oV9c/tracks",
+        "total": 66
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:5RSJNJoGE5qROZCu34oV9c"
+    },
+    {
+      "collaborative": false,
+      "description": "This is Avril Lavigne. The essential tracks, all in one playlist.",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO0aBNIs"
+      },
+      "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DZ06evO0aBNIs",
+      "id": "37i9dQZF1DZ06evO0aBNIs",
+      "images": [
+        {
+          "height": null,
+          "url": "https://thisis-images.spotifycdn.com/37i9dQZF1DZ06evO0aBNIs-default.jpg",
+          "width": null
+        }
+      ],
+      "name": "This Is Avril Lavigne",
+      "owner": {
+        "display_name": "Spotify",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/spotify"
+        },
+        "href": "https://api.spotify.com/v1/users/spotify",
+        "id": "spotify",
+        "type": "user",
+        "uri": "spotify:user:spotify"
+      },
+      "primary_color": null,
+      "public": true,
+      "snapshot_id": "Mjg1MTg1NjEsMDAwMDAwMDA2ZWE3NzBiMWU5YjU2ZWMwODM5OGRkNDY3Y2E2ZWIyOQ==",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DZ06evO0aBNIs/tracks",
+        "total": 50
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:37i9dQZF1DZ06evO0aBNIs"
+    },
+    {
+      "collaborative": false,
+      "description": "No procrastination allowed. Only fun songs to help you get chores done.",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/37i9dQZF1DXdVbxH0H5oTi"
+      },
+      "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DXdVbxH0H5oTi",
+      "id": "37i9dQZF1DXdVbxH0H5oTi",
+      "images": [
+        {
+          "height": null,
+          "url": "https://i.scdn.co/image/ab67706f00000002bcb9ad76cd135735fad3c4d1",
+          "width": null
+        }
+      ],
+      "name": "Get Chores Done",
+      "owner": {
+        "display_name": "Spotify",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/spotify"
+        },
+        "href": "https://api.spotify.com/v1/users/spotify",
+        "id": "spotify",
+        "type": "user",
+        "uri": "spotify:user:spotify"
+      },
+      "primary_color": "#ffffff",
+      "public": true,
+      "snapshot_id": "MTcxMDQ3NTIwMCwwMDAwMDAwMDQ0ZjgzYTQwMjkyZjU1N2Y0YmQ0ZjdhZTY5NjEwZGZh",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DXdVbxH0H5oTi/tracks",
+        "total": 100
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:37i9dQZF1DXdVbxH0H5oTi"
+    },
+    {
+      "collaborative": false,
+      "description": "With Kelly Clarkson, Christina Aguilera, Gwen Stefani and more",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/37i9dQZF1E4xzsHaoCPtt6"
+      },
+      "href": "https://api.spotify.com/v1/playlists/37i9dQZF1E4xzsHaoCPtt6",
+      "id": "37i9dQZF1E4xzsHaoCPtt6",
+      "images": [
+        {
+          "height": null,
+          "url": "https://seeded-session-images.scdn.co/v2/img/122/secondary/artist/1KCSPY1glIKqW2TotWuXOR/en",
+          "width": null
+        }
+      ],
+      "name": "P!nk Radio",
+      "owner": {
+        "display_name": "Spotify",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/spotify"
+        },
+        "href": "https://api.spotify.com/v1/users/spotify",
+        "id": "spotify",
+        "type": "user",
+        "uri": "spotify:user:spotify"
+      },
+      "primary_color": null,
+      "public": true,
+      "snapshot_id": "MTcxMTE0Njk2NCwwMDAwMDAwMGVhNDJjMGNiYTlhN2Q3ODI2N2UyZThmMWY2ZDQ4MGVj",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1E4xzsHaoCPtt6/tracks",
+        "total": 50
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:37i9dQZF1E4xzsHaoCPtt6"
+    },
+    {
+      "collaborative": false,
+      "description": "",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/1OofH98lVeoOWE0HgSWyNf"
+      },
+      "href": "https://api.spotify.com/v1/playlists/1OofH98lVeoOWE0HgSWyNf",
+      "id": "1OofH98lVeoOWE0HgSWyNf",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://mosaic.scdn.co/640/ab67616d00001e021e9a057052d59004caf47e22ab67616d00001e02a47c0e156ea3cebe37fdcab8ab67616d00001e02e839740212c6dbd8d559a709ab67616d00001e02ed164cf1c10f028e8f528784",
+          "width": 640
+        },
+        {
+          "height": 300,
+          "url": "https://mosaic.scdn.co/300/ab67616d00001e021e9a057052d59004caf47e22ab67616d00001e02a47c0e156ea3cebe37fdcab8ab67616d00001e02e839740212c6dbd8d559a709ab67616d00001e02ed164cf1c10f028e8f528784",
+          "width": 300
+        },
+        {
+          "height": 60,
+          "url": "https://mosaic.scdn.co/60/ab67616d00001e021e9a057052d59004caf47e22ab67616d00001e02a47c0e156ea3cebe37fdcab8ab67616d00001e02e839740212c6dbd8d559a709ab67616d00001e02ed164cf1c10f028e8f528784",
+          "width": 60
+        }
+      ],
+      "name": "Unstoppable",
+      "owner": {
+        "display_name": "Marianazamoral",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/22bikmsycroovl7sttbivlqnq"
+        },
+        "href": "https://api.spotify.com/v1/users/22bikmsycroovl7sttbivlqnq",
+        "id": "22bikmsycroovl7sttbivlqnq",
+        "type": "user",
+        "uri": "spotify:user:22bikmsycroovl7sttbivlqnq"
+      },
+      "primary_color": null,
+      "public": true,
+      "snapshot_id": "NDcsZmQ5YzI5OGZmMTA1NTUyNDU1YTEyMGE4NzZhOGM3N2ViZDE4OGI3Mg==",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/1OofH98lVeoOWE0HgSWyNf/tracks",
+        "total": 35
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:1OofH98lVeoOWE0HgSWyNf"
+    },
+    {
+      "collaborative": false,
+      "description": "<a href=spotify:playlist:37i9dQZF1EIUYBhR3PuloN>Avril Lavigne</a>, <a href=spotify:playlist:37i9dQZF1EIV5ihzgPnqBl>Olivia Rodrigo</a>, <a href=spotify:playlist:37i9dQZF1EIVCNow4qlhBX>Despistaos</a> and more",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/37i9dQZF1EVKuMoAJjoTIw"
+      },
+      "href": "https://api.spotify.com/v1/playlists/37i9dQZF1EVKuMoAJjoTIw",
+      "id": "37i9dQZF1EVKuMoAJjoTIw",
+      "images": [
+        {
+          "height": null,
+          "url": "https://seed-mix-image.spotifycdn.com/v6/img/moody/0p4nmQO2msCgU4IF37Wi3j/en/default",
+          "width": null
+        }
+      ],
+      "name": "Moody Mix",
+      "owner": {
+        "display_name": "Spotify",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/spotify"
+        },
+        "href": "https://api.spotify.com/v1/users/spotify",
+        "id": "spotify",
+        "type": "user",
+        "uri": "spotify:user:spotify"
+      },
+      "primary_color": null,
+      "public": true,
+      "snapshot_id": "MCwwMDAwMDAwMDFmMmVhNmNhN2FmNzM2ZjI3OGY1ZTIzNDhkM2RiN2Ez",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1EVKuMoAJjoTIw/tracks",
+        "total": 50
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:37i9dQZF1EVKuMoAJjoTIw"
+    },
+    {
+      "collaborative": false,
+      "description": "Celebrating the power of amazing female pop artists this Women's History Month with Kesha on the cover.",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/37i9dQZF1DX3WvGXE8FqYX"
+      },
+      "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DX3WvGXE8FqYX",
+      "id": "37i9dQZF1DX3WvGXE8FqYX",
+      "images": [
+        {
+          "height": null,
+          "url": "https://i.scdn.co/image/ab67706f00000002b52eb7fd2442b46afc80e7a9",
+          "width": null
+        }
+      ],
+      "name": "Women of Pop",
+      "owner": {
+        "display_name": "Spotify",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/spotify"
+        },
+        "href": "https://api.spotify.com/v1/users/spotify",
+        "id": "spotify",
+        "type": "user",
+        "uri": "spotify:user:spotify"
+      },
+      "primary_color": "#ffffff",
+      "public": true,
+      "snapshot_id": "MTcwOTc1MjA1NywwMDAwMDAwMGIxNWJiNmYxMDQzNWYxYTk4YjM3MWEzOTFhNjVlM2Fl",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DX3WvGXE8FqYX/tracks",
+        "total": 75
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:37i9dQZF1DX3WvGXE8FqYX"
+    },
+    {
+      "collaborative": false,
+      "description": "",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/2WzWtKUoZ6TTSOyjguj3qi"
+      },
+      "href": "https://api.spotify.com/v1/playlists/2WzWtKUoZ6TTSOyjguj3qi",
+      "id": "2WzWtKUoZ6TTSOyjguj3qi",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://mosaic.scdn.co/640/ab67616d00001e02332197ee9e34314fce552495ab67616d00001e029e86faa54aa59457b4ce5039ab67616d00001e02b7c45af95aaf599cee3acf08ab67616d00001e02c0d17a37386e6891cc4d8877",
+          "width": 640
+        },
+        {
+          "height": 300,
+          "url": "https://mosaic.scdn.co/300/ab67616d00001e02332197ee9e34314fce552495ab67616d00001e029e86faa54aa59457b4ce5039ab67616d00001e02b7c45af95aaf599cee3acf08ab67616d00001e02c0d17a37386e6891cc4d8877",
+          "width": 300
+        },
+        {
+          "height": 60,
+          "url": "https://mosaic.scdn.co/60/ab67616d00001e02332197ee9e34314fce552495ab67616d00001e029e86faa54aa59457b4ce5039ab67616d00001e02b7c45af95aaf599cee3acf08ab67616d00001e02c0d17a37386e6891cc4d8877",
+          "width": 60
+        }
+      ],
+      "name": "93/03/13/23 BOPS",
+      "owner": {
+        "display_name": "ThirtyAF",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/ghmldinubeaug894wrne3mi72"
+        },
+        "href": "https://api.spotify.com/v1/users/ghmldinubeaug894wrne3mi72",
+        "id": "ghmldinubeaug894wrne3mi72",
+        "type": "user",
+        "uri": "spotify:user:ghmldinubeaug894wrne3mi72"
+      },
+      "primary_color": null,
+      "public": true,
+      "snapshot_id": "NTMsYjhkNTRhZThkNzMyY2VhZWVhMThmNTllMTNiODEzYzhjZTJjNmY0Mg==",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/2WzWtKUoZ6TTSOyjguj3qi/tracks",
+        "total": 48
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:2WzWtKUoZ6TTSOyjguj3qi"
+    },
+    {
+      "collaborative": false,
+      "description": "",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/7GUPZwfeduXIaHE1obkNvT"
+      },
+      "href": "https://api.spotify.com/v1/playlists/7GUPZwfeduXIaHE1obkNvT",
+      "id": "7GUPZwfeduXIaHE1obkNvT",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://mosaic.scdn.co/640/ab67616d00001e023df0f9ce9536ac74c7aa4b98ab67616d00001e02c02574ad6e062a632e7de887ab67616d00001e02c6e00cedca3d59fe2dc01f2bab67616d00001e02cf41f668e1c5a33008a8a6c4",
+          "width": 640
+        },
+        {
+          "height": 300,
+          "url": "https://mosaic.scdn.co/300/ab67616d00001e023df0f9ce9536ac74c7aa4b98ab67616d00001e02c02574ad6e062a632e7de887ab67616d00001e02c6e00cedca3d59fe2dc01f2bab67616d00001e02cf41f668e1c5a33008a8a6c4",
+          "width": 300
+        },
+        {
+          "height": 60,
+          "url": "https://mosaic.scdn.co/60/ab67616d00001e023df0f9ce9536ac74c7aa4b98ab67616d00001e02c02574ad6e062a632e7de887ab67616d00001e02c6e00cedca3d59fe2dc01f2bab67616d00001e02cf41f668e1c5a33008a8a6c4",
+          "width": 60
+        }
+      ],
+      "name": "Nexus Sprints",
+      "owner": {
+        "display_name": "John Mejia",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/1269389124"
+        },
+        "href": "https://api.spotify.com/v1/users/1269389124",
+        "id": "1269389124",
+        "type": "user",
+        "uri": "spotify:user:1269389124"
+      },
+      "primary_color": null,
+      "public": true,
+      "snapshot_id": "NixkMzI3NmQxNzY5OGI0YzY5YmFlNjEzNjU0MWY5M2JhNTEzMmRkYmMw",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/7GUPZwfeduXIaHE1obkNvT/tracks",
+        "total": 4
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:7GUPZwfeduXIaHE1obkNvT"
+    },
+    {
+      "collaborative": false,
+      "description": "Spanish Pop music picked just for you",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/37i9dQZF1EIfDaAjvyftbX"
+      },
+      "href": "https://api.spotify.com/v1/playlists/37i9dQZF1EIfDaAjvyftbX",
+      "id": "37i9dQZF1EIfDaAjvyftbX",
+      "images": [
+        {
+          "height": null,
+          "url": "https://seed-mix-image.spotifycdn.com/v6/img/desc/Spanish%20Pop/en/default",
+          "width": null
+        }
+      ],
+      "name": "Spanish Pop Mix",
+      "owner": {
+        "display_name": "Spotify",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/spotify"
+        },
+        "href": "https://api.spotify.com/v1/users/spotify",
+        "id": "spotify",
+        "type": "user",
+        "uri": "spotify:user:spotify"
+      },
+      "primary_color": null,
+      "public": true,
+      "snapshot_id": "MTk4MDQsMDAwMDAwMDBkNDdhOTZhMzEyNTQxMTQ4MTc2NTIxZTdiNjhkNjIxMQ==",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1EIfDaAjvyftbX/tracks",
+        "total": 50
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:37i9dQZF1EIfDaAjvyftbX"
+    },
+    {
+      "collaborative": false,
+      "description": "Latin Pop music picked just for you",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/37i9dQZF1EIdXls7Ic0RlM"
+      },
+      "href": "https://api.spotify.com/v1/playlists/37i9dQZF1EIdXls7Ic0RlM",
+      "id": "37i9dQZF1EIdXls7Ic0RlM",
+      "images": [
+        {
+          "height": null,
+          "url": "https://seed-mix-image.spotifycdn.com/v6/img/desc/Latin%20Pop/en/default",
+          "width": null
+        }
+      ],
+      "name": "Latin Pop Mix",
+      "owner": {
+        "display_name": "Spotify",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/spotify"
+        },
+        "href": "https://api.spotify.com/v1/users/spotify",
+        "id": "spotify",
+        "type": "user",
+        "uri": "spotify:user:spotify"
+      },
+      "primary_color": null,
+      "public": true,
+      "snapshot_id": "MTk4MDQsMDAwMDAwMDBhZGI3MjliZmE3ODNhOGVmMmE1YzgyYTIxYzVkNWJmZg==",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1EIdXls7Ic0RlM/tracks",
+        "total": 50
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:37i9dQZF1EIdXls7Ic0RlM"
+    },
+    {
+      "collaborative": false,
+      "description": "<a href=spotify:playlist:37i9dQZF1EIXURxfabTQtS>Miley Cyrus</a>, <a href=spotify:playlist:37i9dQZF1EIYtGe2CfPeBI>Sia</a>, <a href=spotify:playlist:37i9dQZF1EIUutZ8JokfM0>Katy Perry</a> and more",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/37i9dQZF1EQncLwOalG3K7"
+      },
+      "href": "https://api.spotify.com/v1/playlists/37i9dQZF1EQncLwOalG3K7",
+      "id": "37i9dQZF1EQncLwOalG3K7",
+      "images": [
+        {
+          "height": null,
+          "url": "https://seed-mix-image.spotifycdn.com/v6/img/pop/5YGY8feqx7naU7z4HrwZM6/en/default",
+          "width": null
+        }
+      ],
+      "name": "Pop Mix",
+      "owner": {
+        "display_name": "Spotify",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/spotify"
+        },
+        "href": "https://api.spotify.com/v1/users/spotify",
+        "id": "spotify",
+        "type": "user",
+        "uri": "spotify:user:spotify"
+      },
+      "primary_color": null,
+      "public": true,
+      "snapshot_id": "MCwwMDAwMDAwMGRlYjM4NDU5MWQzNGM2ZjQ2NTVhOGE3Mzg1Y2VlYTEw",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1EQncLwOalG3K7/tracks",
+        "total": 50
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:37i9dQZF1EQncLwOalG3K7"
+    },
+    {
+      "collaborative": false,
+      "description": "Spotify Wrapped presents the songs that you loved most this year.",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/37i9dQZF1F0sijgNaJdgit"
+      },
+      "href": "https://api.spotify.com/v1/playlists/37i9dQZF1F0sijgNaJdgit",
+      "id": "37i9dQZF1F0sijgNaJdgit",
+      "images": [
+        {
+          "height": null,
+          "url": "https://wrapped-images.spotifycdn.com/image/yts-2022/default/your-top-songs-2022_default_en.jpg",
+          "width": null
+        }
+      ],
+      "name": "Your Top Songs 2022",
+      "owner": {
+        "display_name": "Spotify",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/spotify"
+        },
+        "href": "https://api.spotify.com/v1/users/spotify",
+        "id": "spotify",
+        "type": "user",
+        "uri": "spotify:user:spotify"
+      },
+      "primary_color": null,
+      "public": true,
+      "snapshot_id": "MTY2OTkwODk2MiwwMDAwMDAwMGIwYjY1YjMyNjI3ZDRjNzIzZjlkOGYyMzVkY2RjNzc5",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1F0sijgNaJdgit/tracks",
+        "total": 101
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:37i9dQZF1F0sijgNaJdgit"
+    },
+    {
+      "collaborative": false,
+      "description": "The essentials from songwriter <a href=\"https://artists.spotify.com/songwriter/1T7Hkfs6QmizPlOCzs08LS\">Max Martin</a>, all in one playlist. <a href=\"spotify:genre:0JQ5DAqbMKFSCjnQr8QZ3O\">Discover more songwriters on Spotify</a>.",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/37i9dQZF1EFCXQeQGoO7Oj"
+      },
+      "href": "https://api.spotify.com/v1/playlists/37i9dQZF1EFCXQeQGoO7Oj",
+      "id": "37i9dQZF1EFCXQeQGoO7Oj",
+      "images": [
+        {
+          "height": null,
+          "url": "https://image-cdn-ak.spotifycdn.com/image/ab676d63000076a0363aaadf9d552c6524a93b3b",
+          "width": null
+        }
+      ],
+      "name": "Written By Max Martin",
+      "owner": {
+        "display_name": "Spotify",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/spotify"
+        },
+        "href": "https://api.spotify.com/v1/users/spotify",
+        "id": "spotify",
+        "type": "user",
+        "uri": "spotify:user:spotify"
+      },
+      "primary_color": null,
+      "public": true,
+      "snapshot_id": "Mjg1MTkwODAsMDAwMDAwMDA1YjU3YzVhNjc5Y2EyM2M0YjU1MjMxMWVmYmU1ZGU4Mg==",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1EFCXQeQGoO7Oj/tracks",
+        "total": 444
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:37i9dQZF1EFCXQeQGoO7Oj"
+    },
+    {
+      "collaborative": false,
+      "description": "Your favorite holiday tunes, like you've never heard before. Cover: Laufey",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/37i9dQZF1DXdam5VrqMf3y"
+      },
+      "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DXdam5VrqMf3y",
+      "id": "37i9dQZF1DXdam5VrqMf3y",
+      "images": [
+        {
+          "height": null,
+          "url": "https://i.scdn.co/image/ab67706f0000000245f7c8e27b91fc16990447da",
+          "width": null
+        }
+      ],
+      "name": "Spotify Singles: Holiday Collection",
+      "owner": {
+        "display_name": "Spotify",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/spotify"
+        },
+        "href": "https://api.spotify.com/v1/users/spotify",
+        "id": "spotify",
+        "type": "user",
+        "uri": "spotify:user:spotify"
+      },
+      "primary_color": "#FFFFFF",
+      "public": true,
+      "snapshot_id": "MTY5OTkzODAwMCwwMDAwMDAwMDBkYmU3ZGYxMDkwNWY0MGUyMDFhZGU1OGI1YTA0YzRj",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DXdam5VrqMf3y/tracks",
+        "total": 83
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:37i9dQZF1DXdam5VrqMf3y"
+    },
+    {
+      "collaborative": false,
+      "description": "",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/6jbHxY8HTcWyEHNGZ0o3rJ"
+      },
+      "href": "https://api.spotify.com/v1/playlists/6jbHxY8HTcWyEHNGZ0o3rJ",
+      "id": "6jbHxY8HTcWyEHNGZ0o3rJ",
+      "images": [
+        {
+          "height": null,
+          "url": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da8449265dcb258ae42657ab2f5d",
+          "width": null
+        }
+      ],
+      "name": "This is Arelys",
+      "owner": {
+        "display_name": "Arelys Alvarez",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/21lx2mgnxbjoz7xouvwrtefuq"
+        },
+        "href": "https://api.spotify.com/v1/users/21lx2mgnxbjoz7xouvwrtefuq",
+        "id": "21lx2mgnxbjoz7xouvwrtefuq",
+        "type": "user",
+        "uri": "spotify:user:21lx2mgnxbjoz7xouvwrtefuq"
+      },
+      "primary_color": null,
+      "public": true,
+      "snapshot_id": "MiwzNTdmOWY2MzBmZmIyOWM5NjI1OWYzNWMzZDYzMzQyMWIwMGVkNGUw",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/6jbHxY8HTcWyEHNGZ0o3rJ/tracks",
+        "total": 0
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:6jbHxY8HTcWyEHNGZ0o3rJ"
+    },
+    {
+      "collaborative": false,
+      "description": "",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/04CRzYFPYcVQItmrizzFy6"
+      },
+      "href": "https://api.spotify.com/v1/playlists/04CRzYFPYcVQItmrizzFy6",
+      "id": "04CRzYFPYcVQItmrizzFy6",
+      "images": [
+        {
+          "height": null,
+          "url": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84dfa471c7228b5b1304485048",
+          "width": null
+        }
+      ],
+      "name": "Taylor Swift’s Quill Pen Songs",
+      "owner": {
+        "display_name": "vinoj_moh",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/chocolatemeerkat"
+        },
+        "href": "https://api.spotify.com/v1/users/chocolatemeerkat",
+        "id": "chocolatemeerkat",
+        "type": "user",
+        "uri": "spotify:user:chocolatemeerkat"
+      },
+      "primary_color": null,
+      "public": true,
+      "snapshot_id": "MjEsMTMwYTU5Y2YyODk2MDJkODBmNGVkOWViNDUwM2Y3OGVjMmM0NGZhNA==",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/04CRzYFPYcVQItmrizzFy6/tracks",
+        "total": 17
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:04CRzYFPYcVQItmrizzFy6"
+    },
+    {
+      "collaborative": false,
+      "description": "Fountain Pen songs feel more rooted in the modern day, their lyrics teeming with more familiar narratives and references. On this exclusive playlist, made by Taylor herself, dive into more songs that she thinks fit the Fountain Pen description.",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/2VJYa02Fmhizb2WoYChzPo"
+      },
+      "href": "https://api.spotify.com/v1/playlists/2VJYa02Fmhizb2WoYChzPo",
+      "id": "2VJYa02Fmhizb2WoYChzPo",
+      "images": [
+        {
+          "height": null,
+          "url": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da8484ff26f86d62eb685b35cc52",
+          "width": null
+        }
+      ],
+      "name": "Taylor Swift’s Fountain Pen Songs",
+      "owner": {
+        "display_name": "em 🤍",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/1160067461"
+        },
+        "href": "https://api.spotify.com/v1/users/1160067461",
+        "id": "1160067461",
+        "type": "user",
+        "uri": "spotify:user:1160067461"
+      },
+      "primary_color": null,
+      "public": true,
+      "snapshot_id": "OSwyZTUzNmU1OTYzNGQ1MmRiM2RjNTBhYjI5MGM5MDcxNzFjZGNkYjY2",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/2VJYa02Fmhizb2WoYChzPo/tracks",
+        "total": 25
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:2VJYa02Fmhizb2WoYChzPo"
+    },
+    {
+      "collaborative": false,
+      "description": "The third category in her system of organising her songs, Glitter Gel Pen “lives up to its name in every way.” On this exclusive playlist, made by Taylor herself, let loose with a handpicked selection of songs that have Glitter Gel Pen written all over them.",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/3tdmbRSZHll4MLwLKbG1zQ"
+      },
+      "href": "https://api.spotify.com/v1/playlists/3tdmbRSZHll4MLwLKbG1zQ",
+      "id": "3tdmbRSZHll4MLwLKbG1zQ",
+      "images": [
+        {
+          "height": null,
+          "url": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84e68b908fb6db41e3303c11ad",
+          "width": null
+        }
+      ],
+      "name": "Taylor Swift’s Glitter Gel Pen Songs",
+      "owner": {
+        "display_name": "em 🤍",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/1160067461"
+        },
+        "href": "https://api.spotify.com/v1/users/1160067461",
+        "id": "1160067461",
+        "type": "user",
+        "uri": "spotify:user:1160067461"
+      },
+      "primary_color": null,
+      "public": true,
+      "snapshot_id": "OSxhMzBhM2YyZGJmZmRmM2FiYTcyODUwMDA0ZWY4MTY2N2MzNWI3MDJk",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/3tdmbRSZHll4MLwLKbG1zQ/tracks",
+        "total": 13
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:3tdmbRSZHll4MLwLKbG1zQ"
+    },
+    {
+      "collaborative": false,
+      "description": "There is nothing Taylor does &quot;Better Than Revenge&quot;. The Old Taylor may be dead but, &quot;Call It What You Want&quot;, she brought all her enemies down with her. Who&#x27;s Taylor Swift anyway if she&#x27;s not standing her ground? &quot;Long Live&quot; the Queen! She definitely found &quot;A Place In This World&quot; &amp; in our hearts.",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/2vhbsUJSJcvzjP4biz1ykD"
+      },
+      "href": "https://api.spotify.com/v1/playlists/2vhbsUJSJcvzjP4biz1ykD",
+      "id": "2vhbsUJSJcvzjP4biz1ykD",
+      "images": [
+        {
+          "height": null,
+          "url": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da8466a96e95d5bc277cfc2ecf7a",
+          "width": null
+        }
+      ],
+      "name": "Better Than Revenge (Taylor's Version)",
+      "owner": {
+        "display_name": "Taylor Connect",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/r1xrbljtikl96ulobxduqs1hr"
+        },
+        "href": "https://api.spotify.com/v1/users/r1xrbljtikl96ulobxduqs1hr",
+        "id": "r1xrbljtikl96ulobxduqs1hr",
+        "type": "user",
+        "uri": "spotify:user:r1xrbljtikl96ulobxduqs1hr"
+      },
+      "primary_color": null,
+      "public": true,
+      "snapshot_id": "MjAwLDFjNWJkNmQ1NGNhNzExNTAzMjEzNmJiYWNlMzAwZjNiNmQ5NGYwYjk=",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/2vhbsUJSJcvzjP4biz1ykD/tracks",
+        "total": 64
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:2vhbsUJSJcvzjP4biz1ykD"
+    },
+    {
+      "collaborative": false,
+      "description": "there is nothing i do better than revenge",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/40w4ZME5eTSluvhGMhMarc"
+      },
+      "href": "https://api.spotify.com/v1/playlists/40w4ZME5eTSluvhGMhMarc",
+      "id": "40w4ZME5eTSluvhGMhMarc",
+      "images": [
+        {
+          "height": null,
+          "url": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da8499031d4030d8ced5b59d6760",
+          "width": null
+        }
+      ],
+      "name": "swifties are scary",
+      "owner": {
+        "display_name": "Laurie",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/5j3zx7q9nfoglc4llsdd40b76"
+        },
+        "href": "https://api.spotify.com/v1/users/5j3zx7q9nfoglc4llsdd40b76",
+        "id": "5j3zx7q9nfoglc4llsdd40b76",
+        "type": "user",
+        "uri": "spotify:user:5j3zx7q9nfoglc4llsdd40b76"
+      },
+      "primary_color": null,
+      "public": true,
+      "snapshot_id": "NDUsNmYyZDE4YzAxMTlkYjNhZDllZDdmMWI0MjI2NjUzOTczMDgxODYyMA==",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/40w4ZME5eTSluvhGMhMarc/tracks",
+        "total": 24
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:40w4ZME5eTSluvhGMhMarc"
+    },
+    {
+      "collaborative": false,
+      "description": "The essential tracks, all in one playlist.",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/37i9dQZF1DX5KpP2LN299J"
+      },
+      "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DX5KpP2LN299J",
+      "id": "37i9dQZF1DX5KpP2LN299J",
+      "images": [
+        {
+          "height": null,
+          "url": "https://i.scdn.co/image/ab67706f00000002d4b123e7ae0a84047ab62164",
+          "width": null
+        }
+      ],
+      "name": "This Is Taylor Swift",
+      "owner": {
+        "display_name": "Spotify",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/spotify"
+        },
+        "href": "https://api.spotify.com/v1/users/spotify",
+        "id": "spotify",
+        "type": "user",
+        "uri": "spotify:user:spotify"
+      },
+      "primary_color": "#FFFFFF",
+      "public": true,
+      "snapshot_id": "MTcxMDY5MzQ4NCwwMDAwMDAwMDQ5NzBjZjQ3MWQyMzNhN2U4ZjIyN2Y1NzM1ZTZhNzQ1",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DX5KpP2LN299J/tracks",
+        "total": 164
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:37i9dQZF1DX5KpP2LN299J"
+    },
+    {
+      "collaborative": false,
+      "description": "The essentials from songwriter <a href=\"https://artists.spotify.com/songwriter/1Pk7rcCDQIzm46M7Z50xDh\">Taylor Swift</a>, all in one playlist. <a href=\"spotify:genre:0JQ5DAqbMKFSCjnQr8QZ3O\">Discover more songwriters on Spotify</a>.",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/37i9dQZF1EFC2wbN3v6RhP"
+      },
+      "href": "https://api.spotify.com/v1/playlists/37i9dQZF1EFC2wbN3v6RhP",
+      "id": "37i9dQZF1EFC2wbN3v6RhP",
+      "images": [
+        {
+          "height": null,
+          "url": "https://image-cdn-fa.spotifycdn.com/image/ab676d63000076a045e0614c4aa5f2a6f45c85a8",
+          "width": null
+        }
+      ],
+      "name": "Written By Taylor Swift",
+      "owner": {
+        "display_name": "Spotify",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/spotify"
+        },
+        "href": "https://api.spotify.com/v1/users/spotify",
+        "id": "spotify",
+        "type": "user",
+        "uri": "spotify:user:spotify"
+      },
+      "primary_color": null,
+      "public": true,
+      "snapshot_id": "Mjg1MTkwODAsMDAwMDAwMDAwZjA5YmViZTdhOWRlOTBiNWVjZDVkZWQyMzliMzg0ZQ==",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1EFC2wbN3v6RhP/tracks",
+        "total": 173
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:37i9dQZF1EFC2wbN3v6RhP"
+    },
+    {
+      "collaborative": false,
+      "description": "A test playlist created when doing the Bacman Golden Path",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/04765p0BkTpEMzmFaXKipn"
+      },
+      "href": "https://api.spotify.com/v1/playlists/04765p0BkTpEMzmFaXKipn",
+      "id": "04765p0BkTpEMzmFaXKipn",
+      "images": [
+        {
+          "height": null,
+          "url": "https://i.scdn.co/image/ab67616d00001e0215ebbedaacef61af244262a8",
+          "width": null
+        }
+      ],
+      "name": "My Bacman Golden Path Playlist",
+      "owner": {
+        "display_name": "Arelys Alvarez",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/21lx2mgnxbjoz7xouvwrtefuq"
+        },
+        "href": "https://api.spotify.com/v1/users/21lx2mgnxbjoz7xouvwrtefuq",
+        "id": "21lx2mgnxbjoz7xouvwrtefuq",
+        "type": "user",
+        "uri": "spotify:user:21lx2mgnxbjoz7xouvwrtefuq"
+      },
+      "primary_color": null,
+      "public": true,
+      "snapshot_id": "Myw1ZGJkMWRkZTE4ODBkMDU4YjdmY2MwY2ViODMxYTFhMGQ2YjkwOGVh",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/04765p0BkTpEMzmFaXKipn/tracks",
+        "total": 2
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:04765p0BkTpEMzmFaXKipn"
+    },
+    {
+      "collaborative": false,
+      "description": "A playlist with flavuh",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/6EtOsptMruFKso9ONafOUa"
+      },
+      "href": "https://api.spotify.com/v1/playlists/6EtOsptMruFKso9ONafOUa",
+      "id": "6EtOsptMruFKso9ONafOUa",
+      "images": [
+        {
+          "height": null,
+          "url": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da8408e62f6650b7820206b1af30",
+          "width": null
+        }
+      ],
+      "name": "NOT BLAND",
+      "owner": {
+        "display_name": "Amy Serrano",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/serrano.amyg"
+        },
+        "href": "https://api.spotify.com/v1/users/serrano.amyg",
+        "id": "serrano.amyg",
+        "type": "user",
+        "uri": "spotify:user:serrano.amyg"
+      },
+      "primary_color": null,
+      "public": true,
+      "snapshot_id": "NTM3LDFjYTgwYTkzYjkzZWE3ZGIwNzRlYTdjNzI0MWZlNTMwOWUwYzIxMTY=",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/6EtOsptMruFKso9ONafOUa/tracks",
+        "total": 315
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:6EtOsptMruFKso9ONafOUa"
+    },
+    {
+      "collaborative": false,
+      "description": "A mega mix of 75 favorites from the last few years! ",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/37i9dQZF1DXbYM3nMM0oPk"
+      },
+      "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DXbYM3nMM0oPk",
+      "id": "37i9dQZF1DXbYM3nMM0oPk",
+      "images": [
+        {
+          "height": null,
+          "url": "https://i.scdn.co/image/ab67706f0000000235fed49a1e4edb70fb29853a",
+          "width": null
+        }
+      ],
+      "name": "Mega Hit Mix",
+      "owner": {
+        "display_name": "Spotify",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/spotify"
+        },
+        "href": "https://api.spotify.com/v1/users/spotify",
+        "id": "spotify",
+        "type": "user",
+        "uri": "spotify:user:spotify"
+      },
+      "primary_color": "#ffffff",
+      "public": true,
+      "snapshot_id": "MTcwOTY3NzAzNSwwMDAwMDAwMGYyYTZjMTY4ZWRhYTQ1ODU4NDRjNDM3YjkxYjkwYjM2",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DXbYM3nMM0oPk/tracks",
+        "total": 75
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:37i9dQZF1DXbYM3nMM0oPk"
+    },
+    {
+      "collaborative": false,
+      "description": "Dicen que hay música que te teletransporta a otros lugares. Hoy por ejemplo, en un bar pusieron la última de Melendi y me fui a otro bar, entonces caí que solo él es capáz de dirigir aviones sin ser piloto…¿Mago? puede ser…La magia existe, está camuflada en las drogas…#HazMagia alberto_mv3@hotmail.c",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/0LY7GbeH6tz3fpvurGpIps"
+      },
+      "href": "https://api.spotify.com/v1/playlists/0LY7GbeH6tz3fpvurGpIps",
+      "id": "0LY7GbeH6tz3fpvurGpIps",
+      "images": [
+        {
+          "height": null,
+          "url": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da845cce33bbdc0240738b0be60d",
+          "width": null
+        }
+      ],
+      "name": "Melendi (cuando molaba, se drogaba y tenia rastas)",
+      "owner": {
+        "display_name": "albertostar",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/albertostar"
+        },
+        "href": "https://api.spotify.com/v1/users/albertostar",
+        "id": "albertostar",
+        "type": "user",
+        "uri": "spotify:user:albertostar"
+      },
+      "primary_color": null,
+      "public": true,
+      "snapshot_id": "ODksOGZhYzA5ZTcxMGRiN2ZiM2RkNzRmMmM1NTZkYjY1YTZlMjQxMjBjYw==",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/0LY7GbeH6tz3fpvurGpIps/tracks",
+        "total": 30
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:0LY7GbeH6tz3fpvurGpIps"
+    },
+    {
+      "collaborative": false,
+      "description": "Los grandes éxitos de Shakira y Alejandro Sanz en un mismo lugar.",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/37i9dQZF1DXaKaZNQ3qx4Z"
+      },
+      "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DXaKaZNQ3qx4Z",
+      "id": "37i9dQZF1DXaKaZNQ3qx4Z",
+      "images": [
+        {
+          "height": null,
+          "url": "https://i.scdn.co/image/ab67706f00000002a739fbc59b9cfd0606442141",
+          "width": null
+        }
+      ],
+      "name": "Dos Íconos: Shakira x Alejandro Sanz",
+      "owner": {
+        "display_name": "Spotify",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/spotify"
+        },
+        "href": "https://api.spotify.com/v1/users/spotify",
+        "id": "spotify",
+        "type": "user",
+        "uri": "spotify:user:spotify"
+      },
+      "primary_color": "#ffffff",
+      "public": true,
+      "snapshot_id": "MTY4NjgzNjc0NiwwMDAwMDAwMGExMDhkNTg0MGJiNTI1ZjYxOTY2ODVjOGFlNjg4YmU1",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DXaKaZNQ3qx4Z/tracks",
+        "total": 50
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:37i9dQZF1DXaKaZNQ3qx4Z"
+    },
+    {
+      "collaborative": false,
+      "description": "Need to get your energy level up?",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/37i9dQZF1DWUyPpT6WoO7A"
+      },
+      "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DWUyPpT6WoO7A",
+      "id": "37i9dQZF1DWUyPpT6WoO7A",
+      "images": [
+        {
+          "height": null,
+          "url": "https://i.scdn.co/image/ab67706f000000025674bebd7f8b6b1831d98cc9",
+          "width": null
+        }
+      ],
+      "name": "Energy Booster: Latin",
+      "owner": {
+        "display_name": "Spotify",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/spotify"
+        },
+        "href": "https://api.spotify.com/v1/users/spotify",
+        "id": "spotify",
+        "type": "user",
+        "uri": "spotify:user:spotify"
+      },
+      "primary_color": "#ffffff",
+      "public": true,
+      "snapshot_id": "MTY4NjkxODgzOSwwMDAwMDAwMDY5NjJiMjNjZDAxZDc2MWQ2OTc2MjA3ODA1MDFmODA4",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DWUyPpT6WoO7A/tracks",
+        "total": 100
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:37i9dQZF1DWUyPpT6WoO7A"
+    },
+    {
+      "collaborative": false,
+      "description": "With Estopa, El Canto Del Loco, Antonio Orozco and more",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/37i9dQZF1E4xbxqPEGP0qr"
+      },
+      "href": "https://api.spotify.com/v1/playlists/37i9dQZF1E4xbxqPEGP0qr",
+      "id": "37i9dQZF1E4xbxqPEGP0qr",
+      "images": [
+        {
+          "height": null,
+          "url": "https://seeded-session-images.scdn.co/v2/img/122/secondary/artist/1EXjXQpDx2pROygh8zvHs4/en",
+          "width": null
+        }
+      ],
+      "name": "Melendi Radio",
+      "owner": {
+        "display_name": "Spotify",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/spotify"
+        },
+        "href": "https://api.spotify.com/v1/users/spotify",
+        "id": "spotify",
+        "type": "user",
+        "uri": "spotify:user:spotify"
+      },
+      "primary_color": null,
+      "public": true,
+      "snapshot_id": "MTcxMTE0NjkyNywwMDAwMDAwMGE3ZjZjOTg0OGZmM2NlZDZiOGVhN2EwMmNiMDk4ZjRi",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1E4xbxqPEGP0qr/tracks",
+        "total": 50
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:37i9dQZF1E4xbxqPEGP0qr"
+    },
+    {
+      "collaborative": false,
+      "description": "Lo mejor del pop en español en la década de los 2000. Foto: Paulina Rubio",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/37i9dQZF1DX3jmuw06ffmz"
+      },
+      "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DX3jmuw06ffmz",
+      "id": "37i9dQZF1DX3jmuw06ffmz",
+      "images": [
+        {
+          "height": null,
+          "url": "https://i.scdn.co/image/ab67706f0000000224e9adc3987a57cb3a4dc7ca",
+          "width": null
+        }
+      ],
+      "name": "Pop Latino: Los 2000",
+      "owner": {
+        "display_name": "Spotify",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/spotify"
+        },
+        "href": "https://api.spotify.com/v1/users/spotify",
+        "id": "spotify",
+        "type": "user",
+        "uri": "spotify:user:spotify"
+      },
+      "primary_color": "#ffffff",
+      "public": true,
+      "snapshot_id": "MTcxMDI2NjI5MywwMDAwMDAwMDA4NmEyZTdjMDg5MGY1MzNjNzgxYjcwMGM3NzZiZDJj",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DX3jmuw06ffmz/tracks",
+        "total": 50
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:37i9dQZF1DX3jmuw06ffmz"
+    },
+    {
+      "collaborative": false,
+      "description": "Spotify Wrapped presents the songs that you loved most this year.",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/37i9dQZF1EUMDoJuT8yJsl"
+      },
+      "href": "https://api.spotify.com/v1/playlists/37i9dQZF1EUMDoJuT8yJsl",
+      "id": "37i9dQZF1EUMDoJuT8yJsl",
+      "images": [
+        {
+          "height": null,
+          "url": "https://lineup-images.scdn.co/wrapped-2021-top100_DEFAULT-en.jpg",
+          "width": null
+        }
+      ],
+      "name": "Your Top Songs 2021",
+      "owner": {
+        "display_name": "Spotify",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/spotify"
+        },
+        "href": "https://api.spotify.com/v1/users/spotify",
+        "id": "spotify",
+        "type": "user",
+        "uri": "spotify:user:spotify"
+      },
+      "primary_color": null,
+      "public": true,
+      "snapshot_id": "MCwwMDAwMDAwMGNkOTBiOTAxOTcxZDlkN2U2ZTIzMWIxZDE0ZjAwOTIx",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1EUMDoJuT8yJsl/tracks",
+        "total": 100
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:37i9dQZF1EUMDoJuT8yJsl"
+    },
+    {
+      "collaborative": true,
+      "description": "",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/3hA1OGyyRfJ7uNhEykuVa6"
+      },
+      "href": "https://api.spotify.com/v1/playlists/3hA1OGyyRfJ7uNhEykuVa6",
+      "id": "3hA1OGyyRfJ7uNhEykuVa6",
+      "images": [
+        {
+          "height": null,
+          "url": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84d6ad96ff746eea783c2db0e3",
+          "width": null
+        }
+      ],
+      "name": "Green Cloud Team",
+      "owner": {
+        "display_name": "Arik",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/4h8dmgu53a7vm12ryprboml9m"
+        },
+        "href": "https://api.spotify.com/v1/users/4h8dmgu53a7vm12ryprboml9m",
+        "id": "4h8dmgu53a7vm12ryprboml9m",
+        "type": "user",
+        "uri": "spotify:user:4h8dmgu53a7vm12ryprboml9m"
+      },
+      "primary_color": null,
+      "public": true,
+      "snapshot_id": "MzIsMGEwMGU0NjIzMTFhNWU3MmIyNGJlNzBjNGFiYjQ3N2VkMDg5YzE2Zg==",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/3hA1OGyyRfJ7uNhEykuVa6/tracks",
+        "total": 26
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:3hA1OGyyRfJ7uNhEykuVa6"
+    },
+    {
+      "collaborative": true,
+      "description": "Play acording to the order: English, spanish, portuguese :) ",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/3eEGhCdlHtQ1RNc4PmaxZb"
+      },
+      "href": "https://api.spotify.com/v1/playlists/3eEGhCdlHtQ1RNc4PmaxZb",
+      "id": "3eEGhCdlHtQ1RNc4PmaxZb",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://mosaic.scdn.co/640/ab67616d00001e0216354c666df6afbd41862adfab67616d00001e021d7513bbad99e03fea580da5ab67616d00001e024095076deb543c7a8283ae05ab67616d00001e028863bc11d2aa12b54f5aeb36",
+          "width": 640
+        },
+        {
+          "height": 300,
+          "url": "https://mosaic.scdn.co/300/ab67616d00001e0216354c666df6afbd41862adfab67616d00001e021d7513bbad99e03fea580da5ab67616d00001e024095076deb543c7a8283ae05ab67616d00001e028863bc11d2aa12b54f5aeb36",
+          "width": 300
+        },
+        {
+          "height": 60,
+          "url": "https://mosaic.scdn.co/60/ab67616d00001e0216354c666df6afbd41862adfab67616d00001e021d7513bbad99e03fea580da5ab67616d00001e024095076deb543c7a8283ae05ab67616d00001e028863bc11d2aa12b54f5aeb36",
+          "width": 60
+        }
+      ],
+      "name": "TWU Graduation PARTY",
+      "owner": {
+        "display_name": "Sarah Cristina",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/12142440964"
+        },
+        "href": "https://api.spotify.com/v1/users/12142440964",
+        "id": "12142440964",
+        "type": "user",
+        "uri": "spotify:user:12142440964"
+      },
+      "primary_color": null,
+      "public": true,
+      "snapshot_id": "NTQsMDI1ZTJjZWFjNjU0Y2YzZjc0ZmQ2ODExOTg0OGNmYjVmOTQ3YWZhZA==",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/3eEGhCdlHtQ1RNc4PmaxZb/tracks",
+        "total": 31
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:3eEGhCdlHtQ1RNc4PmaxZb"
+    },
+    {
+      "collaborative": true,
+      "description": "",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/1Ia8MxtCe6j2ok4Rj2MhrB"
+      },
+      "href": "https://api.spotify.com/v1/playlists/1Ia8MxtCe6j2ok4Rj2MhrB",
+      "id": "1Ia8MxtCe6j2ok4Rj2MhrB",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://mosaic.scdn.co/640/ab67616d00001e024be82ed9d62777104d2b0e1cab67616d00001e026040effba89b9b00a6f6743aab67616d00001e028863bc11d2aa12b54f5aeb36ab67616d00001e02e345458751c029f411db3d5b",
+          "width": 640
+        },
+        {
+          "height": 300,
+          "url": "https://mosaic.scdn.co/300/ab67616d00001e024be82ed9d62777104d2b0e1cab67616d00001e026040effba89b9b00a6f6743aab67616d00001e028863bc11d2aa12b54f5aeb36ab67616d00001e02e345458751c029f411db3d5b",
+          "width": 300
+        },
+        {
+          "height": 60,
+          "url": "https://mosaic.scdn.co/60/ab67616d00001e024be82ed9d62777104d2b0e1cab67616d00001e026040effba89b9b00a6f6743aab67616d00001e028863bc11d2aa12b54f5aeb36ab67616d00001e02e345458751c029f411db3d5b",
+          "width": 60
+        }
+      ],
+      "name": "Code-ssants",
+      "owner": {
+        "display_name": "Sarah Cristina",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/12142440964"
+        },
+        "href": "https://api.spotify.com/v1/users/12142440964",
+        "id": "12142440964",
+        "type": "user",
+        "uri": "spotify:user:12142440964"
+      },
+      "primary_color": null,
+      "public": true,
+      "snapshot_id": "MzUsNTBiZDU3MzRjM2YxYzFhMjE3NGM5MjFjNjI4MTY1MDUyNzE3YjAzNQ==",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/1Ia8MxtCe6j2ok4Rj2MhrB/tracks",
+        "total": 38
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:1Ia8MxtCe6j2ok4Rj2MhrB"
+    },
+    {
+      "collaborative": false,
+      "description": "",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/27mjds1zC9mV9tX5I25IWy"
+      },
+      "href": "https://api.spotify.com/v1/playlists/27mjds1zC9mV9tX5I25IWy",
+      "id": "27mjds1zC9mV9tX5I25IWy",
+      "images": [
+        {
+          "height": null,
+          "url": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84fe93a8db2952aa010c49ff2a",
+          "width": null
+        }
+      ],
+      "name": "Lexi Bday",
+      "owner": {
+        "display_name": "Antonio Garcia",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/1269257057"
+        },
+        "href": "https://api.spotify.com/v1/users/1269257057",
+        "id": "1269257057",
+        "type": "user",
+        "uri": "spotify:user:1269257057"
+      },
+      "primary_color": null,
+      "public": true,
+      "snapshot_id": "NDQsOGU2YWZkNzRmZDkwOTYxNDc5MzdmZTczNTM2MjQ5OTQ0MTViMThjYQ==",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/27mjds1zC9mV9tX5I25IWy/tracks",
+        "total": 42
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:27mjds1zC9mV9tX5I25IWy"
+    },
+    {
+      "collaborative": false,
+      "description": "Insta @alexdrumsalot for suggestions",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/1ybvvEY140z6firMaSmopx"
+      },
+      "href": "https://api.spotify.com/v1/playlists/1ybvvEY140z6firMaSmopx",
+      "id": "1ybvvEY140z6firMaSmopx",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://mosaic.scdn.co/640/ab67616d00001e0229c5801239bf4ee23b2c1a19ab67616d00001e028a8563f4a3b57a98cf9fedfcab67616d00001e02c87b80a686cab948390d2af9ab67616d00001e02cb787c301932aa6fe80cb811",
+          "width": 640
+        },
+        {
+          "height": 300,
+          "url": "https://mosaic.scdn.co/300/ab67616d00001e0229c5801239bf4ee23b2c1a19ab67616d00001e028a8563f4a3b57a98cf9fedfcab67616d00001e02c87b80a686cab948390d2af9ab67616d00001e02cb787c301932aa6fe80cb811",
+          "width": 300
+        },
+        {
+          "height": 60,
+          "url": "https://mosaic.scdn.co/60/ab67616d00001e0229c5801239bf4ee23b2c1a19ab67616d00001e028a8563f4a3b57a98cf9fedfcab67616d00001e02c87b80a686cab948390d2af9ab67616d00001e02cb787c301932aa6fe80cb811",
+          "width": 60
+        }
+      ],
+      "name": "Pop goes punk vol 1-10",
+      "owner": {
+        "display_name": "alexdrumsalot",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/alexdrumsalot"
+        },
+        "href": "https://api.spotify.com/v1/users/alexdrumsalot",
+        "id": "alexdrumsalot",
+        "type": "user",
+        "uri": "spotify:user:alexdrumsalot"
+      },
+      "primary_color": null,
+      "public": true,
+      "snapshot_id": "MzQ3LDM5ODk0ZDY4NDQwZWUwNmI4YmI0YTc1YWFkMzBhYmFmNjU5Zjc2NWE=",
+      "tracks": {
+        "href": "https://api.spotify.com/v1/playlists/1ybvvEY140z6firMaSmopx/tracks",
+        "total": 346
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:1ybvvEY140z6firMaSmopx"
+    }
+  ]
+}

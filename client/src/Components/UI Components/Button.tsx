@@ -31,80 +31,88 @@ const colors = {
     textColor: '#f5f5f5'
 };
 
-const buttonVariants: {[key: string]: RuleSet} = {
+const buttonVariants: { [key: string]: RuleSet } = {
     default: css`
-    background-color:  ${colors.lightGrey.default};
-    color: ${colors.white};
-    &:hover {
-      background-color: ${colors.lightGrey.hover};
-    }
-  `,
+      background-color: ${colors.lightGrey.default};
+      color: ${colors.white};
+
+      &:hover {
+        background-color: ${colors.lightGrey.hover};
+      }
+    `,
     primary: css`
-    background-color:  ${colors.green};
-    color: ${colors.black};
-    font-weight: bolder;
-    transition: all 0.3s;
-    &:hover {
-      transform: scale(1.07) perspective(0.5px)
-    }
-  `,
+      background-color: ${colors.green};
+      color: ${colors.black};
+      font-weight: bolder;
+      transition: all 0.3s;
+
+      &:hover {
+        transform: scale(1.07) perspective(0.5px)
+      }
+    `,
     secondary: css`
-    background-color: ${colors.darkGrey.default};//#212121;
-    color: ${colors.textColor};
-    &:hover {
-      background-color: ${colors.darkGrey.hover}; //#2a2a2a;
-    }
-  `,
+      background-color: ${colors.darkGrey.default}; //#212121;
+      color: ${colors.textColor};
+
+      &:hover {
+        background-color: ${colors.darkGrey.hover}; //#2a2a2a;
+      }
+    `,
     outline: css`
-    background-color: transparent;
-    border: 2px solid ${colors.darkGrey.default};
-    color: ${colors.textColor};
-    &:hover {
-      background-color: ${colors.darkGrey.default};
-    }
-  `,
+      background-color: transparent;
+      border: 2px solid ${colors.darkGrey.default};
+      color: ${colors.textColor};
+
+      &:hover {
+        background-color: ${colors.darkGrey.default};
+      }
+    `,
     button_link: css`
-    background-color: transparent;
-    color: ${colors.textColor};
-    text-decoration: none;
-    &:hover {
-      text-decoration: underline;
-    }
-  `,
+      background-color: transparent;
+      color: ${colors.textColor};
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    `,
     icon: css`
-    background-color: ${colors.darkGrey.default};
-    color: ${colors.textColor};
-    text-decoration: none;
-    &:hover {
-      background-color: ${colors.darkGrey.hover};
-    }
-  `, icon_clear: css`
-    background-color: transparent;
-    color: ${colors.textColor};
-    &:hover {
       background-color: ${colors.darkGrey.default};
-    }
-  `
+      color: ${colors.textColor};
+      text-decoration: none;
+
+      &:hover {
+        background-color: ${colors.darkGrey.hover};
+      }
+    `,
+    icon_clear: css`
+      background-color: transparent;
+      color: ${colors.textColor};
+
+      &:hover {
+        background-color: ${colors.darkGrey.default};
+      }
+    `
 }
 
-const buttonSizes: {[key: string]: RuleSet} = {
+const buttonSizes: { [key: string]: RuleSet } = {
     default: css`
-    padding: 0.5rem 2rem;
-    font-size: 1rem;
-  `,
+      padding: 0.5rem 2rem;
+      font-size: 1rem;
+    `,
     sm: css`
-    padding: 0.25rem 1rem;
-    font-size: 0.875rem;
-  `,
+      padding: 0.25rem 1rem;
+      font-size: 0.875rem;
+    `,
     md: css`
-    padding: 0.5rem 1.5rem;
-    font-size: 1rem;
-  `,
+      padding: 0.5rem 1.5rem;
+      font-size: 1rem;
+    `,
     lg: css`
-    padding: 0.75rem 3rem;
-    font-size: 1.25rem;
-  `,
-    cl: css `
+      padding: 0.75rem 3rem;
+      font-size: 1.25rem;
+    `,
+    cl: css`
       padding: 0.5rem;
     `
 };
@@ -121,18 +129,26 @@ const ButtonBase = styled.button<Pick<ButtonProps, 'variant' | 'size'>>`
   border: none;
   padding: 0.5rem 1rem;
   text-decoration: none;
+  text-wrap: nowrap;
+
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
   }
 
-  ${({ variant }) => buttonVariants[variant!]};
-  ${({ size }) => buttonSizes[size!]};
+  &:active {
+    background-color: ${colors.lightGrey.default};
+  }
+
+  ${({variant}) => buttonVariants[variant!]};
+  ${({size}) => buttonSizes[size!]};
 `;
 
-export const Button: React.FC<ButtonProps> = ({className, children,
-                                                  variant = "default", size = "default", ...props}) => {
-        return <ButtonBase className={className} variant={variant} size={size} {...props}>
-                    {children}
-               </ButtonBase>
+export const Button: React.FC<ButtonProps> = ({
+                                                  className, children,
+                                                  variant = "default", size = "default", ...props
+                                              }) => {
+    return <ButtonBase className={className} variant={variant} size={size} {...props}>
+        {children}
+    </ButtonBase>
 }

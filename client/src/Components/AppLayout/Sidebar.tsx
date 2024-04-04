@@ -1,7 +1,7 @@
 import React, {ReactNode} from 'react';
 import styled from "styled-components";
-import {UserProfileSection} from "../SideBar/UserProfileSection";
-import {LibrarySection} from "../SideBar/LibrarySection";
+import {UserProfileSection} from "../SideBarContent/UserProfileSection";
+import {LibrarySection} from "../SideBarContent/LibrarySection";
 import {Box} from "../UI Components/Box";
 
 interface SideBarProps {
@@ -9,7 +9,7 @@ interface SideBarProps {
 }
 
 const StyledSideBar = styled.div`
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -20,7 +20,7 @@ const StyledSideBar = styled.div`
 export const SideBar: React.FC<SideBarProps> = ({children}) => {
     return (
         <StyledSideBar>
-            <Box alignment="center" height={'320px'} style={{marginBottom: '0.5rem'}}>
+            <Box alignment="center" height={'300px'} style={{marginBottom: '0.5rem'}}>
                 <UserProfileSection/>
             </Box>
             <Box alignment="left">

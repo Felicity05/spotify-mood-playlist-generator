@@ -1,6 +1,7 @@
 import axios, {all, AxiosResponse} from "axios";
 import {clearAccessToken, exchangeAccessToken, getAccessToken} from "../utils/auth";
 import {PlayHistory, TrackAudioFeatures} from "../utils/trackTypes";
+import {Playlist} from "../utils/playlistTypes";
 
 // for all the api calls I need the access token
 const API_BASE_URL = 'https://api.spotify.com/v1';
@@ -60,11 +61,13 @@ export const getRecentlyPlayedTracks = async (after?: number, before?: number) =
 
         // console.log("today's date in millisecond= ", beforeParam);
 
-        while(true){
-            const response: any = await spotify_api.get('me/player/recently-played', {params: {
+        while (true) {
+            const response: any = await spotify_api.get('me/player/recently-played', {
+                params: {
                     limit: 50,
                     before: beforeParam,
-                }});
+                }
+            });
 
             const currentResults = response.data.items;
             allResults = [...allResults, ...currentResults];
@@ -72,7 +75,7 @@ export const getRecentlyPlayedTracks = async (after?: number, before?: number) =
             // console.log("Number of items in the current page:", currentResults.length);
 
             const {cursors, next} = response.data;
-            if(!next) break;
+            if (!next) break;
 
             // console.log("cursors= ", cursors);
             // console.log("next page= ", next);
@@ -82,10 +85,9 @@ export const getRecentlyPlayedTracks = async (after?: number, before?: number) =
             // console.log("Next 'after' timestamp:", cursors);
         }
         return allResults;
-    }
-    catch (error: any) {
+    } catch (error: any) {
         console.error('Error with the request', error);
-        if(error.status === '401') console.log("BAD or EXPIRED token");
+        if (error.status === '401') console.log("BAD or EXPIRED token");
         throw error;
     }
 }
@@ -102,9 +104,11 @@ export const getAudioFeatureForTrack = async (id: string) => {
 */
 export const getSeveralTracksAudioFeatures = async (trackIdsList: string) => {
 
-    const response = await spotify_api.get(`/audio-features/`, {params: {
-        ids: trackIdsList
-    }});
+    const response = await spotify_api.get(`/audio-features/`, {
+        params: {
+            ids: trackIdsList
+        }
+    });
     return response.data;
 }
 
@@ -135,16 +139,52 @@ export const addSelectedTracksToPlaylist = async (playlist_id: string, tracksUri
     return response.data;
 }
 
-//get playlists for user -- Get a list of the playlists owned or followed by the current Spotify user.
+//get playlist for user -- Get a playlist owned by a Spotify user.
 export const getPlaylist = async (playlist_id: string) => {
     const response = await spotify_api.get(`/playlists/${playlist_id}`);
 
-    // console.log(response.data);
+    // console.log("playlist data==", response.data);
     return response.data;
 }
+//get songs for playlist - not necessary, the songs come on the response of the getPlaylists function
 
-//get songs for playlist
+/*get playlists for current user Get a list of the playlists owned or followed by the current Spotify user.
+* @limit: The maximum number of items to return. Default: 20. min: 1. max: 50.
+* @offset: The index of the first playlist to return. Max: 100.000. Use with limit to get the next set of playlists
+*  */
+export const getPlaylistsForCurrentUser = async () => {
+    let offset = 0
 
-//get top artist for user
+    let allPlaylists: Playlist[] = [];
 
-//get top songs for user, save somewhere
+    while (true) {
+        const response = await spotify_api.get('/me/playlists', {
+            params: {
+                limit: 50,
+                offset,
+            }
+        })
+
+        console.log(response);
+
+        const currentResults = response.data.items;
+        allPlaylists = [...allPlaylists, ...currentResults];
+
+        if (offset < 100000)
+            offset += response.data.limit;
+        else
+            break;
+
+        if (response.data.next === null) break;
+    }
+
+    return allPlaylists;
+}
+
+//get top artist for user - save in top artist state
+
+
+//get top 10 songs for top artist to create my mood playlist
+
+
+//get top songs for user, save somewhere to create my mood playlist

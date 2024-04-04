@@ -5,18 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="252bb2fe-0ef2-4b2f-adf6-f2653bcd0078" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/favicon.ico" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/Components/AppLayout/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/AppLayout/Layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Components/AppLayout/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/AppLayout/Main.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/Components/AppLayout/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/AppLayout/Sidebar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/Components/MainContent/MainContent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/MainContent/MainContent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Components/MainContent/TopArtist.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/MainContent/TopArtist.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Components/Playlist/NewPlaylist.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/Playlist/NewPlaylist.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Components/Playlist/PlaylistHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/Playlist/PlaylistHeader.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Components/UI Components/Box.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/UI Components/Box.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Components/UI Components/LogOut.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/UI Components/LogOut.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Components/UI Components/NavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/UI Components/NavBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/MainContent/MoodSelector.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/MainContent/MoodSelector.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/MainContent/TracksSourceSelector.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/MainContent/TracksSourceSelector.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/SideBar/LibrarySection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/SideBarContent/LibrarySection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/SideBar/UserProfileSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/SideBarContent/UserProfileSection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/UI Components/Button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/UI Components/Button.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/Components/UI Components/Text.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/UI Components/Text.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Context/AccessTokenContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Context/AccessTokenContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/api/api.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/api/api.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/store/store.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/moodStore.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/utils/auth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/utils/auth.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +42,9 @@
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2cjhuFB3NgrCgfMPJYCFJkTlXbb" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -52,7 +59,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/arelysalvarez/Desktop/PersonalProjects/Spotify-Mood-Playlist-Generator-App/client/public",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/arelysalvarez/Desktop/PersonalProjects/Spotify-Mood-Playlist-Generator-App",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -61,9 +69,14 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "actions.on.save",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "ts.external.directory.path": "/Users/arelysalvarez/Desktop/PersonalProjects/Spotify-Mood-Playlist-Generator-App/client/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "HTTP Request"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -78,6 +91,16 @@
       <recent name="$PROJECT_DIR$/client/src/Components/UI Components/AppLayout" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="All in scratch" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/scratch.http">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="HTTP Request.All in scratch" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -88,12 +111,17 @@
       <updated>1708631124590</updated>
       <workItem from="1708631126969" duration="20530000" />
       <workItem from="1708976284809" duration="13900000" />
-      <workItem from="1709057581478" duration="165708000" />
+      <workItem from="1709057581478" duration="166574000" />
+      <workItem from="1711128558763" duration="101000" />
+      <workItem from="1711132964404" duration="27158000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.tsx" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -105,5 +133,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
