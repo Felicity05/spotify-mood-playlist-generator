@@ -17,6 +17,7 @@ import styled from "styled-components";
 import {listTrackMoodUriSample} from "../../api/API_response_sampes";
 import {useNavigate} from "react-router-dom";
 import {TopArtist} from "./TopArtist";
+import {Text} from "../UI Components/Text";
 
 //TODO: add types for track object, artist object, clean up this component
 
@@ -252,6 +253,16 @@ export const MainContent: React.FC<MainContentProps> = () => {
                 </div>}
             {showProgressBar && <ProgressBar/>}
             <TopArtist/>
+            <hr style={{
+                width: '98%',
+                height: .2
+            }}/>
+            <div style={{margin: "1rem 0"}}>
+                <Text variant={"sm"}>* Spotify's popularity of artist
+                    calculated from the popularity of all the artist's tracks. </Text>
+                <Text>This App is not intended to be a clone of Spotify but an extension of it.</Text>
+                <Text>Copyright © 2024 - Built by Arelys Alvarez v1.0. </Text>
+            </div>
         </CardContent>
     )
 }

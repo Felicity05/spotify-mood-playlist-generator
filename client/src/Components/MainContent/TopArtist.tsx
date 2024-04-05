@@ -1,41 +1,55 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import {ArtistCard} from "./ArtistCard";
+import {Text} from '../UI Components/Text';
+import {Artist} from "../../types";
+import {getTopItemsForUser} from "../../api/api";
+import styled from "styled-components";
+
+const StyledTopArtist = styled.div`
+  box-sizing: border-box;
+  margin: 1.5rem 0;
+`
 
 export const TopArtist = () => {
+    const [topArtist, setTopArtist] = useState<Artist[]>([])
+
+    useEffect(() => {
+        getTopItemsForUser("artists").then(artist => setTopArtist(artist.items))
+
+    }, []);
+
+    // console.log(topArtist);
+
     return (
-        <div style={{boxSizing: "border-box"}}>
-            <h1>Your Top Artist last year</h1>
-            <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A atque cum exercitationem ipsum labore,
-                laudantium nesciunt nobis! Aliquam amet atque, deleniti, ex fugiat impedit laudantium natus odio
-                officiis placeat vitae!
-            </h1>
-            <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A atque cum exercitationem ipsum labore,
-                laudantium nesciunt nobis! Aliquam amet atque, deleniti, ex fugiat impedit laudantium natus odio
-                officiis placeat vitae!
-            </h1>
-            <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A atque cum exercitationem ipsum labore,
-                laudantium nesciunt nobis! Aliquam amet atque, deleniti, ex fugiat impedit laudantium natus odio
-                officiis placeat vitae!
-            </h1>
-            <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A atque cum exercitationem ipsum labore,
-                laudantium nesciunt nobis! Aliquam amet atque, deleniti, ex fugiat impedit laudantium natus odio
-                officiis placeat vitae!
-            </h1>
-            <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A atque cum exercitationem ipsum labore,
-                laudantium nesciunt nobis! Aliquam amet atque, deleniti, ex fugiat impedit laudantium natus odio
-                officiis placeat vitae!
-            </h1>
-            <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A atque cum exercitationem ipsum labore,
-                laudantium nesciunt nobis! Aliquam amet atque, deleniti, ex fugiat impedit laudantium natus odio
-                officiis placeat vitae!
-            </h1>
-            <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A atque cum exercitationem ipsum labore,
-                laudantium nesciunt nobis! Aliquam amet atque, deleniti, ex fugiat impedit laudantium natus odio
-                officiis placeat vitae!
-            </h1>
-            <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A atque cum exercitationem ipsum labore,
-                laudantium nesciunt nobis! Aliquam amet atque, deleniti, ex fugiat impedit laudantium natus odio
-                officiis placeat vitae!
-            </h1>
-        </div>
+        <StyledTopArtist>
+            <Text variant={"lg"} style={{fontWeight: '800'}}>Your Top Artists Last Year </Text>
+            <div style={{
+                display: "flex",
+                flexWrap: "wrap",
+                alignItems: "center",
+                justifyContent: "center",
+                marginBottom: "1rem"
+            }}>
+                {topArtist.slice(0, 15).sort((a, b) => b.popularity - a.popularity)
+                    .map((artist, index) => {
+                        return (
+                            <ArtistCard
+                                key={index}
+                                name={artist.name}
+                                genres={artist.genres}
+                                popularity={artist.popularity}
+                                image={artist.images[0].url}
+                                spotify_url={artist.external_urls.spotify}
+                            />
+                        )
+                    })
+                }
+            </div>
+        </StyledTopArtist>
     );
 }
+
+// include this as a footer on the main page
+// The popularity of the artist. The value will be between 0 and 100, with 100 being the most popular.
+// The artist's popularity is calculated from the popularity of all the artist's tracks.
+//style={{position: "fixed", bottom: "10px"}}

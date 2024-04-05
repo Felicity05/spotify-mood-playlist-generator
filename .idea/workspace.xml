@@ -5,22 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="252bb2fe-0ef2-4b2f-adf6-f2653bcd0078" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Components/AppLayout/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/AppLayout/Layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Components/AppLayout/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/AppLayout/Sidebar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/Components/MainContent/MainContent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/MainContent/MainContent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Components/MainContent/MoodSelector.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/MainContent/MoodSelector.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Components/MainContent/TracksSourceSelector.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/MainContent/TracksSourceSelector.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Components/SideBar/LibrarySection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/SideBarContent/LibrarySection.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Components/SideBar/UserProfileSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/SideBarContent/UserProfileSection.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Components/UI Components/Button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/UI Components/Button.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Components/UI Components/Text.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/UI Components/Text.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Context/AccessTokenContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Context/AccessTokenContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/MainContent/TopArtist.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/MainContent/TopArtist.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/api/api.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/api/api.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/store/store.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/moodStore.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/utils/auth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/utils/auth.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/types.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/types.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +102,7 @@
       <workItem from="1708976284809" duration="13900000" />
       <workItem from="1709057581478" duration="166574000" />
       <workItem from="1711128558763" duration="101000" />
-      <workItem from="1711132964404" duration="27158000" />
+      <workItem from="1711132964404" duration="37209000" />
     </task>
     <servers />
   </component>

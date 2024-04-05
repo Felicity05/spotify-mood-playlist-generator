@@ -49,6 +49,10 @@ export interface Artist {
     name: string;
     popularity: number /*derived from the popularity of all artist's tracks*/
     uri: string;
+    genres: string[];
+    external_urls: {
+        spotify: string;
+    }
 }
 
 export {}

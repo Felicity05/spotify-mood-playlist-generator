@@ -165,7 +165,7 @@ export const getPlaylistsForCurrentUser = async () => {
             }
         })
 
-        console.log(response);
+        // console.log(response);
 
         const currentResults = response.data.items;
         allPlaylists = [...allPlaylists, ...currentResults];
@@ -181,10 +181,20 @@ export const getPlaylistsForCurrentUser = async () => {
     return allPlaylists;
 }
 
-//get top artist for user - save in top artist state
+//get top items for user - type: artists | tracks
+export const getTopItemsForUser = async (type: string) => {
+    const response = await spotify_api.get(`/me/top/${type}`, {
+        params: {
+            limit: 50,
+            time_range: "long_term"
+        }
+    });
 
+    // console.log("playlist data==", response.data);
+    return response.data;
+}
 
-//get top 10 songs for top artist to create my mood playlist
+//get top 10 songs for each top artist to create my mood playlist
 
 
 //get top songs for user, save somewhere to create my mood playlist
