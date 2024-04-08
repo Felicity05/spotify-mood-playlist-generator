@@ -10,13 +10,17 @@ const StyledTopArtist = styled.div`
   margin: 1.5rem 0;
 `
 
-export const TopArtist = () => {
-    const [topArtist, setTopArtist] = useState<Artist[]>([])
+interface TopArtistProps {
+    topArtist: Artist[];
+    setTopArtist: (artist: Artist[]) => void;
+}
+
+export const TopArtist: React.FC<TopArtistProps> = ({topArtist, setTopArtist}) => {
 
     useEffect(() => {
-        getTopItemsForUser("artists").then(artist => setTopArtist(artist.items))
+        getTopItemsForUser("artists").then(artist => setTopArtist(artist as Artist[]))
 
-    }, []);
+    },);
 
     // console.log(topArtist);
 

@@ -3,7 +3,7 @@ import {Image} from "../types";
 export interface Playlist {
     collaborative: boolean;
     description: string | null;
-    external_urls: {spotify: string};
+    external_urls: { spotify: string };
     followers: {
         href: string | null;
         total: number;
@@ -17,15 +17,15 @@ export interface Playlist {
             spotify: string;
         },
         followers: {
-                href: string | null;
-                total: number;
-            }
+            href: string | null;
+            total: number;
+        }
         href: string;
         id: string;
         type: string;
         uri: string;
         display_name: string | null;
-        }
+    }
     public: boolean;
     snapshot_id: string;
     primary_color: string;
@@ -47,12 +47,12 @@ interface PlaylistTrack {
     added_at: string //date-time
     added_by: {
         "external_urls": {
-        "spotify": "string"
-    },
+            "spotify": "string"
+        },
         "followers": {
-        "href": "string",
+            "href": "string",
             "total": 0
-    },
+        },
         "href": "string",
         "id": "string",
         "type": "user",
@@ -63,59 +63,16 @@ interface PlaylistTrack {
 
 }
 
-interface  Track {
+export interface Track {
     "album": {
-    "album_type": string,
+        "album_type": string,
         "total_tracks": number,
         "available_markets": string[],
         "external_urls": {
             "spotify": "string"
         },
-    "href": string,
-    "id": string,
-    "images": [
-        {
-            "url": "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228",
-            "height": 300,
-            "width": 300
-        }
-    ],
-        "name": "string",
-        "release_date": "1981-12",
-        "release_date_precision": "year",
-        "restrictions": {
-        "reason": "market"
-    },
-    "type": "album",
-        "uri": "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-        "artists": [
-        {
-            "external_urls": {
-                "spotify": "string"
-            },
-            "href": "string",
-            "id": "string",
-            "name": "string",
-            "type": "artist",
-            "uri": "string"
-        }
-    ]
-},
-    "artists": [
-    {
-        "external_urls": {
-            "spotify": "string"
-        },
-        "followers": {
-            "href": "string",
-            "total": 0
-        },
-        "genres": [
-            "Prog rock",
-            "Grunge"
-        ],
-        "href": "string",
-        "id": "string",
+        "href": string,
+        "id": string,
         "images": [
             {
                 "url": "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228",
@@ -124,32 +81,75 @@ interface  Track {
             }
         ],
         "name": "string",
-        "popularity": 0,
-        "type": "artist",
-        "uri": "string"
-    }
-],
+        "release_date": "1981-12",
+        "release_date_precision": "year",
+        "restrictions": {
+            "reason": "market"
+        },
+        "type": "album",
+        "uri": "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
+        "artists": [
+            {
+                "external_urls": {
+                    "spotify": "string"
+                },
+                "href": "string",
+                "id": "string",
+                "name": "string",
+                "type": "artist",
+                "uri": "string"
+            }
+        ]
+    },
+    "artists": [
+        {
+            "external_urls": {
+                "spotify": "string"
+            },
+            "followers": {
+                "href": "string",
+                "total": 0
+            },
+            "genres": [
+                "Prog rock",
+                "Grunge"
+            ],
+            "href": "string",
+            "id": "string",
+            "images": [
+                {
+                    "url": "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228",
+                    "height": 300,
+                    "width": 300
+                }
+            ],
+            "name": "string",
+            "popularity": 0,
+            "type": "artist",
+            "uri": "string"
+        }
+    ],
     "available_markets": [
-    "string"
-],
+        "string"
+    ],
     "disc_number": 0,
     "duration_ms": 0,
     "explicit": false,
     "external_ids": {
-    "isrc": "string",
+        "isrc": "string",
         "ean": "string",
         "upc": "string"
-},
+    },
     "external_urls": {
-    "spotify": "string"
-},
+        "spotify": "string"
+    },
     "href": "string",
     "id": "string",
     "is_playable": false,
     "linked_from": {},
     "restrictions": {
-    "reason": "string"
-},
+        "reason": "string"
+    },
     "name": "string",
     "popularity": 0,
     "preview_url": "string",

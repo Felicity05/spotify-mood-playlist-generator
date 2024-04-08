@@ -3,7 +3,7 @@ import {
     addSelectedTracksToPlaylist,
     createNewPlaylist,
     getRecentlyPlayedTracks,
-    getSeveralTracksAudioFeatures
+    getSeveralTracksAudioFeatures, getTopItemsForUser
 } from "../../api/api";
 import React, {HTMLAttributes, useEffect, useState} from "react";
 import {useAccessToken} from "../../Context/AccessTokenContext";
@@ -18,6 +18,10 @@ import {listTrackMoodUriSample} from "../../api/API_response_sampes";
 import {useNavigate} from "react-router-dom";
 import {TopArtist} from "./TopArtist";
 import {Text} from "../UI Components/Text";
+import {Artist, PlayHistoryObject} from "../../types";
+import {Track} from "../../utils/playlistTypes";
+import {PlayHistory} from "../../utils/trackTypes";
+import restart from '../../assets/Icons/icons8-rotate-left-96.png'
 
 //TODO: add types for track object, artist object, clean up this component
 
@@ -52,8 +56,10 @@ export const MainContent: React.FC<MainContentProps> = () => {
 
     const [listOfTracksMood, setListOfTracksMood] = useState<TrackMood[] | null>(null);
     const [playlistSize, setPlaylistSize] = useState(0);
-    // const [recentlyPlayedTracksMoods, setRecentlyPlayedTracksMoods] = useState<TrackMood[] | null>(null);
+    const [recentlyPlayedTracksMoods, setRecentlyPlayedTracksMoods] = useState<TrackMood[] | null>(null);
     const [timeofDay, setTimeOfDay] = useState<string>("")
+
+    const [topArtist, setTopArtist] = useState<Artist[]>([])
 
     const navigate = useNavigate();
 
@@ -77,25 +83,34 @@ export const MainContent: React.FC<MainContentProps> = () => {
 
     //extract handle playlist creation to a custom hook??
 
-    const getTracksMoodForTrackSource = async (tracksSource: any[]) => {
+    const getTracksMoodForTrackSource = async (tracksSource: PlayHistory[] | Track[]) => {
         let listOfTracksIds: Set<string> = new Set();
-        tracksSource.map(async item => {
-            listOfTracksIds.add(item.track.id)
+        console.log("tracksSource== ", tracksSource)
+
+        tracksSource.map(item => {
+            if ("track" in item) {
+                listOfTracksIds.add(item.track.id) //for the PlayHistory object
+                console.log("should only enter here if track source is recently played tracks")
+            } else {
+                listOfTracksIds.add(item.id) //for the Track object
+                console.log("should only enter here if track source is top tracks")
+            }
         })
 
         //convert the listOfTracksIds set into an Array and finally to a String
-        const trackIdsList = [...listOfTracksIds].toString()
-        // console.log("trackIdsList== ", trackIdsList)
+        const trackIdsList = [...listOfTracksIds].slice(0, 100).toString()
+        console.log("trackIdsList== ", trackIdsList)
+        console.log("total tracks to analyze", trackIdsList.length)
 
         //make an api call to get the audio features of all the unique songs in the recently played list
         const listOfTracksAudioFeatures = await getSeveralTracksAudioFeatures(trackIdsList)
         const listOfAudioFeatures = listOfTracksAudioFeatures.audio_features
         // console.log("listOfTracksAudioFeatures== ", listOfTracksAudioFeatures)
-        // console.log("listOfAudioFeatures== ", listOfAudioFeatures)
+        console.log("listOfAudioFeatures== ", listOfAudioFeatures)
 
         //use my ML random_forest model to predict the mood for each song
         const tracksMoodList = await predictTrackMood(listOfAudioFeatures)
-        // console.log("tracksMoodList== ", tracksMoodList)
+        console.log("tracksMoodList== ", tracksMoodList)
 
         //creates an array of objects of track uri and predicted mood
         let listTrackMoodUri: TrackMood[] = []
@@ -105,7 +120,7 @@ export const MainContent: React.FC<MainContentProps> = () => {
         })
 
         setListOfTracksMood(listTrackMoodUri)
-        // setRecentlyPlayedTracksMoods(listTrackMoodUri);
+        setRecentlyPlayedTracksMoods(listTrackMoodUri);
         return listTrackMoodUri;
     }
 
@@ -118,11 +133,17 @@ export const MainContent: React.FC<MainContentProps> = () => {
 
         //make api call to create playlist
         const newPlaylist = await createNewPlaylist(userProfile!.id, playlistMood!)
-        // console.log("newPlaylist response== ", newPlaylist)
+        console.log("newPlaylist response== ", newPlaylist)
 
         //make api call to add the corresponding songs from the mood list to the playlist
         const tracksAdded = await addSelectedTracksToPlaylist(newPlaylist.id, listTracksUri)
+
         console.log("tracks added== ", tracksAdded)
+        console.log("playlist id of new playlist== ", newPlaylist.id);
+        // const playlistId = '1ZVXBUWTb8TgPnmNh14ZBj'
+
+        //navigate to playlist page to show newly created playlist to the user
+        navigate(`/playlist/${newPlaylist.id}`)
     }
 
     function filterTracksByMood(listTrackMoodUri: TrackMood[]) {
@@ -140,26 +161,28 @@ export const MainContent: React.FC<MainContentProps> = () => {
 
         let listTrackMoodUri: TrackMood[] | null
         if (!listOfTracksMood) {
-
-            let tracksSource: any[] = []
+            let tracksSource: PlayHistory[] | Track[] = []
+            console.log("I am here", mood, "--", source)
             switch (source) {
                 case 'recentlyPlayed':
                     //get recently played tracks
-                    // tracksSource  = await getRecentlyPlayedTracks() //response type is playHistoryObject
+                    tracksSource = await getRecentlyPlayedTracks() as PlayHistory[]; //response type is playHistoryObject
                     console.log("get recently played tracks")
                     break;
                 case 'topTracks':
                     console.log("get top tracks")
+                    tracksSource = await getTopItemsForUser("tracks") as Track[];
                     break;
                 case 'topArtist':
                     console.log("get top 10 artist and for each artist get top 10 songs")
                     break;
             }
 
+            console.log("tracksSource=== ", tracksSource)
             //gets the mood for the unique list of tracks ids from the track source
-            // listTrackMoodUri = await getTracksMoodForTrackSource(tracksSource);
+            listTrackMoodUri = await getTracksMoodForTrackSource(tracksSource);
             // console.log("listTrackMoodUri== ", listTrackMoodUri)
-            listTrackMoodUri = listTrackMoodUriSample;
+            // listTrackMoodUri = listTrackMoodUriSample;
             setListOfTracksMood(listTrackMoodUri);
             console.log("setting list track uri for the first time and setting listOfTracksMood state")
         } else {
@@ -188,18 +211,15 @@ export const MainContent: React.FC<MainContentProps> = () => {
         } else {
             console.log("create playlist here, call api here")
 
-            // await createPlaylistWithSelectedSongs(listTracksUri);
+            await createPlaylistWithSelectedSongs(listTracksUri);
 
             // After the operation is done, hide the progress bar
             setShowProgressBar(false);
 
             // Show the new playlist
             setShowNewPlaylist(true);
-            //show newly created playlist to the user
 
-            const playlistId = '1ZVXBUWTb8TgPnmNh14ZBj'
-            //navigate to playlist page
-            navigate(`/playlist/${playlistId}`)
+
         }
     }
 
@@ -211,19 +231,19 @@ export const MainContent: React.FC<MainContentProps> = () => {
 
     }
 
-    const handleMoodModalOption = () => {
+    const handleResetMood = () => {
         //reset mood
         setMood("")
         setShowModal(false);
     }
 
-    const handleTrackSourceModalOption = () => {
+    const handleResetTrackSource = () => {
         //reset track source
         setTrackSource("")
         setShowModal(false);
     }
 
-    const handleBothModalOptions = () => {
+    const handleResetMoodAndTrackSource = () => {
         // Reset mood and source
         setMood("")
         setTrackSource("")
@@ -236,11 +256,11 @@ export const MainContent: React.FC<MainContentProps> = () => {
             <h2>Ready to create your custom playlist with a single click? </h2>
             <Modal
                 isOpen={showModal}
-                onClose={handleBothModalOptions}
+                onClose={handleResetMoodAndTrackSource}
                 onConfirm={handleConfirm}
-                handleMood={handleMoodModalOption}
-                handleTrackSource={handleTrackSourceModalOption}
-                handleBoth={handleBothModalOptions}
+                handleMood={handleResetMood}
+                handleTrackSource={handleResetTrackSource}
+                handleBoth={handleResetMoodAndTrackSource}
                 message={playlistSize.toString()}
             />
             <TracksSourceSelector/>
@@ -252,12 +272,17 @@ export const MainContent: React.FC<MainContentProps> = () => {
                     <Button variant="primary" size="lg" onClick={handlePlaylistCreation}>Generate Playlist</Button>
                 </div>}
             {showProgressBar && <ProgressBar/>}
-            <TopArtist/>
+            <br/>
+            <Button variant={"icon"} size={"cl"} onClick={handleResetMoodAndTrackSource}>
+                <img src={restart} alt={"restart"} width={48}/>
+            </Button>
+            <TopArtist topArtist={topArtist} setTopArtist={setTopArtist}/>
             <hr style={{
                 width: '98%',
-                height: .2
+                height: .2,
+                backgroundColor: "hsla(0,0%,100%,.6)"
             }}/>
-            <div style={{margin: "1rem 0"}}>
+            <div style={{margin: "1rem 0", color: "hsla(0,0%,100%,.6)"}}>
                 <Text variant={"sm"}>* Spotify's popularity of artist
                     calculated from the popularity of all the artist's tracks. </Text>
                 <Text>This App is not intended to be a clone of Spotify but an extension of it.</Text>

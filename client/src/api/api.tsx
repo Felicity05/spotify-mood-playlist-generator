@@ -1,7 +1,8 @@
 import axios, {all, AxiosResponse} from "axios";
 import {clearAccessToken, exchangeAccessToken, getAccessToken} from "../utils/auth";
 import {PlayHistory, TrackAudioFeatures} from "../utils/trackTypes";
-import {Playlist} from "../utils/playlistTypes";
+import {Playlist, Track} from "../utils/playlistTypes";
+import {Artist} from "../types";
 
 // for all the api calls I need the access token
 const API_BASE_URL = 'https://api.spotify.com/v1';
@@ -93,7 +94,7 @@ export const getRecentlyPlayedTracks = async (after?: number, before?: number) =
 }
 
 //get audio features for a single track
-export const getAudioFeatureForTrack = async (id: string) => {
+export const getAudioFeaturesForTrack = async (id: string) => {
 
     const response: AxiosResponse<TrackAudioFeatures> = await spotify_api.get(`/audio-features/${id}`);
     return response.data;
@@ -119,7 +120,7 @@ Each user is generally limited to a maximum of 11000 playlists.
 export const createNewPlaylist = async (user_id: string, mood: string) => {
 
     const response = await spotify_api.post(`/users/${user_id}/playlists`, {
-            "name": `My ${mood} Playlist`,
+            "name": `My ${mood} Playlist for ${new Date().toDateString()}`,
             "description": `Playlist for when I'm feeling ${mood}`,
             // "public": false //this commented will default the playlist to public
         }
@@ -183,18 +184,35 @@ export const getPlaylistsForCurrentUser = async () => {
 
 //get top items for user - type: artists | tracks
 export const getTopItemsForUser = async (type: string) => {
-    const response = await spotify_api.get(`/me/top/${type}`, {
-        params: {
-            limit: 50,
-            time_range: "long_term"
-        }
-    });
+    let offset = 0;
 
-    // console.log("playlist data==", response.data);
-    return response.data;
+    let response: Artist[] | Track[] = [];
+
+    while (true) {
+        const currentResponse = await spotify_api.get(`/me/top/${type}`, {
+            params: {
+                limit: 50,
+                time_range: "long_term",
+                offset,
+            }
+        });
+
+        const currentResults = currentResponse.data.items;
+        response = [...response, ...currentResults];
+
+        if (offset < currentResponse.data.total)
+            offset += currentResponse.data.limit;
+        else
+            break;
+
+        if (currentResponse.data.next === null) break;
+    }
+
+    // console.log("response==", response);
+    return response;
 }
 
-//get top 10 songs for each top artist to create my mood playlist
+//get top 10 songs for each of the first 15 top artist to create my mood playlist
 
 
 //get top songs for user, save somewhere to create my mood playlist
