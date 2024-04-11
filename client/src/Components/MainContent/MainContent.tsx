@@ -1,9 +1,9 @@
 import {Button} from "../UI Components/Button";
 import {
     addSelectedTracksToPlaylist,
-    createNewPlaylist,
+    createNewPlaylist, getArtistTopTracks,
     getRecentlyPlayedTracks,
-    getSeveralTracksAudioFeatures, getTopItemsForUser
+    getSeveralTracksAudioFeatures, getTopItemsForUser, getTopTracksForTopArtists
 } from "../../api/api";
 import React, {HTMLAttributes, useEffect, useState} from "react";
 import {useAccessToken} from "../../Context/AccessTokenContext";
@@ -166,15 +166,17 @@ export const MainContent: React.FC<MainContentProps> = () => {
             switch (source) {
                 case 'recentlyPlayed':
                     //get recently played tracks
-                    tracksSource = await getRecentlyPlayedTracks() as PlayHistory[]; //response type is playHistoryObject
                     console.log("get recently played tracks")
+                    tracksSource = await getRecentlyPlayedTracks() as PlayHistory[]; //response type is playHistoryObject
                     break;
                 case 'topTracks':
                     console.log("get top tracks")
                     tracksSource = await getTopItemsForUser("tracks") as Track[];
                     break;
                 case 'topArtist':
-                    console.log("get top 10 artist and for each artist get top 10 songs")
+                    console.log("get top artist and for each artist get top 10 songs")
+                    const topArtistsIds = topArtist.map(artist => artist.id);
+                    tracksSource = await getTopTracksForTopArtists(topArtistsIds);
                     break;
             }
 

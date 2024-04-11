@@ -213,6 +213,23 @@ export const getTopItemsForUser = async (type: string) => {
 }
 
 //get top 10 songs for each of the first 15 top artist to create my mood playlist
+export const getArtistTopTracks = async (artist_id: string) => {
+    const response = await spotify_api.get(`/artists/${artist_id}/top-tracks`);
 
+    console.log("artist top tracks== ", response.data)
 
-//get top songs for user, save somewhere to create my mood playlist
+    return response.data;
+}
+
+export const getTopTracksForTopArtists = async (topArtistsIds: string[]) => {
+    let topTracksForTopArtist: any[] = [];
+
+    for (const artistId of topArtistsIds) {
+        const response = await getArtistTopTracks(artistId);
+        console.log("top tracks for artist===", response);
+
+        topTracksForTopArtist = [...topTracksForTopArtist, ...response.tracks]
+    }
+
+    return topTracksForTopArtist;
+}

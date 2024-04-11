@@ -20,7 +20,7 @@ export const TopArtist: React.FC<TopArtistProps> = ({topArtist, setTopArtist}) =
     useEffect(() => {
         getTopItemsForUser("artists").then(artist => setTopArtist(artist as Artist[]))
 
-    },);
+    }, []);
 
     // console.log(topArtist);
 
