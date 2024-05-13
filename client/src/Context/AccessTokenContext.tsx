@@ -5,8 +5,8 @@ import {getAccessToken} from "../utils/auth";
 import {getPlaylistsForCurrentUser, getUserProfileData} from "../api/api";
 
 interface AccessTokenContextProps {
-    accessToken: string | null;
-    setAccessToken: React.Dispatch<React.SetStateAction<string | null>>;
+    accessToken: string | null | undefined;
+    setAccessToken: React.Dispatch<React.SetStateAction<string | null | undefined>>;
     userProfile: UserProfile | null;
     setUserProfile: React.Dispatch<React.SetStateAction<UserProfile | null>>;
 }
@@ -14,7 +14,7 @@ interface AccessTokenContextProps {
 const AccessTokenContext = createContext<AccessTokenContextProps | undefined>(undefined);
 
 const AccessTokenProvider: React.FC<{ children: ReactNode }> = ({children}) => {
-    const [accessToken, setAccessToken] = useState<string | null>(null);
+    const [accessToken, setAccessToken] = useState<string | null | undefined>(null);
     const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
 
     useEffect(() => {

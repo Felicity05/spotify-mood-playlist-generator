@@ -20,7 +20,7 @@ const StyledSideBar = styled.div`
 export const SideBar: React.FC<SideBarProps> = ({children}) => {
     return (
         <StyledSideBar>
-            <Box alignment="center" height={'300px'} style={{marginBottom: '0.5rem'}}>
+            <Box alignment="center" height={'350px'} style={{marginBottom: '0.5rem'}}>
                 <UserProfileSection/>
             </Box>
             <Box alignment="left">

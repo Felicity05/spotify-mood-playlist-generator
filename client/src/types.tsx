@@ -52,7 +52,22 @@ export interface Artist {
     genres: string[];
     external_urls: {
         spotify: string;
-    }
+    };
+    followers: {
+        href: null;
+        total: number;
+    };
+    type: string;
 }
 
-export {}
+export interface Artists {
+    href: string;
+    limit: number;
+    next: string;
+    cursors: {
+        before: string;
+        after: string;
+    };
+    total: number;
+    items: Artist[];
+}

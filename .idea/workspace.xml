@@ -6,10 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="252bb2fe-0ef2-4b2f-adf6-f2653bcd0078" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Components/MainContent/MainContent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/MainContent/MainContent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Components/MainContent/TopArtist.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/MainContent/TopArtist.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/AppLayout/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/AppLayout/Sidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/SideBarContent/UserProfileSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/SideBarContent/UserProfileSection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Context/AccessTokenContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Context/AccessTokenContext.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/api/api.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/api/api.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/utils/playlistTypes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/utils/playlistTypes.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/types.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/types.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/utils/auth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/utils/auth.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,6 +105,8 @@
       <workItem from="1709057581478" duration="166574000" />
       <workItem from="1711128558763" duration="101000" />
       <workItem from="1711132964404" duration="53821000" />
+      <workItem from="1712858421970" duration="11628000" />
+      <workItem from="1714929555722" duration="259000" />
     </task>
     <servers />
   </component>
@@ -129,7 +133,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/client/src/Components/MainContent/MainContent.tsx</url>
           <line>100</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>

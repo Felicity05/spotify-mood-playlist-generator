@@ -233,3 +233,18 @@ export const getTopTracksForTopArtists = async (topArtistsIds: string[]) => {
 
     return topTracksForTopArtist;
 }
+
+//gets the number of artist the user is following
+export const getFollowedArtistsForUser = async () => {
+    const response = await spotify_api.get(`/me/following`, {
+        params: {
+            type: "artist", //only type available at the moment as per the Spotify API documentation
+            limit: 50, //max limit
+            // after: "" //param to get to the next set of artists
+        }
+    });
+
+    console.log("followed artists== ", response.data)
+
+    return response.data.artists;
+}
