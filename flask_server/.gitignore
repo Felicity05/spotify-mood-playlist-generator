@@ -1,0 +1,31 @@
+# Virtual environment
+.venv/
+__pycache__/
+
+# Serverless Framework files
+.serverless/
+
+# Python specific files
+*.pyc
+*.pyo
+*.pyd
+*.swp
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Environments
+.env
+.env.*
+venv/
+ENV/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Node dependencies
+node_modules/
+
+#custom files
+aws-docker-sls_commands.txt

@@ -1,12 +1,12 @@
 Need to do
 
 1- get recently played songs
-    - add usr read recently played scope to the auth 
+    - add user read recently played scope to the auth
 2- for each track object from the returned list get the id and request the audio-features(endpoint)
 3- classify the song according to the audio feature 
     classify each feature with a corresponding mood 
 4- generate a playlist
-5- add songs according to the entred classification
+5- add songs according to the selected classification
 
 -------
 a slight modification
@@ -21,6 +21,11 @@ once the user select time frame and the mood and clicks the generate playlist bu
     for every track analyse the mood according to timbre, pitch, tempo and intensity and classify this accordingly
     for each track that meets the selected mood add it to the generated playlist
 
+this won't work since the spotify api only allows you to get listening history for the first 50 tracks,
+the api has a way to get more tracks, but they don't allow it for the public version
+
+--------------
+
 https://developer.spotify.com/documentation/web-api/reference/get-an-artists-top-tracks
 https://developer.spotify.com/documentation/web-api/reference/get-users-top-artists-and-tracks
 https://developer.spotify.com/documentation/web-api/reference/get-track
@@ -30,3 +35,14 @@ https://developer.spotify.com/documentation/web-api/reference/add-tracks-to-play
 ---------------
 another cool thing to do is get the user's favorites artist of all times and do a cool circular animation with all
 the artists and say some sort of cool thing like the personality thing spotify does in the wrapped at the end of the year
+
+-----------------
+fix the pop up function when songs are less than 5 but user want to make playlist anyways
+make the website responsive
+thanks the users for checking out the app after they log out and add a button for log in again
+make a contact us pag for feedback?
+
+--------------------
+more advance functionality:
+when creating a new playlist, before creating the playlist check if there is already a playlist with the same name
+and if so add the new songs to the already available playlist, but only add not duplicate songs

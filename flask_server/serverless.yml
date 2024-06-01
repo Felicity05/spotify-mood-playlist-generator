@@ -1,0 +1,54 @@
+service: mood-predictor-rest-api
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.9
+  region: us-east-1
+  ecr:
+    images:
+      moodpredictor:
+        path: .
+  stage: ${opt:stage, 'dev'}  # Default to 'dev' if not specified
+  environment:
+    CORS_ROUTE: ${self:custom.cors.${self:provider.stage}}
+
+functions:
+  app:
+    image:
+      name: moodpredictor
+    events:
+      - http:
+          path: /
+          method: any
+      - http:
+          path: /predict
+          method: post
+
+package:
+  patterns:
+    - '!venv/**'
+    - '!.venv/**'
+    - '!tests/**'
+    - '!serverless.yml'
+    - '!requirements.txt'
+    - 'server.py'
+    - 'wsgi_handler.py'
+    - 'mood_predictor_rf_model.pkl'
+
+
+plugins:
+  - serverless-python-requirements
+  - serverless-wsgi
+
+custom:
+  cors:
+    dev: 'http://localhost:3000'
+    prod: 'https://moodify.fun'
+  wsgi:
+    app: server.app
+    packRequirements: false
+
+  pythonRequirements:
+    dockerizePip: true
+    zip: true
