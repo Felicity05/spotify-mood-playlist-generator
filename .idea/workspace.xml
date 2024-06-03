@@ -6,11 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="252bb2fe-0ef2-4b2f-adf6-f2653bcd0078" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Spotify-Mood-Playlist-Generator-App.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Spotify-Mood-Playlist-Generator-App.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/other.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/to dos.txt" beforeDir="false" afterPath="$PROJECT_DIR$/client/to dos.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_server/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_server/server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/api/model_predictions_api.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/api/model_predictions_api.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_server/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_server/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_server/aws.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_server/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_server/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_server/requirements.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_server/serverless.yml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,11 +79,11 @@
       <recent name="$PROJECT_DIR$/client/public" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/flask_server/lambda-layer-data-processing" />
       <recent name="$PROJECT_DIR$/flask_server/lambda-layer-flask" />
       <recent name="$PROJECT_DIR$/flask_server/lambda-layer-ml" />
       <recent name="$PROJECT_DIR$/flask_server" />
-      <recent name="$PROJECT_DIR$/client/src/Components/MainContent" />
     </key>
   </component>
   <component name="RunManager">
@@ -134,7 +139,8 @@
       <workItem from="1717034437769" duration="8064000" />
       <workItem from="1717119388787" duration="570000" />
       <workItem from="1717176608588" duration="1114000" />
-      <workItem from="1717205699448" duration="337000" />
+      <workItem from="1717205699448" duration="2831000" />
+      <workItem from="1717439335625" duration="3248000" />
     </task>
     <servers />
   </component>

@@ -29,3 +29,4 @@ node_modules/
 
 #custom files
 aws-docker-sls_commands.txt
+.requirements.zip
