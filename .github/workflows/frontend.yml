@@ -33,7 +33,7 @@ jobs:
           cd client
           REDIRECT_URI=$REDIRECT_URI_PROD \
           PREDICTIONS_ENDPOINT=$PREDICTIONS_ENDPOINT_PROD \
-          yarn build --verbose
+          CI=false yarn build --verbose
 
       - name: Deploy to S3
         env:
