@@ -18,8 +18,8 @@ export const Home = () => {
                     flexDirection: "column",
                     color: "white",
                 }}>
-                    <h1>Welcome Moodify</h1>
-                    <h3>A Mood Generator Playlist for Spotify</h3>
+                    <h1>Welcome to Moodify</h1>
+                    <h3>Your Mood Generator Playlist for Spotify</h3>
                     <div style={{display: "flex", alignItems: "center", flexDirection: "column"}}>
                         <img src={music_mood} alt='music mood' width={'30%'}/>
                         <h2>Please log in to get started</h2>
