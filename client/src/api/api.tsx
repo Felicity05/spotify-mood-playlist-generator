@@ -216,7 +216,7 @@ export const getTopItemsForUser = async (type: string) => {
 export const getArtistTopTracks = async (artist_id: string) => {
     const response = await spotify_api.get(`/artists/${artist_id}/top-tracks`);
 
-    console.log("artist top tracks== ", response.data)
+    // console.log("artist top tracks== ", response.data)
 
     return response.data;
 }
@@ -226,7 +226,7 @@ export const getTopTracksForTopArtists = async (topArtistsIds: string[]) => {
 
     for (const artistId of topArtistsIds) {
         const response = await getArtistTopTracks(artistId);
-        console.log("top tracks for artist===", response);
+        // console.log("top tracks for artist===", response);
 
         topTracksForTopArtist = [...topTracksForTopArtist, ...response.tracks]
     }
@@ -244,7 +244,7 @@ export const getFollowedArtistsForUser = async () => {
         }
     });
 
-    console.log("followed artists== ", response.data)
+    // console.log("followed artists== ", response.data)
 
     return response.data.artists;
 }

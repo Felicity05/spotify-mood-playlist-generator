@@ -66,8 +66,8 @@ export const initiateAuthentication = async () => {
 export const exchangeAccessToken = async (code: string | null): Promise<AuthorizationResponse> => {
     const verifier = localStorage.getItem('verifier');
     const refresh_token = localStorage.getItem('refresh_token');
-    console.log("verifier==  ", verifier);
-    console.log("refresh token==  ", refresh_token);
+    // console.log("verifier==  ", verifier);
+    // console.log("refresh token==  ", refresh_token);
 
     // Check if the token is expired
     // if (!refresh_token) {
@@ -85,7 +85,7 @@ export const exchangeAccessToken = async (code: string | null): Promise<Authoriz
 
     try {
         const response = await axios.post(TOKEN_ENDPOINT, params);
-        console.log(response.data)
+        // console.log(response.data)
         setAccessToken(response.data.access_token);
         localStorage.setItem("refresh_token", response.data.refresh_token);
         return response.data;
