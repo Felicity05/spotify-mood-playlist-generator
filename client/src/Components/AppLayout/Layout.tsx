@@ -30,20 +30,6 @@ const Header = styled.header`
   justify-content: center;
 `;
 
-// const Sidebar = styled.aside`
-//   width: 250px;
-//   background-color: #040306;
-//   color: white;
-//   padding: 20px;
-// `;
-
-// const Main = styled.main`
-//   flex: 1;
-//   background-color: #040306;
-//   color: white;
-//   padding: 20px;
-// `;
-
 const Player = styled.footer`
   height: 80px;
   background-color: #040306;
@@ -63,7 +49,7 @@ export const Layout: React.FC<any> = ({children}) => {
             {/*<Header>Header</Header>*/}
             {accessToken && <SideBar/>}
             <Main>
-                {accessToken && <NavBar style={{position: "sticky", top: 0}}/>}
+                {accessToken && <NavBar/>}
                 {children}
             </Main>
             {/*<Player>Player</Player>*/}

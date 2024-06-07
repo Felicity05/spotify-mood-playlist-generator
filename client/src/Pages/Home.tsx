@@ -1,8 +1,8 @@
 import React from 'react';
-import music_mood from '../assets/music-mood.png';
 import {LogIn} from "../Components/UI Components/LogIn";
 import {useAccessToken} from "../Context/AccessTokenContext";
 import {MainContent} from "../Components/MainContent/MainContent";
+import music_mood from '../assets/music-mood.png';
 
 export const Home = () => {
     const {accessToken} = useAccessToken()
@@ -10,10 +10,16 @@ export const Home = () => {
 
     // if logged in go to AppContent page
     return (
-        <div>
+        <div style={{border: "solid 3px blue", width: "inherit", boxSizing: "border-box"}}>
             {!accessToken ?
-                <div style={{display: "flex", alignItems: "center", flexDirection: "column", color: "white"}}>
-                    <h1> Welcome to the Mood Generator Playlist for Spotify</h1>
+                <div style={{
+                    display: "flex",
+                    alignItems: "center",
+                    flexDirection: "column",
+                    color: "white",
+                }}>
+                    <h1>Welcome Moodify</h1>
+                    <h3>A Mood Generator Playlist for Spotify</h3>
                     <div style={{display: "flex", alignItems: "center", flexDirection: "column"}}>
                         <img src={music_mood} alt='music mood' width={'30%'}/>
                         <h2>Please log in to get started</h2>

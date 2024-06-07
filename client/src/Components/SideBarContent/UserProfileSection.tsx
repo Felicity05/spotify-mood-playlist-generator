@@ -24,7 +24,7 @@ export const UserProfileSection = () => {
     useEffect(() => {
         getFollowedArtistsForUser().then(followedArtists => {
                 setFollowedArtist(followedArtists);
-                console.log(followedArtists)
+                // console.log(followedArtists)
             }
         ).catch(error => console.log("Error: ", error.message))
     }, [])
