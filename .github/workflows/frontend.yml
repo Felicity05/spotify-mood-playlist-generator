@@ -25,6 +25,7 @@ jobs:
           cd client
           rm -rf node_modules
           yarn cache clean
+          yarn 
           yarn install
 
       - name: Build frontend
@@ -32,7 +33,7 @@ jobs:
           cd client
           REDIRECT_URI=$REDIRECT_URI_PROD \
           PREDICTIONS_ENDPOINT=$PREDICTIONS_ENDPOINT_PROD \
-          yarn build
+          yarn build --verbose
 
       - name: Deploy to S3
         env:
