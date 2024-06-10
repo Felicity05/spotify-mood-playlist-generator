@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="252bb2fe-0ef2-4b2f-adf6-f2653bcd0078" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.github/workflows/frontend.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/frontend.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/api/model_predictions_api.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/api/model_predictions_api.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/utils/auth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/utils/auth.tsx" afterDir="false" />
@@ -134,7 +133,7 @@
       <workItem from="1717119388787" duration="570000" />
       <workItem from="1717176608588" duration="1114000" />
       <workItem from="1717205699448" duration="2831000" />
-      <workItem from="1717439335625" duration="37750000" />
+      <workItem from="1717439335625" duration="39525000" />
     </task>
     <servers />
   </component>

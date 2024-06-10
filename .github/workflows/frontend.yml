@@ -35,6 +35,11 @@ jobs:
           PREDICTIONS_ENDPOINT=$PREDICTIONS_ENDPOINT_PROD \
           CI=false yarn build --verbose
 
+      - name: Check built files
+        run: |
+          grep -r 'REDIRECT_URI' build/
+          grep -r 'PREDICTIONS_ENDPOINT' build/
+
       - name: Deploy to S3
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}

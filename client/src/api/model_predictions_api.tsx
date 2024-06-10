@@ -3,6 +3,7 @@ import {TrackAudioFeatures} from "../utils/trackTypes";
 import {type} from "os";
 
 const PREDICTIONS_ENDPOINT = process.env.PREDICTIONS_ENDPOINT || 'http://localhost:5000/predict'
+console.log("PREDICTIONS_ENDPOINT== ", PREDICTIONS_ENDPOINT)
 
 export const predictTrackMood = (trackFeatures: TrackAudioFeatures[]) => {
     return axios.post(PREDICTIONS_ENDPOINT, {trackFeatures})

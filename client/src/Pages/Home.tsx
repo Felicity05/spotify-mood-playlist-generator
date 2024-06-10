@@ -10,7 +10,7 @@ export const Home = () => {
 
     // if logged in go to AppContent page
     return (
-        <div style={{border: "solid 3px blue", width: "inherit", boxSizing: "border-box"}}>
+        <div style={{width: "inherit", boxSizing: "border-box"}}>
             {!accessToken ?
                 <div style={{
                     display: "flex",

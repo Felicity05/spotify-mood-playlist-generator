@@ -14,6 +14,8 @@ const SCOPES = "user-read-private user-read-email user-top-read user-read-recent
 export const TOKEN_STORAGE_KEY = 'spotifyAccessToken';
 let accessToken: string | null = null;
 
+console.log("REDIRECT_URI== ", REDIRECT_URI)
+
 // this part extracted from: https://github.com/spotify/spotify-web-api-ts-sdk/blob/main/src/auth/AccessTokenHelpers.ts
 // Function to generate a random code verifier
 const generateCodeVerifier = (length: number): string => {
