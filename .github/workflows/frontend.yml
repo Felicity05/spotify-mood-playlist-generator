@@ -32,8 +32,6 @@ jobs:
         run: |
           echo "REACT_APP_REDIRECT_URI=${{ vars.REACT_APP_REDIRECT_URI_PROD }}"
           echo "REACT_APP_PREDICTIONS_ENDPOINT=${{ vars.REACT_APP_PREDICTIONS_ENDPOINT_PROD }}"
-          echo "REACT_APP_REDIRECT_URI-1=${REACT_APP_REDIRECT_URI_PROD}"
-          echo "REACT_APP_PREDICTIONS_ENDPOINT-1=${REACT_APP_PREDICTIONS_ENDPOINT_PROD}"
 
       - name: Build frontend
         env:
@@ -55,9 +53,9 @@ jobs:
           if [ -d "build" ]; then
             grep -r 'REACT_APP_REDIRECT_URI' build/
             grep -r 'REACT_APP_PREDICTIONS_ENDPOINT' build/
-            echo "REACT_APP_REDIRECT_URI=${env.REACT_APP_REDIRECT_URI_PROD}"
-            echo "REACT_APP_PREDICTIONS_ENDPOINT-1=${env.REACT_APP_PREDICTIONS_ENDPOINT_PROD}"
           else echo "Build directory does not exist"; fi
+          echo "REACT_APP_REDIRECT_URI=${env.REACT_APP_REDIRECT_URI}"
+          echo "REACT_APP_PREDICTIONS_ENDPOINT=${env.REACT_APP_PREDICTIONS_ENDPOINT}"
 
       - name: Deploy to S3
         env:
