@@ -16,7 +16,7 @@ model = joblib.load('mood_predictor_rf_model.pkl')
 @app.route("/")
 def greetings():
     print("Hello there, server working")
-    print("CORS_ROUTE== ", CORS_ROUTE)
+    print("CORS_ROUTE= ", CORS_ROUTE)
     return jsonify(message="Welcome to Mood Predictor API!", CORS_ROUTE=CORS_ROUTE)
 
 
