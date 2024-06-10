@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="252bb2fe-0ef2-4b2f-adf6-f2653bcd0078" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/frontend.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/frontend.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Pages/CallbackPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Pages/CallbackPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_server/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_server/server.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +133,7 @@
       <workItem from="1717176608588" duration="1114000" />
       <workItem from="1717205699448" duration="2831000" />
       <workItem from="1717439335625" duration="39525000" />
-      <workItem from="1718045200498" duration="4762000" />
+      <workItem from="1718045200498" duration="6924000" />
     </task>
     <servers />
   </component>
