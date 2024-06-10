@@ -3,7 +3,7 @@ import {AuthorizationResponse} from "./authTypes";
 
 // needed for authentication
 const CLIENT_ID = 'd5398f16c9b246898c33eda2ca52a59f'
-const REDIRECT_URI = process.env.REDIRECT_URI || 'http://localhost:3000/callback'
+const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI || 'http://localhost:3000/callback'
 const AUTH_ENDPOINT = 'https://accounts.spotify.com/authorize'
 const TOKEN_ENDPOINT = "https://accounts.spotify.com/api/token";
 const RESPONSE_TYPE = 'code'

@@ -28,16 +28,17 @@ jobs:
           yarn 
           yarn install
 
-      - name: Log environment variables
+      - name: Log environment variables before build
         run: |
-          echo "REDIRECT_URI=${{ secrets.REDIRECT_URI }}"
-          echo "PREDICTIONS_ENDPOINT=${{ secrets.PREDICTIONS_ENDPOINT_PROD }}"
+          echo "REACT_APP_REDIRECT_URI=${{ secrets.REDIRECT_URI_PROD }}"
+          echo "REACT_APP_PREDICTIONS_ENDPOINT=${{ secrets.PREDICTIONS_ENDPOINT_PROD }}"
 
       - name: Build frontend
+        env:
+          REACT_APP_REDIRECT_URI=${{ secrets.REDIRECT_URI_PROD }}
+          REACT_APP_PREDICTIONS_ENDPOINT=${{ secrets.PREDICTIONS_ENDPOINT_PROD }}
         run: |
           cd client
-          REDIRECT_URI=$REDIRECT_URI_PROD \
-          PREDICTIONS_ENDPOINT=$PREDICTIONS_ENDPOINT_PROD \
           CI=false yarn build --verbose
 
       - name: Check build output
@@ -50,8 +51,8 @@ jobs:
         run: |
           cd client
           if [ -d "build" ]; then
-            grep -r 'REDIRECT_URI' build/
-            grep -r 'PREDICTIONS_ENDPOINT' build/;
+            grep -r 'REACT_APP_REDIRECT_URI' build/
+            grep -r 'REACT_APP_PREDICTIONS_ENDPOINT' build/
           else echo "Build directory does not exist"; fi
 
       - name: Deploy to S3
