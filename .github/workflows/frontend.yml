@@ -50,10 +50,6 @@ jobs:
       - name: Check built files
         run: |
           cd client
-          if [ -d "build" ]; then
-            grep -r 'REACT_APP_REDIRECT_URI' build/
-            grep -r 'REACT_APP_PREDICTIONS_ENDPOINT' build/
-          else echo "Build directory does not exist"; fi
           echo "REACT_APP_REDIRECT_URI=${env.REACT_APP_REDIRECT_URI}"
           echo "REACT_APP_PREDICTIONS_ENDPOINT=${env.REACT_APP_PREDICTIONS_ENDPOINT}"
 
