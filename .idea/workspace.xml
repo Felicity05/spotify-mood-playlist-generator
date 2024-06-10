@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="252bb2fe-0ef2-4b2f-adf6-f2653bcd0078" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/backend.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/backend.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_server/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_server/server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_server/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/flask_server/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +133,7 @@
       <workItem from="1717176608588" duration="1114000" />
       <workItem from="1717205699448" duration="2831000" />
       <workItem from="1717439335625" duration="39525000" />
-      <workItem from="1718045200498" duration="8024000" />
+      <workItem from="1718045200498" duration="11142000" />
     </task>
     <servers />
   </component>
@@ -147,7 +148,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
