@@ -17,7 +17,7 @@ model = joblib.load('mood_predictor_rf_model.pkl')
 def greetings():
     print("Hello there, server working")
     print("CORS_ROUTE== ", CORS_ROUTE)
-    return jsonify(message="Welcome to Mood Predictor API!")
+    return jsonify(message="Welcome to Mood Predictor API!", CORS_ROUTE=CORS_ROUTE)
 
 
 # features to use duration_ms, danceability, acousticness, energy, instrumentalness, valence, speechiness, tempo
