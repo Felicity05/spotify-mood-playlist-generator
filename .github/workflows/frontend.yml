@@ -32,11 +32,13 @@ jobs:
         run: |
           echo "REACT_APP_REDIRECT_URI=${{ secrets.REDIRECT_URI_PROD }}"
           echo "REACT_APP_PREDICTIONS_ENDPOINT=${{ secrets.PREDICTIONS_ENDPOINT_PROD }}"
+          echo "REACT_APP_REDIRECT_URI-1=${REACT_APP_REDIRECT_URI}"
+          echo "REACT_APP_PREDICTIONS_ENDPOINT-1=${REACT_APP_PREDICTIONS_ENDPOINT}"
 
       - name: Build frontend
         env:
-          REACT_APP_REDIRECT_URI=${{ secrets.REDIRECT_URI_PROD }}
-          REACT_APP_PREDICTIONS_ENDPOINT=${{ secrets.PREDICTIONS_ENDPOINT_PROD }}
+          REACT_APP_REDIRECT_URI: ${{ secrets.REDIRECT_URI_PROD }}
+          REACT_APP_PREDICTIONS_ENDPOINT: ${{ secrets.PREDICTIONS_ENDPOINT_PROD }}
         run: |
           cd client
           CI=false yarn build --verbose
