@@ -42,3 +42,11 @@ jobs:
           AWS_REGION: us-east-1
         run: |
           aws s3 sync client/build s3://spotify-mood-generator-playlist --delete
+
+      - name: Invalidate CloudFront cache
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: us-east-1
+        run: |
+          aws cloudfront create-invalidation --distribution-id E3G2CAP3BH2C9V --paths "/*"
