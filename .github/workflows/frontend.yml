@@ -28,6 +28,11 @@ jobs:
           yarn 
           yarn install
 
+      - name: Log environment variables
+        run: |
+          echo "REDIRECT_URI=${{ secrets.REDIRECT_URI }}"
+          echo "PREDICTIONS_ENDPOINT=${{ secrets.PREDICTIONS_ENDPOINT_PROD }}"
+
       - name: Build frontend
         run: |
           cd client
@@ -35,10 +40,19 @@ jobs:
           PREDICTIONS_ENDPOINT=$PREDICTIONS_ENDPOINT_PROD \
           CI=false yarn build --verbose
 
+      - name: Check build output
+        run: |
+          cd client
+          if [ -d "build" ]; then echo "Build directory exists"; else echo "Build directory does not exist"; fi
+          ls -la build || true
+
       - name: Check built files
         run: |
-          grep -r 'REDIRECT_URI' build/
-          grep -r 'PREDICTIONS_ENDPOINT' build/
+          cd client
+          if [ -d "build" ]; then
+            grep -r 'REDIRECT_URI' build/
+            grep -r 'PREDICTIONS_ENDPOINT' build/;
+          else echo "Build directory does not exist"; fi
 
       - name: Deploy to S3
         env:
