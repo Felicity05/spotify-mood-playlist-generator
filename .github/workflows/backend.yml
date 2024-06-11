@@ -24,7 +24,6 @@ jobs:
         uses: serverless/github-action@v3.2
         with:
           args: -c " cd flask_server && serverless plugin install -n serverless-python-requirements"
-          entrypoint: /bin/sh
 
       - name: Install dependencies
         run: |
@@ -52,4 +51,3 @@ jobs:
         uses: serverless/github-action@v3.2
         with:
           args: -c "pwd && cd flask_server && pwd && serverless deploy --stage prod --verbose"
-          entrypoint: /bin/sh
