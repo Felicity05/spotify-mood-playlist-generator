@@ -21,9 +21,11 @@ functions:
       - http:
           path: /
           method: any
+          cors: true
       - http:
           path: /predict
           method: post
+          cors: true
 
 package:
   patterns:
@@ -33,7 +35,7 @@ package:
     - '!serverless.yml'
     - '!requirements.txt'
     - 'server.py'
-    - 'wsgi_handler.py'
+    - 'aws.py'
     - 'mood_predictor_rf_model.pkl'
 
 
