@@ -33,10 +33,16 @@ jobs:
           source .venv/bin/activate
           pip install -r requirements.txt
 
+      - name: Check Docker version
+        run: docker --version
+
       - name: Ensure Docker is running
+        run: docker info
+
+      - name: Verify Docker permissions
         run: |
-          sudo service docker start
-          sudo docker info
+          docker run hello-world
+          docker run --rm -v /github/home:/github/home alpine ls /github/home
 
       - name: Deploy with Serverless
         env:
@@ -45,5 +51,5 @@ jobs:
           AWS_REGION: us-east-1
         uses: serverless/github-action@v3.2
         with:
-          args: -c "echo pwd && cd flask_server && echo pwd && serverless deploy --stage prod --verbose"
+          args: -c "pwd && cd flask_server && pwd && serverless deploy --stage prod --verbose"
           entrypoint: /bin/sh
