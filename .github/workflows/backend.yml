@@ -45,5 +45,5 @@ jobs:
           AWS_REGION: us-east-1
         uses: serverless/github-action@v3.2
         with:
-          args: -c "cd flask_server && serverless deploy --stage prod"
+          args: -c "echo pwd && cd flask_server && echo pwd && serverless deploy --stage prod --verbose"
           entrypoint: /bin/sh
