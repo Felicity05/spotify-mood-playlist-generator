@@ -37,7 +37,7 @@ jobs:
       - name: Install Serverless Plugin
         uses: serverless/github-action@v3.2
         with:
-          args: -c " cd flask_server && serverless plugin install -n serverless-python-requirements"
+          args: -c "cd flask_server && serverless plugin install -n serverless-python-requirements"
           entrypoint: /bin/sh
 
       - name: Install dependencies
@@ -46,6 +46,22 @@ jobs:
           python -m venv .venv
           source .venv/bin/activate
           pip install -r requirements.txt
+
+      - name: Cache Serverless Dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.serverless
+          key: ${{ runner.os }}-serverless-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-serverless-
+
+      - name: Cache Python dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
 
       - name: Check disk space after installing dependencies
         run: df -h
