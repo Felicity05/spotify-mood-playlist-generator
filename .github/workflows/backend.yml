@@ -23,6 +23,11 @@ jobs:
         with:
           python-version: '3.9'
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
       - name: Check Docker version
         run: docker --version
 
@@ -34,11 +39,13 @@ jobs:
           docker run hello-world
           docker run --rm -v /github/home:/github/home alpine ls /github/home
 
+      - name: Install Serverless globally
+        run: npm install -g serverless
+
       - name: Install Serverless Plugin
-        uses: serverless/github-action@v3
-        with:
-          args: -c "cd flask_server && serverless plugin install -n serverless-python-requirements"
-          entrypoint: /bin/sh
+        run: |
+          cd flask_server
+          serverless plugin install -n serverless-python-requirements
 
       - name: Install dependencies
         run: |
@@ -71,7 +78,6 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: us-east-1
-        uses: serverless/github-action@v3
-        with:
-          args: -c "pwd && cd flask_server && pwd && serverless deploy --stage prod --verbose"
-          entrypoint: /bin/sh
+        run: |
+          cd flask_server
+          serverless deploy --stage prod --verbose
