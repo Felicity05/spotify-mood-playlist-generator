@@ -45,12 +45,12 @@ jobs:
       - name: Install Serverless-python-requirements plugin
         run: |
           cd flask_server
-          serverless plugin install -n serverless-python-requirements
+          npm install serverless-python-requirements
 
       - name: Install Serverless-wsgi plugin
         run: |
           cd flask_server
-          serverless plugin install -n serverless-wsgi
+          npm install serverless-wsgi
 
       - name: Install dependencies
         run: |
@@ -86,4 +86,4 @@ jobs:
           AWS_REGION: us-east-1
         run: |
           cd flask_server
-          serverless deploy --stage prod --verbose
+          npx serverless deploy --stage prod --verbose --debug
