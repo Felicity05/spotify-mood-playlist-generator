@@ -39,13 +39,14 @@ jobs:
           docker run hello-world
           docker run --rm -v /github/home:/github/home alpine ls /github/home
 
-      - name: Install Serverless globally
+      - name: Install Serverless Framework globally
         run: npm install -g serverless
 
-      - name: Install Serverless Plugin
+      - name: Install Serverless Plugins
         run: |
           cd flask_server
           serverless plugin install -n serverless-python-requirements
+          serverless plugin install -n serverless-wsgi
 
       - name: Install dependencies
         run: |
