@@ -96,4 +96,4 @@ jobs:
           AWS_REGION: us-east-1
         run: |
           cd flask_server
-          npx serverless deploy --stage prod --verbose --debug:true
+          npx serverless deploy --stage prod --verbose
