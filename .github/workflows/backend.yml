@@ -52,12 +52,22 @@ jobs:
           cd flask_server
           npm install serverless-wsgi
 
+      - name: Verify Installed Serverless Plugins
+        run: |
+          cd flask_server
+          npx serverless plugin list
+
       - name: Install dependencies
         run: |
           cd flask_server
           python -m venv .venv
           source .venv/bin/activate
           pip install -r requirements.txt
+
+      - name: Verify Installed Python Packages
+        run: |
+          cd flask_server
+          pip list
 
       - name: Cache Serverless Dependencies
         uses: actions/cache@v4
@@ -84,6 +94,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: us-east-1
+          CI: false  # Disable CI-specific behaviors
         run: |
           cd flask_server
           npx serverless deploy --stage prod --verbose --debug
