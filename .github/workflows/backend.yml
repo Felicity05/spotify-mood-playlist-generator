@@ -42,10 +42,14 @@ jobs:
       - name: Install Serverless Framework globally
         run: npm install -g serverless
 
-      - name: Install Serverless Plugins
+      - name: Install Serverless-python-requirements plugin
         run: |
           cd flask_server
           serverless plugin install -n serverless-python-requirements
+
+      - name: Install Serverless-wsgi plugin
+        run: |
+          cd flask_server
           serverless plugin install -n serverless-wsgi
 
       - name: Install dependencies
