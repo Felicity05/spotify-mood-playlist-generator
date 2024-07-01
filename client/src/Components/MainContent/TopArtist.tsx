@@ -18,7 +18,12 @@ interface TopArtistProps {
 export const TopArtist: React.FC<TopArtistProps> = ({topArtist, setTopArtist}) => {
 
     useEffect(() => {
-        getTopItemsForUser("artists").then(artist => setTopArtist(artist as Artist[]))
+        getTopItemsForUser("artists")
+            .then(items => {
+                const top15Artists = items.slice(0, 15);
+                console.log(top15Artists);
+                setTopArtist(top15Artists as Artist[])
+            })
 
     }, []);
 
@@ -30,11 +35,10 @@ export const TopArtist: React.FC<TopArtistProps> = ({topArtist, setTopArtist}) =
             <div style={{
                 display: "flex",
                 flexWrap: "wrap",
-                alignItems: "center",
                 justifyContent: "center",
                 marginBottom: "1rem"
             }}>
-                {topArtist.slice(0, 15).sort((a, b) => b.popularity - a.popularity)
+                {topArtist.sort((a, b) => b.popularity - a.popularity)
                     .map((artist, index) => {
                         return (
                             <ArtistCard

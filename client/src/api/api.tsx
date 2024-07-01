@@ -100,9 +100,9 @@ export const getAudioFeaturesForTrack = async (id: string) => {
     return response.data;
 }
 
-/*get several tracks audio features
-@params a comma-separated list of the Spotify IDs for the tracks. Maximum: 100 IDs.
-*/
+/** Gets several tracks audio features
+ @params: trackIdsList, a comma-separated list of the Spotify IDs for the tracks. Maximum: 100 IDs.
+ */
 export const getSeveralTracksAudioFeatures = async (trackIdsList: string) => {
 
     const response = await spotify_api.get(`/audio-features/`, {
@@ -110,7 +110,8 @@ export const getSeveralTracksAudioFeatures = async (trackIdsList: string) => {
             ids: trackIdsList
         }
     });
-    return response.data;
+    //todo: add error handling
+    return response.data!.audio_features;
 }
 
 /* Create new playlist for user (The playlist will be empty until you add tracks)

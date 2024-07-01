@@ -2,9 +2,10 @@ import React, {useState} from 'react';
 import styled from "styled-components";
 import {Button} from "./Button";
 import closeIcon from '../../assets/Icons/icons8-close-64-white.png'
+import {Text} from "./Text";
 
-const ModalWrapper = styled.div<{ is_visible: any }>`
-  display: ${({ is_visible }) => (is_visible ? 'block' : 'none')};
+const PageOverlay = styled.div<{ is_visible: string }>`
+  display: ${({is_visible}) => (is_visible ? 'block' : 'none')};
   position: fixed;
   top: 0;
   left: 0;
@@ -14,7 +15,7 @@ const ModalWrapper = styled.div<{ is_visible: any }>`
   z-index: 9999;
 `
 
-const ModalContent = styled.div`
+const ModalBox = styled.div`
   background-color: #121212;
   width: 500px;
   height: 300px;
@@ -32,26 +33,36 @@ const ModalContent = styled.div`
 `
 
 const ModalButtons = styled.div`
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 
-    button {
-        margin: 0 10px;
-    }
+  button {
+    margin: 0 10px;
+  }
 `
 
 const ModalHeader = styled.div`
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
-
-  .close-icon {
-    margin-top: -50px;
-    padding: 0 10px;
-    height: 24px;
-  }
+  position: fixed;
+  top: 10px;
+  right: 10px;
 `;
+
+const ModalContent = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+const HookMessageStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 300px;
+  gap: 1.5rem;
+`
 
 interface ModalProps {
     isOpen: boolean;
@@ -62,10 +73,15 @@ interface ModalProps {
     handleMood: () => void;
     handleTrackSource: () => void;
     handleBoth: () => void;
+    hookMessage: string;
 }
 
 // @ts-ignore
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onConfirm, handleMood, handleTrackSource, handleBoth, message }) => {
+const Modal: React.FC<ModalProps> = ({
+                                         isOpen, onClose, onConfirm, handleMood,
+                                         handleTrackSource, handleBoth, message, hookMessage
+                                     }) => {
+
     if (!isOpen) return null;
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [showResetOptions, setShowResetOptions] = useState(false)
@@ -75,33 +91,39 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onConfirm, handleMood, h
     };
 
     return (
-        <ModalWrapper is_visible={isOpen.toString()}>
-            <ModalContent>
+        <PageOverlay is_visible={isOpen.toString()}>
+            <ModalBox>
                 <ModalHeader>
-                    {/*todo: fix this icon*/}
-                    <Button variant="icon" size="cl" onClick={onClose} style={{padding: '0px'}}>
-                        <img src={closeIcon} alt={""} className="close-icon"/>
+                    <Button variant="icon_clear" size="cl" onClick={onClose}>
+                        <img src={closeIcon} alt={""} className="close-icon" width={24}/>
                     </Button>
                 </ModalHeader>
-            {!showResetOptions ? ( <>
-                    <p style={{marginBottom: '0px'}}>There would be only {message} songs on your playlist. </p>
-                    <p>Are you sure you want to continue?</p>
-                    <ModalButtons>
-                        <Button variant="secondary" size="lg" onClick={handleNoClick}>No</Button>
-                        <Button variant="secondary" size="lg" onClick={onConfirm}>Yes</Button>
-                    </ModalButtons>
-                </>)
-                : ( <>
-                    <p>What would you like to reset?</p>
-                    <ModalButtons>
-                        <Button variant="secondary" size="md" onClick={handleMood}>Mood</Button>
-                        <Button variant="secondary" size="md" onClick={handleTrackSource}>Tracks Source</Button>
-                        <Button variant="secondary" size="md" onClick={handleBoth}> Start Over </Button>
-                    </ModalButtons>
-                </>)
-            }
-            </ModalContent>
-        </ModalWrapper>
+                <ModalContent>
+                    {hookMessage ? (
+                            <HookMessageStyled>
+                                <Text variant={"md"}>{hookMessage}</Text>
+                                <Button variant="secondary" size={"md"} onClick={onClose}>OK</Button>
+                            </HookMessageStyled>)
+                        : (<>
+                            <p style={{marginBottom: '0px'}}>There would be only {message} songs on your playlist. </p>
+                            <p>Are you sure you want to continue?</p>
+                            <ModalButtons>
+                                <Button variant="secondary" size="lg" onClick={handleNoClick}>No</Button>
+                                <Button variant="secondary" size="lg" onClick={onConfirm}>Yes</Button>
+                            </ModalButtons>
+                        </>)}
+
+                    {showResetOptions && (<>
+                        <p>What would you like to reset?</p>
+                        <ModalButtons>
+                            <Button variant="secondary" size="md" onClick={handleMood}>Mood</Button>
+                            <Button variant="secondary" size="md" onClick={handleTrackSource}>Tracks Source</Button>
+                            <Button variant="secondary" size="md" onClick={handleBoth}> Start Over </Button>
+                        </ModalButtons>
+                    </>)}
+                </ModalContent>
+            </ModalBox>
+        </PageOverlay>
     );
 }
 

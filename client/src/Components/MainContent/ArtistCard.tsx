@@ -9,14 +9,33 @@ const StyledArtistCard = styled.div`
   //border: solid 2px mediumvioletred;
   padding: 1rem;
   width: 185px;
-  height: 260px;
   box-sizing: border-box;
-  justify-content: center;
+  justify-content: flex-start;
 
 
   &:hover {
     background-color: #2a2a2a;
     border-radius: 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    width: 140px;
+  }
+
+  @media (max-width: 820px) {
+    width: 175px;
+  }
+`
+
+const StyledImage = styled.img`
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+
+  @media (max-width: 768px) {
+    width: 115px;
+    height: 115px;
   }
 `
 
@@ -29,7 +48,10 @@ interface ArtistCardProps {
 }
 
 
-export const ArtistCard: React.FC<ArtistCardProps> = ({name, genres, popularity, image, spotify_url}) => {
+export const ArtistCard: React.FC<ArtistCardProps> = ({
+                                                          name, genres, popularity,
+                                                          image, spotify_url
+                                                      }) => {
 
     const handleOnClick = () => {
         window.open(spotify_url, '_blank'); // Open URL in a new tab
@@ -38,11 +60,7 @@ export const ArtistCard: React.FC<ArtistCardProps> = ({name, genres, popularity,
     return (
         <StyledArtistCard onClick={handleOnClick}>
             {/*todo: fix scale of image so it doesn't loose quality*/}
-            <img src={image} alt={"artist"} //"https://picsum.photos/200/300"
-                 width={"150"}
-                 height={"150"}
-                 style={{borderRadius: "50%",}}
-            />
+            <StyledImage src={image} alt={"artist"}/> {/* "https://picsum.photos/200/300" */}
             <div style={{marginTop: "0.5rem"}}>
                 <Text variant={"md"}>{name}</Text>
                 <div style={{display: "flex"}}>

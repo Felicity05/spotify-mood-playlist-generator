@@ -20,7 +20,7 @@ export const PlaylistHeader: React.FC<any> = ({playlist}) => {
         <MainBackgroundColor>
             <div style={{display: "flex", paddingBottom: '1rem', paddingLeft: '2rem'}}>
                 <img src={playlist?.images[0].url} alt={""}
-                     style={{maxWidth: "200px", height: "auto", borderRadius: "0.3rem"}}/>
+                     style={{maxWidth: "200px", height: "200px", borderRadius: "0.3rem"}}/>
                 <div style={{
                     display: "flex", flexDirection: "column", justifyContent: "flex-end",
                     alignItems: "flex-start", paddingLeft: "1.5rem"

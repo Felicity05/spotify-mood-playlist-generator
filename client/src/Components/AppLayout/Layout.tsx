@@ -39,6 +39,7 @@ const Player = styled.footer`
   justify-content: center;
 `;
 
+//scereen size at 768 need to decrease image size
 
 export const Layout: React.FC<any> = ({children}) => {
     const {accessToken} = useAccessToken()
