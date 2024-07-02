@@ -60,19 +60,32 @@ export const useGeneratePlaylist = (): GeneratePlaylistHook => {
             }
         })
 
-        console.log("total tracks to analyze", listOfTracksIds.size)
-        //convert the listOfTracksIds set into an Array and finally to a String
-        const trackIdsList = [...listOfTracksIds].slice(0, 100).toString() //can only pass 100 ids at a time to the getTracksAudioFeatures endpoint
-        // console.log("(string) trackIdsList== ", trackIdsList)
+        console.log("total tracks to analyze", listOfTracksIds.size);
+        let totalTracks = listOfTracksIds.size;
 
-        //todo: make a loop to get track features for all the songs on the listOfTracksIds
-        //makes an api call to get the audio features of all the unique songs in the source list
-        const listOfAudioFeatures: TrackAudioFeatures[] = await getSeveralTracksAudioFeatures(trackIdsList)
+
+        let partitions = 0;
+        let listOfAudioFeatures: TrackAudioFeatures[] = [];
+        while (totalTracks >= 0) {
+            //convert the listOfTracksIds set into an Array and finally to a String
+            const trackIdsList = [...listOfTracksIds].slice(partitions, partitions + 100).toString() //can only pass 100 ids at a time to the getTracksAudioFeatures endpoint
+            partitions += 100;
+            // console.log("(string) trackIdsList== ", trackIdsList)
+
+            //todo: make a loop to get track features for all the songs on the listOfTracksIds
+            //makes an api call to get the audio features of all the unique songs in the source list
+            const currentListOfAudioFeatures = await getSeveralTracksAudioFeatures(trackIdsList);
+            listOfAudioFeatures = [...listOfAudioFeatures, ...currentListOfAudioFeatures];
+
+            totalTracks -= 100;
+            console.log("totalTracks== ", totalTracks, " -- partitions== ", partitions)
+        }
         console.log("listOfAudioFeatures== ", listOfAudioFeatures)
+        console.log("listOfAudioFeaturesSize== ", listOfAudioFeatures.length)
 
         //uses my ML random_forest model to predict the mood for each song
         const tracksMoodList = await predictTrackMood(listOfAudioFeatures)
-        console.log(tracksMoodList)
+        console.log("tracksMoodList== ", tracksMoodList)
 
         // If the tracksMoodList is a string, it's an error message
         if (typeof tracksMoodList === 'string') {
@@ -189,6 +202,7 @@ export const useGeneratePlaylist = (): GeneratePlaylistHook => {
 
             } else {
                 console.log("create playlist here, call api here")
+                const position = 0;
                 await createPlaylistWithSelectedSongs(listTracksUri, mood);
             }
         }

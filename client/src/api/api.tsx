@@ -114,9 +114,9 @@ export const getSeveralTracksAudioFeatures = async (trackIdsList: string) => {
     return response.data!.audio_features;
 }
 
-/* Create new playlist for user (The playlist will be empty until you add tracks)
-Each user is generally limited to a maximum of 11000 playlists.
-@params the user id
+/** Creates new playlist for user (The playlist will be empty until tracks are added)
+ Each user is generally limited to a maximum of 11000 playlists.
+ @params userId, mood
  */
 export const createNewPlaylist = async (user_id: string, mood: string) => {
 
@@ -129,16 +129,31 @@ export const createNewPlaylist = async (user_id: string, mood: string) => {
     return response.data;
 }
 
-/* Add songs to the created playlist
-@params playlistId
+/** Add songs to the created playlist
+ @params playlistId
  */
 export const addSelectedTracksToPlaylist = async (playlist_id: string, tracksUris: string[]) => {
-    const response = await spotify_api.post(`/playlists/${playlist_id}/tracks`, {
-            "position": 0, //insert items at the top of the list
-            "uris": tracksUris,
-        }
-    )
-    return response.data;
+
+    let position = 0; //begin to insert items at the top of the list
+    let response: AxiosResponse<any, any>;
+    let totalTracks = tracksUris.length;
+
+    //to add more than 100 items to the playlist because a maximum of 100 items can be added in one request
+    while (totalTracks >= 0) {
+        const uris = tracksUris.slice(position, position + 100);
+
+        response = await spotify_api.post(`/playlists/${playlist_id}/tracks`, {
+                position,
+                uris,
+            }
+        )
+
+        position += 100;
+        totalTracks -= 100;
+        console.log("totalTracks== ", totalTracks, " position== ", position);
+    }
+
+    return response!.data;
 }
 
 //get playlist for user -- Get a playlist owned by a Spotify user.

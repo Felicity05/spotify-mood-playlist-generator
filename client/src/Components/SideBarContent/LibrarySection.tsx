@@ -1,7 +1,8 @@
 import {LibraryItem} from './LibraryItem';
 import styled from 'styled-components';
 import {Text} from '../UI Components/Text';
-import playlistIcon from '../../assets/Icons/icons8-music-library-96(1).png'
+import libraryIcon from '../../assets/Icons/icons8-music-library-96(1).png'
+import playlistImage from '../../assets/Icons/icons8-playlist-96.png'
 import {LibraryCategories} from "./LibraryCategories";
 import {useEffect, useState} from "react";
 import {getPlaylistsForCurrentUser} from "../../api/api";
@@ -43,21 +44,21 @@ export const LibrarySection = () => {
     return (
         <StyledLibrary>
             <LibraryHeader>
-                <img src={playlistIcon} alt={"musicLibrary"} width={40} height={40}/>
+                <img src={libraryIcon} alt={"musicLibrary"} width={40} height={40}/>
                 <Text>Your Playlist Library</Text>
             </LibraryHeader>
             <LibraryCategories/>
 
             <LibraryItems>
-                {playlist.map((item, index) => {
+                {playlist.map((playlistObject, index) => {
                     return (
                         <LibraryItem
                             key={index}
-                            name={item.name}
-                            owner={item.owner.display_name}
-                            type={item.type}
-                            image={item.images[item.images.length - 1].url} //"https://picsum.photos/200/300"
-                            playlist_id={item.id}
+                            name={playlistObject.name}
+                            owner={playlistObject.owner.display_name}
+                            type={playlistObject.type}
+                            image={playlistObject.images ? playlistObject.images[playlistObject.images.length - 1].url : playlistImage} //"https://picsum.photos/200/300"
+                            playlist_id={playlistObject.id}
                         />
                     )
                 })}
