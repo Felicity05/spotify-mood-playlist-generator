@@ -12,6 +12,7 @@ import {
 import {predictTrackMood} from "../api/model_predictions_api";
 import {moodEncodingMap} from "../Components/MainContent/MoodSelector";
 import {Artist} from "../types";
+import {useUserStore} from "../store/userStore";
 
 type TrackMood = {
     trackUri: string,
@@ -37,7 +38,7 @@ interface GeneratePlaylistHook {
     create a new playlist
     get newly created playlist and add filtered songs to it*/
 export const useGeneratePlaylist = (): GeneratePlaylistHook => {
-    const {userProfile} = useAccessToken();
+    const {user: userProfile} = useUserStore();
     const navigate = useNavigate();
 
     const [showProgressBar, setShowProgressBar] = useState<boolean>(false);

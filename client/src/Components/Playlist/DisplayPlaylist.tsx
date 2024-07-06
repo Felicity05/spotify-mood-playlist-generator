@@ -89,15 +89,19 @@ const StickyTableHeader = styled.div<{ scrolled?: boolean }>`
 `;
 
 
-export const NewPlaylist: React.FC<NewPlaylistProps> = ({showPlaylist}) => {
+export const DisplayPlaylist: React.FC<NewPlaylistProps> = ({showPlaylist}) => {
     const {playlistId} = useParams<{ playlistId: string }>();
     const {data: playlist, isLoading} = useQuery(['playlist', playlistId], () => getPlaylist(playlistId!))
 
+    //todo: implement function to get all playlist tracks - limit to 100 per request
+
     // console.log("showPlaylist==", showPlaylist)
     // console.log(playlist)
+    console.log("playlistId== ", playlistId)
 
+    //todo: show total of items of playlist, now limited to 100
     const items = playlist?.tracks?.items
-    // console.log("Playlist items=== ", items)
+    console.log("Playlist items=== ", items)
 
     return (
         <Wrapper>

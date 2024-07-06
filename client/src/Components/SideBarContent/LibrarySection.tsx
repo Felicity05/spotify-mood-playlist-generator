@@ -4,10 +4,8 @@ import {Text} from '../UI Components/Text';
 import libraryIcon from '../../assets/Icons/icons8-music-library-96(1).png'
 import playlistImage from '../../assets/Icons/icons8-playlist-96.png'
 import {LibraryCategories} from "./LibraryCategories";
-import {useEffect, useState} from "react";
-import {getPlaylistsForCurrentUser} from "../../api/api";
-import {Playlist} from "../../utils/playlistTypes";
-import {Button} from "../UI Components/Button";
+import {useEffect} from "react";
+import {useUserStore} from "../../store/userStore";
 
 const StyledLibrary = styled.div`
   display: flex;
@@ -31,33 +29,30 @@ const LibraryItems = styled.div`
 `
 
 export const LibrarySection = () => {
-    const [playlist, setPlaylists] = useState<Playlist[]>([]);
+    const {filteredPlaylists, fetchPlaylistsData} = useUserStore();
 
     useEffect(() => {
-
-        getPlaylistsForCurrentUser().then(response => (
-            setPlaylists(response)
-        )).catch(error => console.log("Error: ", error.message))
-
-    }, [])
+        fetchPlaylistsData();
+    }, [fetchPlaylistsData])
 
     return (
         <StyledLibrary>
             <LibraryHeader>
                 <img src={libraryIcon} alt={"musicLibrary"} width={40} height={40}/>
-                <Text>Your Playlist Library</Text>
+                <Text>Your Playlists Library</Text>
             </LibraryHeader>
             <LibraryCategories/>
 
             <LibraryItems>
-                {playlist.map((playlistObject, index) => {
+                {filteredPlaylists.map((playlistObject, index) => {
                     return (
                         <LibraryItem
                             key={index}
                             name={playlistObject.name}
                             owner={playlistObject.owner.display_name}
                             type={playlistObject.type}
-                            image={playlistObject.images ? playlistObject.images[playlistObject.images.length - 1].url : playlistImage} //"https://picsum.photos/200/300"
+                            image={playlistObject.images ? playlistObject.images[playlistObject.images.length - 1].url
+                                : playlistImage} //"https://picsum.photos/200/300"
                             playlist_id={playlistObject.id}
                         />
                     )

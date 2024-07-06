@@ -1,7 +1,7 @@
-import axios, {AxiosError} from "axios";
+import axios from "axios";
 import {AuthorizationResponse} from "./authTypes";
 
-// needed for authentication
+// Constants needed for authentication
 const CLIENT_ID = 'd5398f16c9b246898c33eda2ca52a59f'
 const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI || 'http://localhost:3000/callback'
 const AUTH_ENDPOINT = 'https://accounts.spotify.com/authorize'
@@ -11,12 +11,15 @@ const CODE_CHALLENGE_METHOD = "S256"
 const SCOPES = "user-read-private user-read-email user-top-read user-read-recently-played " +
     "playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private " +
     "user-follow-read"
+
 export const TOKEN_STORAGE_KEY = 'spotifyAccessToken';
+const REFRESH_TOKEN_STORAGE_KEY = 'spotifyRefreshToken';
+const TOKEN_EXPIRY_STORAGE_KEY = 'spotifyTokenExpiry';
 let accessToken: string | null = null;
 
 console.log("REDIRECT_URI== ", REDIRECT_URI)
 
-// this part extracted from: https://github.com/spotify/spotify-web-api-ts-sdk/blob/main/src/auth/AccessTokenHelpers.ts
+// the next 2 functions were extracted from: https://github.com/spotify/spotify-web-api-ts-sdk/blob/main/src/auth/AccessTokenHelpers.ts
 // Function to generate a random code verifier
 const generateCodeVerifier = (length: number): string => {
     let text = '';
@@ -32,8 +35,6 @@ const generateCodeVerifier = (length: number): string => {
 const generateCodeChallenge = async (codeVerifier: string) => {
     const data = new TextEncoder().encode(codeVerifier);
     const digest = await window.crypto.subtle.digest('SHA-256', data);
-
-    // TODO: learn what the heck is all these
     const digestBytes = [...new Uint8Array(digest)];
     const hasBuffer = typeof Buffer !== 'undefined';
 
@@ -47,7 +48,7 @@ const generateCodeChallenge = async (codeVerifier: string) => {
         .replace(/=+$/, '');
 }
 
-export const initiateAuthentication = async () => {
+export const initiateAuthentication = async (): Promise<void> => {
     const verifier = generateCodeVerifier(128);
     const challenge = await generateCodeChallenge(verifier);
 
@@ -67,14 +68,6 @@ export const initiateAuthentication = async () => {
 
 export const exchangeAccessToken = async (code: string | null): Promise<AuthorizationResponse> => {
     const verifier = localStorage.getItem('verifier');
-    const refresh_token = localStorage.getItem('refresh_token');
-    // console.log("verifier==  ", verifier);
-    // console.log("refresh token==  ", refresh_token);
-
-    // Check if the token is expired
-    // if (!refresh_token) {
-    //     throw new Error('Refresh token not found');
-    // }
 
     //first time to log in
     const params = new URLSearchParams({
@@ -87,48 +80,71 @@ export const exchangeAccessToken = async (code: string | null): Promise<Authoriz
 
     try {
         const response = await axios.post(TOKEN_ENDPOINT, params);
-        // console.log(response.data)
-        setAccessToken(response.data.access_token);
-        localStorage.setItem("refresh_token", response.data.refresh_token);
+        console.log(response.data)
+        setAccessTokenAndExpirationTime(response.data.access_token, response.data.expires_in);
+        localStorage.setItem(REFRESH_TOKEN_STORAGE_KEY, response.data.refresh_token);
         return response.data;
     } catch (error: any) {
-        // If the token is expired, use the refresh token to get a new access token
-        if (error.response?.status === 401) {
-            try {
-                const refreshTokenParams = new URLSearchParams({
-                    client_id: CLIENT_ID,
-                    grant_type: 'refresh_token',
-                    refresh_token: refresh_token!,
-                });
-
-                const refreshTokenResponse = await axios.post(TOKEN_ENDPOINT, refreshTokenParams);
-                setAccessToken(refreshTokenResponse.data.access_token);
-                localStorage.setItem("refresh_token", refreshTokenResponse.data.refresh_token);
-                return refreshTokenResponse.data;
-            } catch (refreshError) {
-                console.error('Error refreshing token:', refreshError);
-                throw refreshError;
-            }
-        }
-
         console.error('Error exchanging access token:', error);
         console.log(error.message);
         throw error;
     }
 }
 
-export const setAccessToken = (token: string) => {
+const refreshAccessToken = async (): Promise<string> => {
+    const refresh_token = localStorage.getItem(REFRESH_TOKEN_STORAGE_KEY);
+    const params = new URLSearchParams({
+        client_id: CLIENT_ID,
+        grant_type: 'refresh_token',
+        refresh_token: refresh_token!,
+    });
+
+    try {
+        const response = await axios.post(TOKEN_ENDPOINT, params);
+        setAccessTokenAndExpirationTime(response.data.access_token, response.data.expires_in);
+        if (response.data.refresh_token) {
+            localStorage.setItem(REFRESH_TOKEN_STORAGE_KEY, response.data.refresh_token);
+        }
+        return response.data.access_token;
+    } catch (error) {
+        console.error('Error refreshing token:', error);
+        throw error;
+    }
+}
+
+export const setAccessTokenAndExpirationTime = (token: string, expiresIn: number): void => {
     accessToken = token;
-    localStorage.setItem(TOKEN_STORAGE_KEY, accessToken);
+    const expiryTime = Date.now() + expiresIn * 1000;
+    localStorage.setItem(TOKEN_STORAGE_KEY, token);
+    localStorage.setItem(TOKEN_EXPIRY_STORAGE_KEY, expiryTime.toString());
 };
 
-export const getAccessToken = () => {
-    // console.log("accessTokenVariable= ", accessToken)
-    // console.log("accessToken from local storage= ", localStorage.getItem(TOKEN_STORAGE_KEY))
-    return accessToken || localStorage.getItem(TOKEN_STORAGE_KEY);
+export const getAccessToken = async (): Promise<string | null> => {
+    const storedToken = localStorage.getItem(TOKEN_STORAGE_KEY);
+    const expiryTime = parseInt(localStorage.getItem(TOKEN_EXPIRY_STORAGE_KEY) || '0', 10);
+    // console.log("storedToken== ", storedToken)
+    // console.log("time now== ", Date.now(), "token expiration time== ", expiryTime)
+    // console.log("after authenticated==", storedToken && Date.now() < expiryTime)
+
+    if (storedToken && Date.now() < expiryTime) {
+        accessToken = storedToken;
+        // console.log("accessToken== ", accessToken)
+    } else if (localStorage.getItem(REFRESH_TOKEN_STORAGE_KEY)) {
+        try {
+            accessToken = await refreshAccessToken();
+        } catch (error) {
+            clearAccessToken();
+            console.log("Error getting the refresh token: ", error)
+            throw error;
+        }
+    }
+    return accessToken;
 };
 
 export const clearAccessToken = () => {
     accessToken = null;
+    localStorage.clear();
     localStorage.removeItem(TOKEN_STORAGE_KEY);
+    localStorage.removeItem(REFRESH_TOKEN_STORAGE_KEY);
+    localStorage.removeItem(TOKEN_EXPIRY_STORAGE_KEY);
 };

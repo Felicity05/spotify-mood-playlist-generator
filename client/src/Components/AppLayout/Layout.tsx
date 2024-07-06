@@ -4,6 +4,7 @@ import {SideBar} from "./Sidebar";
 import {Main} from "./Main";
 import {useAccessToken} from "../../Context/AccessTokenContext";
 import {NavBar} from "../UI Components/NavBar";
+import {MainContent} from "../MainContent/MainContent";
 
 // Define styled components
 const Container = styled.div`
@@ -42,15 +43,15 @@ const Player = styled.footer`
 //scereen size at 768 need to decrease image size
 
 export const Layout: React.FC<any> = ({children}) => {
-    const {accessToken} = useAccessToken()
+    const {isLoggedIn} = useAccessToken()
 
 
     return (
         <Container>
             {/*<Header>Header</Header>*/}
-            {accessToken && <SideBar/>}
+            {isLoggedIn && <SideBar/>}
             <Main>
-                {accessToken && <NavBar/>}
+                {isLoggedIn && <NavBar/>}
                 {children}
             </Main>
             {/*<Player>Player</Player>*/}

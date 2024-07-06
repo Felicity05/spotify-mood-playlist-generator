@@ -5,21 +5,21 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {StyleSheetManager} from "styled-components";
 import isPropValid from '@emotion/is-prop-valid';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import {QueryClient, QueryClientProvider} from 'react-query';
 
 const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+    document.getElementById('root') as HTMLElement
 );
 root.render(
-   <React.StrictMode>
-        <StyleSheetManager shouldForwardProp={prop => isPropValid(prop)}>
-            <QueryClientProvider client={queryClient}>
-                <App />
-            </QueryClientProvider>
-        </StyleSheetManager>
-    </React.StrictMode>
+    // <React.StrictMode>
+    <StyleSheetManager shouldForwardProp={prop => isPropValid(prop)}>
+        <QueryClientProvider client={queryClient}>
+            <App/>
+        </QueryClientProvider>
+    </StyleSheetManager>
+    // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

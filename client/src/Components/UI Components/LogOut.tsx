@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button} from "./Button";
-import {TOKEN_STORAGE_KEY} from "../../utils/auth";
+import {clearAccessToken, TOKEN_STORAGE_KEY} from "../../utils/auth";
 import {useAccessToken} from "../../Context/AccessTokenContext";
 import styled from "styled-components";
 import logOutIcon from '../../assets/Icons/icons8-logout-96 (1).png'
@@ -19,9 +19,10 @@ const LogOut = () => {
     const navigate = useNavigate();
 
     const handleLogOut = () => {
-        setAccessToken(null);
-        localStorage.removeItem(TOKEN_STORAGE_KEY);
-        navigate("/");
+        clearAccessToken();
+        const value = localStorage.getItem("isLoggedIn") === "true";
+        localStorage.setItem("isLoggedIn", value.toString());
+        navigate("/login");
     }
 
     return (

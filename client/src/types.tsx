@@ -60,7 +60,7 @@ export interface Artist {
     type: string;
 }
 
-export interface Artists {
+export interface FollowedArtists {
     href: string;
     limit: number;
     next: string;

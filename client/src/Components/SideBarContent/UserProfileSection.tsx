@@ -1,43 +1,54 @@
-import React, {useEffect, useState} from "react"
-import {useAccessToken} from "../../Context/AccessTokenContext";
-import {getFollowedArtistsForUser} from "../../api/api";
+import React, {useEffect} from "react"
 import homeIcon from "../../assets/Icons/icons8-boombox-96 (1).png"
 import {Button} from "../UI Components/Button";
 import {useNavigate} from "react-router-dom";
-import {Artists} from "../../types";
+import {useUserStore} from "../../store/userStore";
+import {Text} from "../UI Components/Text";
 
 export const UserProfileSection = () => {
-    const {userProfile} = useAccessToken();
     const navigate = useNavigate();
-
-    const [followedArtists, setFollowedArtist] = useState<Artists>({
-        cursors: {after: "", before: ""},
-        href: "",
-        items: [],
-        limit: 0,
-        next: "",
-        total: 0
-    });
-    // console.log("user data= ", userProfile);
-    // getFollowedArtist -> to display the number of artist the user is following
+    const {
+        user: userProfile,
+        fetchUserData,
+        followedArtists,
+        fetchFollowingData,
+        playlists,
+        fetchPlaylistsData
+    } = useUserStore();
 
     useEffect(() => {
-        getFollowedArtistsForUser().then(followedArtists => {
-                setFollowedArtist(followedArtists);
-                // console.log(followedArtists)
-            }
-        ).catch(error => console.log("Error: ", error.message))
-    }, [])
+        fetchUserData();
+        fetchFollowingData();
+        fetchPlaylistsData();
+    }, [fetchUserData, fetchFollowingData, fetchPlaylistsData])
+
+    // console.log("PLAYLISTS: ", playlists)
 
     return (
-        <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
-            <img style={{borderRadius: '100px', width: '100px', marginBottom: '0.5rem'}}
-                 src={userProfile?.images[1].url} alt={"user profile"}/>
-            <h3 style={{color: "white", margin: '0.3rem'}}> {userProfile?.followers.total} followers
-                · {followedArtists.total} followed artists
-            </h3>
-            <p style={{color: "white", margin: '0.3rem'}}>Public Playlists: {} </p>
-            <Button variant={"icon_clear"} onClick={() => navigate('/')}>
+        <div style={{display: "flex", flexDirection: "column", alignItems: "flex-start", margin: '0 1rem'}}>
+            {/*todo: add intermedia playlist page to show all playlist the user has saved */}
+            <div
+                style={{
+                    display: 'flex',
+                    alignItems: "center",
+                    justifyContent: "center",
+                    width: '100%',
+                    margin: '0.5rem 0'
+                }}>
+                <div style={{cursor: "pointer", width: "auto", height: '3.5rem'}}
+                     onClick={() => window.open(userProfile?.external_urls.spotify!, '_blank')}>
+                    <img style={{borderRadius: '100px', width: '3.5rem', objectFit: "scale-down"}}
+                         src={userProfile?.images[1].url} alt={"user profile"}/>
+                </div>
+            </div>
+            <div style={{marginBottom: '0.5rem'}}>
+                <Text> {userProfile?.followers.total} followers
+                    · {followedArtists ? followedArtists.total : 0} followed artists
+                </Text>
+                <Text>{playlists.length} playlists </Text>
+                <Text> {playlists.filter((playlist) => playlist.public).length} public playlists</Text>
+            </div>
+            <Button variant={"icon_clear"} size="cl" onClick={() => navigate('/')}>
                 <img src={homeIcon} alt={"home"} width={32} height={32}/>
             </Button>
         </div>

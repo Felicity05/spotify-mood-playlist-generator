@@ -1,4 +1,4 @@
-import axios, {all, AxiosResponse} from "axios";
+import axios, {AxiosResponse} from "axios";
 import {clearAccessToken, exchangeAccessToken, getAccessToken} from "../utils/auth";
 import {PlayHistory, TrackAudioFeatures} from "../utils/trackTypes";
 import {Playlist, Track} from "../utils/playlistTypes";
@@ -13,16 +13,17 @@ const spotify_api = axios.create({
 
 // Axios interceptor to attach the access token to each request
 spotify_api.interceptors.request.use(async (config) => {
-    let accessToken = getAccessToken();
+    let accessToken = await getAccessToken();
+    // console.log("accessToken in axios interceptor", accessToken)
     if (!accessToken) {
         // If no token is available, initiate the authentication flow
-        try {
-            const code = localStorage.getItem("verifier");
-            await exchangeAccessToken(code);
-            accessToken = getAccessToken();
-        } catch (error) {
-            console.error('Error in request interceptor:', error);
-        }
+        // try {
+        //     const code = localStorage.getItem("verifier");
+        //     await exchangeAccessToken(code);
+        //     accessToken = await getAccessToken();
+        // } catch (error) {
+        console.error('Error in request interceptor: no token found');
+        // }
     }
     config.headers.Authorization = `Bearer ${accessToken}`;
     return config;
@@ -165,10 +166,11 @@ export const getPlaylist = async (playlist_id: string) => {
 }
 //get songs for playlist - not necessary, the songs come on the response of the getPlaylists function
 
-/*get playlists for current user Get a list of the playlists owned or followed by the current Spotify user.
-* @limit: The maximum number of items to return. Default: 20. min: 1. max: 50.
-* @offset: The index of the first playlist to return. Max: 100.000. Use with limit to get the next set of playlists
-*  */
+//todo: fix this function, limit is 100, use with offset to get all elements
+/** Gets a list of the playlists owned or followed by the current Spotify user
+ * @params: limit The maximum number of items to return. Default: 20. min: 1. max: 50.
+ * @params: offset The index of the first playlist to return. Max: 100.000. Use with limit to get the next set of playlists
+ *  */
 export const getPlaylistsForCurrentUser = async () => {
     let offset = 0
 

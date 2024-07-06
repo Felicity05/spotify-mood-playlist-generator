@@ -1,6 +1,5 @@
 import {Button} from "../UI Components/Button";
-import React, {HTMLAttributes, useEffect, useState} from "react";
-import {useAccessToken} from "../../Context/AccessTokenContext";
+import React, {HTMLAttributes, useState} from "react";
 import TracksSourceSelector from "./TracksSourceSelector";
 import {MoodSelector} from "./MoodSelector";
 import {useMoodSourceStore} from "../../store/moodStore";
@@ -13,6 +12,7 @@ import restart from '../../assets/Icons/icons8-rotate-left-96.png'
 import {useTimeOfDay} from "../../custom_hooks/useTimeOfDay";
 import MainFooter from "./MainFooter";
 import {useGeneratePlaylist} from "../../custom_hooks/useGeneratePlaylist";
+import {useUserStore} from "../../store/userStore";
 
 //TODO: add types for track object, artist object, clean up this component
 
@@ -31,7 +31,7 @@ interface MainContentProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export const MainContent: React.FC<MainContentProps> = () => {
-    const {userProfile} = useAccessToken();
+    const {user: userProfile} = useUserStore();
     const timeOfDay = useTimeOfDay();
 
     const [showModal, setShowModal] = useState<boolean>(false);

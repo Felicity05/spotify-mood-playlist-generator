@@ -1,42 +1,87 @@
 // AccessTokenContext.js
-import React, {createContext, ReactNode, useContext, useEffect, useState} from 'react';
-import {UserProfile} from "../types";
-import {getAccessToken} from "../utils/auth";
-import {getPlaylistsForCurrentUser, getUserProfileData} from "../api/api";
+import React, {createContext, ReactNode, useCallback, useContext, useEffect, useState} from 'react';
+import {clearAccessToken, exchangeAccessToken, getAccessToken, initiateAuthentication} from "../utils/auth";
+import {useNavigate} from "react-router-dom";
 
 interface AccessTokenContextProps {
     accessToken: string | null | undefined;
     setAccessToken: React.Dispatch<React.SetStateAction<string | null | undefined>>;
-    userProfile: UserProfile | null;
-    setUserProfile: React.Dispatch<React.SetStateAction<UserProfile | null>>;
+    initiateLogin: () => void;
+    isLoggedIn: boolean;
+    setIsLoggedIn: (value: boolean) => void;
 }
 
 const AccessTokenContext = createContext<AccessTokenContextProps | undefined>(undefined);
+const LOGGED_IN_KEY = "isLoggedIn"
 
 const AccessTokenProvider: React.FC<{ children: ReactNode }> = ({children}) => {
     const [accessToken, setAccessToken] = useState<string | null | undefined>(null);
-    const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
+    const [isLoggedIn, setIsLoggedIn] = useState<boolean>(() => {
+        // Retrieve the initial state from localStorage
+        return localStorage.getItem("isLoggedIn") === "true";
+    });
+    const navigate = useNavigate();
 
     useEffect(() => {
-        const token = getAccessToken();
+        const fetchToken = async () => {
+            try {
+                const token = await getAccessToken();
+                setAccessToken(token);
+            } catch (error) {
+                console.error("Error fetching access token: ", error);
+            }
+        };
 
-        setAccessToken(token);
-        if (token) {
-            fetchUserProfileData();
-        }
+        fetchToken().then(r => console.log("Fetched token ", r));
     }, [])
 
-    const fetchUserProfileData = async () => {
-        try {
-            const userProfileResponse = await getUserProfileData();
-            setUserProfile(userProfileResponse.data)
-        } catch (error) {
-            console.error("Error fetching user profile data: ", error);
+
+    const handleOAuthCallback = useCallback(async () => {
+        // Extracts the authorization code from the URL
+        const authorizationCode = new URLSearchParams(window.location.search).get('code');
+        // console.log("authorizationCode= ", authorizationCode);
+
+        if (authorizationCode) {
+            try {
+                const authorizationResponse = await exchangeAccessToken(authorizationCode);
+                const accessToken = authorizationResponse.access_token;
+
+                setAccessToken(accessToken);
+                setIsLoggedIn(true); //setting to true
+                // console.log("accessToken from access token context== ", accessToken);
+                navigate('/');
+            } catch (error) {
+                console.error('Error handling OAuth callback:', error);
+                clearAccessToken();
+                setIsLoggedIn(isLoggedIn); //sets to false
+                navigate('/');
+            }
+        } else {
+            //TO DO: handle cancel authorization and stop authorization flow
+            //redirect to home page and explain why authorization is needed to use the app
+            console.error('Authorization code not found in callback.');
         }
-    }
+    }, [navigate]);
+
+    useEffect(() => {
+        if (window.location.pathname === '/callback') {
+            handleOAuthCallback()
+                .then(r => console.log("Handling the OAuth callback ", r));
+        }
+    }, [handleOAuthCallback]);
+
+    useEffect(() => {
+        // Store the state in localStorage whenever it changes
+        localStorage.setItem(LOGGED_IN_KEY, isLoggedIn.toString());
+    }, [isLoggedIn]);
+
+    const initiateLogin = () => {
+        initiateAuthentication()
+            .then(r => console.log("Initiating authentication for the first time ", r));
+    };
 
     return (
-        <AccessTokenContext.Provider value={{accessToken, setAccessToken, userProfile, setUserProfile}}>
+        <AccessTokenContext.Provider value={{accessToken, setAccessToken, initiateLogin, isLoggedIn, setIsLoggedIn}}>
             {children}
         </AccessTokenContext.Provider>
     );
