@@ -9,6 +9,7 @@ interface AccessTokenContextProps {
     initiateLogin: () => void;
     isLoggedIn: boolean;
     setIsLoggedIn: (value: boolean) => void;
+    loading: boolean;
 }
 
 const AccessTokenContext = createContext<AccessTokenContextProps | undefined>(undefined);
@@ -20,19 +21,29 @@ const AccessTokenProvider: React.FC<{ children: ReactNode }> = ({children}) => {
         // Retrieve the initial state from localStorage
         return localStorage.getItem("isLoggedIn") === "true";
     });
+    const [loading, setLoading] = useState<boolean>(true);
+
     const navigate = useNavigate();
 
     useEffect(() => {
         const fetchToken = async () => {
             try {
                 const token = await getAccessToken();
-                setAccessToken(token);
+                if (token) {
+                    setAccessToken(token);
+                    setIsLoggedIn(true);
+                } else {
+                    setIsLoggedIn(false);
+                }
             } catch (error) {
                 console.error("Error fetching access token: ", error);
+                setIsLoggedIn(false);
+            } finally {
+                setLoading(false);
             }
         };
 
-        fetchToken().then(r => console.log("Fetched token ", r));
+        fetchToken().then(r => console.log("Fetching token ", r));
     }, [])
 
 
@@ -47,19 +58,22 @@ const AccessTokenProvider: React.FC<{ children: ReactNode }> = ({children}) => {
                 const accessToken = authorizationResponse.access_token;
 
                 setAccessToken(accessToken);
-                setIsLoggedIn(true); //setting to true
+                setIsLoggedIn(true);
+                localStorage.setItem(LOGGED_IN_KEY, "true");
                 // console.log("accessToken from access token context== ", accessToken);
                 navigate('/');
             } catch (error) {
                 console.error('Error handling OAuth callback:', error);
                 clearAccessToken();
-                setIsLoggedIn(isLoggedIn); //sets to false
+                setIsLoggedIn(false);
+                localStorage.setItem(LOGGED_IN_KEY, "false");
                 navigate('/');
             }
         } else {
             //TO DO: handle cancel authorization and stop authorization flow
             //redirect to home page and explain why authorization is needed to use the app
             console.error('Authorization code not found in callback.');
+            setLoading(false);
         }
     }, [navigate]);
 
@@ -81,7 +95,8 @@ const AccessTokenProvider: React.FC<{ children: ReactNode }> = ({children}) => {
     };
 
     return (
-        <AccessTokenContext.Provider value={{accessToken, setAccessToken, initiateLogin, isLoggedIn, setIsLoggedIn}}>
+        <AccessTokenContext.Provider
+            value={{accessToken, setAccessToken, initiateLogin, isLoggedIn, setIsLoggedIn, loading}}>
             {children}
         </AccessTokenContext.Provider>
     );

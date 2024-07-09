@@ -43,15 +43,13 @@ const Player = styled.footer`
 //scereen size at 768 need to decrease image size
 
 export const Layout: React.FC<any> = ({children}) => {
-    const {isLoggedIn} = useAccessToken()
-
 
     return (
         <Container>
             {/*<Header>Header</Header>*/}
-            {isLoggedIn && <SideBar/>}
+            <SideBar/>
             <Main>
-                {isLoggedIn && <NavBar/>}
+                <NavBar/>
                 {children}
             </Main>
             {/*<Player>Player</Player>*/}

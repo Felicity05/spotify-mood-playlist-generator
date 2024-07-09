@@ -31,8 +31,12 @@ export const LibraryItem: React.FC<PlaylistItemProps> = ({name, owner, image, ty
     //     window.open(external_spotify_url, '_blank'); // Open URL in a new tab
     // };
 
+    const handleClick = () => {
+        navigate(`/playlist/${playlist_id}`);
+    };
+
     return (
-        <StyledPlaylistItem onClick={() => navigate(`playlist/${playlist_id}`)}>
+        <StyledPlaylistItem onClick={handleClick}>
             <img src={image} alt="random" width={"50px"} style={{borderRadius: "0.3rem"}}/>
             <div style={{display: "flex", flexDirection: "column"}}>
                 <Text style={{}}>{name}</Text>

@@ -15,7 +15,11 @@ type RequireAuthProps = {
 };
 
 const RequireAuth: React.FC<RequireAuthProps> = ({children}) => {
-    const {isLoggedIn: isAuthenticated} = useAccessToken();
+    const {isLoggedIn: isAuthenticated, loading} = useAccessToken();
+    if (loading) {
+        return <div>Loading...</div>; // Render a loading state while checking authentication
+    }
+
     if (!isAuthenticated) {
         return <Navigate to="/login" replace/>;
     }
@@ -26,22 +30,24 @@ function App() {
     return (
         <BrowserRouter>
             <AccessTokenProvider>
-                <Layout>
-                    <Routes>
-                        <Route path="/login" element={<LogInPage/>}/>
-                        <Route path="/callback" element={<CallbackPage/>}/>
-                        <Route path="/" element={
-                            <RequireAuth>
+                <Routes>
+                    <Route path="/login" element={<LogInPage/>}/>
+                    <Route path="/callback" element={<CallbackPage/>}/>
+                    <Route path="/" element={
+                        <RequireAuth>
+                            <Layout>
                                 <MainContent/>
-                            </RequireAuth>
-                        }/>
-                        <Route path="/playlist/:playlistId" element={
-                            <RequireAuth>
+                            </Layout>
+                        </RequireAuth>
+                    }/>
+                    <Route path="/playlist/:playlistId" element={
+                        <RequireAuth>
+                            <Layout>
                                 <DisplayPlaylist/>
-                            </RequireAuth>
-                        }/>
-                    </Routes>
-                </Layout>
+                            </Layout>
+                        </RequireAuth>
+                    }/>
+                </Routes>
             </AccessTokenProvider>
         </BrowserRouter>
     );

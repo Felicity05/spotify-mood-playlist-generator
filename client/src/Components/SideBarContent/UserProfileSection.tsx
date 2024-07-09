@@ -4,6 +4,7 @@ import {Button} from "../UI Components/Button";
 import {useNavigate} from "react-router-dom";
 import {useUserStore} from "../../store/userStore";
 import {Text} from "../UI Components/Text";
+import profileImage from '../../assets/Icons/icons8-user-96-1.png'
 
 export const UserProfileSection = () => {
     const navigate = useNavigate();
@@ -38,7 +39,8 @@ export const UserProfileSection = () => {
                 <div style={{cursor: "pointer", width: "auto", height: '3.5rem'}}
                      onClick={() => window.open(userProfile?.external_urls.spotify!, '_blank')}>
                     <img style={{borderRadius: '100px', width: '3.5rem', objectFit: "scale-down"}}
-                         src={userProfile?.images[1].url} alt={"user profile"}/>
+                         src={userProfile?.images.length !== 0 ? userProfile?.images[1].url : profileImage}
+                         alt={"user profile"}/>
                 </div>
             </div>
             <div style={{marginBottom: '0.5rem'}}>

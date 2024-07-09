@@ -44,7 +44,10 @@ export const useUserStore = create<UserStore>()(
                 fetchPlaylistsData: async () => {
                     try {
                         const response = await getPlaylistsForCurrentUser();
-                        set({playlists: response});
+                        set({
+                            playlists: response,
+                            filteredPlaylists: response
+                        });
                     } catch (error) {
                         console.error('Failed to fetch playlists', error);
                     }

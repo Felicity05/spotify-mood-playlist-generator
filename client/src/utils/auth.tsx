@@ -80,7 +80,7 @@ export const exchangeAccessToken = async (code: string | null): Promise<Authoriz
 
     try {
         const response = await axios.post(TOKEN_ENDPOINT, params);
-        console.log(response.data)
+        // console.log(response.data)
         setAccessTokenAndExpirationTime(response.data.access_token, response.data.expires_in);
         localStorage.setItem(REFRESH_TOKEN_STORAGE_KEY, response.data.refresh_token);
         return response.data;

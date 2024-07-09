@@ -6,6 +6,8 @@ import playlistImage from '../../assets/Icons/icons8-playlist-96.png'
 import {LibraryCategories} from "./LibraryCategories";
 import {useEffect} from "react";
 import {useUserStore} from "../../store/userStore";
+import {TextLink} from "../UI Components/TextLink";
+import noPlaylistImage from '../../assets/Icons/icons8-playlist-96-no.png'
 
 const StyledLibrary = styled.div`
   display: flex;
@@ -29,7 +31,7 @@ const LibraryItems = styled.div`
 `
 
 export const LibrarySection = () => {
-    const {filteredPlaylists, fetchPlaylistsData} = useUserStore();
+    const {user, playlists, filteredPlaylists, fetchPlaylistsData, setFilteredPlaylists} = useUserStore();
 
     useEffect(() => {
         fetchPlaylistsData();
@@ -41,7 +43,25 @@ export const LibrarySection = () => {
                 <img src={libraryIcon} alt={"musicLibrary"} width={40} height={40}/>
                 <Text>Your Playlists Library</Text>
             </LibraryHeader>
-            <LibraryCategories/>
+            {filteredPlaylists.length > 0 && <LibraryCategories/>}
+
+            {filteredPlaylists.length === 0 &&
+                <div style={{
+                    margin: '1rem',
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "25rem",
+                    justifyContent: "center"
+                }}>
+                    <img src={noPlaylistImage} alt={"no playlists"} height={48} style={{paddingBottom: "0.5rem"}}/>
+                    <Text style={{textAlign: "center"}}>Oh no! You don't have any playlist yet. Head over to <TextLink
+                        to={user?.external_urls.spotify!}
+                        target={'_blank'}>Spotify</TextLink> to
+                        create your
+                        first playlist!</Text>
+                </div>
+            }
 
             <LibraryItems>
                 {filteredPlaylists.map((playlistObject, index) => {
