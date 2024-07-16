@@ -105,14 +105,6 @@ export const MainContent: React.FC<MainContentProps> = () => {
         setHookShowModal(false);
     }
 
-    // useEffect(() => {
-    //     getRecentlyPlayedTracks().then(res => {
-    //         if (res.length > 0)
-    //             setListeningHistory(true);
-    //         console.log(res)
-    //     })
-    // }, [])
-
     return (
         <CardContent>
             <h1 style={{color: "white"}}>Good {timeOfDay}, {userProfile?.display_name.split(" ")[0]}!</h1>
@@ -133,8 +125,7 @@ export const MainContent: React.FC<MainContentProps> = () => {
                     {source && <MoodSelector/>} {/*conditional rendering after selecting track source*/}
                     {mood && source &&   /*conditional rendering once both mood and source are set */
                         <div>
-                            <p>Great! Now that you've made your selections, you're all. Just click
-                                below to get your playlist! </p>
+                            <p>Great! You're all set. Just click below to witness the magic happen! </p>
                             <Button variant="primary" size="lg" onClick={handlePlaylistCreation}>Generate Playlist</Button>
                         </div>}
                     {showProgressBar && <ProgressBar/>}
@@ -157,15 +148,10 @@ export const MainContent: React.FC<MainContentProps> = () => {
                     <img src={ohNoImage} alt={"oh no"}/>
                     <Text variant={"mdd"} style={{textAlign: "center"}}> Oh no! It looks like you are new to <TextLink
                         to={userProfile?.external_urls.spotify!}
-                        target={'_blank'}>Spotify</TextLink> and
+                        target={'_blank'} style={{color: "#1DB954", fontWeight: "700"}}>Spotify</TextLink> and
                         don't have any activity yet.
                         Start listening and then come bach here to create your custom playlists!</Text>
                 </div>}
-            <hr style={{
-                width: '98%',
-                height: .2,
-                backgroundColor: "hsla(0,0%,100%,.6)"
-            }}/>
             <MainFooter/>
         </CardContent>
     )

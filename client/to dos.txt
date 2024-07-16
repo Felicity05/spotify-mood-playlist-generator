@@ -46,3 +46,9 @@ make a contact us pag for feedback?
 more advance functionality:
 when creating a new playlist, before creating the playlist check if there is already a playlist with the same name
 and if so add the new songs to the already available playlist, but only add not duplicate songs
+
+
+---------------------------------
+playlist mood analyser, show a graph of the different moods that your playlists have
+let user know the overall mood of the playlist
+let user know the overall mood of their month according to their listening history for that month

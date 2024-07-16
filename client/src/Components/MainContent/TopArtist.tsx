@@ -31,28 +31,30 @@ export const TopArtist: React.FC<TopArtistProps> = ({topArtist, setTopArtist}) =
 
     return (
         <StyledTopArtist>
-            <Text variant={"lg"} style={{fontWeight: '800'}}>Your Top Artists Last Year </Text>
-            <div style={{
-                display: "flex",
-                flexWrap: "wrap",
-                justifyContent: "center",
-                marginBottom: "1rem"
-            }}>
-                {topArtist.sort((a, b) => b.popularity - a.popularity)
-                    .map((artist, index) => {
-                        return (
-                            <ArtistCard
-                                key={index}
-                                name={artist.name}
-                                genres={artist.genres}
-                                popularity={artist.popularity}
-                                image={artist.images[0].url}
-                                spotify_url={artist.external_urls.spotify}
-                            />
-                        )
-                    })
-                }
-            </div>
+            {topArtist.length > 0 && <>
+                <Text variant={"lg"} style={{fontWeight: '800'}}>Your Top Artists Last Year </Text>
+                <div style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    justifyContent: "center",
+                    marginBottom: "1rem"
+                }}>
+                    {topArtist.sort((a, b) => b.popularity - a.popularity)
+                        .map((artist, index) => {
+                            return (
+                                <ArtistCard
+                                    key={index}
+                                    name={artist.name}
+                                    genres={artist.genres}
+                                    popularity={artist.popularity}
+                                    image={artist.images[0].url}
+                                    spotify_url={artist.external_urls.spotify}
+                                />
+                            )
+                        })
+                    }
+                </div>
+            </>}
         </StyledTopArtist>
     );
 }

@@ -7,7 +7,7 @@ import {LibraryCategories} from "./LibraryCategories";
 import {useEffect} from "react";
 import {useUserStore} from "../../store/userStore";
 import {TextLink} from "../UI Components/TextLink";
-import noPlaylistImage from '../../assets/Icons/icons8-playlist-96-no.png'
+import noPlaylistImage from '../../assets/Icons/icons8-playlist-100 (1).png'
 
 const StyledLibrary = styled.div`
   display: flex;
@@ -43,7 +43,7 @@ export const LibrarySection = () => {
                 <img src={libraryIcon} alt={"musicLibrary"} width={40} height={40}/>
                 <Text>Your Playlists Library</Text>
             </LibraryHeader>
-            {filteredPlaylists.length > 0 && <LibraryCategories/>}
+            <LibraryCategories/>
 
             {filteredPlaylists.length === 0 &&
                 <div style={{
@@ -57,7 +57,7 @@ export const LibrarySection = () => {
                     <img src={noPlaylistImage} alt={"no playlists"} height={48} style={{paddingBottom: "0.5rem"}}/>
                     <Text style={{textAlign: "center"}}>Oh no! You don't have any playlist yet. Head over to <TextLink
                         to={user?.external_urls.spotify!}
-                        target={'_blank'}>Spotify</TextLink> to
+                        target={'_blank'} style={{color: "#1DB954", fontWeight: "700"}}>Spotify</TextLink> to
                         create your
                         first playlist!</Text>
                 </div>

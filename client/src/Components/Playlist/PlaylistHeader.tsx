@@ -1,9 +1,7 @@
 import React from 'react';
-import {Button} from "../UI Components/Button";
-import arrowLeft from '../../assets/Icons/icons8-arrow-96.png'
-import arrowRight from '../../assets/Icons/icons8-arrow-96(1).png'
 import {Text} from "../UI Components/Text";
 import styled from "styled-components";
+import playlistImage from '../../assets/Icons/icons8-playlist-100 (1).png'
 
 const MainBackgroundColor = styled.span`
   //background-color: darkred;
@@ -19,7 +17,7 @@ export const PlaylistHeader: React.FC<any> = ({playlist}) => {
     return (
         <MainBackgroundColor>
             <div style={{display: "flex", paddingBottom: '1rem', paddingLeft: '2rem'}}>
-                <img src={playlist?.images[0].url} alt={""}
+                <img src={playlist?.images ? playlist?.images[0].url : playlistImage} alt={""}
                      style={{maxWidth: "200px", height: "200px", borderRadius: "0.3rem"}}/>
                 <div style={{
                     display: "flex", flexDirection: "column", justifyContent: "flex-end",

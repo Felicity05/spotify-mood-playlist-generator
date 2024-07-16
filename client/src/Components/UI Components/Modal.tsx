@@ -104,14 +104,14 @@ const Modal: React.FC<ModalProps> = ({
                                 <Text variant={"md"}>{hookMessage}</Text>
                                 <Button variant="secondary" size={"md"} onClick={onClose}>OK</Button>
                             </HookMessageStyled>)
-                        : (<>
+                        : (<div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
                             <p style={{marginBottom: '0px'}}>There would be only {message} songs on your playlist. </p>
                             <p>Are you sure you want to continue?</p>
                             <ModalButtons>
                                 <Button variant="secondary" size="lg" onClick={handleNoClick}>No</Button>
                                 <Button variant="secondary" size="lg" onClick={onConfirm}>Yes</Button>
                             </ModalButtons>
-                        </>)}
+                        </div>)}
 
                     {showResetOptions && (<>
                         <p>What would you like to reset?</p>

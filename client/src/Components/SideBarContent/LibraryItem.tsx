@@ -27,9 +27,6 @@ interface PlaylistItemProps {
 
 export const LibraryItem: React.FC<PlaylistItemProps> = ({name, owner, image, type, playlist_id}) => {
     const navigate = useNavigate();
-    // const handleButtonClick = (external_spotify_url: string | URL | undefined) => {
-    //     window.open(external_spotify_url, '_blank'); // Open URL in a new tab
-    // };
 
     const handleClick = () => {
         navigate(`/playlist/${playlist_id}`);

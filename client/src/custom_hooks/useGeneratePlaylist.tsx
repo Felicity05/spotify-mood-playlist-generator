@@ -169,6 +169,13 @@ export const useGeneratePlaylist = (): GeneratePlaylistHook => {
             }
 
             console.log("tracksSource=== ", tracksSource)
+            if (tracksSource.length <= 0) {
+                console.error("Track source is empty")
+                setShowModal(true);
+                setMessage("Can't generate playlist. Track source is empty.");
+                setShowProgressBar(false);
+                return; //exit and reset if track source is empty
+            }
 
             //gets the mood for the unique list of tracks ids from the track source
             listTrackMoodUri = await getTracksMoodForTrackSource(tracksSource);
@@ -180,7 +187,7 @@ export const useGeneratePlaylist = (): GeneratePlaylistHook => {
             // setListOfTracksMood(listTrackMoodUri);
             // console.log("setting list track uri for the first time and setting listOfTracksMood state")
             // listTrackMoodUri = listOfTracksMood;
-            // console.log("source hasn't change so getting list track mood from listOfTracksMood state")
+            // console.log("source hasn't changed so getting list track mood from listOfTracksMood state")
 
             const listTracksUri = filterTracksByMood(listTrackMoodUri, mood);
 
@@ -203,7 +210,6 @@ export const useGeneratePlaylist = (): GeneratePlaylistHook => {
 
             } else {
                 console.log("create playlist here, call api here")
-                const position = 0;
                 await createPlaylistWithSelectedSongs(listTracksUri, mood);
             }
         }
