@@ -3,8 +3,8 @@ import {useLocation, useNavigate} from "react-router-dom";
 import {Button} from "./Button";
 import LogOut from "./LogOut";
 import styled from "styled-components";
-import arrowLeft from "../../assets/Icons/icons8-arrow-96.png";
-import arrowRight from "../../assets/Icons/icons8-arrow-96(1).png";
+import arrowLeft from "../../assets/Icons/icons8-back-96.png";
+import arrowRight from "../../assets/Icons/icons8-forward-96.png";
 
 interface NavBarProps extends HTMLAttributes<HTMLDivElement> {
     scrolled?: boolean
@@ -17,6 +17,7 @@ const Navbar = styled.nav<NavBarProps>`
   transition: ease-in-out 1.5s;
   align-items: center;
   width: inherit;
+  box-sizing: border-box;
   z-index: 1000;
   //background-color: #1db954;
   //border: solid red 2px;
@@ -25,7 +26,7 @@ const Navbar = styled.nav<NavBarProps>`
 const NavbarContent = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 10px 20px;
+  padding: 0.5rem 0.35rem;
   color: white;
 `;
 
@@ -72,10 +73,10 @@ export const NavBar: React.FC<NavBarProps> = ({...rest}) => {
     return (
         <Navbar scrolled={scrolled} {...rest}>
             <NavbarContent>
-                <div style={{display: "flex", alignItems: "center", padding: "0 0.2rem", gap: "0.2rem"}}>
+                <div style={{display: "flex", alignItems: "center", gap: "0.2rem"}}>
                     <Button variant="icon" size="cl" onClick={goBack}
                             disabled={window.history.state.idx === 1}>
-                        <img src={arrowLeft} alt="" width="24"/>
+                        <img src={arrowLeft} alt="" width={24}/>
                     </Button>
                     <Button variant="icon" size="cl" onClick={goForward}
                             disabled={lastIndex === window.history.state.idx}>

@@ -2,6 +2,7 @@ import React, {HTMLAttributes, ReactNode} from 'react';
 import styled from "styled-components";
 import {Box} from "../UI Components/Box";
 import ColorHeader from "../UI Components/ColorHeader";
+import MainFooter from "../MainContent/MainFooter";
 
 interface MainDisplayProps extends HTMLAttributes<HTMLElement> {
     children: ReactNode;
@@ -27,6 +28,7 @@ export const Main: React.FC<MainDisplayProps> = ({children, ...rest}) => {
             <Box alignment="left" style={{position: "relative"}} id="box">
                 <ColorHeader/>
                 {children}
+                <MainFooter/>
             </Box>
         </StyledMainDisplay>
     );

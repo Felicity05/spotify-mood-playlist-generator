@@ -81,7 +81,7 @@ const buttonVariants: { [key: string]: RuleSet } = {
       color: ${colors.textColor};
       text-decoration: none;
 
-      &:hover {
+      &:hover:enabled {
         background-color: ${colors.darkGrey.hover};
       }
     `,
@@ -90,7 +90,7 @@ const buttonVariants: { [key: string]: RuleSet } = {
       color: ${colors.textColor};
 
       &:hover {
-        background-color: ${colors.darkGrey.default};
+        background-color: ${colors.darkGrey.hover};
       }
     `
 }
@@ -137,7 +137,7 @@ const ButtonBase = styled.button<Pick<ButtonProps, 'variant' | 'size'>>`
   }
 
   &:active {
-    background-color: ${colors.lightGrey.default};
+    background-color: ${colors.lightGrey.hover};
   }
 
   ${({variant}) => buttonVariants[variant!]};

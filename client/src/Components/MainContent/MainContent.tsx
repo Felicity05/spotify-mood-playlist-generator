@@ -132,7 +132,7 @@ export const MainContent: React.FC<MainContentProps> = () => {
                     <br/>
                     <div>
                         <Button variant={"icon"} size={"cl"} onClick={handleResetMoodAndTrackSource}>
-                            <img src={restart} alt={"restart"} width={48}/>
+                            <img src={restart} alt={"restart"} width={32}/>
                         </Button>
                     </div>
                     <TopArtist topArtist={topArtist} setTopArtist={setTopArtist}/>
@@ -152,7 +152,7 @@ export const MainContent: React.FC<MainContentProps> = () => {
                         don't have any activity yet.
                         Start listening and then come bach here to create your custom playlists!</Text>
                 </div>}
-            <MainFooter/>
+            {/*<MainFooter/>*/}
         </CardContent>
     )
 }

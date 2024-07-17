@@ -1,10 +1,11 @@
 import React, {useEffect} from "react"
-import homeIcon from "../../assets/Icons/icons8-boombox-96 (1).png"
 import {Button} from "../UI Components/Button";
 import {useNavigate} from "react-router-dom";
 import {useUserStore} from "../../store/userStore";
 import {Text} from "../UI Components/Text";
 import profileImage from '../../assets/Icons/icons8-user-96-1.png'
+import likedTracks from "../../assets/Icons/icons8-music-heart-96.png"
+import homeIcon from '../../assets/Icons/icons8-home-96 (2).png'
 
 export const UserProfileSection = () => {
     const navigate = useNavigate();
@@ -50,9 +51,14 @@ export const UserProfileSection = () => {
                 <Text>{playlists.length} playlists </Text>
                 <Text> {playlists.filter((playlist) => playlist.public).length} public playlists</Text>
             </div>
-            <Button variant={"icon_clear"} size="cl" onClick={() => navigate('/')}>
-                <img src={homeIcon} alt={"home"} width={32} height={32}/>
-            </Button>
+            <div style={{display: "flex", gap: "0.5rem"}}>
+                <Button variant={"icon_clear"} size="cl" onClick={() => navigate('/')}>
+                    <img src={homeIcon} alt={"home"} width={32} height={32}/>
+                </Button>
+                <Button variant={"icon_clear"} size="cl" onClick={() => navigate('/')}>
+                    <img src={likedTracks} alt={"home"} width={32} height={32}/>
+                </Button>
+            </div>
         </div>
     )
 }

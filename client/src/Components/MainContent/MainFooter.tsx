@@ -2,13 +2,21 @@ import React from 'react';
 import {Text} from "../UI Components/Text";
 import {TextLink} from "../UI Components/TextLink";
 
-const MainFooter = () => {
+export const MainFooter = () => {
     return (
-        <div style={{margin: "1rem 0", color: "hsla(0,0%,100%,.6)", position: "fixed", bottom: "3px"}}>
+        <div style={{
+            margin: "1rem 0",
+            color: "hsla(0,0%,100%,.6)",
+            position: "fixed",
+            bottom: "3px",
+            boxSizing: "border-box",
+            padding: "0 1rem",
+            width: "-webkit-fill-available"
+        }}>
             <hr style={{
                 width: '98%',
                 height: .2,
-                margin: "0.5rem 0",
+                margin: "0.5rem auto",
                 backgroundColor: "hsla(0,0%,100%,.6)"
             }}/>
             <Text variant={"sm"}>* Spotify's popularity of artist

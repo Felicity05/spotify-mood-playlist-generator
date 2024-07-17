@@ -1,9 +1,8 @@
 import React from 'react';
 import {Button} from "./Button";
-import {clearAccessToken, TOKEN_STORAGE_KEY} from "../../utils/auth";
-import {useAccessToken} from "../../Context/AccessTokenContext";
+import {clearAccessToken} from "../../utils/auth";
 import styled from "styled-components";
-import logOutIcon from '../../assets/Icons/icons8-logout-96 (1).png'
+import logOutIcon from '../../assets/Icons/icons8-exit-96.png'
 import {useNavigate} from "react-router-dom";
 
 const LogoutWrapper = styled.div`
@@ -15,7 +14,6 @@ const LogoutWrapper = styled.div`
 `;
 
 const LogOut = () => {
-    const {setAccessToken} = useAccessToken();
     const navigate = useNavigate();
 
     const handleLogOut = () => {
@@ -28,7 +26,7 @@ const LogOut = () => {
     return (
         <LogoutWrapper>
             <Button variant="icon" size="cl" onClick={handleLogOut}>
-                <img src={logOutIcon} alt={""} width={'32px'}/>
+                <img src={logOutIcon} alt={""} width={24}/>
             </Button>
         </LogoutWrapper>
     );

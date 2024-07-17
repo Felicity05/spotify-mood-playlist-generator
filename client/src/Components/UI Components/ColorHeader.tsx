@@ -13,7 +13,7 @@ const ColorHeader: React.FC<ColorHeaderProps> = ({children, ...rest}) => {
     let background;
     switch (true) {
         case location.pathname === '/' && !!accessToken:
-            background = 'linear-gradient(to bottom, rgba(14, 192, 76, 0.74), rgba(85, 30, 153, 0.60), rgba(140, 32, 223, 0))';
+            background = 'linear-gradient(to bottom, #225f71, #173b46, rgba(140, 32, 223, 0))';
             break;
         case location.pathname.startsWith('/playlist/') && !!accessToken:
             background = 'linear-gradient(to bottom, darkred, darkred, #121212)';
