@@ -1,23 +1,23 @@
-import {Button} from "../UI Components/Button";
 import React, {HTMLAttributes, useEffect, useState} from "react";
-import TracksSourceSelector from "./TracksSourceSelector";
-import {MoodSelector} from "./MoodSelector";
+import {useAccessToken} from "../../Context/AccessTokenContext";
 import {useMoodSourceStore} from "../../store/moodStore";
-import Modal from "../UI Components/Modal";
-import ProgressBar from "../UI Components/ProgressBar";
-import styled from "styled-components";
-import {TopArtist} from "./TopArtist";
-import {Artist} from "../../types";
-import restart from '../../assets/Icons/icons8-rotate-left-96.png'
 import {useTimeOfDay} from "../../custom_hooks/useTimeOfDay";
-import MainFooter from "./MainFooter";
 import {useGeneratePlaylist} from "../../custom_hooks/useGeneratePlaylist";
 import {useUserStore} from "../../store/userStore";
-import {getRecentlyPlayedTracks} from "../../api/api";
+import {MoodSelector} from "./MoodSelector";
+import TracksSourceSelector from "./TracksSourceSelector";
+import styled from "styled-components";
 import {Text} from "../UI Components/Text";
-import ohNoImage from '../../assets/Icons/icons8-no-audio-wave-100.png'
 import {TextLink} from "../UI Components/TextLink";
-import {useAccessToken} from "../../Context/AccessTokenContext";
+import {Button} from "../UI Components/Button";
+import Modal from "../UI Components/Modal";
+import ProgressBar from "../UI Components/ProgressBar";
+import {TopArtist} from "./TopArtist";
+import {Artist} from "../../types";
+import {getRecentlyPlayedTracks} from "../../api/api";
+import restart from '../../assets/Icons/icons8-rotate-left-96.png'
+import ohNoImage from '../../assets/Icons/icons8-no-audio-wave-100.png'
+import {useNavigate} from "react-router-dom";
 
 //TODO: add types for track object, artist object, clean up this component
 
@@ -39,10 +39,14 @@ export const MainContent: React.FC<MainContentProps> = () => {
     const {isLoggedIn, loading} = useAccessToken();
     const {user: userProfile} = useUserStore();
     const timeOfDay = useTimeOfDay();
+    const navigate = useNavigate();
 
     const [showModal, setShowModal] = useState<boolean>(false);
+    const [modalMessage, setModalMessage] = useState<string>('');
     const [topArtist, setTopArtist] = useState<Artist[]>([]);
     const [listeningHistory, setListeningHistory] = useState<boolean>(false);
+    const [activeSourceButton, setActiveSourceButton] = useState<string | null>("");
+    const [activeMoodButton, setActiveMoodButton] = useState<string | null>("");
 
     const {
         selectedMood: mood, selectedTrackSource: source,
@@ -59,21 +63,21 @@ export const MainContent: React.FC<MainContentProps> = () => {
     } = useGeneratePlaylist();
 
     useEffect(() => {
+        const fetchRecentlyPlayedTracks = async () => {
+            const res: any = await getRecentlyPlayedTracks();
+            console.log(res)
+            if (res.length > 0) setListeningHistory(true);
+        }
+
         if (isLoggedIn) {
-            getRecentlyPlayedTracks().then(res => {
-                if (res.length > 0) setListeningHistory(true);
-                console.log(res);
-            });
+            fetchRecentlyPlayedTracks();
         }
     }, [isLoggedIn]);
-
-    if (loading) {
-        return <div>Loading...</div>; // Render a loading state while checking authentication
-    }
 
     if (!isLoggedIn) {
         return null; // Render nothing if the user is not logged in
     }
+
     const handlePlaylistCreation = async () => {
         await createPlaylistFlow(mood, source, topArtist);
     }
@@ -103,40 +107,50 @@ export const MainContent: React.FC<MainContentProps> = () => {
         setTrackSource("")
         setShowModal(false);
         setHookShowModal(false);
+        setActiveSourceButton("");
+        setActiveMoodButton("");
     }
+
+    console.log("listeningHistory== ", listeningHistory);
+    console.log("loading== ", loading);
 
     return (
         <CardContent>
             <h1 style={{color: "white"}}>Good {timeOfDay}, {userProfile?.display_name.split(" ")[0]}!</h1>
 
-            {listeningHistory ? <>
-                    <h2>Ready to create your moodified playlist with a single click? </h2>
-                    <Modal
-                        isOpen={showModal || hookShowModal}
-                        onClose={handleResetMoodAndTrackSource}
-                        onConfirm={handleConfirm}
-                        handleMood={handleResetMood}
-                        handleTrackSource={handleResetTrackSource}
-                        handleBoth={handleResetMoodAndTrackSource}
-                        message={playlistSize.toString()}
-                        hookMessage={hookMessage}
-                    />
-                    <TracksSourceSelector/>
-                    {source && <MoodSelector/>} {/*conditional rendering after selecting track source*/}
-                    {mood && source &&   /*conditional rendering once both mood and source are set */
-                        <div>
-                            <p>Great! You're all set. Just click below to witness the magic happen! </p>
-                            <Button variant="primary" size="lg" onClick={handlePlaylistCreation}>Generate Playlist</Button>
-                        </div>}
-                    {showProgressBar && <ProgressBar/>}
-                    <br/>
-                    <div>
-                        <Button variant={"icon"} size={"cl"} onClick={handleResetMoodAndTrackSource}>
-                            <img src={restart} alt={"restart"} width={32}/>
+            {listeningHistory && !loading && <>
+                <h2>Ready to create your moodified playlist with a single click? </h2>
+                <Modal
+                    isOpen={showModal || hookShowModal}
+                    onClose={handleResetMoodAndTrackSource}
+                    onConfirm={handleConfirm}
+                    handleMood={handleResetMood}
+                    handleTrackSource={handleResetTrackSource}
+                    handleBoth={handleResetMoodAndTrackSource}
+                    message={playlistSize.toString()}
+                    hookMessage={hookMessage}
+                />
+                <TracksSourceSelector activeButton={activeSourceButton} setActiveButton={setActiveSourceButton}/>
+                <MoodSelector activeButton={activeMoodButton} setActiveButton={setActiveMoodButton}/>
+                <div>
+                    <p>Great! You're all set. Just click below to witness the magic happen! </p>
+                    <div style={{display: "flex", gap: "1.5rem", paddingLeft: '1rem', alignItems: "center"}}>
+                        <Button variant="primary" size="lg" disabled={!source || !mood}
+                                onClick={handlePlaylistCreation}>Generate Playlist</Button>
+                        <Button variant={"icon"} disabled={!source && !mood}
+                                onClick={handleResetMoodAndTrackSource} style={{padding: "0.35rem", height: "2.25rem"}}>
+                            <img src={restart} alt={"restart"} width={24} height={24}/>
                         </Button>
                     </div>
-                    <TopArtist topArtist={topArtist} setTopArtist={setTopArtist}/>
-                </> :
+                </div>
+                {showProgressBar && <ProgressBar/>}
+                <br/>
+                <TopArtist topArtist={topArtist} setTopArtist={setTopArtist}/>
+            </>}
+
+            {!listeningHistory && <div>Loading content...</div>}
+
+            {!listeningHistory && loading &&
                 <div style={{
                     display: "flex",
                     flexDirection: "column",
@@ -151,8 +165,8 @@ export const MainContent: React.FC<MainContentProps> = () => {
                         target={'_blank'} style={{color: "#1DB954", fontWeight: "700"}}>Spotify</TextLink> and
                         don't have any activity yet.
                         Start listening and then come bach here to create your custom playlists!</Text>
-                </div>}
-            {/*<MainFooter/>*/}
+                </div>
+            }
         </CardContent>
     )
 }

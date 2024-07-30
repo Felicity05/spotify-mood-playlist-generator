@@ -1,13 +1,13 @@
-import {LibraryItem} from './LibraryItem';
-import styled from 'styled-components';
-import {Text} from '../UI Components/Text';
-import libraryIcon from '../../assets/Icons/icons8-music-library-96(1).png'
-import playlistImage from '../../assets/Icons/icons8-playlist-96.png'
-import {LibraryCategories} from "./LibraryCategories";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {useUserStore} from "../../store/userStore";
+import {Text} from '../UI Components/Text';
 import {TextLink} from "../UI Components/TextLink";
-import noPlaylistImage from '../../assets/Icons/icons8-playlist-100 (1).png'
+import {LibraryItem} from './LibraryItem';
+import {LibraryCategories} from "./LibraryCategories";
+import styled from 'styled-components';
+import libraryIcon from '../../assets/Icons/icons8-music-library-96(1).png'
+import playlistImage from '../../assets/Icons/icons8-musical-note-96 copy.png'
+import noPlaylistImage from '../../assets/Icons/icons8-playlist-96-no.png'
 
 const StyledLibrary = styled.div`
   display: flex;
@@ -30,8 +30,18 @@ const LibraryHeader = styled.div`
 const LibraryItems = styled.div`
 `
 
+const NoPlaylistsWrapper = styled.div`
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 20rem;
+  justify-content: center
+`
+
 export const LibrarySection = () => {
-    const {user, playlists, filteredPlaylists, fetchPlaylistsData, setFilteredPlaylists} = useUserStore();
+    const {user, filteredPlaylists, fetchPlaylistsData} = useUserStore();
+    const [searchTerm, setSearchTerm] = useState<string>('');
 
     useEffect(() => {
         fetchPlaylistsData();
@@ -43,24 +53,31 @@ export const LibrarySection = () => {
                 <img src={libraryIcon} alt={"musicLibrary"} width={40} height={40}/>
                 <Text>Your Playlists Library</Text>
             </LibraryHeader>
-            <LibraryCategories/>
+            <LibraryCategories searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
 
             {filteredPlaylists.length === 0 &&
-                <div style={{
-                    margin: '1rem',
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    height: "25rem",
-                    justifyContent: "center"
-                }}>
-                    <img src={noPlaylistImage} alt={"no playlists"} height={48} style={{paddingBottom: "0.5rem"}}/>
-                    <Text style={{textAlign: "center"}}>Oh no! You don't have any playlist yet. Head over to <TextLink
-                        to={user?.external_urls.spotify!}
-                        target={'_blank'} style={{color: "#1DB954", fontWeight: "700"}}>Spotify</TextLink> to
-                        create your
-                        first playlist!</Text>
-                </div>
+                <NoPlaylistsWrapper>
+                    {searchTerm ? (
+                        <>
+                            <Text style={{textAlign: "center", paddingBottom: "1rem"}} variant={"md"}>
+                                No playlists found matching "{searchTerm}".
+                            </Text>
+                            <Text style={{textAlign: "center"}}>
+                                Try searching again using a different spelling or keyword.
+                            </Text>
+                        </>
+                    ) : (
+                        <>
+                            <img src={noPlaylistImage} alt={"no playlists"} height={48}
+                                 style={{paddingBottom: "0.5rem"}}/>
+                            <Text style={{textAlign: "center"}}> Oh no! You don't have any playlist yet. Head over
+                                to <TextLink to={user?.external_urls.spotify!} target={'_blank'}
+                                             style={{color: "#1DB954", fontWeight: "700"}}>Spotify
+                                </TextLink> to create your first playlist!
+                            </Text>
+                        </>
+                    )}
+                </NoPlaylistsWrapper>
             }
 
             <LibraryItems>
@@ -74,6 +91,7 @@ export const LibrarySection = () => {
                             image={playlistObject.images ? playlistObject.images[playlistObject.images.length - 1].url
                                 : playlistImage} //"https://picsum.photos/200/300"
                             playlist_id={playlistObject.id}
+                            searchTerm={searchTerm}
                         />
                     )
                 })}

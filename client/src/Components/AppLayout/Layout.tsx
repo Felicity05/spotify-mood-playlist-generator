@@ -5,6 +5,7 @@ import {Main} from "./Main";
 import {useAccessToken} from "../../Context/AccessTokenContext";
 import {NavBar} from "../UI Components/NavBar";
 import {MainContent} from "../MainContent/MainContent";
+import MainFooter from "../MainContent/MainFooter";
 
 // Define styled components
 const Container = styled.div`

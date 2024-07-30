@@ -5,7 +5,7 @@ type TextVariant = "default" | "xs" | "sm" | "md" | "mdd" | "lg" | "xl";
 
 interface TextProps extends HTMLAttributes<HTMLParagraphElement> {
     variant?: TextVariant;
-    children: ReactNode;
+    children?: ReactNode;
     style?: CSSProperties;
 }
 

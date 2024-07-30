@@ -26,7 +26,7 @@ const LogOut = () => {
     return (
         <LogoutWrapper>
             <Button variant="icon" size="cl" onClick={handleLogOut}>
-                <img src={logOutIcon} alt={""} width={24}/>
+                <img src={logOutIcon} alt={"log out"} width={24}/>
             </Button>
         </LogoutWrapper>
     );

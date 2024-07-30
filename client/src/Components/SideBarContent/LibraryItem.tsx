@@ -22,21 +22,37 @@ interface PlaylistItemProps {
     type: string;
     owner: string | null;
     playlist_id: string;
+    searchTerm: string;
 }
 
+const HighlightedText = styled.span`
+  background-color: #1DB954;
+  border-radius: 0.2rem;
+`;
 
-export const LibraryItem: React.FC<PlaylistItemProps> = ({name, owner, image, type, playlist_id}) => {
+export const LibraryItem: React.FC<PlaylistItemProps> = ({
+                                                             name, owner, image,
+                                                             type, playlist_id, searchTerm
+                                                         }) => {
     const navigate = useNavigate();
 
     const handleClick = () => {
         navigate(`/playlist/${playlist_id}`);
     };
 
+    const getHighlightedText = (text: string, highlight: string) => {
+        const parts = text.split(new RegExp(`(${highlight})`, 'gi'));
+        return parts.map((part, index) =>
+            part.toLowerCase() === highlight.toLowerCase() ?
+                <HighlightedText key={index}>{part}</HighlightedText> : part
+        );
+    };
+
     return (
         <StyledPlaylistItem onClick={handleClick}>
             <img src={image} alt="random" width={"50px"} style={{borderRadius: "0.3rem"}}/>
             <div style={{display: "flex", flexDirection: "column"}}>
-                <Text style={{}}>{name}</Text>
+                <Text>{getHighlightedText(name, searchTerm)}</Text>
                 <div style={{display: "flex", gap: "0.2rem", alignItems: "center"}}>
                     <Text variant={"xs"} style={{textTransform: "capitalize"}}>{type}</Text>
                     <Text variant={"md"}>·</Text>

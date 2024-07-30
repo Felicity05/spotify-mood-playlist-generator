@@ -1,13 +1,13 @@
 import './App.css';
-import {Home} from './Pages/Home';
-import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
+import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 import {CallbackPage} from "./Pages/CallbackPage";
 import {AccessTokenProvider, useAccessToken} from "./Context/AccessTokenContext";
 import {DisplayPlaylist} from "./Components/Playlist/DisplayPlaylist";
 import {Layout} from "./Components/AppLayout/Layout";
-import React, {ReactChildren, ReactComponentElement, ReactNode} from "react";
+import React, {ReactNode} from "react";
 import {LogInPage} from "./Pages/LogInPage";
 import {MainContent} from "./Components/MainContent/MainContent";
+import LoadingPage from "./Pages/LoadingPage";
 
 
 type RequireAuthProps = {
@@ -17,7 +17,7 @@ type RequireAuthProps = {
 const RequireAuth: React.FC<RequireAuthProps> = ({children}) => {
     const {isLoggedIn: isAuthenticated, loading} = useAccessToken();
     if (loading) {
-        return <div>Loading...</div>; // Render a loading state while checking authentication
+        return <LoadingPage/>; // Render a loading state while checking authentication
     }
 
     if (!isAuthenticated) {

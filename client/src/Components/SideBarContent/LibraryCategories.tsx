@@ -1,11 +1,8 @@
 import React, {useState} from 'react';
+import {useUserStore} from "../../store/userStore";
 import {Button} from "../UI Components/Button";
 import styled from "styled-components";
 import search from '../../assets/Icons/icons8-search-96 (1).png'
-import {Text} from '../UI Components/Text';
-import {useUserStore} from "../../store/userStore";
-import {Simulate} from "react-dom/test-utils";
-import play = Simulate.play;
 import icon_close from '../../assets/Icons/icons8-close-64-white.png'
 
 const ButtonBar = styled.div`
@@ -16,10 +13,42 @@ const ButtonBar = styled.div`
   //border: solid 2px #1db954;
   scrollbar-width: none;
 `
+const SearchContainer = styled.div`
+  background-color: #212121;
+  border-radius: 9999rem;
+  padding: 0.2rem 0.85rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  position: relative;
+`;
 
-export const LibraryCategories = () => {
+const StyledSearchBar = styled.input`
+  background-color: transparent;
+  border: none;
+  appearance: none;
+  outline: none;
+  width: -webkit-fill-available;
+  height: 20px;
+  color: white;
+
+  &::-webkit-search-cancel-button {
+    appearance: none;
+  }
+`
+
+const ClearIcon = styled.img`
+  position: absolute;
+  right: 10px;
+`;
+
+export const LibraryCategories = ({
+                                      searchTerm,
+                                      setSearchTerm
+                                  }: { searchTerm: string, setSearchTerm: (value: string) => void }) => {
     const {user, playlists, setFilteredPlaylists, resetFilteredPlaylists} = useUserStore();
     const [activeFilter, setActiveFilter] = useState<string | null>(null);
+    // const [searchTerm, setSearchTerm] = useState<string>('');
 
     const filterPlaylistByAuthor = (author: string) => {
         if (activeFilter === author) {
@@ -51,8 +80,23 @@ export const LibraryCategories = () => {
         resetFilteredPlaylists();
     };
 
+    const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const value = event.target.value;
+        setSearchTerm(value);
+        const filteredData = playlists.filter(playlist =>
+            playlist.name.toLowerCase().includes(value.toLowerCase())
+        );
+        setFilteredPlaylists(filteredData);
+    };
+
+    const clearSearch = () => {
+        setSearchTerm('');
+        setFilteredPlaylists(playlists);
+    };
+
+
     return (
-        <div style={{marginLeft: "0.5rem", marginRight: "0.5rem"}}>
+        <div style={{padding: "0 0.5rem"}}>
             <ButtonBar>
                 {/*<Button variant={"secondary"} size={"sm"}*/}
                 {/*        onClick={(event) => handleActive(event.target)}>Playlists</Button>*/}
@@ -85,20 +129,17 @@ export const LibraryCategories = () => {
                     </>
                 )}
             </ButtonBar>
-            <div style={{
-                backgroundColor: "#212121",
-                borderRadius: "9999rem",
-                padding: "0.2rem 1rem",
-                marginBottom: "0.5rem",
-                display: "flex",
-                alignItems: "center"
-            }}>
-
+            <SearchContainer>
                 <img src={search} alt={"search"} width={24}/>
-                <input type={"search"} style={{backgroundColor: "transparent", border: "none"}}
-                       placeholder={"Search your library..."}
+                <StyledSearchBar type={"search"}
+                                 placeholder={"Search your library..."}
+                                 value={searchTerm}
+                                 onChange={handleSearch}
                 />
-            </div>
+                {searchTerm && (
+                    <ClearIcon src={icon_close} alt={"clear search"} width={12} onClick={clearSearch}/>
+                )}
+            </SearchContainer>
         </div>
     );
 }

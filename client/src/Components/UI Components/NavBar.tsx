@@ -5,6 +5,8 @@ import LogOut from "./LogOut";
 import styled from "styled-components";
 import arrowLeft from "../../assets/Icons/icons8-back-96.png";
 import arrowRight from "../../assets/Icons/icons8-forward-96.png";
+import {useUserStore} from "../../store/userStore";
+import profileImage from '../../assets/Icons/icons8-user-96-1.png'
 
 interface NavBarProps extends HTMLAttributes<HTMLDivElement> {
     scrolled?: boolean
@@ -35,6 +37,7 @@ export const NavBar: React.FC<NavBarProps> = ({...rest}) => {
     const location = useLocation();
     const [lastIndex, setLastIndex] = useState<number>(-1);
     const [scrolled, setScrolled] = useState<boolean>(false);
+    const {user} = useUserStore();
 
     // Function to handle scroll events
     const handleScroll = (element: HTMLElement) => {
@@ -76,14 +79,23 @@ export const NavBar: React.FC<NavBarProps> = ({...rest}) => {
                 <div style={{display: "flex", alignItems: "center", gap: "0.2rem"}}>
                     <Button variant="icon" size="cl" onClick={goBack}
                             disabled={window.history.state.idx === 1}>
-                        <img src={arrowLeft} alt="" width={24}/>
+                        <img src={arrowLeft} alt="go back" width={24}/>
                     </Button>
                     <Button variant="icon" size="cl" onClick={goForward}
                             disabled={lastIndex === window.history.state.idx}>
-                        <img src={arrowRight} alt="" width="24"/>
+                        <img src={arrowRight} alt="go forward" width="24"/>
                     </Button>
                 </div>
-                <LogOut/>
+                <div style={{display: "flex", alignItems: "center", gap: "0.35rem"}}>
+                    <Button variant={"icon"}
+                            style={{padding: "0.3rem"}}
+                            onClick={() => window.open(user?.external_urls.spotify!, '_blank')}>
+                        <img style={{borderRadius: '100px', width: '2rem', objectFit: "scale-down"}}
+                             src={user?.images.length !== 0 ? user?.images[1].url : profileImage}
+                             alt={"user profile"}/>
+                    </Button>
+                    <LogOut/>
+                </div>
             </NavbarContent>
         </Navbar>
     );

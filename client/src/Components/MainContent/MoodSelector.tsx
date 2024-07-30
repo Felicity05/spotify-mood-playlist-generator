@@ -1,4 +1,4 @@
-import {useState} from "react";
+import React from "react";
 import {Button} from "../UI Components/Button";
 import {useMoodSourceStore} from "../../store/moodStore";
 
@@ -9,34 +9,39 @@ export const moodEncodingMap: { [key: string]: string } = {
     "Sad": "3",
 }
 
-export const MoodSelector = () => {
+interface MoodSourceSelectorProps {
+    activeButton: string | null,
+    setActiveButton: (value: string) => void
+}
+
+export const MoodSelector: React.FC<MoodSourceSelectorProps> = ({activeButton, setActiveButton}) => {
     const {selectedMood, setSelectedMood} = useMoodSourceStore();
 
-    const handleMoodSelection = (mood: string) => {
-        // Update the selected mood
+    const handleButtonClick = (mood: string) => {
         setSelectedMood(mood);
+        setActiveButton(mood);
+        console.log(mood)
     };
 
+    console.log("Mood set to: ", selectedMood);
     return (
-        <div>
-            {!selectedMood ?
-                <div
-                    style={{display: "flex", flexDirection: "column", alignItems: "flex-start", paddingLeft: '0.2rem'}}>
-                    <p>Alright, now that's sorted, let's check in: How are you feeling today?</p>
-                    <div style={{display: "flex", gap: "0.5rem", paddingLeft: '0.7rem'}}>
-                        <Button variant="secondary" size="md"
-                                onClick={() => handleMoodSelection(moodEncodingMap.Happy)}>Happy</Button>
-                        <Button variant="secondary" size="md"
-                                onClick={() => handleMoodSelection(moodEncodingMap.Energetic)}>Energetic</Button>
-                        <Button variant="secondary" size="md"
-                                onClick={() => handleMoodSelection(moodEncodingMap.Calm)}>Calm</Button>
-                        <Button variant="secondary" size="md"
-                                onClick={() => handleMoodSelection(moodEncodingMap.Sad)}>Sad</Button>
-                    </div>
-                </div> :
-                <p>Mood set
-                    to: {Object.keys(moodEncodingMap).find((key) => moodEncodingMap[key as keyof typeof moodEncodingMap] === selectedMood)}</p>
-            }
+        <div
+            style={{display: "flex", flexDirection: "column", alignItems: "flex-start", paddingLeft: '0.2rem'}}>
+            <p>Alright, now that's sorted, let's check in: How are you feeling today?</p>
+            <div style={{display: "flex", gap: "0.5rem", paddingLeft: '0.7rem'}}>
+                {Object.entries(moodEncodingMap).map(([key, value]) => (
+                    <Button
+                        key={key}
+                        variant="secondary"
+                        size="md"
+                        isActive={activeButton === value}
+                        onClick={() => handleButtonClick(value)}
+                        disabled={activeButton !== value && activeButton !== ""}
+                    >
+                        {key}
+                    </Button>
+                ))}
+            </div>
         </div>
     )
 }

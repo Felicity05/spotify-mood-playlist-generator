@@ -1,5 +1,5 @@
 import React, {ButtonHTMLAttributes, ReactNode} from "react";
-import styled, {css, Interpolation, RuleSet} from "styled-components";
+import styled, {css, RuleSet} from "styled-components";
 
 type Variant = 'default' | 'primary' | 'secondary' | 'outline' | 'button_link' | 'icon' | 'icon_clear';
 
@@ -9,6 +9,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     children: ReactNode;
     variant?: Variant;
     size?: Size;
+    isActive?: boolean;
 }
 
 /*
@@ -46,7 +47,7 @@ const buttonVariants: { [key: string]: RuleSet } = {
       font-weight: bolder;
       transition: all 0.3s;
 
-      &:hover {
+      &:hover:enabled {
         transform: scale(1.07) perspective(0.5px)
       }
     `,
@@ -54,9 +55,10 @@ const buttonVariants: { [key: string]: RuleSet } = {
       background-color: ${colors.darkGrey.default}; //#212121;
       color: ${colors.textColor};
 
-      &:hover {
+      &:hover:enabled {
         background-color: ${colors.darkGrey.hover}; //#2a2a2a;
       }
+
     `,
     outline: css`
       background-color: transparent;
@@ -118,7 +120,7 @@ const buttonSizes: { [key: string]: RuleSet } = {
 };
 
 // Styled component named StyledButton
-const ButtonBase = styled.button<Pick<ButtonProps, 'variant' | 'size'>>`
+const ButtonBase = styled.button<Pick<ButtonProps, 'variant' | 'size' | 'isActive'>>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -136,19 +138,21 @@ const ButtonBase = styled.button<Pick<ButtonProps, 'variant' | 'size'>>`
     cursor: not-allowed;
   }
 
-  &:active {
-    background-color: ${colors.lightGrey.hover};
-  }
-
   ${({variant}) => buttonVariants[variant!]};
   ${({size}) => buttonSizes[size!]};
+  ${({isActive}) => isActive && css`
+    background-color: ${colors.lightGrey.hover};
+    color: ${colors.darkGrey.default};
+    pointer-events: none;
+  `}
 `;
 
 export const Button: React.FC<ButtonProps> = ({
                                                   className, children,
-                                                  variant = "default", size = "default", ...props
+                                                  variant = "default", size = "default",
+                                                  isActive, ...props
                                               }) => {
-    return <ButtonBase className={className} variant={variant} size={size} {...props}>
+    return <ButtonBase className={className} variant={variant} size={size} isActive={isActive} {...props}>
         {children}
     </ButtonBase>
 }

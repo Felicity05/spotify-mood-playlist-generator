@@ -1,35 +1,46 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Button} from "../UI Components/Button";
-import {getRecentlyPlayedTracks} from "../../api/api";
 import {useMoodSourceStore} from "../../store/moodStore";
 
 const tracksSourceMap = {
-    "recentlyPlayed": "recentlyPlayed",
+    "recentlyListened": "recentlyPlayed",
     "topTracks": "topTracks",
     "topArtist": "topArtist"
 }
 
-const TracksSourceSelector = () => {
+interface TracksSourceSelectorProps {
+    activeButton: string | null,
+    setActiveButton: (value: string) => void
+}
+
+const TracksSourceSelector: React.FC<TracksSourceSelectorProps> = ({activeButton, setActiveButton}) => {
     const {selectedTrackSource, setSelectedTrackSource} = useMoodSourceStore();
 
+    const handleButtonClick = (source: string) => {
+        setSelectedTrackSource(source);
+        setActiveButton(source);
+        console.log(source)
+    };
+
+    console.log("Track source set to: ", selectedTrackSource);
     return (
-        <div>
-            {!selectedTrackSource ?
-                <div
-                    style={{display: "flex", flexDirection: "column", alignItems: "flex-start", paddingLeft: '0.2rem'}}>
-                    <p>Let's start by selecting where you'd like to get your songs from</p>
-                    <div style={{display: "flex", gap: "0.5rem", paddingLeft: '0.7rem'}}>
-                        <Button variant="secondary" size="md"
-                                onClick={() => setSelectedTrackSource(tracksSourceMap.recentlyPlayed)}>Recently
-                            listened</Button>
-                        <Button variant="secondary" size="md"
-                                onClick={() => setSelectedTrackSource(tracksSourceMap.topTracks)}>Top Songs</Button>
-                        <Button variant="secondary" size="md"
-                                onClick={() => setSelectedTrackSource(tracksSourceMap.topArtist)}>Top Artists</Button>
-                    </div>
-                </div> :
-                <p>Track source set to: {selectedTrackSource} </p>
-            }
+        <div
+            style={{display: "flex", flexDirection: "column", alignItems: "flex-start", paddingLeft: '0.2rem'}}>
+            <p>Let's start by selecting where you'd like to get your songs from</p>
+            <div style={{display: "flex", gap: "0.5rem", paddingLeft: '0.7rem'}}>
+                {Object.entries(tracksSourceMap).map(([key, value]) => (
+                    <Button
+                        key={key}
+                        variant="secondary"
+                        size="md"
+                        isActive={activeButton === value}
+                        onClick={() => handleButtonClick(value)}
+                        disabled={activeButton !== value && activeButton !== ""}
+                    >
+                        {key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, ' $1')}
+                    </Button>
+                ))}
+            </div>
         </div>
     );
 }

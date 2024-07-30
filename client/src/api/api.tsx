@@ -30,16 +30,26 @@ spotify_api.interceptors.request.use(async (config) => {
 });
 
 spotify_api.interceptors.response.use((response) => response,
-    (error) => {
+    async (error) => {
         // Handle unauthorized errors, e.g., token expiration
-        if (error.response && error.response.status === 401) {
-            // Clear the expired token and initiate the authentication flow
-            clearAccessToken();
-            const code = localStorage.getItem("verifier");
-            // console.log("verifier==  ", code);
-            exchangeAccessToken(code).then(response => {
-                return response
-            });
+        if (error.response) {
+            if (error.response.status === 401) {
+                // Clear the expired token and initiate the authentication flow
+                clearAccessToken();
+                const code = localStorage.getItem("verifier");
+                // console.log("verifier==  ", code);
+                await exchangeAccessToken(code)
+
+                // Retry the original request after token refresh
+                let accessToken = await getAccessToken();
+                error.config.headers.Authorization = `Bearer ${accessToken}`;
+                return spotify_api.request(error.config);
+
+            } else if (error.response.status === 403) {
+                // Handle unauthorized access for non-authorized users
+                console.error('Access forbidden: you are not authorized to access this resource.');
+                return error;
+            }
         }
 
         return Promise.reject(error);
