@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {HTMLAttributes, useState} from 'react';
 import {useUserStore} from "../../store/userStore";
 import {Button} from "../UI Components/Button";
 import styled from "styled-components";

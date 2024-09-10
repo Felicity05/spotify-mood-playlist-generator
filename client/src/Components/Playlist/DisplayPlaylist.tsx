@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {PlaylistHeader} from "./PlaylistHeader";
 import styled from "styled-components";
 import {getPlaylist} from "../../api/api";
@@ -29,12 +29,20 @@ createTheme('spotify-dark', {
 }, 'dark')
 
 const tableStyles = {
+    table: {
+        style: {
+            backgroundColor: "transparent",
+            width: '100%',
+        },
+    },
     headRow: {
         style: {
             color: "#A39F9F",
             borderBottom: 'rgb(150, 146, 146, 0.55) solid 1px',
             fontWeight: '600',
             fontSize: '13.5px',
+            width: "100%",
+            marginBottom: '0.5rem'
         }
     },
     rows: {
@@ -42,26 +50,32 @@ const tableStyles = {
             color: "#A39F9F",
             padding: "0.5rem 0",
             fontWeight: '500',
+            width: "100%"
         },
         highlightOnHoverStyle: {
             borderRadius: '0.5rem'
         }
     },
+    cells: {
+        style: {
+            // border: "solid pink",
+            width: "20px"
+        }
+    }
 }
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  //border: yellow solid 2px;
   width: 100%;
 `
 
-const PlaylistBody = styled.span`
-  //background-image: linear-gradient(180deg, darkred, #121212);
-  //height: 200px;
-  //overflow-y: scroll;
-  //background-color: rgba(45, 18, 18, 0.3); //for testing
+const PlaylistBody = styled.div`
   background-color: rgba(18, 18, 18, 0.3);
+  //border: solid yellowgreen;
+  padding: 0 1.25rem;
+  z-index: 99;
+  overflow: clip;
 `
 
 type NewPlaylistProps = {
@@ -69,12 +83,15 @@ type NewPlaylistProps = {
     showPlaylist?: boolean
 }
 
+//todo: get a cool animation to put here
 const LoadingPlaylist = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   color: #1db954;
+  z-index: 99;
+  height: 90vh;
 `
 
 const StickyTableHeader = styled.div<{ scrolled?: boolean }>`
@@ -85,43 +102,44 @@ const StickyTableHeader = styled.div<{ scrolled?: boolean }>`
   border: solid purple 2px;
   padding: 20px;
   position: sticky;
-  top: 50px;
+  top: 57px;
 `;
 
 
-export const DisplayPlaylist: React.FC<NewPlaylistProps> = ({showPlaylist}) => {
+export const DisplayPlaylist: React.FC<NewPlaylistProps> = () => {
     const {playlistId} = useParams<{ playlistId: string }>();
     const {data: playlist, isLoading} = useQuery(['playlist', playlistId], () => getPlaylist(playlistId!))
+    const playlistTracks = playlist?.tracks?.items
 
-    //todo: implement function to get all playlist tracks - limit to 100 per request
+    //todo: future: implement function to get all playlist tracks - limit to 100 per request
 
-    // console.log("showPlaylist==", showPlaylist)
-    // console.log(playlist)
-    console.log("playlistId== ", playlistId)
-
-    //todo: show total of items of playlist, now limited to 100
-    const items = playlist?.tracks?.items
-    console.log("Playlist items=== ", items)
+    /* for debugging purposes
+        console.log(playlist)
+        console.log("playlistId== ", playlistId)
+        console.log("Playlist playlistTracks=== ", playlistTracks)
+     */
 
     return (
         <Wrapper>
-            {isLoading ? <LoadingPlaylist> Getting Playlist...</LoadingPlaylist> :
+            {isLoading ?
+                <LoadingPlaylist>
+                    <h1>Loading Playlist...</h1>
+                </LoadingPlaylist> :
                 <>
                     <PlaylistHeader playlist={playlist}/>
                     <PlaylistBody>
-                        <StickyTableHeader>
-                            hello
-                        </StickyTableHeader>
-                        <div style={{margin: '0 1.3rem'}}>
-                            <DataTable
-                                columns={columns}
-                                data={items} //items of the playlist
-                                highlightOnHover
-                                persistTableHead
-                                theme="spotify-dark"
-                                customStyles={tableStyles}
-                            />
-                        </div>
+                        {/*<StickyTableHeader>*/}
+                        {/*    # Title Album Date Added Clock*/}
+                        {/*</StickyTableHeader>*/}
+                        <DataTable
+                            columns={columns}
+                            data={playlistTracks} //tracks of the playlist
+                            highlightOnHover
+                            persistTableHead
+                            theme="spotify-dark"
+                            customStyles={tableStyles}
+                            responsive={false}
+                        />
                     </PlaylistBody>
                 </>}
         </Wrapper>

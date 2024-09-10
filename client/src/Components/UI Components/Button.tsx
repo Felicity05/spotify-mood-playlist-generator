@@ -145,6 +145,8 @@ const ButtonBase = styled.button<Pick<ButtonProps, 'variant' | 'size' | 'isActiv
     color: ${colors.darkGrey.default};
     pointer-events: none;
   `}
+  
+
 `;
 
 export const Button: React.FC<ButtonProps> = ({

@@ -23,9 +23,12 @@ const StyledBox = styled.div<Pick<BoxProps, 'alignment' | 'width' | 'height' | '
   color: white;
   box-sizing: border-box;
 
+  //scrollbar styling
   overflow: hidden;
-  overflow-y: scroll;
-  scrollbar-gutter: stable;
+  overflow-y: auto;
+  //scrollbar-gutter: stable;
+  scrollbar-color: darkgrey transparent;
+
 
   /* Add more styles as needed */
   /* Set the width based on props or default to 200px */

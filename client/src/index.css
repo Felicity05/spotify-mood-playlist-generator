@@ -1,13 +1,26 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+@font-face {
+    font-family: 'CircularSpotifyText';
+    src: url('./assets/fonts/CircularSpotifyText-Black.otf') format('otf'),
+    url('./assets/fonts/CircularSpotifyText-Bold.otf') format('otf'),
+    url('./assets/fonts/CircularSpotifyText-Book.otf') format('otf'),
+    url('./assets/fonts/CircularSpotifyText-BookItalic.otf') format('otf'),
+    url('./assets/fonts/CircularSpotifyText-Light.otf') format('otf'),
+    url('./assets/fonts/CircularSpotifyText-Medium.otf') format('otf'),
+    url('./assets/fonts/CircularSpotifyText-MediumItalic.otf') format('otf');
+    font-weight: normal;
+    font-style: normal;
 }

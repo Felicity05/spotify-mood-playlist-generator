@@ -19,6 +19,14 @@ const StyledMainDisplay = styled.div<MainDisplayProps>`
   //width: 100%;
   //background-color: #040306; //#1db954;
   //border: solid #1db954 2px;
+  overflow: hidden;
+  overflow-y: auto;
+
+  @media (max-width: 768px) {
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-template-areas: "main"
+  }
 `
 
 export const Main: React.FC<MainDisplayProps> = ({children, ...rest}) => {

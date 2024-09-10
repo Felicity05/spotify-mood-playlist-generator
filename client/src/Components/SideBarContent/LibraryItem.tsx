@@ -51,12 +51,22 @@ export const LibraryItem: React.FC<PlaylistItemProps> = ({
     return (
         <StyledPlaylistItem onClick={handleClick}>
             <img src={image} alt="random" width={"50px"} style={{borderRadius: "0.3rem"}}/>
-            <div style={{display: "flex", flexDirection: "column"}}>
-                <Text>{getHighlightedText(name, searchTerm)}</Text>
-                <div style={{display: "flex", gap: "0.2rem", alignItems: "center"}}>
-                    <Text variant={"xs"} style={{textTransform: "capitalize"}}>{type}</Text>
-                    <Text variant={"md"}>·</Text>
-                    <Text variant={"xs"}>{owner} </Text>
+            <div style={{display: "flex", flexDirection: "column", overflow: "hidden", justifyContent: "center"}}>
+                <Text style={{whiteSpace: "nowrap", textOverflow: "ellipsis", overflow: "hidden", paddingBottom: 0}}>
+                    {getHighlightedText(name, searchTerm)}
+                </Text>
+                <div style={{
+                    display: "flex", gap: "0.2rem", alignItems: "center",
+                    color: "#A39F9F", overflow: "hidden"
+                }}>
+                    <Text variant={"xs"} style={{textTransform: "capitalize", paddingBottom: 0}}>{type}</Text>
+                    <Text variant={"md"} style={{paddingBottom: 0}}>·</Text>
+                    <Text variant={"xs"} style={{
+                        whiteSpace: "nowrap", textOverflow: "ellipsis",
+                        overflow: "hidden", paddingBottom: 0
+                    }}>
+                        {owner}
+                    </Text>
                 </div>
             </div>
         </StyledPlaylistItem>

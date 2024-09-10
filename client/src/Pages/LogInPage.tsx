@@ -17,11 +17,17 @@ export const LogInPage: React.FC = () => {
     return (
         <div style={{height: "100vh", backgroundColor: "black", padding: "0.5rem", boxSizing: "border-box"}}>
             <Box alignment={"center"}>
-                <h1>Welcome to Moodify</h1>
-                <h3>Your Personal Mood Playlist Generator for Spotify</h3>
-                <div style={{display: "flex", alignItems: "center", flexDirection: "column"}}>
+                <div style={{
+                    padding: "0.5rem",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    textAlign: "center"
+                }}>
+                    <h1 style={{fontSize: "2.75vw"}}>Welcome to Moodify</h1>
+                    <h3 style={{fontSize: "1.5vw"}}>Your Personal Mood Playlist Generator for Spotify</h3>
                     <img src={music_mood} alt='music mood' width={'30%'}/>
-                    <h2>Please log in to get started</h2>
+                    <h2 style={{fontSize: "1.5vw"}}>Please log in to get started</h2>
                     <div style={{marginBottom: "0.5rem"}}>
                         <Button variant="primary" size="lg"
                                 onClick={handleLogin}> {/*Log in component that triggers authentication and gets user profile data*/}

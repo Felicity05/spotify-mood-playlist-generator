@@ -1,7 +1,7 @@
 import React, {HTMLAttributes, useEffect, useState} from 'react';
 import {useLocation, useNavigate} from "react-router-dom";
-import {Button} from "./Button";
-import LogOut from "./LogOut";
+import {Button} from "../UI Components/Button";
+import LogOut from "../UI Components/LogOut";
 import styled from "styled-components";
 import arrowLeft from "../../assets/Icons/icons8-back-96.png";
 import arrowRight from "../../assets/Icons/icons8-forward-96.png";
@@ -9,7 +9,8 @@ import {useUserStore} from "../../store/userStore";
 import profileImage from '../../assets/Icons/icons8-user-96-1.png'
 
 interface NavBarProps extends HTMLAttributes<HTMLDivElement> {
-    scrolled?: boolean
+    scrolled?: boolean;
+    setIsMenuOpen: (value: boolean) => void
 }
 
 const Navbar = styled.nav<NavBarProps>`
@@ -32,7 +33,21 @@ const NavbarContent = styled.div`
   color: white;
 `;
 
-export const NavBar: React.FC<NavBarProps> = ({...rest}) => {
+const MenuButton = styled.button`
+  display: none;
+
+  @media (max-width: 768px) {
+    display: block;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-right: 0.5rem;
+  }
+`;
+
+export const NavBar: React.FC<NavBarProps> = ({setIsMenuOpen, ...rest}) => {
     const navigate = useNavigate();
     const location = useLocation();
     const [lastIndex, setLastIndex] = useState<number>(-1);
@@ -74,8 +89,9 @@ export const NavBar: React.FC<NavBarProps> = ({...rest}) => {
     };
 
     return (
-        <Navbar scrolled={scrolled} {...rest}>
+        <Navbar scrolled={scrolled} setIsMenuOpen={setIsMenuOpen} {...rest}>
             <NavbarContent>
+                <MenuButton onClick={() => setIsMenuOpen(true)}>☰</MenuButton>
                 <div style={{display: "flex", alignItems: "center", gap: "0.2rem"}}>
                     <Button variant="icon" size="cl" onClick={goBack}
                             disabled={window.history.state.idx === 1}>

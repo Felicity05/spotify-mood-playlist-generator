@@ -1,7 +1,7 @@
 import React, {CSSProperties, HTMLAttributes, ReactNode} from 'react';
 import styled, {css, RuleSet} from "styled-components";
 
-type TextVariant = "default" | "xs" | "sm" | "md" | "mdd" | "lg" | "xl";
+type TextVariant = "default" | "xs" | "xsm" | "sm" | "md" | "mdd" | "lg" | "xl";
 
 interface TextProps extends HTMLAttributes<HTMLParagraphElement> {
     variant?: TextVariant;
@@ -15,6 +15,9 @@ const textVariants: { [key: string]: RuleSet } = {
     `,
     xs: css`
       font-size: 12px;
+    `,
+    xsm: css`
+      font-size: 13px;
     `,
     sm: css`
       font-size: 14px;
