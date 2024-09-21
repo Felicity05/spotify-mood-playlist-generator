@@ -221,3 +221,11 @@ export const useGeneratePlaylist = (): GeneratePlaylistHook => {
 
     return {showProgressBar, createPlaylistFlow, playlistSize, showModal, setShowModal, message};
 }
+
+//i can have a state with the different stages of creatig the playlist so i can show it to the user
+//ex playlistGenerationStage {
+//      stage: "getting surce tracks" / getting track features / analysis tracks / creating playlist
+//     }
+//
+//
+//

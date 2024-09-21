@@ -18,6 +18,8 @@ import {getRecentlyPlayedTracks} from "../../api/api";
 import restart from '../../assets/Icons/icons8-rotate-left-96.png'
 import ohNoImage from '../../assets/Icons/icons8-no-audio-wave-100.png'
 import {useNavigate} from "react-router-dom";
+import turntablePlayer from '../../assets/turntable-img.png'
+import {PlayHistory} from "../../utils/trackTypes";
 
 //TODO: add types for track object, artist object, clean up this component
 
@@ -39,10 +41,8 @@ export const MainContent: React.FC<MainContentProps> = () => {
     const {isLoggedIn, loading} = useAccessToken();
     const {user: userProfile} = useUserStore();
     const timeOfDay = useTimeOfDay();
-    const navigate = useNavigate();
 
     const [showModal, setShowModal] = useState<boolean>(false);
-    const [modalMessage, setModalMessage] = useState<string>('');
     const [topArtist, setTopArtist] = useState<Artist[]>([]);
     const [listeningHistory, setListeningHistory] = useState<boolean>(false);
     const [activeSourceButton, setActiveSourceButton] = useState<string | null>("");
@@ -64,13 +64,13 @@ export const MainContent: React.FC<MainContentProps> = () => {
 
     useEffect(() => {
         const fetchRecentlyPlayedTracks = async () => {
-            const res: any = await getRecentlyPlayedTracks();
+            const res: PlayHistory[] = await getRecentlyPlayedTracks();
             console.log(res)
             if (res.length > 0) setListeningHistory(true);
         }
 
         if (isLoggedIn) {
-            fetchRecentlyPlayedTracks();
+            fetchRecentlyPlayedTracks().then(r => console.log(r));
         }
     }, [isLoggedIn]);
 
@@ -130,13 +130,23 @@ export const MainContent: React.FC<MainContentProps> = () => {
                     message={playlistSize.toString()}
                     hookMessage={hookMessage}
                 />
-                <TracksSourceSelector activeButton={activeSourceButton} setActiveButton={setActiveSourceButton}/>
-                <MoodSelector activeButton={activeMoodButton} setActiveButton={setActiveMoodButton}/>
+                <div>
+                    <TracksSourceSelector activeButton={activeSourceButton} setActiveButton={setActiveSourceButton}
+                                          recentlyListened={listeningHistory}/>
+                    <MoodSelector activeButton={activeMoodButton} setActiveButton={setActiveMoodButton}/>
+                </div>
+                {/*<div style={{position: "absolute", top: "125px", left: "620px"}}>*/}
+                {/*    <img src={turntablePlayer} alt={"turntable music player"}*/}
+                {/*         style={{width: "100%", height: "250px"}}/>*/}
+                {/*    /!*have it playing whatever song is currently playing on the spotify user*!/*/}
+                {/*</div>*/}
                 <div>
                     <p>Great! You're all set. Just click below to witness the magic happen! </p>
                     <div style={{display: "flex", gap: "1.5rem", paddingLeft: '1rem', alignItems: "center"}}>
                         <Button variant="primary" size="lg" disabled={!source || !mood}
-                                onClick={handlePlaylistCreation}>Generate Playlist</Button>
+                                onClick={handlePlaylistCreation}> Generate Playlist
+                            {/*music waves animation here */}
+                        </Button>
                         <Button variant={"icon"} disabled={!source && !mood}
                                 onClick={handleResetMoodAndTrackSource} style={{padding: "0.35rem", height: "2.25rem"}}>
                             <img src={restart} alt={"restart"} width={24} height={24}/>
@@ -148,7 +158,6 @@ export const MainContent: React.FC<MainContentProps> = () => {
                 <TopArtist topArtist={topArtist} setTopArtist={setTopArtist}/>
             </>}
 
-            {!listeningHistory && <div>Loading content...</div>}
 
             {!listeningHistory && loading &&
                 <div style={{
@@ -164,7 +173,7 @@ export const MainContent: React.FC<MainContentProps> = () => {
                         to={userProfile?.external_urls.spotify!}
                         target={'_blank'} style={{color: "#1DB954", fontWeight: "700"}}>Spotify</TextLink> and
                         don't have any activity yet.
-                        Start listening and then come bach here to create your custom playlists!</Text>
+                        Start listening and then come back here to create your custom playlists!</Text>
                 </div>
             }
         </CardContent>

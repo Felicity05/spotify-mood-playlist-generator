@@ -7,6 +7,8 @@ const PREDICTIONS_ENDPOINT = process.env.REACT_APP_PREDICTIONS_ENDPOINT || 'http
 
 export const predictTrackMood = async (trackFeatures: TrackAudioFeatures[]): Promise<number[] | string> => {
     try {
+        // handle null in trackFeatures
+        trackFeatures = trackFeatures.filter(item => item != null);
         const response = await axios.post(PREDICTIONS_ENDPOINT, {trackFeatures})
         const prediction = response.data.prediction;
         // console.log('Prediction:', prediction);

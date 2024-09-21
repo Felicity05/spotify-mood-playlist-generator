@@ -1,8 +1,18 @@
 import React, {useEffect} from 'react';
 import {Text} from "../UI Components/Text";
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import playlistImage from '../../assets/Icons/icons8-musical-note-100 copy.png'
 import {TextLink} from "../UI Components/TextLink";
+import {Textfit} from 'react-textfit';
+
+/* todo: fix playlist header text to be bigger when there is space and smaller when there isn't
+    fix table playlist header image to resize for smaller screen sizes
+    fix text to resize for smaller screen sizes
+    add underline effect when hover to links on the playlist description
+
+    ** nice to have **
+    fix color background for playlist to be a random generated color picked from the image playlist cover
+ */
 
 const HeaderWrapper = styled.div`
   //background-color: darkred;
@@ -11,9 +21,45 @@ const HeaderWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  //border: solid blue;
 `
 
-const TextLinks = styled.a`
+const PlaylistContent = styled.div`
+  display: flex;
+  width: 95%;
+  //border: solid magenta;
+
+  @media (max-width: 550px) {
+    flex-direction: column;
+    align-items: center;
+  }
+`
+
+const ImageWrapper = styled.div`
+  width: 250px;
+  margin: 0 1.5rem;
+  //border: solid cyan;
+
+  @media (max-width: 550px) {
+    width: 175px;
+    margin-bottom: 1rem;
+  }
+`
+
+const PlaylistInfoWrapper = styled.div`
+  //border: solid yellow;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding-bottom: 0.3rem;
+  width: 100%;
+  max-width: 100%;
+  overflow: auto;
+  gap: 0.25rem;
+`
+
+const StyledTextLinks = css`
   color: white; // Spotify green or any other color #1DB954
   text-decoration: none; // Remove underline by default
 
@@ -43,15 +89,12 @@ export const PlaylistHeader: React.FC<any> = ({playlist}) => {
         // Modify the links
         const links = tempContainer.querySelectorAll('a');
         links.forEach(link => {
-            // console.log("original link== ", link)
 
             // Modify the href attribute to the correct format
             const playlistId = link.href.split(':').pop();
-            // console.log("playlistId= ", playlistId)
             link.href = `https://open.spotify.com/playlist/${playlistId}`;
             link.target = '_blank';
 
-            // console.log("modified link== ", link)
             // Apply styling
             link.style.color = 'white'; // Spotify green or any other color '#1DB954'
             link.style.textDecoration = 'none'; // Optional: remove underline
@@ -64,40 +107,26 @@ export const PlaylistHeader: React.FC<any> = ({playlist}) => {
     }
     const modifiedText = modifyAndStyleLinks(playlist?.description);
 
-    /** todo: fix playlist header text to be bigger when there is space and smaller when there isn't
-     * fix color background for playlist to be a random generated color
-     * fix table playlist header
-     */
-
     return (
         <HeaderWrapper>
-            <div style={{
-                display: "flex",
-                paddingBottom: '1rem',
-                width: "95%"
-            }}>
-                <img src={playlist?.images ? playlist?.images[0].url : playlistImage} alt={""}
-                     style={{maxWidth: "200px", height: "200px", borderRadius: "0.3rem"}}/>
-                <div style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "flex-end",
-                    alignItems: "flex-start",
-                    paddingLeft: "1.5rem",
-                    paddingBottom: "0.3rem",
-                    whiteSpace: "nowrap",
-                    overflow: "hidden",
-                    width: "100%"
-                }} id={"text-area"}>
-                    <Text variant="xsm" style={{fontWeight: "600"}}>Playlist</Text>
-                    <Text variant="xl"
-                          style={{fontWeight: "900"}}>{playlist?.name}</Text>
+            <PlaylistContent>
+
+                <ImageWrapper>
+                    <img src={playlist?.images ? playlist?.images[0].url : playlistImage} alt={""}
+                         style={{maxWidth: "100%", height: "auto", borderRadius: "0.3rem"}}/>
+                </ImageWrapper>
+
+                <PlaylistInfoWrapper id={"text-area"}>
+                    {/*<Textfit mode='single' max={20} min={13} style={{fontWeight: "600", width: '100%'}}>*/}
+                    {/*    Playlist*/}
+                    {/*</Textfit> /!*hide this on small screen*!/*/}
+                    <Textfit mode='single' onReady={() => console.log("hello")}
+                             style={{fontWeight: "900", width: "100%"}}>{playlist?.name}</Textfit>
+
                     <Text variant="sm" dangerouslySetInnerHTML={{__html: modifiedText}}
                           style={{
-                              color: "#e3e3e3c2",
-                              overflow: "hidden",
-                              textOverflow: "ellipsis",
-                              width: "-webkit-fill-available"
+                              color: "#e3e3e3c2", overflow: "hidden", whiteSpace: "nowrap",
+                              textOverflow: "ellipsis", width: "-webkit-fill-available"
                           }}/>
                     <div>
                         {/*<img src={""} alt={""} width="24"/>*/}
@@ -112,14 +141,12 @@ export const PlaylistHeader: React.FC<any> = ({playlist}) => {
                         </Text>
                     </div>
                     {playlist?.tracks?.total > 100 &&
-                        <Text variant={"xs"} style={{color: "#e3e3e3c2"}}>* Only first 100 songs are displayed, to see
-                            entire playlist
-                            click <TextLink
-                                to={playlist.external_urls.spotify} target={"_blank"}
-                                style={{fontWeight: "bolder"}}>here</TextLink>
+                        <Text variant={"xs"} style={{color: "#e3e3e3c2"}}>* Only first 100 songs are displayed here,
+                            see the entire playlist on <TextLink to={playlist.external_urls.spotify} target={"_blank"}
+                                                                 style={{fontWeight: "bolder"}}>Spotify</TextLink>
                         </Text>}
-                </div>
-            </div>
+                </PlaylistInfoWrapper>
+            </PlaylistContent>
         </HeaderWrapper>
     );
 }

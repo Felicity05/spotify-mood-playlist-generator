@@ -4,6 +4,11 @@ import {PlayHistory, TrackAudioFeatures} from "../utils/trackTypes";
 import {Playlist, Track} from "../utils/playlistTypes";
 import {Artist} from "../types";
 
+/*
+/ todo: review this api and clean up this code
+    add error handling when needed
+ */
+
 // for all the api calls I need the access token
 const API_BASE_URL = 'https://api.spotify.com/v1';
 
@@ -209,6 +214,18 @@ export const getPlaylistsForCurrentUser = async () => {
 
     return allPlaylists;
 }
+
+/* the way i have set up my functions now is doing
+43 sequential requests to get all the top tracks for the long_term period of time
+modify this to let the user select the period of time 3 months, 6 months or 1 year
+als modify the function to handle the requests in parallel and speed up the response time
+
+then i am doing 22 requests for the audio features endpoint to get all the audio features for all the tracks
+do this in parallel too
+
+once the initial request to playlist and user nd recently played has been done,
+cache these responses so the app it doesn't make these requests to the api again
+* */
 
 //get top items for user - type: artists | tracks
 export const getTopItemsForUser = async (type: string) => {

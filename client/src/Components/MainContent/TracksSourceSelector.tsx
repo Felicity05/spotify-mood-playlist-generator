@@ -10,10 +10,14 @@ const tracksSourceMap = {
 
 interface TracksSourceSelectorProps {
     activeButton: string | null,
-    setActiveButton: (value: string) => void
+    setActiveButton: (value: string) => void,
+    recentlyListened: boolean,
 }
 
-const TracksSourceSelector: React.FC<TracksSourceSelectorProps> = ({activeButton, setActiveButton}) => {
+const TracksSourceSelector: React.FC<TracksSourceSelectorProps> = ({
+                                                                       activeButton, setActiveButton,
+                                                                       recentlyListened
+                                                                   }) => {
     const {selectedTrackSource, setSelectedTrackSource} = useMoodSourceStore();
 
     const handleButtonClick = (source: string) => {
@@ -35,7 +39,8 @@ const TracksSourceSelector: React.FC<TracksSourceSelectorProps> = ({activeButton
                         size="md"
                         isActive={activeButton === value}
                         onClick={() => handleButtonClick(value)}
-                        disabled={activeButton !== value && activeButton !== ""}
+                        disabled={(activeButton !== value && activeButton !== "")}
+                        // || (key === "recentlyListened" && !recentlyListened)}
                     >
                         {key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, ' $1')}
                     </Button>
