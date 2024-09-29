@@ -85,6 +85,7 @@ export const useGeneratePlaylist = (): GeneratePlaylistHook => {
         console.log("listOfAudioFeaturesSize== ", listOfAudioFeatures.length)
 
         //uses my ML random_forest model to predict the mood for each song
+        listOfAudioFeatures = listOfAudioFeatures.filter(item => item != null);
         const tracksMoodList = await predictTrackMood(listOfAudioFeatures)
         console.log("tracksMoodList== ", tracksMoodList)
 

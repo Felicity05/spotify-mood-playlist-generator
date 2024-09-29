@@ -26,7 +26,7 @@ const LibraryHeader = styled.div`
   align-items: center;
 `
 
-const LibraryItems = styled.div`
+const LibraryItemsWrapper = styled.div`
 `
 
 const NoPlaylistsWrapper = styled.div`
@@ -89,7 +89,7 @@ export const LibrarySection = () => {
                     </NoPlaylistsWrapper>
                 }
 
-                <LibraryItems>
+                <LibraryItemsWrapper>
                     {filteredPlaylists.map((playlistObject, index) => {
                         return (
                             <LibraryItem
@@ -104,7 +104,7 @@ export const LibrarySection = () => {
                             />
                         )
                     })}
-                </LibraryItems>
+                </LibraryItemsWrapper>
             </div>
         </StyledLibrary>
     )

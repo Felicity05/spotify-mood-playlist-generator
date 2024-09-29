@@ -131,7 +131,7 @@ export const LibraryCategories = ({
             </ButtonBar>
             <SearchContainer>
                 <img src={search} alt={"search"} width={24}/>
-                <StyledSearchBar type={"search"}
+                <StyledSearchBar type={"search"} name={"search"}
                                  placeholder={"Search your library..."}
                                  value={searchTerm}
                                  onChange={handleSearch}

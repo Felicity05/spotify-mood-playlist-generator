@@ -34,7 +34,7 @@ const CardContent = styled.div`
   z-index: 999;
 `
 
-interface MainContentProps extends HTMLAttributes<HTMLDivElement> {
+interface MainContentProps {
 }
 
 export const MainContent: React.FC<MainContentProps> = () => {
@@ -118,7 +118,7 @@ export const MainContent: React.FC<MainContentProps> = () => {
         <CardContent>
             <h1 style={{color: "white"}}>Good {timeOfDay}, {userProfile?.display_name.split(" ")[0]}!</h1>
 
-            {listeningHistory && !loading && <>
+            {!loading && <>
                 <h2>Ready to create your moodified playlist with a single click? </h2>
                 <Modal
                     isOpen={showModal || hookShowModal}

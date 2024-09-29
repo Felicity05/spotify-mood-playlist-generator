@@ -9,6 +9,7 @@ const StyledPlaylistItem = styled.div`
   align-items: center;
   //margin: 0.5rem 0;
   padding: 0.5rem;
+  width: 90%;
 
   &:hover {
     background-color: #2a2a2a;
@@ -50,7 +51,7 @@ export const LibraryItem: React.FC<PlaylistItemProps> = ({
 
     return (
         <StyledPlaylistItem onClick={handleClick}>
-            <img src={image} alt="random" width={"50px"} style={{borderRadius: "0.3rem"}}/>
+            <img src={image} alt="playlist cover" width={50} height={50} style={{borderRadius: "0.3rem"}}/>
             <div style={{display: "flex", flexDirection: "column", overflow: "hidden", justifyContent: "center"}}>
                 <Text style={{whiteSpace: "nowrap", textOverflow: "ellipsis", overflow: "hidden", paddingBottom: 0}}>
                     {getHighlightedText(name, searchTerm)}
