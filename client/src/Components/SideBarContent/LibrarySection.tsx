@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import libraryIcon from '../../assets/Icons/icons8-music-library-96(1).png'
 import playlistImage from '../../assets/Icons/icons8-musical-note-96 copy.png'
 import noPlaylistImage from '../../assets/Icons/icons8-playlist-96-no.png'
+import useDetectScreenDeviceSize, {COMMON_BREAK_POINTS} from "../AppLayout/useDetectScreenDeviceSize";
 
 const StyledLibrary = styled.div`
   display: flex;
@@ -16,6 +17,7 @@ const StyledLibrary = styled.div`
   width: 100%;
   overflow: hidden;
   overflow-y: auto;
+  z-index: 5;
 `
 
 const LibraryHeader = styled.div`
@@ -27,6 +29,9 @@ const LibraryHeader = styled.div`
 `
 
 const LibraryItemsWrapper = styled.div`
+  //margin: 1.5rem 0;
+  //overflow: hidden;
+  //overflow-y: auto;
 `
 
 const NoPlaylistsWrapper = styled.div`
@@ -38,9 +43,20 @@ const NoPlaylistsWrapper = styled.div`
   justify-content: center
 `
 
+const StickyHeader = styled.div`
+  z-index: 1000;
+  top: 0;
+  background-color: #121212;
+  padding: 0.5rem;
+  position: sticky;
+  box-sizing: border-box;
+  width: 100%;
+`;
+
 export const LibrarySection = () => {
     const {user, filteredPlaylists, fetchPlaylistsData} = useUserStore();
-    const [searchTerm, setSearchTerm] = useState<string>('');
+    const [searchTerm, setSearchTerm] = useState<string>("");
+    const isMobileView = useDetectScreenDeviceSize(COMMON_BREAK_POINTS.small);
 
     useEffect(() => {
         fetchPlaylistsData();
@@ -48,22 +64,15 @@ export const LibrarySection = () => {
 
     return (
         <StyledLibrary>
-            <div style={{
-                position: "sticky",
-                zIndex: "1000",
-                top: 0,
-                backgroundColor: "#121212",
-                padding: "0 0.5rem",
-                border: "solid 2px #121212"
-            }}>
-                <LibraryHeader>
+            <StickyHeader>
+                {!isMobileView && <LibraryHeader>
                     <img src={libraryIcon} alt={"musicLibrary"} width={40} height={40}/>
                     <Text>Your Playlists Library</Text>
-                </LibraryHeader>
+                </LibraryHeader>}
                 <LibraryCategories searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
-            </div>
+            </StickyHeader>
 
-            <div style={{padding: "0.5rem"}}>
+            <div style={{padding: "0 0.5rem"}}>
                 {filteredPlaylists.length === 0 &&
                     <NoPlaylistsWrapper>
                         {searchTerm ? (
@@ -88,18 +97,17 @@ export const LibrarySection = () => {
                         )}
                     </NoPlaylistsWrapper>
                 }
-
                 <LibraryItemsWrapper>
-                    {filteredPlaylists.map((playlistObject, index) => {
+                    {filteredPlaylists.map((playlist, index) => {
                         return (
                             <LibraryItem
                                 key={index}
-                                name={playlistObject.name}
-                                owner={playlistObject.owner.display_name}
-                                type={playlistObject.type}
-                                image={playlistObject.images ? playlistObject.images[playlistObject.images.length - 1].url
+                                name={playlist.name}
+                                owner={playlist.owner.display_name}
+                                type={playlist.type}
+                                image={playlist.images ? playlist.images[playlist.images.length - 1].url
                                     : playlistImage}
-                                playlist_id={playlistObject.id}
+                                playlist_id={playlist.id}
                                 searchTerm={searchTerm}
                             />
                         )

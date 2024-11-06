@@ -20,6 +20,7 @@ import ohNoImage from '../../assets/Icons/icons8-no-audio-wave-100.png'
 import {useNavigate} from "react-router-dom";
 import turntablePlayer from '../../assets/turntable-img.png'
 import {PlayHistory} from "../../utils/trackTypes";
+import MusicWaves from "../UI Components/MusicWaves";
 
 //TODO: add types for track object, artist object, clean up this component
 
@@ -29,8 +30,8 @@ const CardContent = styled.div`
   //border: blue solid 2px;
   display: flex;
   flex-direction: column;
-  padding: 0 0.5rem 0 1rem;
-  position: relative;
+  padding: 0 0.5rem;
+  //position: relative;
   z-index: 999;
 `
 
@@ -65,7 +66,6 @@ export const MainContent: React.FC<MainContentProps> = () => {
     useEffect(() => {
         const fetchRecentlyPlayedTracks = async () => {
             const res: PlayHistory[] = await getRecentlyPlayedTracks();
-            console.log(res)
             if (res.length > 0) setListeningHistory(true);
         }
 
@@ -87,7 +87,7 @@ export const MainContent: React.FC<MainContentProps> = () => {
         setShowModal(false);
         setHookShowModal(false);
         //todo: send variable to hook so the playlist creation flow continues
-        console.log("create playlist with selected songs -- need to work on this functionality")
+        // console.log("create playlist with selected songs -- need to work on this functionality")
     }
 
     const handleResetMood = () => {
@@ -153,7 +153,7 @@ export const MainContent: React.FC<MainContentProps> = () => {
                         </Button>
                     </div>
                 </div>
-                {showProgressBar && <ProgressBar/>}
+                {showProgressBar && <MusicWaves/>}
                 <br/>
                 <TopArtist topArtist={topArtist} setTopArtist={setTopArtist}/>
             </>}

@@ -16,17 +16,13 @@ const StyledMainDisplay = styled.div<MainDisplayProps>`
   color: white;
   box-sizing: border-box;
   padding: 0.5rem;
+  overflow: hidden;
+  white-space: nowrap;
   //width: 100%;
   //background-color: #040306; //#1db954;
   //border: solid #1db954 2px;
-  overflow: hidden;
-  overflow-y: auto;
 
-  @media (max-width: 768px) {
-    grid-template-columns: auto;
-    grid-template-rows: auto;
-    grid-template-areas: "main"
-  }
+  //overflow-y: auto;
 `
 
 export const Main: React.FC<MainDisplayProps> = ({children, ...rest}) => {
@@ -36,7 +32,7 @@ export const Main: React.FC<MainDisplayProps> = ({children, ...rest}) => {
             <Box alignment="left" style={{position: "relative"}} id="box">
                 <ColorHeader/>
                 {children}
-                <MainFooter/>
+                <MainFooter/> {/*todo: make the font smaller*/}
             </Box>
         </StyledMainDisplay>
     );

@@ -28,7 +28,7 @@ const StyledSearchBar = styled.input`
   border: none;
   appearance: none;
   outline: none;
-  width: -webkit-fill-available;
+  width: 100%;
   height: 20px;
   color: white;
 

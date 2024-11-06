@@ -126,7 +126,7 @@ export const PlaylistHeader: React.FC<any> = ({playlist}) => {
                     <Text variant="sm" dangerouslySetInnerHTML={{__html: modifiedText}}
                           style={{
                               color: "#e3e3e3c2", overflow: "hidden", whiteSpace: "nowrap",
-                              textOverflow: "ellipsis", width: "-webkit-fill-available"
+                              textOverflow: "ellipsis",
                           }}/>
                     <div>
                         {/*<img src={""} alt={""} width="24"/>*/}
@@ -137,7 +137,8 @@ export const PlaylistHeader: React.FC<any> = ({playlist}) => {
                             <span style={{fontWeight: "700"}}> · </span>
                             {playlist?.tracks?.total} songs,
                             <span
-                                style={{color: "#e3e3e3c2"}}> about {hours > 0 ? ` ${hours} hr ${minutes} min` : ` ${minutes} min`}</span>
+                                style={{color: "#e3e3e3c2"}}> about {hours > 0 ? ` ${hours} hr ${minutes} min` : ` ${minutes} min`}
+                            </span>
                         </Text>
                     </div>
                     {playlist?.tracks?.total > 100 &&

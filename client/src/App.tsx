@@ -8,6 +8,7 @@ import React, {ReactNode} from "react";
 import {LogInPage} from "./Pages/LogInPage";
 import {MainContent} from "./Components/MainContent/MainContent";
 import LoadingPage from "./Pages/LoadingPage";
+import {LibrarySection} from "./Components/SideBarContent/LibrarySection";
 
 
 type RequireAuthProps = {
@@ -44,6 +45,13 @@ function App() {
                         <RequireAuth>
                             <Layout>
                                 <DisplayPlaylist/>
+                            </Layout>
+                        </RequireAuth>
+                    }/>
+                    <Route path="/library" element={
+                        <RequireAuth>
+                            <Layout>
+                                <LibrarySection/>
                             </Layout>
                         </RequireAuth>
                     }/>

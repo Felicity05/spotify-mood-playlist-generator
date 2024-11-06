@@ -54,7 +54,7 @@ export const LibraryItem: React.FC<PlaylistItemProps> = ({
             <img src={image} alt="playlist cover" width={50} height={50} style={{borderRadius: "0.3rem"}}/>
             <div style={{display: "flex", flexDirection: "column", overflow: "hidden", justifyContent: "center"}}>
                 <Text style={{whiteSpace: "nowrap", textOverflow: "ellipsis", overflow: "hidden", paddingBottom: 0}}>
-                    {getHighlightedText(name, searchTerm)}
+                    {getHighlightedText(name, searchTerm)} hello
                 </Text>
                 <div style={{
                     display: "flex", gap: "0.2rem", alignItems: "center",
